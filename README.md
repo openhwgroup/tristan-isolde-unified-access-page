@@ -21,4 +21,5 @@ Repository | URL/Instructions | TRISTAN Working Items | Partners                
 cve2       | [cve2](https://github.com/openhwgroup/cve2) | 2.2.5, 2.2.8, 2.5.7 | NXP, Synthara, Politecnico di Torino | Design and Verification in progress | Solderpad |
 TimeWeaver | [absint.com/timeweaver](https://www.absint.com/timeweaver/) | WI4.1.5 | AbsInt | Waiting for WI4.1.3 / WI2.2.1 | proprietary |
 CompCert   | [github.com/AbsInt/CompCert](https://github.com/AbsInt/CompCert) | WI4.2.4 | AbsInt | Waiting for WI2.5.4 | dual licensed (see repository) |
+HPDcache   | [github.com/openhwgroup/cv-hpdcache](https://github.com/openhwgroup/cv-hpdcache) | WI3.1.5 | CEA | Design and verification in progress | Solderpad |
 
