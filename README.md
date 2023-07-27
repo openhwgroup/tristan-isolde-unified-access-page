@@ -29,4 +29,4 @@ AXI LLC    | [AXI-LLC](https://github.com/pulp-platform/axi_llc) | WI3.1.5 | ETH
 AXI        | [AXI](https://github.com/pulp-platform/axi) | WI3.2.1 | ETH | Design and Verification in progress | Solderpad |
 Hypervisor | [H-extension](https://github.com/openhwgroup/cva6) | WI2.5.10 | ETH, Sysgo | Design and Verification in progress | Solderpad |
 Timing Channel Protection | [timing-channel-protection](https://github.com/pulp-platform/cva6) | WI2.1.1 | ETH | Design and Verification in progress | Solderpad |
-IP-XACT extesion for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| |
+IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
