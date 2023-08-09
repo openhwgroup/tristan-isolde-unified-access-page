@@ -23,6 +23,7 @@ TimeWeaver | [absint.com/timeweaver](https://www.absint.com/timeweaver/) | WI4.1
 CompCert   | [github.com/AbsInt/CompCert](https://github.com/AbsInt/CompCert) | WI4.2.4 | AbsInt | Waiting for WI2.5.4 | dual licensed (see repository) |
 CVA6       | [cva6](https://github.com/openhwgroup/cva6) | WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5 | Thales, Sysgo, TU Darmstadt, Bosch  | Design and Verification in progress | Solderpad |
 Yocto for CVA6 | [meta-cva6-yocto](https://github.com/openhwgroup/meta-cva6-yocto) | WI4.3.3 | Thales | Initial release | MIT |
+Setting up Yocto and baremetal debug on CVA6 | [cva6-eclipse-demo](https://github.com/ThalesGroup/cva6-eclipse-demo) | WI4.3.3 |Thales | Initial release | Apache |
 CLIC       | [clic](https://github.com/pulp-platform/clic) | WI3.1.7 | ETH | Design and Verification in progress | Apache-2.0 |
 RVV coprocessor for CVA6  | [RVV-coprocessor](https://github.com/pulp-platform/ara) | WI2.4.4 | ETH | Design and Verification in progress | Solderpad |
 AXI LLC    | [AXI-LLC](https://github.com/pulp-platform/axi_llc) | WI3.1.5 | ETH | Design and Verification in progress | Solderpad |
