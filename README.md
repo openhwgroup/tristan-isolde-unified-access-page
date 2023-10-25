@@ -33,3 +33,4 @@ Hypervisor | [H-extension](https://github.com/openhwgroup/cva6) | WI2.5.10 | ETH
 Timing Channel Protection | [timing-channel-protection](https://github.com/pulp-platform/cva6) | WI2.1.1 | ETH | Design and Verification in progress | Solderpad |
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
 Compression and decompression of digital waveforms| [Tristan](https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884) | WI2.5.11 | semify | Design and Verification in progress | To be determined|
+eFPGA| [I:Embedded-fpga](https://github.com/yongatek/eFPGA) | WI3.4.5 | YNGA | Design in progress | Solderpad |
