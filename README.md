@@ -33,3 +33,6 @@ Hypervisor | [H-extension](https://github.com/openhwgroup/cva6) | WI2.5.10 | ETH
 Timing Channel Protection | [timing-channel-protection](https://github.com/pulp-platform/cva6) | WI2.1.1 | ETH | Design and Verification in progress | Solderpad |
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
 Compression and decompression of digital waveforms| [Tristan](https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884) | WI2.5.11 | semify | Design and Verification in progress | To be determined|
+Accelerator for post-quantum cryptography| To do | WI3.3.4 | TUM, Politecnico di Torino | Design  in progress | To be determined|
+CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| To do | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress | To be determined|
+End-to-end stack for ML software development on embedded RISC-V platforms| To do | WI4.4.4 | ANTM, Politecnico di Torino, UNIBO | Design  in progress | To be determined|
