@@ -36,5 +36,5 @@ IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EP
 Compression and decompression of digital waveforms| [Tristan](https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884) | WI2.5.11 | semify | Design and Verification in progress | To be determined|
 eFPGA| [I:Embedded-fpga](https://github.com/yongatek/eFPGA) | WI3.4.5 | YNGA | Design in progress | Solderpad |
 Accelerator for post-quantum cryptography| To do | WI3.3.4 | TUM, Politecnico di Torino | Design  in progress | To be determined|
-CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| To do | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress | To be determined|
-End-to-end stack for ML software development on embedded RISC-V platforms| To do | WI4.4.4 | ANTM, Politecnico di Torino, UNIBO | Design  in progress | To be determined|
+CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| [RiscV-NN](https://github.com/eml-eda/RiscV-NN) | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress | To be determined|
+End-to-end stack for ML software development on embedded RISC-V platforms| [Plinio](https://github.com/eml-eda/plinio) | WI4.4.4 | ANTM, Politecnico di Torino, UNIBO | Design  in progress | Apache 2.0|
