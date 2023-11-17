@@ -38,6 +38,7 @@ eFPGA| [I:Embedded-fpga](https://github.com/yongatek/eFPGA) | WI3.4.5 | YNGA | D
 Accelerator for post-quantum cryptography| To do | WI3.3.4 | TUM, Politecnico di Torino | Design  in progress | To be determined|
 CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| [RiscV-NN](https://github.com/eml-eda/RiscV-NN) | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress | To be determined|
 End-to-end stack for ML software development on embedded RISC-V platforms| [Plinio](https://github.com/eml-eda/plinio) | WI4.4.4 | ANTM, Politecnico di Torino, UNIBO | Design  in progress | Apache 2.0|
+Riviera: RISC-V ISA Extensions for NFC Applications | To Be Done | WI2.5.1 | NXP Austria, Politecnico di Torino, Technical University of Graz | Design and Verification in progress | To Be Decided |
 
 
 # Acknowledgements
