@@ -39,6 +39,13 @@ Accelerator for post-quantum cryptography| To do | WI3.4.4 | TUM, Politecnico di
 CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| [RiscV-NN](https://github.com/eml-eda/RiscV-NN) | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress | To be determined|
 End-to-end stack for ML software development on embedded RISC-V platforms| [Plinio](https://github.com/eml-eda/plinio) | WI4.4.4 | ANTM, Politecnico di Torino, UNIBO | Design  in progress | Apache 2.0|
 Riviera: RISC-V ISA Extensions for NFC Applications | To Be Done | WI2.5.1 | NXP Austria, Politecnico di Torino, Technical University of Graz | Design and Verification in progress | To Be Decided |
+Extensions to the micro-architecture of CV32E40P core | [CV32E40P (fork)](https://github.com/pulp-platform/cv32e40p) | WI2.3.3 | UNIBO | Design and Verification in progress | Solderpad |
+Low-power IO DMA | [IO DMA](https://github.com/pulp-platform/udma_core) | WI3.1.4 | UNIBO | Design and Verification in progress | Solderpad |
+Heterogeneous Cluster Interconnect (HCI)) | [HCI](https://github.com/pulp-platform/hci) | WI3.2.2 | UNIBO | Design and Verification in progress | Solderpad |
+Low-power FP32/FP16 Accelerator for MatMul | [RedMule](https://github.com/pulp-platform/redmule) | WI3.4.1 | UNIBO | Design and Verification in progress | Solderpad |
+COREV GCC | [COREV GCC (fork)](https://github.com/EEESlab/corev-gcc/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
+COREV Binutils | [COREV Binutils (fork)](https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
+GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
 
 
 # Acknowledgements
