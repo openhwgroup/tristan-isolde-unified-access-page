@@ -29,6 +29,7 @@ UVM env for RISC-V verif | [core-v-verif](https://github.com/openhwgroup/core-v-
 Compression and decompression of digital waveforms| [Tristan](https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884) | WI2.5.11 | semify | Design and Verification in progress | To be determined|
 TraceUnit | Not published yet | WI2.1.4, WI2.2.1, WI2.3.4, WI2.5.4| ACCT, FHG, MNRS, SYSGO| Design and Verification in progress | To be determined |
 Hypervisor | [H-extension](https://github.com/openhwgroup/cva6) | WI2.5.10 | ETH, Sysgo | Design and Verification in progress | Solderpad |
+Riviera: RISC-V ISA Extensions for NFC Applications | To Be Done | WI2.5.1 | NXP Austria, Politecnico di Torino, Technical University of Graz | Design and Verification in progress | To Be Decided |
 
 ### PERIPHERALS
 
@@ -64,7 +65,6 @@ Repository | URL/Instructions | TRISTAN Working Items | Partners                
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
 To be determined|
-Riviera: RISC-V ISA Extensions for NFC Applications | To Be Done | WI2.5.1 | NXP Austria, Politecnico di Torino, Technical University of Graz | Design and Verification in progress | To Be Decided |
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
 
 
