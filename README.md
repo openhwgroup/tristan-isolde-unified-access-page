@@ -35,7 +35,7 @@ Riviera: RISC-V ISA Extensions for NFC Applications | To Be Done | WI2.5.1 | NXP
 
 Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-TSN-TraceBus | Not published yet | WI3.1.1| ACCT, BOSCH-DE, FHG, SYSGO| Design and Verification in progress | To be determined |
+TSN-TraceBus | Not published yet | WI3.1.1| ACCT, FHG, SYSGO| Design and Verification in progress | To be determined |
 HPDcache   | [github.com/openhwgroup/cv-hpdcache](https://github.com/openhwgroup/cv-hpdcache) | WI3.1.5 | CEA | Design and verification in progress | Solderpad |
 CLIC       | [clic](https://github.com/pulp-platform/clic) | WI3.1.7 | ETH | Design and Verification in progress | Apache-2.0 |
 AXI LLC    | [AXI-LLC](https://github.com/pulp-platform/axi_llc) | WI3.1.5 | ETH | Design and Verification in progress | Solderpad |
