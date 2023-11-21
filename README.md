@@ -16,9 +16,9 @@ The Tristan Unified Access Page is the deliverable of the Task 2 of the Work Pac
 
 ## TRISTAN IPs
 
+### CORES
+
 Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
----------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-CORES      |
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 cve2       | [cve2](https://github.com/openhwgroup/cve2) | WI2.2.5, WI2.2.8, WI2.5.7 | NXP, Synthara, Politecnico di Torino | Design and Verification in progress | Solderpad |
 Extensions to the micro-architecture of CV32E40P core | [CV32E40P (fork)](https://github.com/pulp-platform/cv32e40p) | WI2.3.3 | UNIBO | Design and Verification in progress | Solderpad |
@@ -29,8 +29,10 @@ UVM env for RISC-V verif | [core-v-verif](https://github.com/openhwgroup/core-v-
 Compression and decompression of digital waveforms| [Tristan](https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884) | WI2.5.11 | semify | Design and Verification in progress | To be determined|
 TraceUnit | Not published yet | WI2.1.4, WI2.2.1, WI2.3.4, WI2.5.4| ACCT, FHG, MNRS, SYSGO| Design and Verification in progress | To be determined |
 Hypervisor | [H-extension](https://github.com/openhwgroup/cva6) | WI2.5.10 | ETH, Sysgo | Design and Verification in progress | Solderpad |
----------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-PERIPHERALS      |
+
+### PERIPHERALS
+
+Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 TSN-TraceBus | Not published yet | WI3.1.1| ACCT, BOSCH-DE, FHG, SYSGO| Design and Verification in progress | To be determined |
 HPDcache   | [github.com/openhwgroup/cv-hpdcache](https://github.com/openhwgroup/cv-hpdcache) | WI3.1.5 | CEA | Design and verification in progress | Solderpad |
@@ -42,8 +44,10 @@ Accelerator for post-quantum cryptography| To do | WI3.4.4 | TUM, Politecnico di
 Low-power IO DMA | [IO DMA](https://github.com/pulp-platform/udma_core) | WI3.1.4 | UNIBO | Design and Verification in progress | Solderpad |
 Heterogeneous Cluster Interconnect (HCI)) | [HCI](https://github.com/pulp-platform/hci) | WI3.2.2 | UNIBO | Design and Verification in progress | Solderpad |
 Low-power FP32/FP16 Accelerator for MatMul | [RedMule](https://github.com/pulp-platform/redmule) | WI3.4.1 | UNIBO | Design and Verification in progress | Solderpad |
----------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-SOFTWARE      |
+
+### SOFTWARE
+
+Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 TimeWeaver | [absint.com/timeweaver](https://www.absint.com/timeweaver/) | WI4.1.5 | AbsInt | Waiting for WI4.1.3 / WI2.2.1 | proprietary |
 CompCert   | [github.com/AbsInt/CompCert](https://github.com/AbsInt/CompCert) | WI4.2.4 | AbsInt | Waiting for WI2.5.4 | dual licensed (see repository) |
@@ -53,8 +57,10 @@ End-to-end stack for ML software development on embedded RISC-V platforms| [Plin
 CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| [RiscV-NN](https://github.com/eml-eda/RiscV-NN) | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress |
 COREV GCC | [COREV GCC (fork)](https://github.com/EEESlab/corev-gcc/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
 COREV Binutils | [COREV Binutils (fork)](https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
----------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-TOOLS      |
+
+### TOOLS
+
+Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
 To be determined|
