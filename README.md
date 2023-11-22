@@ -66,6 +66,7 @@ Repository | URL/Instructions | TRISTAN Working Items | Partners                
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
 To be determined|
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
+RISC-V systemverilog-based modular model for verification  | Not published yet | WI5.2.8 | SYNT | Concept in developments | To be determined |
 
 
 # Acknowledgements
