@@ -58,7 +58,7 @@ End-to-end stack for ML software development on embedded RISC-V platforms| [Plin
 CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| [RiscV-NN](https://github.com/eml-eda/RiscV-NN) | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress |
 COREV GCC | [COREV GCC (fork)](https://github.com/EEESlab/corev-gcc/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
 COREV Binutils | [COREV Binutils (fork)](https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
-ELinOS | To be released in spring 2024 [access on request](https://www.sysgo.com/elinos) | WI4.3.2 | SYSGO | To be released in spring 2024 | GPL |
+ELinOS embedded Linux for RISC-V | [access on request](https://www.sysgo.com/elinos) | WI4.3.2 | SYSGO | To be released in spring 2024 | GPL |
 PikeOS CVA-6 support | To be released | WI4.3.3 | SYSGO | To be released | proprietary |  
 
 ### TOOLS
