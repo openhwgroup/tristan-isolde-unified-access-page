@@ -45,6 +45,7 @@ Accelerator for post-quantum cryptography| To do | WI3.4.4 | TUM, Politecnico di
 Low-power IO DMA | [IO DMA](https://github.com/pulp-platform/udma_core) | WI3.1.4 | UNIBO | Design and Verification in progress | Solderpad |
 Heterogeneous Cluster Interconnect (HCI)) | [HCI](https://github.com/pulp-platform/hci) | WI3.2.2 | UNIBO | Design and Verification in progress | Solderpad |
 Low-power FP32/FP16 Accelerator for MatMul | [RedMule](https://github.com/pulp-platform/redmule) | WI3.4.1 | UNIBO | Design and Verification in progress | Solderpad |
+My Nice PEripherals | To be Done | WI3.99.99 | X.Y.Z | Design and Verification in progress | Solderpad |
 
 ### SOFTWARE
 
