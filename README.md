@@ -69,6 +69,7 @@ IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EP
 To be determined|
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
 RISC-V systemverilog-based modular model for verification  | Not published yet | WI5.2.8 | SYNT | Concept in developments | To be determined |
+ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | TUM EDA | Design and Verification in progress | BSD 3-clause |
 
 
 # Acknowledgements
