@@ -71,6 +71,7 @@ To be determined|
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
 RISC-V systemverilog-based modular model for verification  | Not published yet | WI5.2.8 | SYNT | Concept in developments | To be determined |
 ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | TUM EDA | Design and Verification in progress | BSD 3-clause |
+cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | CEA | Initial release | Apache-2.0 |
 
 
 # Acknowledgements
