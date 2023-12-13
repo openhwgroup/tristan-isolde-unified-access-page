@@ -61,6 +61,7 @@ COREV Binutils | [COREV Binutils (fork)](https://github.com/EEESlab/corev-binuti
 ELinOS embedded Linux for RISC-V | [ELinOS](https://www.sysgo.com/elinos) | WI4.3.2 | SYSGO | To be released in spring 2024 | GPL |
 PikeOS CVA-6 support | [PikeOS](https://www.pikeos.com/) | WI4.3.3 | SYSGO | To be released | proprietary |  
 LLVM TD from ADL | TBD | WI4.2.1, WI4.2.3 | NXP | Design and verification in progress | TBD |  
+Cloud Connector | Not published yet | WI 4.3.4 | aicas | To be determined |
 
 ### TOOLS
 
