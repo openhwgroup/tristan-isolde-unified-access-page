@@ -40,6 +40,7 @@ HPDcache   | [github.com/openhwgroup/cv-hpdcache](https://github.com/openhwgroup
 CLIC       | [clic](https://github.com/pulp-platform/clic) | WI3.1.7 | ETH | Design and Verification in progress | Apache-2.0 |
 AXI LLC    | [AXI-LLC](https://github.com/pulp-platform/axi_llc) | WI3.1.5 | ETH | Design and Verification in progress | Solderpad |
 AXI        | [AXI](https://github.com/pulp-platform/axi) | WI3.2.1 | ETH | Design and Verification in progress | Solderpad |
+SPEDE | Not published yet | WI3.2.4 | Nokia, TAU | Design and verification in progress | TBD |
 eFPGA| [I:Embedded-fpga](https://github.com/yongatek/eFPGA) | WI3.4.5 | YNGA | Design in progress | Solderpad |
 Accelerator for post-quantum cryptography| To do | WI3.4.4 | TUM, Politecnico di Torino | Design  in progress | To be determined|
 Low-power IO DMA | [IO DMA](https://github.com/pulp-platform/udma_core) | WI3.1.4 | UNIBO | Design and Verification in progress | Solderpad |
@@ -71,6 +72,7 @@ Repository | URL/Instructions | TRISTAN Working Items | Partners                
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
 To be determined|
+IP-XACT SoC interconnect generator | [Kactus2 plugin](https://github.com/kactus2/kactus2dev) | WI5.3.3 | TAU, Nokia | Design in progress. Not released yet. | GNU General Public License v2.0 |
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
 RISC-V systemverilog-based modular model for verification  | Not published yet | WI5.2.8 | SYNT | Concept in developments | To be determined |
 ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | TUM EDA | Design and Verification in progress | BSD 3-clause |
