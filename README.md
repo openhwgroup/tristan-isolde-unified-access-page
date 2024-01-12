@@ -22,6 +22,7 @@ Repository | URL/Instructions | TRISTAN Working Items | Partners                
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 cve2       | [cve2](https://github.com/openhwgroup/cve2) | WI2.2.5, WI2.2.8, WI2.5.7 | NXP, Synthara, Politecnico di Torino | Design and Verification in progress | Solderpad |
 Extensions to the micro-architecture of CV32E40P core | [CV32E40P (fork)](https://github.com/pulp-platform/cv32e40p) | WI2.3.3 | UNIBO | Design and Verification in progress | Solderpad |
+VSRISCV: simple 32-bit Linux RISC-V | To Be Done | WI2.3.5 | VLSI Solution | Design and Verification in progress | To Be Decided |
 CVA6       | [cva6](https://github.com/openhwgroup/cva6) | WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5 | Thales, Sysgo, TU Darmstadt, Bosch  | Design and Verification in progress | Solderpad |
 RVV coprocessor for CVA6  | [RVV-coprocessor](https://github.com/pulp-platform/ara) | WI2.4.4 | ETH | Design and Verification in progress | Solderpad |
 Timing Channel Protection | [timing-channel-protection](https://github.com/pulp-platform/cva6) | WI2.1.1 | ETH | Design and Verification in progress | Solderpad |
