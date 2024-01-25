@@ -81,6 +81,11 @@ Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa
 Yosys | [Yosys](https://github.com/YosysHQ/yosys) | 5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
 Catapult | [Catapult](https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/) | 5.2.7 | SIEMENS EDA | SIEM-AT | High Level Synthesis and verification suite​​​| |
 Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | 5.2.7 | MNRS | TAU, NOKIA, CGT | High Level Synthesis and verification suite​​​| |
+Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | 5.1.3 | CODA | BOSCH – DE, BOSCH – FR, MNRS | Tool suite to develop/customize RISC-V IPs​​​| |
+GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | POLITO | RISC-V Platform Simulator​ | Apache-2.0 |
+Messy  | TBD| WI5.1.5 | POLITO | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
+Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | TDIS, SYNT |  RISC-V ISA simulator​ |  |
+VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | TDIS, SIEM-AT |  Graphical edition of a Design Verification Plan ​ |  |
 
 
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
