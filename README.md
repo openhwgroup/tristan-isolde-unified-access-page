@@ -86,16 +86,10 @@ GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.
 Messy  | TBD| WI5.1.5 | POLITO | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
 Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | TDIS, SYNT |  RISC-V ISA simulator​ |  |
 VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | TDIS, SIEM-AT |  Graphical edition of a Design Verification Plan ​ |  |
-SoCDSL  | [TBD | WI5.1.8 | TUDA | MNRS, TAU |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
+SoCDSL  | TBD | WI5.1.8 | TUDA | MNRS, TAU |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
 cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | OpenHW Group| CEA | UVM verification environment for OpenHW cores | Apache-2.0 |
 
 
-IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
-To be determined|
-GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
-RISC-V systemverilog-based modular model for verification  | Not published yet | WI5.2.8 | SYNT | Concept in developments | To be determined |
-ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | TUM EDA | Design and Verification in progress | BSD 3-clause |
-cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | CEA | Initial release | Apache-2.0 |
 
 
 # Acknowledgements
