@@ -71,21 +71,23 @@ VxP Tools and Libraries | Not published yet | WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1
 Tool | URL/Instructions | TRISTAN Working Items | Owner/Contributors  |  Users               | Description                     | License   |
 -------- | -------------- | ------------ | ---------- | -------------- | --------------------------- | --------- |
 Renode | [Renode](https://github.com/renode/renode) | 5.1.1 | ANTM | TAU, NOKIA, CGT | Simulation Framework| |
-ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | 5.1.2 | TUM | IFX | Extendible Translating  Instruction Set Simulator| |
+ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | 5.1.2 | TUM | IFX | Extendible Translating  Instruction Set Simulator| BSD 3-clause  |
 SCC | [SCC](https://github.com/Minres/SystemC-Components) | 5.1.4 | MNRS | BOSCH-DE, CEA | SystemC Components| |
 PySysC | [PySysC](https://github.com/Minres/PySysC/) | 5.1.4 | MNRS | BOSCH-DE, CEA | Python bindings for SystemC| |
 Core DSL | [Core DSL](https://github.com/Minres/CoreDSL) | 5.1.4 | MNRS | BOSCH-DE, CEA | Language to describe ISAs for ISS generation and HLS of RTL implementation​​| |
-DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | 5.1.4 | MNRS | BOSCH-DE, CEA |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
+DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | 5.1.4, 5.3.2 | MNRS | BOSCH-DE, CEA,ACC |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
 Verilator | [Verilator](https://www.veripool.org/verilator/) | 5.2.1 | ANTM | CEA |  RTL verification (simulation, formal)​ Co-simulation with Renode​​| |
 Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | 5.2.2 | SIEMENS EDA | TRT | Formal verification solutions for RISC-V (OneSpin)​​| |
 Yosys | [Yosys](https://github.com/YosysHQ/yosys) | 5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
 Catapult | [Catapult](https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/) | 5.2.7 | SIEMENS EDA | SIEM-AT | High Level Synthesis and verification suite​​​| |
-Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | 5.2.7 | MNRS | TAU, NOKIA, CGT | High Level Synthesis and verification suite​​​| |
+Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | 5.2.7 | MNRS, TAU | TAU, NOKIA, CGT | High Level Synthesis and verification suite​​​| |
 Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | 5.1.3 | CODA | BOSCH – DE, BOSCH – FR, MNRS | Tool suite to develop/customize RISC-V IPs​​​| |
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | POLITO | RISC-V Platform Simulator​ | Apache-2.0 |
 Messy  | TBD| WI5.1.5 | POLITO | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
 Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | TDIS, SYNT |  RISC-V ISA simulator​ |  |
 VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | TDIS, SIEM-AT |  Graphical edition of a Design Verification Plan ​ |  |
+SoCDSL  | [TBD | WI5.1.8 | TUDA | MNRS, TAU |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
+cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | OpenHW Group| CEA | UVM verification environment for OpenHW cores | Apache-2.0 |
 
 
 IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
