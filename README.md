@@ -76,7 +76,6 @@ SCC | [SCC](https://github.com/Minres/SystemC-Components) | 5.1.4 | MNRS | BOSCH
 PySysC | [PySysC](https://github.com/Minres/PySysC/) | 5.1.4 | MNRS | BOSCH-DE, CEA | Python bindings for SystemC| |
 Core DSL | [Core DSL](https://github.com/Minres/CoreDSL) | 5.1.4 | MNRS | BOSCH-DE, CEA | Language to describe ISAs for ISS generation and HLS of RTL implementation​​| |
 DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | 5.1.4 | MNRS | BOSCH-DE, CEA |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
-
 Verilator | [Verilator](https://www.veripool.org/verilator/) | 5.2.1 | ANTM | CEA |  RTL verification (simulation, formal)​ Co-simulation with Renode​​| |
 Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | 5.2.2 | SIEMENS EDA | TRT | Formal verification solutions for RISC-V (OneSpin)​​| |
 Yosys | [Yosys](https://github.com/YosysHQ/yosys) | 5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
