@@ -73,16 +73,16 @@ Tool | URL/Instructions | TRISTAN Working Items | Owner/Contributors  |  Users  
 -------- | -------------- | ------------ | ---------- | -------------- | --------------------------- | --------- |
 Renode | [Renode](https://github.com/renode/renode) | 5.1.1 | Antmicro | Tampere University, NOKIA, Cargotec | Simulation Framework| |
 ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | 5.1.2 | Technische Universität München | Infineon | Extendible Translating  Instruction Set Simulator| BSD 3-clause  |
-SCC | [SCC](https://github.com/Minres/SystemC-Components) | 5.1.4 | Minres | BOSCH-DE, CEA | SystemC Components| |
-PySysC | [PySysC](https://github.com/Minres/PySysC/) | 5.1.4 | Minres | BOSCH-DE, CEA | Python bindings for SystemC| |
-Core DSL | [Core DSL](https://github.com/Minres/CoreDSL) | 5.1.4 | Minres | BOSCH-DE, CEA | Language to describe ISAs for ISS generation and HLS of RTL implementation​​| |
-DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | 5.1.4, 5.3.2 | Minres | BOSCH-DE, CEA,ACC |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
+SCC | [SCC](https://github.com/Minres/SystemC-Components) | 5.1.4 | Minres | Bosch-DE, CEA | SystemC Components| |
+PySysC | [PySysC](https://github.com/Minres/PySysC/) | 5.1.4 | Minres | Bosch-DE, CEA | Python bindings for SystemC| |
+Core DSL | [Core DSL](https://github.com/Minres/CoreDSL) | 5.1.4 | Minres | Bosch-DE, CEA | Language to describe ISAs for ISS generation and HLS of RTL implementation​​| |
+DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | 5.1.4, 5.3.2 | Minres | Bosch-DE, CEA,ACC |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
 Verilator | [Verilator](https://www.veripool.org/verilator/) | 5.2.1 | Antmicro | CEA |  RTL verification (simulation, formal)​ Co-simulation with Renode​​| |
-Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | 5.2.2 | Siemens EDA | TRT | Formal verification solutions for RISC-V (OneSpin)​​| |
+Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | 5.2.2 | Siemens EDA | Thales SA | Formal verification solutions for RISC-V (OneSpin)​​| |
 Yosys | [Yosys](https://github.com/YosysHQ/yosys) | 5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
 Catapult | [Catapult](https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/) | 5.2.7 | Siemens EDA | Siemens-AT | High Level Synthesis and verification suite​​​| |
 Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | 5.2.7 | Minres, Tampere University | Tampere University, NOKIA, Cargotec | High Level Synthesis and verification suite​​​| |
-Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | 5.1.3 | Codasip | BOSCH – DE, BOSCH – FR, Minres | Tool suite to develop/customize RISC-V IPs​​​| |
+Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | 5.1.3 | Codasip | Bosch – DE, Bosch – FR, Minres | Tool suite to develop/customize RISC-V IPs​​​| |
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Politecnico di Torino | RISC-V Platform Simulator​ | Apache-2.0 |
 Messy  | TBD| WI5.1.5 | Politecnico di Torino | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
 Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | Thales, Synthara |  RISC-V ISA simulator​ |  |
