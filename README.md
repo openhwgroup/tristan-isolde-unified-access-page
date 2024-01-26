@@ -68,14 +68,28 @@ VxP Tools and Libraries | Not published yet | WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1
 
 ### TOOLS
 
-Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
----------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
-To be determined|
-GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
-RISC-V systemverilog-based modular model for verification  | Not published yet | WI5.2.8 | SYNT | Concept in developments | To be determined |
-ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | TUM EDA | Design and Verification in progress | BSD 3-clause |
-cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | CEA | Initial release | Apache-2.0 |
+
+Tool | URL/Instructions | TRISTAN Working Items | Owner/Contributors  |  Users               | Description                     | License   |
+-------- | -------------- | ------------ | ---------- | -------------- | --------------------------- | --------- |
+Renode | [Renode](https://github.com/renode/renode) | WI5.1.1 | Antmicro | Tampere University, NOKIA, Cargotec | Simulation Framework| |
+ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | Technische Universität München | Infineon | Extendible Translating  Instruction Set Simulator| BSD 3-clause  |
+SCC | [SCC](https://github.com/Minres/SystemC-Components) | WI5.1.4 | Minres | Bosch-DE, CEA | SystemC Components| |
+PySysC | [PySysC](https://github.com/Minres/PySysC/) | WI5.1.4 | Minres | Bosch-DE, CEA | Python bindings for SystemC| |
+Core DSL | [Core DSL](https://github.com/Minres/CoreDSL) | WI5.1.4 | Minres | Bosch-DE, CEA | Language to describe ISAs for ISS generation and HLS of RTL implementation​​| |
+DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | WI5.1.4, WI5.3.2 | Minres | Bosch-DE, CEA,ACC |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
+Verilator | [Verilator](https://www.veripool.org/verilator/) | WI5.2.1 | Antmicro | CEA |  RTL verification (simulation, formal)​ Co-simulation with Renode​​| |
+Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | WI5.2.2 | Siemens EDA | Thales SA | Formal verification solutions for RISC-V (OneSpin)​​| |
+Yosys | [Yosys](https://github.com/YosysHQ/yosys) | WI5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
+Catapult | [Catapult](https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/) | WI5.2.7 | Siemens EDA | Siemens-AT | High Level Synthesis and verification suite​​​| |
+Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | WI5.2.7 | Minres, Tampere University | Tampere University, NOKIA, Cargotec | High Level Synthesis and verification suite​​​| |
+Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | WI5.1.3 | Codasip | Bosch – DE, Bosch – FR, Minres | Tool suite to develop/customize RISC-V IPs​​​| |
+GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Politecnico di Torino | RISC-V Platform Simulator​ | Apache-2.0 |
+Messy  | TBD| WI5.1.5 | Politecnico di Torino | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
+Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | Thales, Synthara |  RISC-V ISA simulator​ |  |
+VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | Thales, Siemens-AT |  Graphical edition of a Design Verification Plan ​ |  |
+SoCDSL  | TBD | WI5.1.8 | Technische Universität Darmstadt | Minres, Tampere University |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
+cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | OpenHW Group| CEA | UVM verification environment for OpenHW cores | Apache-2.0 |
+
 
 
 # Acknowledgements
