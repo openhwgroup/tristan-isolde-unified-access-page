@@ -89,6 +89,7 @@ Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7
 VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | Thales, Siemens-AT |  Graphical edition of a Design Verification Plan ​ |  |
 SoCDSL  | TBD | WI5.1.8 | Technische Universität Darmstadt | Minres, Tampere University |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
 cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | OpenHW Group| CEA | UVM verification environment for OpenHW cores | Apache-2.0 |
+Co-processor Generator Tool | Not published yet | WI2.5.6 | Tampere University | TBD | Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions. | TBD |
 
 
 
