@@ -81,13 +81,13 @@ Verilator | [Verilator](https://www.veripool.org/verilator/) | WI5.2.1 | Antmicr
 Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | WI5.2.2 | Siemens EDA | Thales SA | Formal verification solutions for RISC-V (OneSpin)​​| |
 Yosys | [Yosys](https://github.com/YosysHQ/yosys) | WI5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
 Catapult | [Catapult](https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/) | WI5.2.7 | Siemens EDA | Siemens-AT | High Level Synthesis and verification suite​​​| |
-Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | WI5.2.7 | Minres, Tampere University | Tampere University, NOKIA, Cargotec | High Level Synthesis and verification suite​​​| |
+Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | WI5.2.9, WI5.3.3 | Minres, Tampere University | Tampere University, NOKIA, Cargotec | High Level Synthesis and verification suite​​​| |
 Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | WI5.1.3 | Codasip | Bosch – DE, Bosch – FR, Minres | Tool suite to develop/customize RISC-V IPs​​​| |
 GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Politecnico di Torino | RISC-V Platform Simulator​ | Apache-2.0 |
-Messy  | TBD| WI5.1.5 | Politecnico di Torino | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
+Messy  | TBD| WI5.1.6 | Politecnico di Torino | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
 Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | Thales, Synthara |  RISC-V ISA simulator​ |  |
 VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | Thales, Siemens-AT |  Graphical edition of a Design Verification Plan ​ |  |
-SoCDSL  | TBD | WI5.1.8 | Technische Universität Darmstadt | Minres, Tampere University |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
+SoCDSL  | TBD | WI5.3.1 | Technische Universität Darmstadt | Minres, Tampere University |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
 cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | OpenHW Group| CEA | UVM verification environment for OpenHW cores | Apache-2.0 |
 Co-processor Generator Tool | Not published yet | WI2.5.6 | Tampere University | TBD | Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions. | TBD |
 
