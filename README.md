@@ -3,11 +3,11 @@
 It provides references and descriptions of all the [TRISTAN](https://tristan-project.eu/) IPs (hardware and software).
 It serves as a `Virtual Repository` page, gathering all the information about the TRISTAN repositories, their status,
 and the TRISTAN partners involved in them.
+The Tristan Unified Access Page acts like a static page, to provide a single access point to all the repositories TRISTAN 
+contributes to. The updates and contributions will be upstreamed in the repository themselves.
 
 Some of the repositories are hosted on the OpenHW Group GitHub forge, some are located on other public pages, and some are closed-source.
-
 The diagram below shows how the TRISTAN repositories are organized.
-
 
 <img src="https://github.com/openhwgroup/tristan-unified-access-page/blob/main/images/tristan_virtual_repo.png" align="center" />
 
