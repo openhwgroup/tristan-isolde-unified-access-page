@@ -61,7 +61,7 @@ COREV GCC | [COREV GCC (fork)](https://github.com/EEESlab/corev-gcc/tree/tristan
 COREV Binutils | [COREV Binutils (fork)](https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
 ELinOS embedded Linux for RISC-V | [ELinOS](https://www.sysgo.com/elinos) | WI4.3.2 | SYSGO | To be released in spring 2024 | GPL |
 PikeOS CVA-6 support | [PikeOS](https://www.pikeos.com/) | WI4.3.3 | SYSGO | To be released | proprietary |  
-LLVM TD from ADL | TBD | WI4.2.1, WI4.2.3 | NXP | Design and verification in progress | TBD |  
+LLVM TD from ADL | [ADLTools]https://github.com/nxp-auto-tools/tools_adl | WI4.2.1, WI4.2.3 | NXP | Design and verification in progress | BSD2 |  
 Cloud Connector | Not published yet | WI 4.3.4 | aicas | To be determined |
 RISC-V Runtime | Not published yet | WI4.4.1 | CEA | Design and verification in progress | Apache |
 VxP Tools and Libraries | Not published yet | WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1 | CEA | Design and verification in progress | Apache |
