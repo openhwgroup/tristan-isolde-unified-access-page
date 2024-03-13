@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* Add some spacing and border to the table */
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 25px 0;
+font-size: 0.9em;
+font-family: sans-serif;
+min-width: 400px;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+/* Style the table header */
+thead tr {
+background-color: #009879;
+color: #ffffff;
+text-align: left;
+}
+/* Style the table cells */
+th, td {
+padding: 12px 15px;
+}
+/* Style the table body rows with alternating colors */
+tbody tr {
+border-bottom: 1px solid #dddddd;
+}
+tbody tr:nth-of-type(even) {
+background-color: #f3f3f3;
+}
+tbody tr:last-of-type {
+border-bottom: 2px solid #009879;
+}
+/* Style for table body cells on hover */
+tbody tr:hover {
+background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h1 id="tristan-unified-access-page">Tristan Unified Access Page</h1>
+<p>It provides references and descriptions of all the <a href="https://tristan-project.eu/">TRISTAN</a> IPs (hardware and software).
+It serves as a <code>Virtual Repository</code> page, gathering all the information about the TRISTAN repositories, their status,
+and the TRISTAN partners involved in them.
+The Tristan Unified Access Page acts like a static page, to provide a single access point to all the repositories TRISTAN 
+contributes to. The updates and contributions will be upstreamed in the repository themselves.</p>
+<p>Some of the repositories are hosted on the OpenHW Group GitHub forge, some are located on other public pages, and some are closed-source.
+The diagram below shows how the TRISTAN repositories are organized.</p>
+<img src="https://github.com/openhwgroup/tristan-unified-access-page/blob/main/images/tristan_virtual_repo.png" align="center" />
+
+<p>The Tristan Unified Access Page is the deliverable of the Task 2 of the Work Package 7 (7.2).</p>
+<h2 id="tristan-ips">TRISTAN IPs</h2>
+<h3 id="cores">CORES</h3>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>URL/Instructions</th>
+<th>TRISTAN Working Items</th>
+<th>Partners</th>
+<th>Status</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cve2</td>
+<td><a href="https://github.com/openhwgroup/cve2">cve2</a></td>
+<td>WI2.2.5, WI2.2.8, WI2.5.7</td>
+<td>NXP, Synthara, Politecnico di Torino</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Extensions to the micro-architecture of CV32E40P core</td>
+<td><a href="https://github.com/pulp-platform/cv32e40p">CV32E40P (fork)</a></td>
+<td>WI2.3.3</td>
+<td>UNIBO</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>VSRV1: simple 32-bit Linux RISC-V</td>
+<td>To Be Done</td>
+<td>WI2.3.5</td>
+<td>VLSI Solution</td>
+<td>Design and Verification in progress</td>
+<td>To Be Decided</td>
+</tr>
+<tr>
+<td>CVA6</td>
+<td><a href="https://github.com/openhwgroup/cva6">cva6</a></td>
+<td>WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5</td>
+<td>Thales, Sysgo, TU Darmstadt, Bosch</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>RVV coprocessor for CVA6</td>
+<td><a href="https://github.com/pulp-platform/ara">RVV-coprocessor</a></td>
+<td>WI2.4.4</td>
+<td>ETH</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Timing Channel Protection</td>
+<td><a href="https://github.com/pulp-platform/cva6">timing-channel-protection</a></td>
+<td>WI2.1.1</td>
+<td>ETH</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>UVM env for RISC-V verif</td>
+<td><a href="https://github.com/openhwgroup/core-v-verif">core-v-verif</a></td>
+<td>WI2.4.1</td>
+<td>Thales</td>
+<td>CVA6 verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Compression and decompression of digital waveforms</td>
+<td><a href="https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884">Tristan</a></td>
+<td>WI2.5.11</td>
+<td>semify</td>
+<td>Design and Verification in progress</td>
+<td>To be determined</td>
+</tr>
+<tr>
+<td>TraceUnit</td>
+<td>Not published yet</td>
+<td>WI2.1.4, WI2.2.1, WI2.3.4, WI2.5.4</td>
+<td>ACCT, FHG, MNRS, SYSGO</td>
+<td>Design and Verification in progress</td>
+<td>To be determined</td>
+</tr>
+<tr>
+<td>Hypervisor</td>
+<td><a href="https://github.com/openhwgroup/cva6">H-extension</a></td>
+<td>WI2.5.10</td>
+<td>ETH, Sysgo</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Riviera: RISC-V ISA Extensions for NFC Applications</td>
+<td>To Be Done</td>
+<td>WI2.5.1</td>
+<td>NXP Austria, Politecnico di Torino, Technical University of Graz</td>
+<td>Design and Verification in progress</td>
+<td>To Be Decided</td>
+</tr>
+</tbody></table>
+<h3 id="peripherals">PERIPHERALS</h3>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>URL/Instructions</th>
+<th>TRISTAN Working Items</th>
+<th>Partners</th>
+<th>Status</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TSN-TraceBus</td>
+<td>Not published yet</td>
+<td>WI3.1.1</td>
+<td>ACCT, BOSCH-DE, FHG, SYSGO</td>
+<td>Design and Verification in progress</td>
+<td>To be determined</td>
+</tr>
+<tr>
+<td>HPDcache</td>
+<td><a href="https://github.com/openhwgroup/cv-hpdcache">github.com/openhwgroup/cv-hpdcache</a></td>
+<td>WI3.1.5</td>
+<td>CEA</td>
+<td>Design and verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>CLIC</td>
+<td><a href="https://github.com/pulp-platform/clic">clic</a></td>
+<td>WI3.1.7</td>
+<td>ETH</td>
+<td>Design and Verification in progress</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>AXI LLC</td>
+<td><a href="https://github.com/pulp-platform/axi_llc">AXI-LLC</a></td>
+<td>WI3.1.5</td>
+<td>ETH</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>AXI</td>
+<td><a href="https://github.com/pulp-platform/axi">AXI</a></td>
+<td>WI3.2.1</td>
+<td>ETH</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>eFPGA</td>
+<td><a href="https://github.com/yongatek/eFPGA">I:Embedded-fpga</a></td>
+<td>WI3.4.5</td>
+<td>YNGA</td>
+<td>Design in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Accelerator for post-quantum cryptography</td>
+<td>To do</td>
+<td>WI3.4.4</td>
+<td>TUM, Politecnico di Torino</td>
+<td>Design  in progress</td>
+<td>To be determined</td>
+</tr>
+<tr>
+<td>Low-power IO DMA</td>
+<td><a href="https://github.com/pulp-platform/udma_core">IO DMA</a></td>
+<td>WI3.1.4</td>
+<td>UNIBO</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Heterogeneous Cluster Interconnect (HCI))</td>
+<td><a href="https://github.com/pulp-platform/hci">HCI</a></td>
+<td>WI3.2.2</td>
+<td>UNIBO</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+<tr>
+<td>Low-power FP32/FP16 Accelerator for MatMul</td>
+<td><a href="https://github.com/pulp-platform/redmule">RedMule</a></td>
+<td>WI3.4.1</td>
+<td>UNIBO</td>
+<td>Design and Verification in progress</td>
+<td>Solderpad</td>
+</tr>
+</tbody></table>
+<h3 id="software">SOFTWARE</h3>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>URL/Instructions</th>
+<th>TRISTAN Working Items</th>
+<th>Partners</th>
+<th>Status</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TimeWeaver</td>
+<td><a href="https://www.absint.com/timeweaver/">absint.com/timeweaver</a></td>
+<td>WI4.1.5</td>
+<td>AbsInt</td>
+<td>Waiting for WI4.1.3 / WI2.2.1</td>
+<td>proprietary</td>
+</tr>
+<tr>
+<td>CompCert</td>
+<td><a href="https://github.com/AbsInt/CompCert">github.com/AbsInt/CompCert</a></td>
+<td>WI4.2.4</td>
+<td>AbsInt</td>
+<td>Waiting for WI2.5.4</td>
+<td>dual licensed (see repository)</td>
+</tr>
+<tr>
+<td>Yocto for CVA6</td>
+<td><a href="https://github.com/openhwgroup/meta-cva6-yocto">meta-cva6-yocto</a></td>
+<td>WI4.3.3</td>
+<td>Thales</td>
+<td>Initial release</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td>Setting up Yocto and baremetal debug on CVA6</td>
+<td><a href="https://github.com/ThalesGroup/cva6-eclipse-demo">cva6-eclipse-demo</a></td>
+<td>WI4.3.3</td>
+<td>Thales</td>
+<td>Initial release</td>
+<td>Apache</td>
+</tr>
+<tr>
+<td>End-to-end stack for ML software development on embedded RISC-V platforms</td>
+<td><a href="https://github.com/eml-eda/plinio">Plinio</a></td>
+<td>WI4.4.4</td>
+<td>ANTM, Politecnico di Torino, UNIBO</td>
+<td>Design  in progress</td>
+<td>Apache 2.0</td>
+</tr>
+<tr>
+<td>CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries</td>
+<td><a href="https://github.com/eml-eda/RiscV-NN">RiscV-NN</a></td>
+<td>WI4.4.1</td>
+<td>IFX, Politecnico di Torino, UNIBO, CEA</td>
+<td>Design  in progress</td>
+<td></td>
+</tr>
+<tr>
+<td>COREV GCC</td>
+<td><a href="https://github.com/EEESlab/corev-gcc/tree/tristan-dev">COREV GCC (fork)</a></td>
+<td>WI4.2.1</td>
+<td>UNIBO</td>
+<td>Design and Verification in progress</td>
+<td>GPL</td>
+</tr>
+<tr>
+<td>COREV Binutils</td>
+<td><a href="https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev">COREV Binutils (fork)</a></td>
+<td>WI4.2.1</td>
+<td>UNIBO</td>
+<td>Design and Verification in progress</td>
+<td>GPL</td>
+</tr>
+<tr>
+<td>ELinOS embedded Linux for RISC-V</td>
+<td><a href="https://www.sysgo.com/elinos">ELinOS</a></td>
+<td>WI4.3.2</td>
+<td>SYSGO</td>
+<td>To be released in spring 2024</td>
+<td>GPL</td>
+</tr>
+<tr>
+<td>PikeOS CVA-6 support</td>
+<td><a href="https://www.pikeos.com/">PikeOS</a></td>
+<td>WI4.3.3</td>
+<td>SYSGO</td>
+<td>To be released</td>
+<td>proprietary</td>
+</tr>
+<tr>
+<td>LLVM TD from ADL</td>
+<td><a href="https://github.com/nxp-auto-tools/tools_adl">ADLTools</a></td>
+<td>WI4.2.1, WI4.2.3</td>
+<td>NXP</td>
+<td>Design and verification in progress</td>
+<td>BSD2</td>
+</tr>
+<tr>
+<td>Cloud Connector</td>
+<td>Not published yet</td>
+<td>WI 4.3.4</td>
+<td>aicas</td>
+<td>To be determined</td>
+<td></td>
+</tr>
+<tr>
+<td>RISC-V Runtime</td>
+<td>Not published yet</td>
+<td>WI4.4.1</td>
+<td>CEA</td>
+<td>Design and verification in progress</td>
+<td>Apache</td>
+</tr>
+<tr>
+<td>VxP Tools and Libraries</td>
+<td><a href="https://github.com/CEA-LIST/vxp_binutils.git">VXP binutils</a>, <a href="https://github.com/CEA-LIST/vxp_devkit.git">VXP Devkit</a></td>
+<td>WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1</td>
+<td>CEA</td>
+<td>Design and verification in progress</td>
+<td>Apache</td>
+</tr>
+</tbody></table>
+<h3 id="tools">TOOLS</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>URL/Instructions</th>
+<th>TRISTAN Working Items</th>
+<th>Owner/Contributors</th>
+<th>Users</th>
+<th>Description</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Renode</td>
+<td><a href="https://github.com/renode/renode">Renode</a></td>
+<td>WI5.1.1</td>
+<td>Antmicro</td>
+<td>Tampere University, NOKIA, Cargotec</td>
+<td>Simulation Framework</td>
+<td></td>
+</tr>
+<tr>
+<td>ETISS</td>
+<td><a href="https://github.com/tum-ei-eda/etiss">ETISS</a></td>
+<td>WI5.1.2</td>
+<td>Technische Universität München</td>
+<td>Infineon</td>
+<td>Extendible Translating  Instruction Set Simulator</td>
+<td>BSD 3-clause</td>
+</tr>
+<tr>
+<td>SCC</td>
+<td><a href="https://github.com/Minres/SystemC-Components">SCC</a></td>
+<td>WI5.1.4</td>
+<td>Minres</td>
+<td>Bosch-DE, CEA</td>
+<td>SystemC Components</td>
+<td></td>
+</tr>
+<tr>
+<td>PySysC</td>
+<td><a href="https://github.com/Minres/PySysC/">PySysC</a></td>
+<td>WI5.1.4</td>
+<td>Minres</td>
+<td>Bosch-DE, CEA</td>
+<td>Python bindings for SystemC</td>
+<td></td>
+</tr>
+<tr>
+<td>Core DSL</td>
+<td><a href="https://github.com/Minres/CoreDSL">Core DSL</a></td>
+<td>WI5.1.4</td>
+<td>Minres</td>
+<td>Bosch-DE, CEA</td>
+<td>Language to describe ISAs for ISS generation and HLS of RTL implementation​​</td>
+<td></td>
+</tr>
+<tr>
+<td>DBT-RISE &amp;​ DBT-RISE-RISCV</td>
+<td><a href="https://github.com/Minres/CoreDSL">DBT-RISE</a> <a href="https://github.com/Minres/DBT-RISE-RISCV">DBT-RISE-RISCV</a></td>
+<td>WI5.1.4, WI5.3.2</td>
+<td>Minres</td>
+<td>Bosch-DE, CEA,ACC</td>
+<td>Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  &amp; DBT-RISE for RISCV​​</td>
+<td></td>
+</tr>
+<tr>
+<td>Verilator</td>
+<td><a href="https://www.veripool.org/verilator/">Verilator</a></td>
+<td>WI5.2.1</td>
+<td>Antmicro</td>
+<td>CEA</td>
+<td>RTL verification (simulation, formal)​ Co-simulation with Renode​​</td>
+<td></td>
+</tr>
+<tr>
+<td>Questa Verify Property App</td>
+<td><a href="https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/">Questa</a></td>
+<td>WI5.2.2</td>
+<td>Siemens EDA</td>
+<td>Thales SA</td>
+<td>Formal verification solutions for RISC-V (OneSpin)​​</td>
+<td></td>
+</tr>
+<tr>
+<td>Yosys</td>
+<td><a href="https://github.com/YosysHQ/yosys">Yosys</a></td>
+<td>WI5.2.5</td>
+<td>TBD</td>
+<td>CEA</td>
+<td>Open Synthesis Suite​​​</td>
+<td></td>
+</tr>
+<tr>
+<td>Catapult</td>
+<td><a href="https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/">Catapult</a></td>
+<td>WI5.2.7</td>
+<td>Siemens EDA</td>
+<td>Siemens-AT</td>
+<td>High Level Synthesis and verification suite​​​</td>
+<td></td>
+</tr>
+<tr>
+<td>Kactus2</td>
+<td><a href="https://github.com/kactus2/kactus2dev">Kactus2</a></td>
+<td>WI5.2.9, WI5.3.3</td>
+<td>Minres, Tampere University</td>
+<td>Tampere University, NOKIA, Cargotec</td>
+<td>High Level Synthesis and verification suite​​​</td>
+<td></td>
+</tr>
+<tr>
+<td>Codasip Studio</td>
+<td><a href="https://codasip.com/products/codasip-studio/">Codasip Studio</a></td>
+<td>WI5.1.3</td>
+<td>Codasip</td>
+<td>Bosch – DE, Bosch – FR, Minres</td>
+<td>Tool suite to develop/customize RISC-V IPs​​​</td>
+<td></td>
+</tr>
+<tr>
+<td>GVSOC</td>
+<td><a href="https://github.com/EEESlab/gvsoc/tree/tristan-dev">GVSOC (fork)</a></td>
+<td>WI5.1.5</td>
+<td>UNIBO</td>
+<td>Politecnico di Torino</td>
+<td>RISC-V Platform Simulator​</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Messy</td>
+<td>TBD</td>
+<td>WI5.1.6</td>
+<td>Politecnico di Torino</td>
+<td>UNIBO</td>
+<td>Multi-layer Extra-functional Simulator using SYstemC​</td>
+<td></td>
+</tr>
+<tr>
+<td>Spike</td>
+<td><a href="https://github.com/riscv-software-src/riscv-isa-sim">Spike</a></td>
+<td>WI5.1.7</td>
+<td>OpenHW Group</td>
+<td>Thales, Synthara</td>
+<td>RISC-V ISA simulator​</td>
+<td></td>
+</tr>
+<tr>
+<td>VPTOOL</td>
+<td><a href="https://github.com/riscv-software-src/riscv-isa-sim">VPTOOL</a></td>
+<td>WI5.1.8</td>
+<td>OpenHW Group</td>
+<td>Thales, Siemens-AT</td>
+<td>Graphical edition of a Design Verification Plan ​</td>
+<td></td>
+</tr>
+<tr>
+<td>SoCDSL</td>
+<td>TBD</td>
+<td>WI5.3.1</td>
+<td>Technische Universität Darmstadt</td>
+<td>Minres, Tampere University</td>
+<td>Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​</td>
+<td></td>
+</tr>
+<tr>
+<td>cv_dv_utils</td>
+<td><a href="https://github.com/openhwgroup/core-v-verif">CV_DV_UTILS</a></td>
+<td>WI3.1.5</td>
+<td>OpenHW Group</td>
+<td>CEA</td>
+<td>UVM verification environment for OpenHW cores</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td>Co-processor Generator Tool</td>
+<td>Not published yet</td>
+<td>WI2.5.6</td>
+<td>Tampere University</td>
+<td>TBD</td>
+<td>Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions.</td>
+<td>TBD</td>
+</tr>
+</tbody></table>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>TRISTAN has received funding from the Chips Joint Undertaking (Chips JU) under grant agreement nr. 101095947. The Chips JU receives support from the European Union’s Horizon Europe’s research and innovation programmes and participating states are Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Germany, Denmark, Estonia, Greece, Spain, Finland, France, Hungary, Ireland, Israel, Iceland, Italy, Lithuania, Luxembourg, Latvia, Malta, Netherlands, Norway, Poland, Portugal, Romania, Sweden, Slovenia, Slovakia, Turkey.</p>
+<p><img src="images/logo_EU.png" alt="EU Logo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/logo_chipsJU.png" alt="ChipsJU_Logo">   </p>
+</body>
