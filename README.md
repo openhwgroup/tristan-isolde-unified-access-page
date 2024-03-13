@@ -3,11 +3,11 @@
 It provides references and descriptions of all the [TRISTAN](https://tristan-project.eu/) IPs (hardware and software).
 It serves as a `Virtual Repository` page, gathering all the information about the TRISTAN repositories, their status,
 and the TRISTAN partners involved in them.
+The Tristan Unified Access Page acts like a static page, to provide a single access point to all the repositories TRISTAN 
+contributes to. The updates and contributions will be upstreamed in the repository themselves.
 
 Some of the repositories are hosted on the OpenHW Group GitHub forge, some are located on other public pages, and some are closed-source.
-
 The diagram below shows how the TRISTAN repositories are organized.
-
 
 <img src="https://github.com/openhwgroup/tristan-unified-access-page/blob/main/images/tristan_virtual_repo.png" align="center" />
 
@@ -22,6 +22,7 @@ Repository | URL/Instructions | TRISTAN Working Items | Partners                
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
 cve2       | [cve2](https://github.com/openhwgroup/cve2) | WI2.2.5, WI2.2.8, WI2.5.7 | NXP, Synthara, Politecnico di Torino | Design and Verification in progress | Solderpad |
 Extensions to the micro-architecture of CV32E40P core | [CV32E40P (fork)](https://github.com/pulp-platform/cv32e40p) | WI2.3.3 | UNIBO | Design and Verification in progress | Solderpad |
+VSRV1: simple 32-bit Linux RISC-V | To Be Done | WI2.3.5 | VLSI Solution | Design and Verification in progress | To Be Decided |
 CVA6       | [cva6](https://github.com/openhwgroup/cva6) | WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5 | Thales, Sysgo, TU Darmstadt, Bosch  | Design and Verification in progress | Solderpad |
 RVV coprocessor for CVA6  | [RVV-coprocessor](https://github.com/pulp-platform/ara) | WI2.4.4 | ETH | Design and Verification in progress | Solderpad |
 Timing Channel Protection | [timing-channel-protection](https://github.com/pulp-platform/cva6) | WI2.1.1 | ETH | Design and Verification in progress | Solderpad |
@@ -35,7 +36,7 @@ Riviera: RISC-V ISA Extensions for NFC Applications | To Be Done | WI2.5.1 | NXP
 
 Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
 ---------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-TSN-TraceBus | Not published yet | WI3.1.1| ACCT, FHG, SYSGO| Design and Verification in progress | To be determined |
+TSN-TraceBus | Not published yet | WI3.1.1| ACCT, BOSCH-DE, FHG, SYSGO| Design and Verification in progress | To be determined |
 HPDcache   | [github.com/openhwgroup/cv-hpdcache](https://github.com/openhwgroup/cv-hpdcache) | WI3.1.5 | CEA | Design and verification in progress | Solderpad |
 CLIC       | [clic](https://github.com/pulp-platform/clic) | WI3.1.7 | ETH | Design and Verification in progress | Apache-2.0 |
 AXI LLC    | [AXI-LLC](https://github.com/pulp-platform/axi_llc) | WI3.1.5 | ETH | Design and Verification in progress | Solderpad |
@@ -59,22 +60,45 @@ End-to-end stack for ML software development on embedded RISC-V platforms| [Plin
 CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries| [RiscV-NN](https://github.com/eml-eda/RiscV-NN) | WI4.4.1 | IFX, Politecnico di Torino, UNIBO, CEA | Design  in progress |
 COREV GCC | [COREV GCC (fork)](https://github.com/EEESlab/corev-gcc/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
 COREV Binutils | [COREV Binutils (fork)](https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev) | WI4.2.1 | UNIBO | Design and Verification in progress | GPL |
+ELinOS embedded Linux for RISC-V | [ELinOS](https://www.sysgo.com/elinos) | WI4.3.2 | SYSGO | To be released in spring 2024 | GPL |
+PikeOS CVA-6 support | [PikeOS](https://www.pikeos.com/) | WI4.3.3 | SYSGO | To be released | proprietary |  
+LLVM TD from ADL | [ADLTools](https://github.com/nxp-auto-tools/tools_adl) | WI4.2.1, WI4.2.3 | NXP | Design and verification in progress | BSD2 |  
+Cloud Connector | Not published yet | WI 4.3.4 | aicas | To be determined |
+RISC-V Runtime | Not published yet | WI4.4.1 | CEA | Design and verification in progress | Apache |
+VxP Tools and Libraries | [VXP binutils](https://github.com/CEA-LIST/vxp_binutils.git), [VXP Devkit](https://github.com/CEA-LIST/vxp_devkit.git) | WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1 | CEA | Design and verification in progress | Apache |
 
 ### TOOLS
 
-Repository | URL/Instructions | TRISTAN Working Items | Partners                    | Status                      | License   |
----------- | ---------------- | --------------------- | --------------------------- | --------------------------- | --------- |
-IP-XACT extension for timing and power intent | Not published yet | WI5.3.3 | EPOS | Concept in development| To be determined|
-To be determined|
-GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Design and Verification in progress | Apache-2.0 |
+
+Tool | URL/Instructions | TRISTAN Working Items | Owner/Contributors  |  Users               | Description                     | License   |
+-------- | -------------- | ------------ | ---------- | -------------- | --------------------------- | --------- |
+Renode | [Renode](https://github.com/renode/renode) | WI5.1.1 | Antmicro | Tampere University, NOKIA, Cargotec | Simulation Framework| |
+ETISS | [ETISS](https://github.com/tum-ei-eda/etiss) | WI5.1.2 | Technische Universität München | Infineon | Extendible Translating  Instruction Set Simulator| BSD 3-clause  |
+SCC | [SCC](https://github.com/Minres/SystemC-Components) | WI5.1.4 | Minres | Bosch-DE, CEA | SystemC Components| |
+PySysC | [PySysC](https://github.com/Minres/PySysC/) | WI5.1.4 | Minres | Bosch-DE, CEA | Python bindings for SystemC| |
+Core DSL | [Core DSL](https://github.com/Minres/CoreDSL) | WI5.1.4 | Minres | Bosch-DE, CEA | Language to describe ISAs for ISS generation and HLS of RTL implementation​​| |
+DBT-RISE &​ DBT-RISE-RISCV | [DBT-RISE](https://github.com/Minres/CoreDSL) [DBT-RISE-RISCV](https://github.com/Minres/DBT-RISE-RISCV) | WI5.1.4, WI5.3.2 | Minres | Bosch-DE, CEA,ACC |Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL  & DBT-RISE for RISCV​​| |
+Verilator | [Verilator](https://www.veripool.org/verilator/) | WI5.2.1 | Antmicro | CEA |  RTL verification (simulation, formal)​ Co-simulation with Renode​​| |
+Questa Verify Property App | [Questa](https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/) | WI5.2.2 | Siemens EDA | Thales SA | Formal verification solutions for RISC-V (OneSpin)​​| |
+Yosys | [Yosys](https://github.com/YosysHQ/yosys) | WI5.2.5 | TBD | CEA | Open Synthesis Suite​​​| |
+Catapult | [Catapult](https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/) | WI5.2.7 | Siemens EDA | Siemens-AT | High Level Synthesis and verification suite​​​| |
+Kactus2 | [Kactus2](https://github.com/kactus2/kactus2dev) | WI5.2.9, WI5.3.3 | Minres, Tampere University | Tampere University, NOKIA, Cargotec | High Level Synthesis and verification suite​​​| |
+Codasip Studio | [Codasip Studio](https://codasip.com/products/codasip-studio/) | WI5.1.3 | Codasip | Bosch – DE, Bosch – FR, Minres | Tool suite to develop/customize RISC-V IPs​​​| |
+GVSOC | [GVSOC (fork)](https://github.com/EEESlab/gvsoc/tree/tristan-dev) | WI5.1.5 | UNIBO | Politecnico di Torino | RISC-V Platform Simulator​ | Apache-2.0 |
+Messy  | TBD| WI5.1.6 | Politecnico di Torino | UNIBO |  Multi-layer Extra-functional Simulator using SYstemC​ |  |
+Spike  | [Spike](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.7 | OpenHW Group | Thales, Synthara |  RISC-V ISA simulator​ |  |
+VPTOOL  | [VPTOOL](https://github.com/riscv-software-src/riscv-isa-sim) | WI5.1.8 | OpenHW Group | Thales, Siemens-AT |  Graphical edition of a Design Verification Plan ​ |  |
+SoCDSL  | TBD | WI5.3.1 | Technische Universität Darmstadt | Minres, Tampere University |  Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​ |  |
+cv_dv_utils | [CV_DV_UTILS](https://github.com/openhwgroup/core-v-verif) | WI3.1.5 | OpenHW Group| CEA | UVM verification environment for OpenHW cores | Apache-2.0 |
+Co-processor Generator Tool | Not published yet | WI2.5.6 | Tampere University | TBD | Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions. | TBD |
+
 
 
 # Acknowledgements
 
-TRISTAN has received funding from the Key Digital Technologies Joint Undertaking (KDT JU) under grant agreement nr. 101095947. The KDT JU receives support from the European Union’s Horizon Europe’s research and innovation programmes and participating states are Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Germany, Denmark, Estonia, Greece, Spain, Finland, France, Hungary, Ireland, Israel, Iceland, Italy, Lithuania, Luxembourg, Latvia, Malta, Netherlands, Norway, Poland, Portugal, Romania, Sweden, Slovenia, Slovakia, Turkey.
+TRISTAN has received funding from the Chips Joint Undertaking (Chips JU) under grant agreement nr. 101095947. The Chips JU receives support from the European Union’s Horizon Europe’s research and innovation programmes and participating states are Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Germany, Denmark, Estonia, Greece, Spain, Finland, France, Hungary, Ireland, Israel, Iceland, Italy, Lithuania, Luxembourg, Latvia, Malta, Netherlands, Norway, Poland, Portugal, Romania, Sweden, Slovenia, Slovakia, Turkey.
 
-![EU Logo](https://cloud.hipert.unimore.it/apps/files_sharing/publicpreview/pessWNfeqBfYi3o?x=1912&y=617&a=true&file=eu_logo.png&scalingup=0)
-![KDT Logo](https://cloud.hipert.unimore.it/apps/files_sharing/publicpreview/yd7FgKisNgtLPTy?x=1912&y=617&a=true&file=kdt_logo.png&scalingup=0)   
+![EU Logo](images/logo_EU.png)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![ChipsJU_Logo](images/logo_chipsJU.png)   
 
 
 
