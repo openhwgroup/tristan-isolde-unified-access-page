@@ -13,7 +13,7 @@ The diagram below shows how the TRISTAN repositories are organized.
 
 The Tristan Unified Access Page is the deliverable of the Task 2 of the Work Package 7 (7.2).
 
-You can access the Tristan Unified Access Page [here](https://htmlpreview.github.io/?https://github.com/davideschiavone/tristan-unified-access-page/blob/html_table/tristan-unified-access-page.html).
+You can access the Tristan Unified Access Page [here](https://htmlpreview.github.io/?https://github.com/openhwgroup/tristan-unified-access-page/blob/main/tristan-unified-access-page.html).
 
 # Acknowledgements
 
