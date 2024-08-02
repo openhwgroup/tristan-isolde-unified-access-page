@@ -1,4 +1,4 @@
-# Tristan Unified Access Page
+# Tristan and ISOLDE Unified Access Page
 
 It provides references and descriptions of all the [TRISTAN](https://tristan-project.eu/) and [ISOLDE](https://isolde-project.eu/) IPs (hardware and software).
 It serves as a `Virtual Repository` page, gathering all the information about the TRISTAN and ISOLDE repositories, their status,
