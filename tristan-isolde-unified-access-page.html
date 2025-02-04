@@ -364,13 +364,23 @@ The diagram below shows how the TRISTAN and ISOLDE repositories are organized.</
 <td>Apache 2.0</td>
 </tr>
 <tr>
+<td>End-to-end stack for ML software development on embedded RISC-V platforms</td>
+<td><a href="https://github.com/eml-eda/plinio">Plinio</a></td>
+<td>TRISTAN</td>
+<td>WI4.4.4</td>
+<td>Politecnico di Torino, UNIBO</td>
+<td>Design  in progress</td>
+<td>A PyTorch-based library for implementing hardware-aware optimizations of AI models (NAS, pruning, quantization) with lightweight algorithms, and enable their subsequent compilation and deployment onto RISC-V targets.</td>
+<td>Apache 2.0</td>
+</tr>
+<tr>
 <td>CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries</td>
 <td><a href="https://github.com/eml-eda/RiscV-NN">RiscV-NN</a></td>
 <td>TRISTAN</td>
 <td>WI4.4.1</td>
 <td>IFX, Politecnico di Torino, UNIBO, CEA</td>
 <td>Design  in progress</td>
-<td></td>
+<td>A set of extensions to the open-source PULP-NN library for accelerating AI workloads on RISC-V-based platforms (mainly but not limited to multi-core clusters). Extensions include kernels for fused depthwise-separable convolutions, attention layers, and N:M sparsity.</td>
 <td></td>
 </tr>
 <tr>
@@ -380,7 +390,7 @@ The diagram below shows how the TRISTAN and ISOLDE repositories are organized.</
 <td>WI4.2.1</td>
 <td>UNIBO</td>
 <td>Design and Verification in progress</td>
-<td></td>
+<td>The CORE-V GCC repository provides a fork of the GNU Compiler Collection (GCC) tailored for the CORE-V family of open-source RISC-V processor cores. It includes custom enhancements and optimizations to support CORE-V-specific architectural features and instructions. The fork provides the compiler backend support for the low-precision and mixed-precision extensions designed in TRISTAN.</td>
 <td>GPL</td>
 </tr>
 <tr>
@@ -390,7 +400,7 @@ The diagram below shows how the TRISTAN and ISOLDE repositories are organized.</
 <td>WI4.2.1</td>
 <td>UNIBO</td>
 <td>Design and Verification in progress</td>
-<td></td>
+<td>The CORE-V binutils repository contains a customized version of the GNU binutils suite designed for the CORE-V family of RISC-V processor cores. It includes tools like the assembler, linker, and related utilities, enhanced to support CORE-V-specific instruction sets and architectural extensions. The fork adds the binary support required to assemble the low-precision and mixed-precision instructions in the TRISTAN extensions.</td>
 <td>GPL</td>
 </tr>
 <tr>
@@ -400,7 +410,7 @@ The diagram below shows how the TRISTAN and ISOLDE repositories are organized.</
 <td>WI4.3.2</td>
 <td>SYSGO</td>
 <td>Has been released on 14 April 2024, see also <a href="https://www.sysgo.com/press-releases/sysgos-embedded-linux-elinos-available-in-version-72">press release</a>.</td>
-<td>ELinOS is an Embedded Linux distribution and industrial grade Linux with the user-friendly CODEO IDE to build state-of-the-art embedded solutions in a 
+<td>ELinOS is an Embedded Linux distribution and industrial grade Linux with the user-friendly CODEO IDE to build state-of-the-art embedded solutions in a
     time-saving and cost-efficient manner; also dedicated support from SYSGO is available. ELinOS has strong focus on Security with container support
     and services, providing drivers, connectivity stacks, real-time extensions and support for industrial hardware (e.g. since long ARM, x86, PowerPC, and, since 2024, RISC-V).
 </td>
@@ -426,7 +436,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
 <td>WI4.2.1, WI4.2.3</td>
 <td>NXP</td>
 <td>Design and verification in progress. For the CVA6 TIP implementation part of it, a <a href="https://github.com/openhwgroup/cva6/pull/2601">pull request</a> has been issued, but further integration with <a href="https://github.com/ubolakes/cva6_te_connector">work from Uni Bologna</a> is needed.</td>
-<td></td>
+<td>Generate LLVM target description file for RV32 architectures and corresponding instruction encoding, instruction scheduling model, assembler relocation tests automatically generated from an architectural description language (ADL).</td>
 <td>BSD2</td>
 </tr>
 <tr>
@@ -436,7 +446,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
 <td>WI 4.3.4</td>
 <td>aicas</td>
 <td>Implementation done.</td>
-<td></td>
+<td>Device Client is a group of software modules that run on JamaicaAMS. It securely connects to the Cloud (aicas EDP) to get device status and configuration information, and operates the configuration and OSGi bundle lifecycle on RISC-V devices. It contains several components that were customized for this project. </td>
 <td>GPL</td>
 </tr>
 <tr>
@@ -446,7 +456,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
 <td>WI 6.1.4</td>
 <td>aicas</td>
 <td>Implementation done. Testing and validation in progress.</td>
-<td></td>
+<td>Cloud Connector is a software module that runs on JamaicaAMS and is used to exchange data with the cloud (customized aicas EDG) via the MQTT protocol. It is compatible with the OSGi specification and leverages the realtime capabilities of JamaicaAMS. It was newly developed by aicas for this project.</td>
 <td>GPL</td>
 </tr>
 <tr>
@@ -456,7 +466,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
 <td>WI4.4.1</td>
 <td>CEA</td>
 <td>Design and verification in progress</td>
-<td></td>
+<td>A SDK that uses the MPFR as its backend has been delivered to experiment with variable precision in applications.</td>
 <td>Apache</td>
 </tr>
 <tr>
@@ -466,7 +476,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
 <td>WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1</td>
 <td>CEA</td>
 <td>Design and verification in progress</td>
-<td></td>
+<td>A subset of the GNU binutils v2.34 and v2.38 has been enhanced to support encoding/decoding of the RISC-V ISA extension for VXP.</td>
 <td>Apache</td>
 </tr>
 </tbody></table>
