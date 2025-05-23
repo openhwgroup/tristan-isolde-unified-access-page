@@ -1,0 +1,16 @@
+[
+  {
+    "Repository": "MyTool",
+    "URL/Instructions": "https://github.com/user/mytool",
+    "License": "MIT",
+    "Status": "Stable",
+    "Description": "A command-line utility for data processing."
+  },
+  {
+    "Repository": "DataCleaner",
+    "URL/Instructions": "https://myorg.org/docs/datacleaner",
+    "License": "Apache-2.0",
+    "Status": "Beta",
+    "Description": "Web app for cleaning and exporting datasets."
+  }
+]
