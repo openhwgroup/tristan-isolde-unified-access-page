@@ -1,0 +1,163 @@
+[
+    {
+        "Repository": "Renode",
+        "URL/Instructions": "Renode",
+        "License": "",
+        "Status": "Tampere University, NOKIA, Cargotec",
+        "Description": "Simulation Framework"
+    },
+    {
+        "Repository": "ETISS",
+        "URL/Instructions": "ETISS",
+        "License": "BSD 3-clause",
+        "Status": "Infineon",
+        "Description": "Extendible Translating Instruction Set Simulator"
+    },
+    {
+        "Repository": "SCC",
+        "URL/Instructions": "SCC",
+        "License": "",
+        "Status": "Bosch-DE, CEA",
+        "Description": "SystemC Components"
+    },
+    {
+        "Repository": "PySysC",
+        "URL/Instructions": "PySysC",
+        "License": "",
+        "Status": "Bosch-DE, CEA",
+        "Description": "Python bindings for SystemC"
+    },
+    {
+        "Repository": "Core DSL",
+        "URL/Instructions": "Core DSL",
+        "License": "",
+        "Status": "Bosch-DE, CEA",
+        "Description": "Language to describe ISAs for ISS generation and HLS of RTL implementation​​"
+    },
+    {
+        "Repository": "DBT-RISE &amp;​ DBT-RISE-RISCV",
+        "URL/Instructions": "DBT-RISE DBT-RISE-RISCV",
+        "License": "",
+        "Status": "Bosch-DE, CEA,ACC",
+        "Description": "Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL &amp; DBT-RISE for RISCV​​"
+    },
+    {
+        "Repository": "Verilator",
+        "URL/Instructions": "Verilator",
+        "License": "",
+        "Status": "CEA",
+        "Description": "RTL verification (simulation, formal)​ Co-simulation with Renode​​"
+    },
+    {
+        "Repository": "Questa Verify Property App",
+        "URL/Instructions": "Questa",
+        "License": "",
+        "Status": "Thales SA",
+        "Description": "Formal verification solutions for RISC-V (OneSpin)​​"
+    },
+    {
+        "Repository": "Yosys",
+        "URL/Instructions": "Yosys",
+        "License": "",
+        "Status": "CEA",
+        "Description": "Open Synthesis Suite​​​"
+    },
+    {
+        "Repository": "Catapult",
+        "URL/Instructions": "Catapult",
+        "License": "",
+        "Status": "Siemens-AT",
+        "Description": "High Level Synthesis and verification suite​​​"
+    },
+    {
+        "Repository": "Kactus2",
+        "URL/Instructions": "Kactus2",
+        "License": "",
+        "Status": "Tampere University, NOKIA, Cargotec",
+        "Description": "High Level Synthesis and verification suite​​​"
+    },
+    {
+        "Repository": "Codasip Studio",
+        "URL/Instructions": "Codasip Studio",
+        "License": "",
+        "Status": "Bosch – DE, Bosch – FR, Minres",
+        "Description": "Tool suite to develop/customize RISC-V IPs​​​"
+    },
+    {
+        "Repository": "GVSOC",
+        "URL/Instructions": "GVSOC (fork)",
+        "License": "Apache-2.0",
+        "Status": "Politecnico di Torino",
+        "Description": "RISC-V Platform Simulator​"
+    },
+    {
+        "Repository": "Messy",
+        "URL/Instructions": "TBD",
+        "License": "",
+        "Status": "UNIBO",
+        "Description": "Multi-layer Extra-functional Simulator using SYstemC​"
+    },
+    {
+        "Repository": "Spike",
+        "URL/Instructions": "Spike",
+        "License": "",
+        "Status": "Thales, Synthara",
+        "Description": "RISC-V ISA simulator​"
+    },
+    {
+        "Repository": "VPTOOL",
+        "URL/Instructions": "VPTOOL",
+        "License": "",
+        "Status": "Thales, Siemens-AT",
+        "Description": "Graphical edition of a Design Verification Plan ​"
+    },
+    {
+        "Repository": "SoCDSL",
+        "URL/Instructions": "TBD",
+        "License": "",
+        "Status": "Minres, Tampere University",
+        "Description": "Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​"
+    },
+    {
+        "Repository": "cv_dv_utils",
+        "URL/Instructions": "CV_DV_UTILS",
+        "License": "Apache-2.0",
+        "Status": "CEA",
+        "Description": "UVM verification environment for OpenHW cores"
+    },
+    {
+        "Repository": "Co-processor Generator Tool",
+        "URL/Instructions": "Not published yet",
+        "License": "TBD",
+        "Status": "TBD",
+        "Description": "Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions."
+    },
+    {
+        "Repository": "SUNRISE",
+        "URL/Instructions": "Not published yet",
+        "License": "TBD",
+        "Status": "BOSCH-DE, Codasip, Minres",
+        "Description": "Scalable UNified Restful Infrasructure for System Evaluation."
+    },
+    {
+        "Repository": "kMLeon",
+        "URL/Instructions": "Not published yet",
+        "License": "TBD",
+        "Status": "CEA",
+        "Description": "ML-based tool for the automatic generation of extra-functional models (e.g. performance, power)."
+    },
+    {
+        "Repository": "uArchiFI",
+        "URL/Instructions": "uArchiFI",
+        "License": "Mozilla Public License",
+        "Status": "CEA",
+        "Description": "Formal tool for analyzing the robustness of embedded systems against fault injection attacks by combining the RTL of a processor, the binary of a software, and an attacker model."
+    },
+    {
+        "Repository": "k-FRP",
+        "URL/Instructions": "k-FRP",
+        "License": "Apache License",
+        "Status": "CEA",
+        "Description": "Formal tool for analyzing the robustness of HW countermeasures to secure embedded systems against fault injection attacks. Optional step within µArchiFI"
+    }
+]

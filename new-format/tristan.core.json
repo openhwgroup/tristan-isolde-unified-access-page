@@ -1,0 +1,98 @@
+[
+    {
+        "Repository": "CVE2",
+        "URL/Instructions": "CVE2",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "RVB / RVP Standard Extensions support for CV32E40P core",
+        "URL/Instructions": "CV32E40P (fork)",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "Extensions to the micro-architecture of CV32E40P core",
+        "URL/Instructions": "CV32E40P (fork)",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "VSRV: Simple 32-bit RISC-V Linux-Capable Core",
+        "URL/Instructions": "VSRV",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "VSRV1 Released",
+        "Description": ""
+    },
+    {
+        "Repository": "CVA6",
+        "URL/Instructions": "CVA6",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": "A configurable family of RISC-V application/embedded cores targetting FPGA and ASIC technologies"
+    },
+    {
+        "Repository": "RVV coprocessor for CVA6",
+        "URL/Instructions": "RVV-coprocessor",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "Released",
+        "Description": ""
+    },
+    {
+        "Repository": "Timing Channel Protection",
+        "URL/Instructions": "timing-channel-protection",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "Released",
+        "Description": ""
+    },
+    {
+        "Repository": "UVM env for RISC-V verif",
+        "URL/Instructions": "core-v-verif",
+        "Project": "TRISTAN",
+        "License": "Solderpad",
+        "Status": "CVA6 verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "Compression and decompression of digital waveforms",
+        "URL/Instructions": "Tristan",
+        "Project": "TRISTAN",
+        "License": "To be determined",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "TraceUnit",
+        "URL/Instructions": "Not published yet",
+        "Project": "TRISTAN",
+        "License": "To be determined",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "Hypervisor",
+        "URL/Instructions": "H-extension",
+        "Project": "TRISTAN",
+        "License": null,
+        "Status": "Released/td>\n                ",
+        "Description": "Solderpad"
+    },
+    {
+        "Repository": "Riviera: RISC-V ISA Extensions for NFC Applications",
+        "URL/Instructions": "https://github.com/NXP-AT-RIVIERA/Riviera_core/tree/main",
+        "Project": "TRISTAN",
+        "License": "LA_OPT_NXP_Software_License",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    }
+]

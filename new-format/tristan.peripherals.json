@@ -1,0 +1,100 @@
+[
+    {
+        "Repository": "TSN-TraceBus",
+        "URL/Instructions": "Not published yet",
+        "License": "To be determined",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "GPIO",
+        "URL/Instructions": "GPIO (fork)",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "UART 16750",
+        "URL/Instructions": "UART 16750 (fork)",
+        "License": "Solderpad / LGPLv2.1",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "SPI Master",
+        "URL/Instructions": "SPI Master (fork)",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "HPDcache",
+        "URL/Instructions": "github.com/openhwgroup/cv-hpdcache",
+        "License": "Solderpad",
+        "Status": "Design and verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "CLIC",
+        "URL/Instructions": "clic",
+        "License": "Apache-2.0",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "AXI LLC",
+        "URL/Instructions": "AXI-LLC",
+        "License": "Solderpad",
+        "Status": "Released",
+        "Description": ""
+    },
+    {
+        "Repository": "AXI",
+        "URL/Instructions": "AXI",
+        "License": "Solderpad",
+        "Status": "Released",
+        "Description": ""
+    },
+    {
+        "Repository": "OBI interconnect",
+        "URL/Instructions": "OBI Interconnect",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "eFPGA",
+        "URL/Instructions": "I:Embedded-fpga",
+        "License": "Solderpad",
+        "Status": "Verification in progress",
+        "Description": "An embedded FPGA IP to offload certain processor tasks and improve overall system performance"
+    },
+    {
+        "Repository": "Accelerator for post-quantum cryptography",
+        "URL/Instructions": "To do",
+        "License": "To be determined",
+        "Status": "Design in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "Low-power IO DMA",
+        "URL/Instructions": "IO DMA",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "Heterogeneous Cluster Interconnect (HCI))",
+        "URL/Instructions": "HCI",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    },
+    {
+        "Repository": "Low-power FP32/FP16 Accelerator for MatMul",
+        "URL/Instructions": "RedMule",
+        "License": "Solderpad",
+        "Status": "Design and Verification in progress",
+        "Description": ""
+    }
+]
