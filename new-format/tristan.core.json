@@ -53,7 +53,7 @@
         "WI": "WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5",
         "Partners": "Thales, Sysgo, TU Darmstadt, Bosch",
         "Comment": ""
-    }
+    },
     {
         "Repository": "RVV coprocessor for CVA6",
         "URL": "https://github.com/pulp-platform/ara",
