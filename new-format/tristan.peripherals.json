@@ -9,7 +9,7 @@
         "WI": "WI3.1.1",
         "Partners": "ACCT, BOSCH-DE, FHG, SYSGO",
         "Comment": ""
-    }
+    },
     {
         "Repository": "GPIO",
         "URL": "https://github.com/MPEZZIN/gpio",
@@ -20,7 +20,7 @@
         "WI": "WI3.1.3",
         "Partners": "CEA",
         "Comment": ""
-    }
+    },
     {
         "Repository": "UART 16750",
         "URL": "https://github.com/MPEZZIN/uart_16750",
@@ -31,7 +31,7 @@
         "WI": "WI3.1.3",
         "Partners": "CEA",
         "Comment": ""
-    }
+    },
     {
         "Repository": "SPI Master",
         "URL": "https://github.com/MPEZZIN/spi_master",
@@ -42,7 +42,7 @@
         "WI": "WI3.1.3",
         "Partners": "CEA",
         "Comment": ""
-    }
+    },
     {
         "Repository": "HPDcache",
         "URL": "https://github.com/openhwgroup/cv-hpdcache",
@@ -53,7 +53,7 @@
         "WI": "WI3.1.5",
         "Partners": "CEA",
         "Comment": ""
-    }
+    },
     {
         "Repository": "CLIC",
         "URL": "https://github.com/pulp-platform/clic",
@@ -64,7 +64,7 @@
         "WI": "WI3.1.7",
         "Partners": "ETH",
         "Comment": ""
-    }
+    },
     {
         "Repository": "AXI LLC",
         "URL": "https://github.com/pulp-platform/axi_llc",
@@ -75,7 +75,7 @@
         "WI": "WI3.1.5",
         "Partners": "ETH",
         "Comment": ""
-    }
+    },
     {
         "Repository": "AXI",
         "URL": "https://github.com/pulp-platform/axi",
@@ -86,7 +86,7 @@
         "WI": "WI3.2.1",
         "Partners": "ETH",
         "Comment": ""
-    }
+    },
     {
         "Repository": "OBI interconnect",
         "URL": "https://github.com/MPEZZIN/obi_interconnect",
@@ -97,7 +97,7 @@
         "WI": "WI3.2.6",
         "Partners": "CEA",
         "Comment": ""
-    }
+    },
     {
         "Repository": "eFPGA",
         "URL": "https://github.com/yongatek/eFPGA",
@@ -108,7 +108,7 @@
         "WI": "WI3.4.5",
         "Partners": "YNGA",
         "Comment": ""
-    }
+    },
     {
         "Repository": "Accelerator for post-quantum cryptography",
         "URL": "",
@@ -119,7 +119,7 @@
         "WI": "WI3.4.4",
         "Partners": "TUM, Politecnico di Torino",
         "Comment": ""
-    }
+    },
     {
         "Repository": "Low-power IO DMA",
         "URL": "https://github.com/pulp-platform/udma_core",
@@ -130,7 +130,7 @@
         "WI": "WI3.1.4",
         "Partners": "UNIBO",
         "Comment": ""
-    }
+    },
     {
         "Repository": "Heterogeneous Cluster Interconnect (HCI))",
         "URL": "https://github.com/pulp-platform/hci",
@@ -141,7 +141,7 @@
         "WI": "WI3.2.2",
         "Partners": "UNIBO",
         "Comment": ""
-    }
+    },
     {
         "Repository": "Low-power FP32/FP16 Accelerator for MatMul",
         "URL": "https://github.com/pulp-platform/redmule",
