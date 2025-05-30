@@ -1,100 +1,156 @@
 [
     {
         "Repository": "TSN-TraceBus",
-        "URL/Instructions": "Not published yet",
-        "License": "To be determined",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "URL": "",
+        "License": "TBD",
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.1",
+        "Partners": "ACCT, BOSCH-DE, FHG, SYSGO",
+        "Comment": ""
+    }
     {
         "Repository": "GPIO",
-        "URL/Instructions": "GPIO (fork)",
+        "URL": "https://github.com/MPEZZIN/gpio",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.3",
+        "Partners": "CEA",
+        "Comment": ""
+    }
     {
         "Repository": "UART 16750",
-        "URL/Instructions": "UART 16750 (fork)",
-        "License": "Solderpad / LGPLv2.1",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "URL": "https://github.com/MPEZZIN/uart_16750",
+        "License": "Solderpad / LGPL-2.1",
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.3",
+        "Partners": "CEA",
+        "Comment": ""
+    }
     {
         "Repository": "SPI Master",
-        "URL/Instructions": "SPI Master (fork)",
+        "URL": "https://github.com/MPEZZIN/spi_master",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.3",
+        "Partners": "CEA",
+        "Comment": ""
+    }
     {
         "Repository": "HPDcache",
-        "URL/Instructions": "github.com/openhwgroup/cv-hpdcache",
+        "URL": "https://github.com/openhwgroup/cv-hpdcache",
         "License": "Solderpad",
-        "Status": "Design and verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.5",
+        "Partners": "CEA",
+        "Comment": ""
+    }
     {
         "Repository": "CLIC",
-        "URL/Instructions": "clic",
+        "URL": "https://github.com/pulp-platform/clic",
         "License": "Apache-2.0",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.7",
+        "Partners": "ETH",
+        "Comment": ""
+    }
     {
         "Repository": "AXI LLC",
-        "URL/Instructions": "AXI-LLC",
+        "URL": "https://github.com/pulp-platform/axi_llc",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": ""
-    },
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.5",
+        "Partners": "ETH",
+        "Comment": ""
+    }
     {
         "Repository": "AXI",
-        "URL/Instructions": "AXI",
+        "URL": "https://github.com/pulp-platform/axi",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": ""
-    },
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.2.1",
+        "Partners": "ETH",
+        "Comment": ""
+    }
     {
         "Repository": "OBI interconnect",
-        "URL/Instructions": "OBI Interconnect",
+        "URL": "https://github.com/MPEZZIN/obi_interconnect",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.2.6",
+        "Partners": "CEA",
+        "Comment": ""
+    }
     {
         "Repository": "eFPGA",
-        "URL/Instructions": "I:Embedded-fpga",
+        "URL": "https://github.com/yongatek/eFPGA",
         "License": "Solderpad",
-        "Status": "Verification in progress",
-        "Description": "An embedded FPGA IP to offload certain processor tasks and improve overall system performance"
-    },
+        "Status": "In progress",
+        "Description": "An embedded FPGA IP to offload certain processor tasks and improve overall system performance",
+        "Project": "TRISTAN",
+        "WI": "WI3.4.5",
+        "Partners": "YNGA",
+        "Comment": ""
+    }
     {
         "Repository": "Accelerator for post-quantum cryptography",
-        "URL/Instructions": "To do",
-        "License": "To be determined",
-        "Status": "Design in progress",
-        "Description": ""
-    },
+        "URL": "",
+        "License": "TBD",
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.4.4",
+        "Partners": "TUM, Politecnico di Torino",
+        "Comment": ""
+    }
     {
         "Repository": "Low-power IO DMA",
-        "URL/Instructions": "IO DMA",
+        "URL": "https://github.com/pulp-platform/udma_core",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.4",
+        "Partners": "UNIBO",
+        "Comment": ""
+    }
     {
         "Repository": "Heterogeneous Cluster Interconnect (HCI))",
-        "URL/Instructions": "HCI",
+        "URL": "https://github.com/pulp-platform/hci",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.2.2",
+        "Partners": "UNIBO",
+        "Comment": ""
+    }
     {
         "Repository": "Low-power FP32/FP16 Accelerator for MatMul",
-        "URL/Instructions": "RedMule",
+        "URL": "https://github.com/pulp-platform/redmule",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI3.4.1",
+        "Partners": "UNIBO",
+        "Comment": ""
     }
 ]
