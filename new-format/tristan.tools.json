@@ -1,163 +1,255 @@
 [
     {
         "Repository": "Renode",
-        "URL/Instructions": "Renode",
+        "URL": "https://github.com/renode/renode",
         "License": "",
-        "Status": "Tampere University, NOKIA, Cargotec",
-        "Description": "Simulation Framework"
-    },
+        "Status": "",
+        "Description": "Simulation Framework",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.1",
+        "Partners": "Antmicro",
+        "Comment": "Tampere University, NOKIA, Cargotec"
+    }
     {
         "Repository": "ETISS",
-        "URL/Instructions": "ETISS",
-        "License": "BSD 3-clause",
-        "Status": "Infineon",
-        "Description": "Extendible Translating Instruction Set Simulator"
-    },
+        "URL": "https://github.com/tum-ei-eda/etiss",
+        "License": "BSD-3-Clause",
+        "Status": "",
+        "Description": "Extendible Translating Instruction Set Simulator",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.2",
+        "Partners": "Technische Universität München",
+        "Comment": "Infineon"
+    }
     {
         "Repository": "SCC",
-        "URL/Instructions": "SCC",
+        "URL": "https://github.com/Minres/SystemC-Components",
         "License": "",
-        "Status": "Bosch-DE, CEA",
-        "Description": "SystemC Components"
-    },
+        "Status": "",
+        "Description": "SystemC Components",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.4",
+        "Partners": "Minres",
+        "Comment": "Bosch-DE, CEA"
+    }
     {
         "Repository": "PySysC",
-        "URL/Instructions": "PySysC",
+        "URL": "https://github.com/Minres/PySysC/",
         "License": "",
-        "Status": "Bosch-DE, CEA",
-        "Description": "Python bindings for SystemC"
-    },
+        "Status": "",
+        "Description": "Python bindings for SystemC",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.4",
+        "Partners": "Minres",
+        "Comment": "Bosch-DE, CEA"
+    }
     {
         "Repository": "Core DSL",
-        "URL/Instructions": "Core DSL",
+        "URL": "https://github.com/Minres/CoreDSL",
         "License": "",
-        "Status": "Bosch-DE, CEA",
-        "Description": "Language to describe ISAs for ISS generation and HLS of RTL implementation​​"
-    },
+        "Status": "",
+        "Description": "Language to describe ISAs for ISS generation and HLS of RTL implementation​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.4",
+        "Partners": "Minres",
+        "Comment": "Bosch-DE, CEA"
+    }
     {
-        "Repository": "DBT-RISE &amp;​ DBT-RISE-RISCV",
-        "URL/Instructions": "DBT-RISE DBT-RISE-RISCV",
+        "Repository": "DBT-RISE &​ DBT-RISE-RISCV",
+        "URL": "",
         "License": "",
-        "Status": "Bosch-DE, CEA,ACC",
-        "Description": "Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL &amp; DBT-RISE for RISCV​​"
-    },
+        "Status": "",
+        "Description": "Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL & DBT-RISE for RISCV​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.4, WI5.3.2",
+        "Partners": "Minres",
+        "Comment": "Bosch-DE, CEA,ACC"
+    }
     {
         "Repository": "Verilator",
-        "URL/Instructions": "Verilator",
+        "URL": "https://www.veripool.org/verilator/",
         "License": "",
-        "Status": "CEA",
-        "Description": "RTL verification (simulation, formal)​ Co-simulation with Renode​​"
-    },
+        "Status": "",
+        "Description": "RTL verification (simulation, formal)​ Co-simulation with Renode​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.1",
+        "Partners": "Antmicro",
+        "Comment": "CEA"
+    }
     {
         "Repository": "Questa Verify Property App",
-        "URL/Instructions": "Questa",
+        "URL": "https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/",
         "License": "",
-        "Status": "Thales SA",
-        "Description": "Formal verification solutions for RISC-V (OneSpin)​​"
-    },
+        "Status": "",
+        "Description": "Formal verification solutions for RISC-V (OneSpin)​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.2",
+        "Partners": "Siemens EDA",
+        "Comment": "Thales SA"
+    }
     {
         "Repository": "Yosys",
-        "URL/Instructions": "Yosys",
+        "URL": "https://github.com/YosysHQ/yosys",
         "License": "",
-        "Status": "CEA",
-        "Description": "Open Synthesis Suite​​​"
-    },
+        "Status": "",
+        "Description": "Open Synthesis Suite​​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.5",
+        "Partners": "TBD",
+        "Comment": "CEA"
+    }
     {
         "Repository": "Catapult",
-        "URL/Instructions": "Catapult",
+        "URL": "https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/",
         "License": "",
-        "Status": "Siemens-AT",
-        "Description": "High Level Synthesis and verification suite​​​"
-    },
+        "Status": "",
+        "Description": "High Level Synthesis and verification suite​​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.7",
+        "Partners": "Siemens EDA",
+        "Comment": "Siemens-AT"
+    }
     {
         "Repository": "Kactus2",
-        "URL/Instructions": "Kactus2",
+        "URL": "https://github.com/kactus2/kactus2dev",
         "License": "",
-        "Status": "Tampere University, NOKIA, Cargotec",
-        "Description": "High Level Synthesis and verification suite​​​"
-    },
+        "Status": "",
+        "Description": "High Level Synthesis and verification suite​​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.9, WI5.3.3",
+        "Partners": "Minres, Tampere University",
+        "Comment": "Tampere University, NOKIA, Cargotec"
+    }
     {
         "Repository": "Codasip Studio",
-        "URL/Instructions": "Codasip Studio",
+        "URL": "https://codasip.com/products/codasip-studio/",
         "License": "",
-        "Status": "Bosch – DE, Bosch – FR, Minres",
-        "Description": "Tool suite to develop/customize RISC-V IPs​​​"
-    },
+        "Status": "",
+        "Description": "Tool suite to develop/customize RISC-V IPs​​​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.3",
+        "Partners": "Codasip",
+        "Comment": "Bosch – DE, Bosch – FR, Minres"
+    }
     {
         "Repository": "GVSOC",
-        "URL/Instructions": "GVSOC (fork)",
+        "URL": "https://github.com/EEESlab/gvsoc/tree/tristan-dev",
         "License": "Apache-2.0",
-        "Status": "Politecnico di Torino",
-        "Description": "RISC-V Platform Simulator​"
-    },
+        "Status": "",
+        "Description": "RISC-V Platform Simulator​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.5",
+        "Partners": "UNIBO",
+        "Comment": "Politecnico di Torino"
+    }
     {
         "Repository": "Messy",
-        "URL/Instructions": "TBD",
+        "URL": "",
         "License": "",
-        "Status": "UNIBO",
-        "Description": "Multi-layer Extra-functional Simulator using SYstemC​"
-    },
+        "Status": "",
+        "Description": "Multi-layer Extra-functional Simulator using SYstemC​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.6",
+        "Partners": "Politecnico di Torino",
+        "Comment": "UNIBO"
+    }
     {
         "Repository": "Spike",
-        "URL/Instructions": "Spike",
+        "URL": "https://github.com/riscv-software-src/riscv-isa-sim",
         "License": "",
-        "Status": "Thales, Synthara",
-        "Description": "RISC-V ISA simulator​"
-    },
+        "Status": "",
+        "Description": "RISC-V ISA simulator​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.7",
+        "Partners": "OpenHW Group",
+        "Comment": "Thales, Synthara"
+    }
     {
         "Repository": "VPTOOL",
-        "URL/Instructions": "VPTOOL",
+        "URL": "https://github.com/openhwgroup/core-v-verif",
         "License": "",
-        "Status": "Thales, Siemens-AT",
-        "Description": "Graphical edition of a Design Verification Plan ​"
-    },
+        "Status": "",
+        "Description": "Graphical edition of a Design Verification Plan ​",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.8",
+        "Partners": "OpenHW Group",
+        "Comment": "Thales, Siemens-AT"
+    }
     {
         "Repository": "SoCDSL",
-        "URL/Instructions": "TBD",
+        "URL": "",
         "License": "",
-        "Status": "Minres, Tampere University",
-        "Description": "Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​"
-    },
+        "Status": "",
+        "Description": "Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​",
+        "Project": "TRISTAN",
+        "WI": "WI5.3.1",
+        "Partners": "Technische Universität Darmstadt",
+        "Comment": "Minres, Tampere University"
+    }
     {
         "Repository": "cv_dv_utils",
-        "URL/Instructions": "CV_DV_UTILS",
+        "URL": "https://github.com/openhwgroup/core-v-verif",
         "License": "Apache-2.0",
-        "Status": "CEA",
-        "Description": "UVM verification environment for OpenHW cores"
-    },
+        "Status": "",
+        "Description": "UVM verification environment for OpenHW cores",
+        "Project": "TRISTAN",
+        "WI": "WI3.1.5",
+        "Partners": "OpenHW Group",
+        "Comment": "CEA"
+    }
     {
         "Repository": "Co-processor Generator Tool",
-        "URL/Instructions": "Not published yet",
+        "URL": "",
         "License": "TBD",
-        "Status": "TBD",
-        "Description": "Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions."
-    },
+        "Status": "",
+        "Description": "Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions.",
+        "Project": "TRISTAN",
+        "WI": "WI2.5.6",
+        "Partners": "Tampere University",
+        "Comment": "TBD"
+    }
     {
         "Repository": "SUNRISE",
-        "URL/Instructions": "Not published yet",
+        "URL": "",
         "License": "TBD",
-        "Status": "BOSCH-DE, Codasip, Minres",
-        "Description": "Scalable UNified Restful Infrasructure for System Evaluation."
-    },
+        "Status": "",
+        "Description": "Scalable UNified Restful Infrasructure for System Evaluation.",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.3",
+        "Partners": "BOSCH-DE",
+        "Comment": "BOSCH-DE, Codasip, Minres"
+    }
     {
         "Repository": "kMLeon",
-        "URL/Instructions": "Not published yet",
+        "URL": "",
         "License": "TBD",
-        "Status": "CEA",
-        "Description": "ML-based tool for the automatic generation of extra-functional models (e.g. performance, power)."
-    },
+        "Status": "",
+        "Description": "ML-based tool for the automatic generation of extra-functional models (e.g. performance, power).",
+        "Project": "TRISTAN",
+        "WI": "WI5.1.4 and WI5.3.6",
+        "Partners": "CEA",
+        "Comment": "CEA"
+    }
     {
         "Repository": "uArchiFI",
-        "URL/Instructions": "uArchiFI",
+        "URL": "https://github.com/CEA-LIST/uArchiFI",
         "License": "Mozilla Public License",
-        "Status": "CEA",
-        "Description": "Formal tool for analyzing the robustness of embedded systems against fault injection attacks by combining the RTL of a processor, the binary of a software, and an attacker model."
-    },
+        "Status": "",
+        "Description": "Formal tool for analyzing the robustness of embedded systems against fault injection attacks by combining the RTL of a processor, the binary of a software, and an attacker model.",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.5 and WI5.3.6",
+        "Partners": "CEA",
+        "Comment": "CEA"
+    }
     {
         "Repository": "k-FRP",
-        "URL/Instructions": "k-FRP",
-        "License": "Apache License",
-        "Status": "CEA",
-        "Description": "Formal tool for analyzing the robustness of HW countermeasures to secure embedded systems against fault injection attacks. Optional step within µArchiFI"
+        "URL": "https://github.com/CEA-LIST/Fault-Resistant-Partitioning",
+        "License": "Apache-2.0",
+        "Status": "",
+        "Description": "Formal tool for analyzing the robustness of HW countermeasures to secure embedded systems against fault injection attacks. Optional step within µArchiFI",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.5 and WI5.3.6",
+        "Partners": "CEA/TU Graz",
+        "Comment": "CEA"
     }
 ]
