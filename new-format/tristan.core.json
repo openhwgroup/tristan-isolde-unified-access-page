@@ -5,7 +5,7 @@
         "Project": "TRISTAN",
         "License": "Solderpad",
         "Status": "Design and Verification in progress",
-        "Description": ""
+        "Description": "This is a test"
     },
     {
         "Repository": "RVB / RVP Standard Extensions support for CV32E40P core",
