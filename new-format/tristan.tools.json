@@ -9,7 +9,7 @@
         "WI": "WI5.1.1",
         "Partners": "Antmicro",
         "Comment": "Tampere University, NOKIA, Cargotec"
-    }
+    },
     {
         "Repository": "ETISS",
         "URL": "https://github.com/tum-ei-eda/etiss",
@@ -20,7 +20,7 @@
         "WI": "WI5.1.2",
         "Partners": "Technische Universität München",
         "Comment": "Used by: Infineon"
-    }
+    },
     {
         "Repository": "SCC",
         "URL": "https://github.com/Minres/SystemC-Components",
@@ -31,7 +31,7 @@
         "WI": "WI5.1.4",
         "Partners": "Minres",
         "Comment": "Used by: Bosch-DE, CEA"
-    }
+    },
     {
         "Repository": "PySysC",
         "URL": "https://github.com/Minres/PySysC/",
@@ -42,7 +42,7 @@
         "WI": "WI5.1.4",
         "Partners": "Minres",
         "Comment": "Used by: Bosch-DE, CEA"
-    }
+    },
     {
         "Repository": "Core DSL",
         "URL": "https://github.com/Minres/CoreDSL",
@@ -53,7 +53,7 @@
         "WI": "WI5.1.4",
         "Partners": "Minres",
         "Comment": "Used by: Bosch-DE, CEA"
-    }
+    },
     {
         "Repository": "DBT-RISE &​ DBT-RISE-RISCV",
         "URL": "",
@@ -64,7 +64,7 @@
         "WI": "WI5.1.4, WI5.3.2",
         "Partners": "Minres",
         "Comment": "Used by: Bosch-DE, CEA,ACC"
-    }
+    },
     {
         "Repository": "Verilator",
         "URL": "https://www.veripool.org/verilator/",
@@ -75,7 +75,7 @@
         "WI": "WI5.2.1",
         "Partners": "Antmicro",
         "Comment": "Used by: CEA"
-    }
+    },
     {
         "Repository": "Questa Verify Property App",
         "URL": "https://eda.sw.siemens.com/en-US/ic/questa/onespin-formal-verification/",
@@ -86,7 +86,7 @@
         "WI": "WI5.2.2",
         "Partners": "Siemens EDA",
         "Comment": "Used by: Thales SA"
-    }
+    },
     {
         "Repository": "Yosys",
         "URL": "https://github.com/YosysHQ/yosys",
@@ -97,7 +97,7 @@
         "WI": "WI5.2.5",
         "Partners": "TBD",
         "Comment": "Used by: CEA"
-    }
+    },
     {
         "Repository": "Catapult",
         "URL": "https://eda.sw.siemens.com/en-US/ic/catapult-high-level-synthesis/",
@@ -108,7 +108,7 @@
         "WI": "WI5.2.7",
         "Partners": "Siemens EDA",
         "Comment": "Used by: Siemens-AT"
-    }
+    },
     {
         "Repository": "Kactus2",
         "URL": "https://github.com/kactus2/kactus2dev",
@@ -119,7 +119,7 @@
         "WI": "WI5.2.9, WI5.3.3",
         "Partners": "Minres, Tampere University",
         "Comment": "Used by: Tampere University, NOKIA, Cargotec"
-    }
+    },
     {
         "Repository": "Codasip Studio",
         "URL": "https://codasip.com/products/codasip-studio/",
@@ -130,7 +130,7 @@
         "WI": "WI5.1.3",
         "Partners": "Codasip",
         "Comment": "Used by: Bosch – DE, Bosch – FR, Minres"
-    }
+    },
     {
         "Repository": "GVSOC",
         "URL": "https://github.com/EEESlab/gvsoc/tree/tristan-dev",
@@ -141,7 +141,7 @@
         "WI": "WI5.1.5",
         "Partners": "UNIBO",
         "Comment": "Used by: Politecnico di Torino"
-    }
+    },
     {
         "Repository": "Messy",
         "URL": "",
@@ -152,7 +152,7 @@
         "WI": "WI5.1.6",
         "Partners": "Politecnico di Torino",
         "Comment": "Used by: UNIBO"
-    }
+    },
     {
         "Repository": "Spike",
         "URL": "https://github.com/riscv-software-src/riscv-isa-sim",
@@ -163,7 +163,7 @@
         "WI": "WI5.1.7",
         "Partners": "OpenHW Group",
         "Comment": "Used by: Thales, Synthara"
-    }
+    },
     {
         "Repository": "VPTOOL",
         "URL": "https://github.com/openhwgroup/core-v-verif",
@@ -174,7 +174,7 @@
         "WI": "WI5.1.8",
         "Partners": "OpenHW Group",
         "Comment": "Used by: Thales, Siemens-AT"
-    }
+    },
     {
         "Repository": "SoCDSL",
         "URL": "",
@@ -185,7 +185,7 @@
         "WI": "WI5.3.1",
         "Partners": "Technische Universität Darmstadt",
         "Comment": "Used by: Minres, Tampere University"
-    }
+    },
     {
         "Repository": "cv_dv_utils",
         "URL": "https://github.com/openhwgroup/core-v-verif",
@@ -196,7 +196,7 @@
         "WI": "WI3.1.5",
         "Partners": "OpenHW Group",
         "Comment": "Used by: CEA"
-    }
+    },
     {
         "Repository": "Co-processor Generator Tool",
         "URL": "",
@@ -207,7 +207,7 @@
         "WI": "WI2.5.6",
         "Partners": "Tampere University",
         "Comment": "Used by: TBD"
-    }
+    },
     {
         "Repository": "SUNRISE",
         "URL": "",
@@ -218,7 +218,7 @@
         "WI": "WI5.1.3",
         "Partners": "BOSCH-DE",
         "Comment": "Used by: BOSCH-DE, Codasip, Minres"
-    }
+    },
     {
         "Repository": "kMLeon",
         "URL": "",
@@ -229,7 +229,7 @@
         "WI": "WI5.1.4 and WI5.3.6",
         "Partners": "CEA",
         "Comment": "Used by: CEA"
-    }
+    },
     {
         "Repository": "uArchiFI",
         "URL": "https://github.com/CEA-LIST/uArchiFI",
@@ -240,7 +240,7 @@
         "WI": "WI5.2.5 and WI5.3.6",
         "Partners": "CEA",
         "Comment": "Used by: CEA"
-    }
+    },
     {
         "Repository": "k-FRP",
         "URL": "https://github.com/CEA-LIST/Fault-Resistant-Partitioning",
