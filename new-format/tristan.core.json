@@ -1,98 +1,134 @@
 [
     {
         "Repository": "CVE2",
-        "URL/Instructions": "CVE2",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/openhwgroup/cve2",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": "This is a test"
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.2.5, WI2.2.8, WI2.5.8",
+        "Partners": "NXP, Synthara, Politecnico di Torino",
+        "Comment": ""
+    }
     {
         "Repository": "RVB / RVP Standard Extensions support for CV32E40P core",
-        "URL/Instructions": "CV32E40P (fork)",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/MPEZZIN/cv32e40p",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.3.2",
+        "Partners": "CEA",
+        "Comment": ""
+    }
     {
         "Repository": "Extensions to the micro-architecture of CV32E40P core",
-        "URL/Instructions": "CV32E40P (fork)",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/pulp-platform/cv32e40p",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.3.3",
+        "Partners": "UNIBO",
+        "Comment": ""
+    }
     {
         "Repository": "VSRV: Simple 32-bit RISC-V Linux-Capable Core",
-        "URL/Instructions": "VSRV",
-        "Project": "TRISTAN",
+        "URL": "https://www.vlsi.fi/en/vsrv.html",
         "License": "Solderpad",
-        "Status": "VSRV1 Released",
-        "Description": ""
-    },
+        "Status": "Released",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.3.5",
+        "Partners": "VLSI Solution",
+        "Comment": "VSRV1 Released"
+    }
     {
         "Repository": "CVA6",
-        "URL/Instructions": "CVA6",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/openhwgroup/cva6",
         "License": "Solderpad",
-        "Status": "Design and Verification in progress",
-        "Description": "A configurable family of RISC-V application/embedded cores targetting FPGA and ASIC technologies"
-    },
+        "Status": "In progress",
+        "Description": "A configurable family of RISC-V application/embedded cores targetting FPGA and ASIC technologies",
+        "Project": "TRISTAN",
+        "WI": "WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5",
+        "Partners": "Thales, Sysgo, TU Darmstadt, Bosch",
+        "Comment": ""
+    }
     {
         "Repository": "RVV coprocessor for CVA6",
-        "URL/Instructions": "RVV-coprocessor",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/pulp-platform/ara",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": ""
-    },
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.4.4",
+        "Partners": "ETH",
+        "Comment": ""
+    }
     {
         "Repository": "Timing Channel Protection",
-        "URL/Instructions": "timing-channel-protection",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/pulp-platform/cva6",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": ""
-    },
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.1.1",
+        "Partners": "ETH",
+        "Comment": ""
+    }
     {
         "Repository": "UVM env for RISC-V verif",
-        "URL/Instructions": "core-v-verif",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/openhwgroup/core-v-verif",
         "License": "Solderpad",
-        "Status": "CVA6 verification in progress",
-        "Description": ""
-    },
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.4.1",
+        "Partners": "Thales",
+        "Comment": ""
+    }
     {
         "Repository": "Compression and decompression of digital waveforms",
-        "URL/Instructions": "Tristan",
+        "URL": "https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884",
+        "License": "TBD",
+        "Status": "In progress",
+        "Description": "",
         "Project": "TRISTAN",
-        "License": "To be determined",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "WI": "WI2.5.11",
+        "Partners": "semify",
+        "Comment": ""
+    }
     {
         "Repository": "TraceUnit",
-        "URL/Instructions": "Not published yet",
+        "URL": "",
+        "License": "TBD",
+        "Status": "In progress",
+        "Description": "",
         "Project": "TRISTAN",
-        "License": "To be determined",
-        "Status": "Design and Verification in progress",
-        "Description": ""
-    },
+        "WI": "WI2.1.4, WI2.2.1, WI2.3.4, WI2.5.4",
+        "Partners": "ACCT, FHG, MNRS, SYSGO",
+        "Comment": ""
+    }
     {
         "Repository": "Hypervisor",
-        "URL/Instructions": "H-extension",
+        "URL": "https://github.com/openhwgroup/cva6",
+        "License": "Solderpad",
+        "Status": "Released",
+        "Description": "",
         "Project": "TRISTAN",
-        "License": null,
-        "Status": "Released/td>\n                ",
-        "Description": "Solderpad"
-    },
+        "WI": "WI2.5.10",
+        "Partners": "ETH, Sysgo",
+        "Comment": ""
+    }
     {
         "Repository": "Riviera: RISC-V ISA Extensions for NFC Applications",
-        "URL/Instructions": "https://github.com/NXP-AT-RIVIERA/Riviera_core/tree/main",
-        "Project": "TRISTAN",
+        "URL": "https://github.com/NXP-AT-RIVIERA/Riviera_core/tree/main",
         "License": "LA_OPT_NXP_Software_License",
-        "Status": "Design and Verification in progress",
-        "Description": ""
+        "Status": "In progress",
+        "Description": "",
+        "Project": "TRISTAN",
+        "WI": "WI2.5.1",
+        "Partners": "NXP Austria, Politecnico di Torino, Technical University of Graz",
+        "Comment": ""
     }
 ]
