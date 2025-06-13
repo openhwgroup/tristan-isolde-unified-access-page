@@ -4,22 +4,22 @@
         "URL": "https://www.absint.com/timeweaver/",
         "License": "proprietary",
         "Status": "Released",
-        "Description": "TimeWeaver is a hybrid measurement-based timing analysis tool to determine the WCET of safety-critical embedded software. As part of TRISTAN, it will be ported to include support for RISC-V processors using the TRISTAN trace IP.",
+        "Description": "TimeWeaver is a hybrid measurement-based timing analysis tool to determine the WCET of safety-critical embedded software. As part of TRISTAN, it has been be ported to include support for RISC-V processors using the TRISTAN trace IP.",
         "Project": "TRISTAN",
         "WI": "WI4.1.5",
         "Partners": "AbsInt",
-        "Comment": "Improved preview version available on request (support@absint.com) as part of the first complete software package (deliverable D4.2)"
+        "Comment": "Preview versions available on request (support@absint.com) as part of the first complete software package (deliverable D4.2)"
     },
     {
         "Repository": "CompCert",
         "URL": "https://github.com/AbsInt/CompCert",
-        "License": "INRIA NCL, GPL-2.1",
+        "License": "dual licensed (see repository)",
         "Status": "In progress",
         "Description": "CompCert is a formally-verified optimizing C compiler. As part of TRISTAN, it will be extended to support the HSI (hardware-supported instrumentation) interface of the TRISTAN trace IP.",
         "Project": "TRISTAN",
         "WI": "WI4.2.4",
         "Partners": "AbsInt",
-        "Comment": "Waiting for WI2.5.4"
+        "Comment": "Waiting for WI2.1.4"
     },
     {
         "Repository": "Yocto for CVA6",
