@@ -144,14 +144,37 @@
     },
     {
         "Repository": "Messy",
-        "URL": "",
-        "License": "",
-        "Status": "",
+        "URL": "https://github.com/eml-eda/messy",
+        "License": "Apache-2.0",
+        "Status": "In progress",
         "Description": "Multi-layer Extra-functional Simulator using SYstemC​",
         "Project": "TRISTAN",
         "WI": "WI5.1.6",
         "Partners": "Politecnico di Torino",
         "Comment": "Used by: UNIBO"
+    },
+        {
+        "Repository": "Plinio",
+        "URL": "https://github.com/eml-eda/plinio",
+        "License": "Apache-2.0",
+        "Status": "In progress",
+        "Description": "A PyTorch-based library for implementing hardware-aware optimizations of AI models (NAS, pruning, quantization) with lightweight algorithms, and enable their subsequent compilation and deployment onto RISC-V targets.",
+        "Project": "TRISTAN",
+        "WI": "WI4.4.4",
+        "Partners": "Politecnico di Torino",
+        "Comment": ""
+    },
+    
+        {
+        "Repository": "MATCH",
+        "URL": "https://github.com/eml-eda/match",
+        "License": "Apache-2.0",
+        "Status": "In progress",
+        "Description": "A TVM-based AI compiler for hardware-aware deployment of AI models onto heterogeneous RISC-V targets.",
+        "Project": "TRISTAN",
+        "WI": "WI4.4.4",
+        "Partners": "Politecnico di Torino",
+        "Comment": ""
     },
     {
         "Repository": "Spike",
