@@ -4,7 +4,7 @@
         "URL": "https://www.absint.com/timeweaver/",
         "License": "proprietary",
         "Status": "Released",
-        "Description": "TimeWeaver is a hybrid measurement-based timing analysis tool to determine the WCET of safety-critical embedded software. As part of TRISTAN, it has been be ported to include support for RISC-V processors using the TRISTAN trace IP.",
+        "Description": "TimeWeaver is a hybrid measurement-based timing analysis tool to determine the WCET of safety-critical embedded software. As part of TRISTAN, it has been ported to include support for RISC-V processors using the TRISTAN trace IP.",
         "Project": "TRISTAN",
         "WI": "WI4.1.5",
         "Partners": "AbsInt",
