@@ -4,7 +4,7 @@
         "URL": "https://github.com/openhwgroup/cve2",
         "License": "Solderpad",
         "Status": "In progress",
-        "Description": "Single-issue ,2-pipeline stage RISC-V CPU",
+        "Description": "A single-issue 2-stage pipeline embedded class of RISC-V CPUs",
         "Project": "TRISTAN",
         "WI": "WI2.2.5, WI2.2.8, WI2.5.8",
         "Partners": "NXP, Synthara, Politecnico di Torino, OpenHW Foundation",
@@ -29,7 +29,7 @@
         "Description": "",
         "Project": "TRISTAN",
         "WI": "WI2.3.3",
-        "Partners": "UNIBO",
+        "Partners": "University of Bologna",
         "Comment": ""
     },
     {
@@ -37,7 +37,7 @@
         "URL": "https://www.vlsi.fi/en/vsrv.html",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": "",
+        "Description": "VSRV1 is a simple 32-bit RISC-V CPU that is able to run applications and COTS standard protocol stacks, such as Ethernet, under the Linux operating system.",
         "Project": "TRISTAN",
         "WI": "WI2.3.5",
         "Partners": "VLSI Solution",
@@ -51,7 +51,7 @@
         "Description": "A configurable family of RISC-V application/embedded cores targetting FPGA and ASIC technologies",
         "Project": "TRISTAN",
         "WI": "WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5",
-        "Partners": "Thales, Sysgo, TU Darmstadt, Bosch",
+        "Partners": "Thales, SYSGO, TU Darmstadt, Bosch",
         "Comment": ""
     },
     {
@@ -59,10 +59,10 @@
         "URL": "https://github.com/pulp-platform/ara",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": "",
+        "Description": "The PULP Ara is a 64-bit Vector Unit, compatible with the RISC-V Vector Extension Version 1.0, working as a coprocessor to the CVA6 core",
         "Project": "TRISTAN",
         "WI": "WI2.4.4",
-        "Partners": "ETH",
+        "Partners": "ETH Zürich and University of Bologna",
         "Comment": ""
     },
     {
@@ -73,18 +73,18 @@
         "Description": "",
         "Project": "TRISTAN",
         "WI": "WI2.1.1",
-        "Partners": "ETH",
+        "Partners": "ETH Zürich",
         "Comment": ""
     },
     {
         "Repository": "UVM env for RISC-V verif",
         "URL": "https://github.com/openhwgroup/core-v-verif",
         "License": "Solderpad",
-        "Status": "In progress",
-        "Description": "",
+        "Status": "Finished, as the CV32A60X configuration of the CVA6 has reached TRL-5",
+        "Description": "UVM environment for the verification of RISC-V cores, supporting a thorough verification of the CVA6 (and other) cores to reach TRL-5",
         "Project": "TRISTAN",
         "WI": "WI2.4.1",
-        "Partners": "Thales",
+        "Partners": "Thales, ETH Zürich",
         "Comment": ""
     },
     {
@@ -92,10 +92,10 @@
         "URL": "https://github.com/semify-eda/tristan/tree/f6516af367ea9729658724e39aa83fa65c2aa884",
         "License": "TBD",
         "Status": "In progress",
-        "Description": "",
+        "Description": "Custom instructions for the CV32E40X core to improve the performance ofCompression and decompression of digital waveforms on the fly",
         "Project": "TRISTAN",
         "WI": "WI2.5.11",
-        "Partners": "semify",
+        "Partners": "Semify",
         "Comment": ""
     },
     {
@@ -103,10 +103,10 @@
         "URL": "",
         "License": "TBD",
         "Status": "In progress",
-        "Description": "",
+        "Description": "Portable trace unit and extensions",
         "Project": "TRISTAN",
         "WI": "WI2.1.4, WI2.2.1, WI2.3.4, WI2.5.4",
-        "Partners": "ACCT, FHG, MNRS, SYSGO",
+        "Partners": "Accemic Technologies, Fraunhofer, MINRES Technologies, SYSGO",
         "Comment": ""
     },
     {
@@ -114,10 +114,10 @@
         "URL": "https://github.com/openhwgroup/cva6",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": "",
+        "Description": "Hypervisor support for the CVA6 core",
         "Project": "TRISTAN",
         "WI": "WI2.5.10",
-        "Partners": "ETH, Sysgo",
+        "Partners": "ETH Zürich, SYSGO",
         "Comment": ""
     },
     {
@@ -125,7 +125,7 @@
         "URL": "https://github.com/NXP-AT-RIVIERA/Riviera_core/tree/main",
         "License": "LA_OPT_NXP Software License",
         "Status": "In progress",
-        "Description": "",
+        "Description": " Extension of the RISC-V ISA to improve performance of NFC specific DSP algorithms",
         "Project": "TRISTAN",
         "WI": "WI2.5.1",
         "Partners": "NXP Austria, Politecnico di Torino, Technical University of Graz",
