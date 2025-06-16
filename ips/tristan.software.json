@@ -1,0 +1,167 @@
+[
+    {
+        "Repository": "TimeWeaver",
+        "URL": "https://www.absint.com/timeweaver/",
+        "License": "proprietary",
+        "Status": "Released",
+        "Description": "TimeWeaver is a hybrid measurement-based timing analysis tool to determine the WCET of safety-critical embedded software. As part of TRISTAN, it has been ported to include support for RISC-V processors using the TRISTAN trace IP.",
+        "Project": "TRISTAN",
+        "WI": "WI4.1.5",
+        "Partners": "AbsInt",
+        "Comment": "Preview versions available on request (support@absint.com) as part of the first complete software package (deliverable D4.2)"
+    },
+    {
+        "Repository": "CompCert",
+        "URL": "https://github.com/AbsInt/CompCert",
+        "License": "dual licensed (see repository)",
+        "Status": "In progress",
+        "Description": "CompCert is a formally-verified optimizing C compiler. As part of TRISTAN, it will be extended to support the HSI (hardware-supported instrumentation) interface of the TRISTAN trace IP.",
+        "Project": "TRISTAN",
+        "WI": "WI4.2.4",
+        "Partners": "AbsInt",
+        "Comment": "Waiting for WI2.1.4"
+    },
+    {
+        "Repository": "Yocto for CVA6",
+        "URL": "https://github.com/openhwgroup/meta-cva6-yocto",
+        "License": "MIT",
+        "Status": "Released",
+        "Description": "A linux image for a CVA6-based embedded processor",
+        "Project": "TRISTAN",
+        "WI": "WI4.3.3",
+        "Partners": "Thales",
+        "Comment": ""
+    },
+    {
+        "Repository": "Setting up Yocto and baremetal debug on CVA6",
+        "URL": "https://github.com/ThalesGroup/cva6-eclipse-demo",
+        "License": "Apache-2.0",
+        "Status": "Released",
+        "Description": "Guidance to set up baremetal and Linux-based debug on CVA6",
+        "Project": "TRISTAN",
+        "WI": "WI4.3.3",
+        "Partners": "Thales",
+        "Comment": ""
+    },
+    {
+        "Repository": "End-to-end stack for ML software development on embedded RISC-V platforms",
+        "URL": "https://github.com/eml-eda/plinio",
+        "License": "Apache-2.0",
+        "Status": "In progress",
+        "Description": "A PyTorch-based library for implementing hardware-aware optimizations of AI models (NAS, pruning, quantization) with lightweight algorithms, and enable their subsequent compilation and deployment onto RISC-V targets.",
+        "Project": "TRISTAN",
+        "WI": "WI4.4.4",
+        "Partners": "Politecnico di Torino, UNIBO",
+        "Comment": ""
+    },
+    {
+        "Repository": "CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries",
+        "URL": "https://github.com/eml-eda/RiscV-NN",
+        "License": "",
+        "Status": "In progress",
+        "Description": "A set of extensions to the open-source PULP-NN library for accelerating AI workloads on RISC-V-based platforms (mainly but not limited to multi-core clusters). Extensions include kernels for fused depthwise-separable convolutions, attention layers, and N:M sparsity.",
+        "Project": "TRISTAN",
+        "WI": "WI4.4.1",
+        "Partners": "IFX, Politecnico di Torino, UNIBO, CEA",
+        "Comment": ""
+    },
+    {
+        "Repository": "COREV GCC",
+        "URL": "https://github.com/EEESlab/corev-gcc/tree/tristan-dev",
+        "License": "GPL-2.0, LGPL-2.1",
+        "Status": "In progress",
+        "Description": "The CORE-V GCC repository provides a fork of the GNU Compiler Collection (GCC) tailored for the CORE-V family of open-source RISC-V processor cores. It includes custom enhancements and optimizations to support CORE-V-specific architectural features and instructions. The fork provides the compiler backend support for the low-precision and mixed-precision extensions designed in TRISTAN.",
+        "Project": "TRISTAN",
+        "WI": "WI4.2.1",
+        "Partners": "UNIBO",
+        "Comment": ""
+    },
+    {
+        "Repository": "COREV Binutils",
+        "URL": "https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev",
+        "License": "GPL-2.0",
+        "Status": "In progress",
+        "Description": "The CORE-V binutils repository contains a customized version of the GNU binutils suite designed for the CORE-V family of RISC-V processor cores. It includes tools like the assembler, linker, and related utilities, enhanced to support CORE-V-specific instruction sets and architectural extensions. The fork adds the binary support required to assemble the low-precision and mixed-precision instructions in the TRISTAN extensions.",
+        "Project": "TRISTAN",
+        "WI": "WI4.2.1",
+        "Partners": "UNIBO",
+        "Comment": ""
+    },
+    {
+        "Repository": "ELinOS embedded Linux for RISC-V",
+        "URL": "https://www.sysgo.com/elinos",
+        "License": "GPL",
+        "Status": "Released",
+        "Description": "ELinOS is an Embedded Linux distribution and industrial grade Linux with the user-friendly CODEO IDE to build state-of-the-art embedded solutions in a time-saving and cost-efficient manner; also dedicated support from SYSGO is available. ELinOS has strong focus on Security with container support and services, providing drivers, connectivity stacks, real-time extensions and support for industrial hardware (e.g. since long ARM, x86, PowerPC, and, since 2024, RISC-V).",
+        "Project": "TRISTAN",
+        "WI": "WI4.3.2",
+        "Partners": "SYSGO",
+        "Comment": "Has been released on 14 April 2024, see also press release."
+    },
+    {
+        "Repository": "PikeOS CVA-6 support",
+        "URL": "https://www.pikeos.com/",
+        "License": "Proprietary",
+        "Status": "Released",
+        "Description": "CVA6 is a 6-stage, single-issue, in-order CPU which implements the 64-bit RISC-V instruction set. PikeOS is a portable real-time operating system based on a separation kernel designed for the highest levels of Safety & Security. The PikeOS technology is certifiable by various certification standards including DO-178C, ECSS, EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for PikeOS.",
+        "Project": "TRISTAN",
+        "WI": "WI4.3.3",
+        "Partners": "SYSGO",
+        "Comment": ""
+    },
+    {
+        "Repository": "LLVM TD from ADL",
+        "URL": "https://github.com/nxp-auto-tools/tools_adl",
+        "License": "BSD-2-Clause",
+        "Status": "In progress",
+        "Description": "Generate LLVM target description file for RV32 architectures and corresponding instruction encoding, instruction scheduling model, assembler relocation tests automatically generated from an architectural description language (ADL).",
+        "Project": "TRISTAN",
+        "WI": "WI4.2.1, WI4.2.3",
+        "Partners": "NXP",
+        "Comment": "Design and verification in progress. For the CVA6 TIP implementation part of it, a pull request has been issued, but further integration with work from Uni Bologna is needed."
+    },
+    {
+        "Repository": "Cloud Connector",
+        "URL": "https://github.com/tianhailiu/tristan-cloud-connector",
+        "License": "GPL",
+        "Status": "Released",
+        "Description": "Device Client is a group of software modules that run on JamaicaAMS. It securely connects to the Cloud (aicas EDP) to get device status and configuration information, and operates the configuration and OSGi bundle lifecycle on RISC-V devices. It contains several components that were customized for this project.",
+        "Project": "TRISTAN",
+        "WI": "WI 4.3.4",
+        "Partners": "aicas",
+        "Comment": ""
+    },
+    {
+        "Repository": "Device Client",
+        "URL": "https://github.com/tianhailiu/tristan-device-client",
+        "License": "GPL",
+        "Status": "In progress",
+        "Description": "Cloud Connector is a software module that runs on JamaicaAMS and is used to exchange data with the cloud (customized aicas EDG) via the MQTT protocol. It is compatible with the OSGi specification and leverages the realtime capabilities of JamaicaAMS. It was newly developed by aicas for this project.",
+        "Project": "TRISTAN",
+        "WI": "WI 6.1.4",
+        "Partners": "aicas",
+        "Comment": ""
+    },
+    {
+        "Repository": "RISC-V Runtime",
+        "URL": "",
+        "License": "Apache-2.0",
+        "Status": "In progress",
+        "Description": "A SDK that uses the MPFR as its backend has been delivered to experiment with variable precision in applications.",
+        "Project": "TRISTAN",
+        "WI": "WI4.4.1",
+        "Partners": "CEA",
+        "Comment": ""
+    },
+    {
+        "Repository": "VxP Tools and Libraries",
+        "URL": "",
+        "License": "Apache-2.0",
+        "Status": "In progress",
+        "Description": "A subset of the GNU binutils v2.34 and v2.38 has been enhanced to support encoding/decoding of the RISC-V ISA extension for VXP.",
+        "Project": "TRISTAN",
+        "WI": "WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1",
+        "Partners": "CEA",
+        "Comment": ""
+    }
+]
