@@ -77,15 +77,15 @@
         "Comment": ""
     },
     {
-        "Repository": "UVM env for RISC-V verif",
-        "URL": "https://github.com/openhwgroup/core-v-verif",
+        "Repository": "UVM env and testbench for the CVA6 core",
+        "URL": "https://github.com/openhwgroup/core-v-verif/tree/60e57248c48b0f8f90cf52af20aecc5c16e9d6d8",
         "License": "Solderpad",
-        "Status": "Finished, as the CV32A60X configuration of the CVA6 has reached TRL-5",
+        "Status": "Finished",
         "Description": "UVM environment for the verification of RISC-V cores, supporting a thorough verification of the CVA6 (and other) cores to reach TRL-5",
         "Project": "TRISTAN",
         "WI": "WI2.4.1",
         "Partners": "Thales, ETH Zürich",
-        "Comment": ""
+        "Comment": "Finished as the CV32A60X configuration of the CVA6 has reached TRL-5, completing the objective of the WI"
     },
     {
         "Repository": "Compression and decompression of digital waveforms",
