@@ -48,7 +48,7 @@
         "URL": "https://github.com/openhwgroup/cv-hpdcache",
         "License": "Solderpad",
         "Status": "In progress",
-        "Description": "An open-source High-Performance, Multi-requester, Out-of-Order L1 Dcache for RISC-V cores and accelerators.",
+        "Description": "An open-source High-Performance, Multi-requester, Out-of-Order L1 Data Cache for RISC-V cores and accelerators.",
         "Project": "TRISTAN",
         "WI": "WI3.1.5",
         "Partners": "CEA",
@@ -63,7 +63,7 @@
         "Project": "TRISTAN",
         "WI": "WI3.1.7",
         "Partners": "ETH",
-        "Comment": ""
+        "Comment": "Core Local Interrupt Controller"
     },
     {
         "Repository": "AXI LLC",
@@ -74,7 +74,7 @@
         "Project": "TRISTAN",
         "WI": "WI3.1.5",
         "Partners": "ETH",
-        "Comment": ""
+        "Comment": "AXI-LLC - AXI Last-Level Cache"
     },
     {
         "Repository": "AXI",
@@ -92,7 +92,7 @@
         "URL": "https://github.com/MPEZZIN/obi_interconnect",
         "License": "Solderpad",
         "Status": "In progress",
-        "Description": "An Low latency OBI interconnect for timing-critical SoC IPs",
+        "Description": "OBI Components: AHB2OBI Bridge, OBI2AHB Bridge, OBI2APB Bridge, OBI2OBI Bridge, OBI XBAR Bridge",
         "Project": "TRISTAN",
         "WI": "WI3.2.6",
         "Partners": "CEA",
@@ -114,7 +114,7 @@
         "URL": "",
         "License": "TBD",
         "Status": "In progress",
-        "Description": "",
+        "Description": "Post-Quantum Cryptographic Accelerator",
         "Project": "TRISTAN",
         "WI": "WI3.4.4",
         "Partners": "Technische Universität München, Politecnico di Torino",
@@ -125,7 +125,7 @@
         "URL": "https://github.com/pulp-platform/udma_core",
         "License": "Solderpad",
         "Status": "In progress",
-        "Description": "A Low Power IO DMA with multi-bank memory access and performance enhancements",
+        "Description": "A Low Power IO DMA controller with multi-bank memory access and performance enhancements",
         "Project": "TRISTAN",
         "WI": "WI3.1.4",
         "Partners": "University of Bologna",
@@ -147,7 +147,7 @@
         "URL": "https://github.com/pulp-platform/redmule",
         "License": "Solderpad",
         "Status": "In progress",
-        "Description": "RedMulE (Reduced-Precision Matrix Multiplication Engine) is an open-source low-power FP32/FP16 hardware accelerator for industrial applications based on the HWPE template",
+        "Description": "Low-Power Floating-Point Accelerator",
         "Project": "TRISTAN",
         "WI": "WI3.4.1",
         "Partners": "University of Bologna",
