@@ -124,7 +124,7 @@
         "Repository": "Riviera: RISC-V ISA Extensions for NFC Applications",
         "URL": "https://github.com/NXP-AT-RIVIERA/Riviera_core/tree/main",
         "License": "LA_OPT_NXP Software License",
-        "Status": "In progress",
+        "Status": "Design and Verification completed",
         "Description": "",
         "Project": "TRISTAN",
         "WI": "WI2.5.1",
