@@ -15,6 +15,8 @@ The Tristan and ISOLDE Unified Access Page are the deliverable of the TRISTAN Ta
 
 You can access the Tristan and ISOLDE Unified Access Page [here](https://htmlpreview.github.io/?https://github.com/openhwgroup/tristan-isolde-unified-access-page/blob/main/tristan-isolde-unified-access-page.html).
 
+The TRISTAN IPs are also accessible on the official webpage [here](https://tristan-project.eu/tristan-ips/).
+
 # Acknowledgements
 
 TRISTAN has received funding from the Chips Joint Undertaking (Chips JU) under grant agreement nr. 101095947. The Chips JU receives support from the European Union’s Horizon Europe’s research and innovation programmes and participating states are Austria, Belgium, Bulgaria, Croatia, Cyprus, Czechia, Germany, Denmark, Estonia, Greece, Spain, Finland, France, Hungary, Ireland, Israel, Iceland, Italy, Lithuania, Luxembourg, Latvia, Malta, Netherlands, Norway, Poland, Portugal, Romania, Sweden, Slovenia, Slovakia, Turkey.
