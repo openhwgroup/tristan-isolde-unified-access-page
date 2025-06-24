@@ -59,22 +59,22 @@
         "URL": "https://github.com/pulp-platform/clic",
         "License": "Apache-2.0",
         "Status": "In progress",
-        "Description": "",
+        "Description": "Core Local Interrupt Controller",
         "Project": "TRISTAN",
         "WI": "WI3.1.7",
         "Partners": "ETH",
-        "Comment": "Core Local Interrupt Controller"
+        "Comment": ""
     },
     {
         "Repository": "AXI LLC",
         "URL": "https://github.com/pulp-platform/axi_llc",
         "License": "Solderpad",
         "Status": "Released",
-        "Description": "",
+        "Description": "AXI-LLC - AXI Last-Level Cache",
         "Project": "TRISTAN",
         "WI": "WI3.1.5",
         "Partners": "ETH",
-        "Comment": "AXI-LLC - AXI Last-Level Cache"
+        "Comment": ""
     },
     {
         "Repository": "AXI",
