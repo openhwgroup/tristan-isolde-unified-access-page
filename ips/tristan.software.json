@@ -51,40 +51,40 @@
         "Description": "A PyTorch-based library for implementing hardware-aware optimizations of AI models (NAS, pruning, quantization) with lightweight algorithms, and enable their subsequent compilation and deployment onto RISC-V targets.",
         "Project": "TRISTAN",
         "WI": "WI4.4.4",
-        "Partners": "Politecnico di Torino, UNIBO",
+        "Partners": "Politecnico di Torino, University of Bologna",
         "Comment": ""
     },
     {
-        "Repository": "CMSIS like Open-Source AI, as well as DSP- and compute (e.g. BLAS) libraries",
+        "Repository": "CMSIS-like Open-Source AI, DSP and compute (e.g. BLAS) libraries",
         "URL": "https://github.com/eml-eda/RiscV-NN",
         "License": "",
         "Status": "In progress",
         "Description": "A set of extensions to the open-source PULP-NN library for accelerating AI workloads on RISC-V-based platforms (mainly but not limited to multi-core clusters). Extensions include kernels for fused depthwise-separable convolutions, attention layers, and N:M sparsity.",
         "Project": "TRISTAN",
         "WI": "WI4.4.1",
-        "Partners": "IFX, Politecnico di Torino, UNIBO, CEA",
+        "Partners": "Infineon Technologies, Politecnico di Torino, University of Bologna, CEA",
         "Comment": ""
     },
     {
         "Repository": "COREV GCC",
         "URL": "https://github.com/EEESlab/corev-gcc/tree/tristan-dev",
-        "License": "GPL-2.0, LGPL-2.1",
+        "License": "GPL-2.0, LGPL-2.1, GCC Runtime Library Exception",
         "Status": "In progress",
         "Description": "The CORE-V GCC repository provides a fork of the GNU Compiler Collection (GCC) tailored for the CORE-V family of open-source RISC-V processor cores. It includes custom enhancements and optimizations to support CORE-V-specific architectural features and instructions. The fork provides the compiler backend support for the low-precision and mixed-precision extensions designed in TRISTAN.",
         "Project": "TRISTAN",
         "WI": "WI4.2.1",
-        "Partners": "UNIBO",
+        "Partners": "University of Bologna",
         "Comment": ""
     },
     {
         "Repository": "COREV Binutils",
         "URL": "https://github.com/EEESlab/corev-binutils-gdb/tree/tristan-dev",
-        "License": "GPL-2.0",
+        "License": "GPL-2.0, GNU Library General Public License, version 2.0",
         "Status": "In progress",
         "Description": "The CORE-V binutils repository contains a customized version of the GNU binutils suite designed for the CORE-V family of RISC-V processor cores. It includes tools like the assembler, linker, and related utilities, enhanced to support CORE-V-specific instruction sets and architectural extensions. The fork adds the binary support required to assemble the low-precision and mixed-precision instructions in the TRISTAN extensions.",
         "Project": "TRISTAN",
         "WI": "WI4.2.1",
-        "Partners": "UNIBO",
+        "Partners": "University of Bologna",
         "Comment": ""
     },
     {
@@ -100,7 +100,7 @@
     },
     {
         "Repository": "PikeOS CVA-6 support",
-        "URL": "https://www.pikeos.com/",
+        "URL": "https://www.sysgo.com/pikeos/",
         "License": "Proprietary",
         "Status": "Released",
         "Description": "CVA6 is a 6-stage, single-issue, in-order CPU which implements the 64-bit RISC-V instruction set. PikeOS is a portable real-time operating system based on a separation kernel designed for the highest levels of Safety & Security. The PikeOS technology is certifiable by various certification standards including DO-178C, ECSS, EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for PikeOS.",
@@ -155,7 +155,7 @@
     },
     {
         "Repository": "VxP Tools and Libraries",
-        "URL": "",
+        "URL": "https://github.com/orgs/CEA-LIST/repositories?q=vxp",
         "License": "Apache-2.0",
         "Status": "In progress",
         "Description": "A subset of the GNU binutils v2.34 and v2.38 has been enhanced to support encoding/decoding of the RISC-V ISA extension for VXP.",
