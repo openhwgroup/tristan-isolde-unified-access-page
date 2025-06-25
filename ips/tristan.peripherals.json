@@ -63,7 +63,7 @@
         "Project": "TRISTAN",
         "WI": "WI3.1.7",
         "Partners": "ETH",
-        "Comment": "Core Local Interrupt Controller"
+        "Comment": ""
     },
     {
         "Repository": "AXI LLC",
@@ -74,7 +74,7 @@
         "Project": "TRISTAN",
         "WI": "WI3.1.5",
         "Partners": "ETH",
-        "Comment": "AXI-LLC - AXI Last-Level Cache"
+        "Comment": ""
     },
     {
         "Repository": "AXI",
