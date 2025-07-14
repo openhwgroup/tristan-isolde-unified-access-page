@@ -113,7 +113,7 @@
         "Repository": "Kactus2",
         "URL": "https://github.com/kactus2/kactus2dev",
         "License": "GPL-2.0",
-        "Status": "",
+        "Status": "Released",
         "Description": "IP-XACT/Kactus2 generator for the Renode simulator platform​​​",
         "Project": "TRISTAN",
         "WI": "WI5.2.9, WI5.3.3",
