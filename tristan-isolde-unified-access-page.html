@@ -1027,7 +1027,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
                 Wormhole NoC
             </td>
             <td>
-                Not ready yet
+                 <a href="https://gitlab.com/selene-riscv-platform/euros2pronoc/-/tree/AXI-MM-Network-Interface?ref_type=heads">NoC</a>
             </td>
             <td>
                 ISOLDE
@@ -1039,10 +1039,10 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
                 UPV
             </td>
             <td>
-                &nbsp;
+                Work in progress
             </td>
             <td>
-                TBD
+                In this architecture, all the communication among tiles is carried out through the network. A tile is an abstraction entity that encapsulates one or more IPs of a SoC and provides an AXI Memory-Mapped interface to them. The main components of every tile are the on-chip network switch, the Network Interface (NI), and a placeholder (a.k.a. UNIT), which is used to implement the desired Intellectual Property (IP) or Processing Element (PE).
             </td>
             <td>
                 MIT
@@ -1056,7 +1056,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
                 AXI Sniffer
             </td>
             <td>
-                Not ready yet
+                <a href="https://gitlab.com/selene-riscv-platform/selene-hardware/-/tree/master/interconnect/libnoc/mem_monitor">AXI Sniffer</a>
             </td>
             <td>
                 ISOLDE
@@ -1068,10 +1068,10 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
                 UPV
             </td>
             <td>
-                &nbsp;
+                Completed
             </td>
             <td>
-                TBD
+                This module monitors axi4 transactions and determines contention between the different initiators of transactions. The initiators of transactions are given by a world ID encoded in the QoS field of the AXI channels. Supports following contention tracking features: read contention monitoring backpressure channels, read contention blaming the head of the queue for all contention caused in the queue, cross read-write backpressure, write backpressure monitoring, cross write-read backpressure. 
             </td>
             <td>
                 MIT
@@ -3916,7 +3916,7 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
                 Bit-accurate FPGA fault injection (BAFFI) tool
             </td>
             <td>
-                &nbsp;
+                <a href="https://gitlab.com/selene-riscv-platform/DAVOS">BAFFI</a>
             </td>
             <td>
                 ISOLDE
@@ -3928,10 +3928,10 @@ EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for Pike
                 UPV
             </td>
             <td>
-                &nbsp;
+                Work in progress
             </td>
             <td>
-                TBD
+                BAFFI supports bit-accurate fault injection into Ultrascale+ and 7-series AMD FPGAs. Supports transient fault models representative for FPGA and ASIC designs. Adapted to the SELENE (NOEL-V) SoC in VCU118 evaluation board.
             </td>
             <td>
                 MIT
