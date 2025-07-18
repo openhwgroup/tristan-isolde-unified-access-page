@@ -273,5 +273,16 @@
         "WI": "WI5.2.5 and WI5.3.6",
         "Partners": "CEA and TU Graz",
         "Comment": "Used by: CEA"
+    },
+    {
+        "Repository": "CV-VeriGen",
+        "URL": "TBD (in progress)",
+        "License": "TBD (in progress)",
+        "Status": "In progress",
+        "Description": "UVM SystemVerilog RISCV CPU model for functional verification of custom ISA (support for CV-X-IF)",
+        "Project": "TRISTAN",
+        "WI": "WI5.2.8",
+        "Partners": "SYNT",
+        "Comment": "Used by: SYNT"
     }
 ]
