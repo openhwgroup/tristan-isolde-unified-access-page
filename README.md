@@ -6,7 +6,7 @@ and the TRISTAN and ISOLDE partners involved in them.
 The Tristan and ISOLDE Unified Access Page acts like a static page, to provide a single access point to all the repositories TRISTAN and ISOLDE 
 contributes to. The updates and contributions will be upstreamed in the repository themselves.
 
-Some of the repositories are hosted on the OpenHW Group GitHub forge, some are located on other public pages, and some are closed-source.
+Some of the repositories are hosted on the OpenHW Foundation GitHub forge, some are located on other public pages, and some are closed-source.
 The diagram below shows how the TRISTAN and ISOLDE repositories are organized.
 
 <img src="https://github.com/openhwgroup/tristan-isolde-unified-access-page/blob/main/images/tristan_isolde_virtual_repo.png" align="center" />
@@ -14,6 +14,8 @@ The diagram below shows how the TRISTAN and ISOLDE repositories are organized.
 The Tristan and ISOLDE Unified Access Page are the deliverable of the TRISTAN Task 2 of the Work Package 7 (7.2) and ISOLDE Task 1 of the Work Package 6 (T6.1).
 
 You can access the Tristan and ISOLDE Unified Access Page [here](https://htmlpreview.github.io/?https://github.com/openhwgroup/tristan-isolde-unified-access-page/blob/main/tristan-isolde-unified-access-page.html).
+
+The TRISTAN IPs are also accessible on the official webpage [here](https://tristan-project.eu/tristan-ips/).
 
 # Acknowledgements
 
