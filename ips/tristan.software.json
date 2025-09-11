@@ -116,7 +116,7 @@
         "Status": "In progress",
         "Description": "Generate LLVM target description file for RV32 architectures and corresponding instruction encoding, instruction scheduling model, assembler relocation tests automatically generated from an architectural description language (ADL).",
         "Project": "TRISTAN",
-        "WI": "WI4.2.1, WI4.2.3",
+        "WI": ["WI4.2.1", "WI4.2.3"],
         "Partners": "NXP",
         "Comment": "Design and verification in progress. For the CVA6 TIP implementation part of it, a pull request has been issued, but further integration with work from Uni Bologna is needed."
     },
@@ -160,7 +160,7 @@
         "Status": "In progress",
         "Description": "A subset of the GNU binutils v2.34 and v2.38 has been enhanced to support encoding/decoding of the RISC-V ISA extension for VXP.",
         "Project": "TRISTAN",
-        "WI": "WI3.4.2, WI4.2.1, WI4.2.6, WI4.4.1",
+        "WI": ["WI3.4.2", "WI4.2.1", "WI4.2.6", "WI4.4.1"],
         "Partners": "CEA",
         "Comment": ""
     }

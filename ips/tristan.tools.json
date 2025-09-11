@@ -248,7 +248,7 @@
         "Status": "Released",
         "Description": "ML-based tool for the automatic generation of extra-functional models (e.g. performance, power).",
         "Project": "TRISTAN",
-        "WI": "WI5.1.4 and WI5.3.6",
+        "WI": ["WI5.1.4","WI5.3.6"],
         "Partners": "CEA",
         "Comment": "Used by: CEA"
     },
@@ -270,7 +270,7 @@
         "Status": "Released",
         "Description": "Formal tool for analyzing the robustness of HW countermeasures to secure embedded systems against fault injection attacks. Optional step within µArchiFI",
         "Project": "TRISTAN",
-        "WI": "WI5.2.5 and WI5.3.6",
+        "WI": ["WI5.2.5", "WI5.3.6"],
         "Partners": "CEA and TU Graz",
         "Comment": "Used by: CEA"
     },

@@ -6,7 +6,7 @@
         "Status": "In progress",
         "Description": "A single-issue 2-stage pipeline embedded class of RISC-V CPUs",
         "Project": "TRISTAN",
-        "WI": "WI2.2.5, WI2.2.8, WI2.5.8",
+        "WI": ["WI2.2.5", "WI2.2.8", "WI2.5.8"],
         "Partners": "NXP, Synthara, Politecnico di Torino, OpenHW Foundation",
         "Comment": ""
     },
@@ -50,7 +50,7 @@
         "Status": "In progress",
         "Description": "A configurable family of RISC-V application/embedded cores targetting FPGA and ASIC technologies",
         "Project": "TRISTAN",
-        "WI": "WI2.4.1, WI2.4.2, WI2.4.3, WI2.4.5",
+        "WI": ["WI2.4.1", "WI2.4.2", "WI2.4.3", "WI2.4.5"],
         "Partners": "Thales, SYSGO, TU Darmstadt, Bosch",
         "Comment": ""
     },
@@ -105,7 +105,7 @@
         "Status": "In progress",
         "Description": "Architecture and design of RISC-V Trace IP",
         "Project": "TRISTAN",
-        "WI": "WI2.1.4, WI2.2.1, WI2.3.4, WI2.5.4",
+        "WI": ["WI2.1.4", "WI2.2.1", "WI2.3.4", "WI2.5.4"],
         "Partners": "Accemic Technologies, Fraunhofer, MINRES Technologies, SYSGO",
         "Comment": ""
     },

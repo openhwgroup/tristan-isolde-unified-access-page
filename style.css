@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  #export-btn {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .table-container {
+    --row-height: 40px;
+    max-height: calc(var(--row-height) * 20); /* 20 rows */
+    overflow-y: auto;
+    /* overflow: visible; */
+    border: 1px solid #ccc;
+  }
+
+  /* 1) fixed table layout so explicit widths work */
+  #data-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  /* 2) make each header cell a positioning context */
+  #data-table th {
+    position: relative;
+    overflow: visible;
+  }
+
+  #data-table th,
+  #data-table td {
+    /* this combo forces wrapping instead of overflow */
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  
+  /* 3) the draggable handle */
+  .resizer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+    touch-action: none;
+  }
+  
+  /* Sticky header row with column names */
+  #data-table thead tr:first-child th {
+    position: sticky;
+    top: 0;
+    background-color: #4B87CB;
+    color: #FFFFFF;
+    z-index: 101; /* Increased z-index */
+    overflow: visible; /* Ensure dropdown can overflow */
+  }
+
+  #data-table tbody tr:nth-child(even) {
+    background-color: #FFFFFF;
+  }
+  #data-table tbody tr:nth-child(odd) {
+    background-color: #F9F9F9;
+  }
+  
+  /* Sticky filter row beneath column names */
+  #data-table thead tr:nth-child(2) th {
+    position: sticky;
+    top: 40px; /* adjust if header row height changes */
+    background-color: #ffffff;
+    z-index: 1;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  select {
+    width: 100%;
+    padding: 4px;
+  }
+  
+
+  .custom-dropdown {
+    position: static;
+    display: block;
+    width: 100%;
+  }
+  .dropdown-btn {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 2px;
+    overflow: visible;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 99999; /* Very high */
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  th {
+    vertical-align: top;
+  }
+
+  .portal-dropdown {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
