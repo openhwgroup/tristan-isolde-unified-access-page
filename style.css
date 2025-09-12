@@ -1,3 +1,5 @@
+// Copyright (c) 2025 Eclipse Foundation
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -46,7 +48,7 @@ body {
     height: 100%;
     cursor: col-resize;
     user-select: none;
-    touch-action: none;
+    z-index: 10;
   }
   
   /* Sticky header row with column names */

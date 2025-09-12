@@ -61,7 +61,7 @@
         "Status": "Released",
         "Description": "Dynamic Binary Translation - Retargetable ISS Environment​​ Application of CoreDSL & DBT-RISE for RISCV​​",
         "Project": "TRISTAN",
-        "WI": "WI5.1.4, WI5.3.2",
+        "WI": ["WI5.1.4","WI5.3.2"],
         "Partners": "MINRES Technologies",
         "Comment": "Used by: Bosch, CEA,ACC"
     },
@@ -259,7 +259,7 @@
         "Status": "Released",
         "Description": "Formal tool for analyzing the robustness of embedded systems against fault injection attacks by combining the RTL of a processor, the binary of a software, and an attacker model.",
         "Project": "TRISTAN",
-        "WI": "WI5.2.5 and WI5.3.6",
+        "WI": ["WI5.2.5", "WI5.3.6"],
         "Partners": "CEA",
         "Comment": "Used by: CEA"
     },

@@ -1,8 +1,11 @@
-// ─── Configuration ────────────────────────────────────────────────
+// Copyright (c) 2025 Eclipse Foundation
+
+
+// Configuration
 const GITHUB_API_URL =
   'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
 
-// ─── Cached DOM Elements ───────────────────────────────────────────
+// Cached DOM Elements
 const statusEl   = document.getElementById('status');
 const exportBtn  = document.getElementById('export-btn');
 const fileInput  = document.getElementById('file-input');
@@ -11,7 +14,7 @@ const table      = document.getElementById('data-table');
 const thead      = table.querySelector('thead');
 const tbody      = table.querySelector('tbody');
 
-// ─── State ────────────────────────────────────────────────────────
+// State
 let masterData   = [];
 let filteredData = [];
 let columns      = [];
@@ -24,7 +27,7 @@ document.getElementById('search-input').addEventListener('input', e => {
   applyFilters();
 });
 
-// ─── Entry Point: Handle Load-Mode Switch ─────────────────────────
+// Entry Point: Handle Load-Mode Switch
 loadRadios.forEach(radio => {
   radio.addEventListener('change', () => {
     resetTable();
@@ -39,7 +42,7 @@ loadRadios.forEach(radio => {
   });
 });
 
-// ─── Local File Handling ──────────────────────────────────────────
+// Local File Handling
 fileInput.addEventListener('change', async event => {
   const files = Array.from(event.target.files);
   if (!files.length) return;
@@ -84,7 +87,7 @@ fileInput.addEventListener('change', async event => {
   }
 });
 
-// ─── GitHub Loading ───────────────────────────────────────────────
+// GitHub Loading
 async function loadFromGitHub() {
   try {
     statusEl.textContent = 'Fetching file list from GitHub…';
@@ -121,7 +124,7 @@ async function loadFromGitHub() {
   }
 }
 
-// ─── Helpers ──────────────────────────────────────────────────────
+// Helpers 
 function resetTable() {
   masterData = [];
   filteredData = [];
@@ -178,7 +181,7 @@ function buildTable() {
     dropdown.tabIndex = 0;
 
     const dropdownBtn = document.createElement('button');
-    dropdownBtn.textContent = `Filter ${col}`;
+    dropdownBtn.textContent = `Filter ${col} ▼`;
     dropdownBtn.type = 'button';
     dropdownBtn.className = 'dropdown-btn';
 
@@ -266,12 +269,13 @@ function buildTable() {
   });
 
   thead.appendChild(headerRow);
+  makeResizable(headerRow);
 
   // Render rows (even if empty)
   renderRows(filteredData);
 }
 
-// ─── Update applyFilters for OR logic ────────────────
+// Update applyFilters for OR logic
 function applyFilters() {
   // Update filterState
   filterState = {};
@@ -360,7 +364,7 @@ exportBtn.addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 
-// ─── Auto‐start GitHub mode on first load ─────────────────────────
+// Auto‐start GitHub mode on first load 
 document.addEventListener('DOMContentLoaded', () => {
   // trigger the default “github” radio
   document.querySelector('input[name="load-mode"][value="github"]')
