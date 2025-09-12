@@ -329,6 +329,7 @@ function renderRows(rows) {
     const tr = document.createElement('tr');
     visibleColumns.forEach(col => {
       const td = document.createElement('td');
+      td.setAttribute('data-label', col);
       if (col === 'URL' && row[col]) {
         const a = document.createElement('a');
         a.href = row[col];

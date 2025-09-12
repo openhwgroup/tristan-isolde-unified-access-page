@@ -117,3 +117,41 @@ body {
   .portal-dropdown {
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
+
+
+  @media screen and (max-width: 600px) {
+  #data-table, #data-table thead, #data-table tbody, #data-table th, #data-table td, #data-table tr {
+    display: block;
+    width: 100%;
+  }
+  #data-table thead tr {
+    display: none;
+  }
+  #data-table tr {
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    background: #fff;
+    padding: 8px;
+  }
+  #data-table td {
+    position: relative;
+    padding-left: 50%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    min-height: 40px;
+    box-sizing: border-box;
+  }
+  #data-table td:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48%;
+    padding-left: 8px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #4B87CB;
+    content: attr(data-label);
+    font-size: 0.95em;
+  }
+}
