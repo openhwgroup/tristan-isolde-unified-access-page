@@ -116,7 +116,7 @@
         "Status": "Released",
         "Description": "IP-XACT/Kactus2 generator for the Renode simulator platform​​​",
         "Project": "TRISTAN",
-        "WI": "WI5.2.9, WI5.3.3",
+        "WI": ["WI5.2.9", "WI5.3.3"],
         "Partners": "MINRES Technologies, Tampere University",
         "Comment": "Used by: Tampere University, Nokia, Cargotec"
     },
