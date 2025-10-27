@@ -1,6 +1,6 @@
 [
   {
-    "Repository": "NOEL-V processor extensions",
+    "Name": "NOEL-V processor extensions",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Processors",
     "URL": "Not yet available",
@@ -13,7 +13,7 @@
     "Comment": "GPL"
   },
   {
-    "Repository": "CVA6 processor extensions",
+    "Name": "CVA6 processor extensions",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Processors",
     "URL": "",
@@ -26,7 +26,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "CV32E40X processor extensions",
+    "Name": "CV32E40X processor extensions",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Processors",
     "URL": "",
@@ -39,7 +39,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "Testing Design Parameters for CVA6",
+    "Name": "Testing Design Parameters for CVA6",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Processors",
     "URL": "",
@@ -52,7 +52,7 @@
     "Comment": "Open Source"
   },
   {
-    "Repository": "Analysis Framework",
+    "Name": "Analysis Framework",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Processors",
     "URL": "",
@@ -65,7 +65,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Context-Aware Bus",
+    "Name": "Context-Aware Bus",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "",
@@ -78,7 +78,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Wormhole NoC",
+    "Name": "Wormhole NoC",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "Not ready yet",
@@ -91,7 +91,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "AXI Sniffer",
+    "Name": "AXI Sniffer",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "Not ready yet",
@@ -104,7 +104,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "AHB Crossbar",
+    "Name": "AHB Crossbar",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "",
@@ -117,7 +117,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "AHB/APB Interrupt Controller",
+    "Name": "AHB/APB Interrupt Controller",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "",
@@ -130,7 +130,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "AHB/APB Timer",
+    "Name": "AHB/APB Timer",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "",
@@ -143,7 +143,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "GRLIB IP library",
+    "Name": "GRLIB IP library",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "https://www.gaisler.com/getgrlib",
@@ -156,7 +156,7 @@
     "Comment": "GPL"
   },
   {
-    "Repository": "Hypervisor virtualization support to low-cost HW IPs",
+    "Name": "Hypervisor virtualization support to low-cost HW IPs",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Peripherals and interconnect",
     "URL": "",
@@ -169,7 +169,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Context-Aware CORE Extensions",
+    "Name": "Context-Aware CORE Extensions",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Common extension interfaces",
     "URL": "",
@@ -182,7 +182,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Memory bank interface",
+    "Name": "Memory bank interface",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Common extension interfaces",
     "URL": "",
@@ -195,7 +195,7 @@
     "Comment": "Open Source"
   },
   {
-    "Repository": "Extension interface for NOEL-V",
+    "Name": "Extension interface for NOEL-V",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Common extension interfaces",
     "URL": "Not yet available",
@@ -208,7 +208,7 @@
     "Comment": "GPL"
   },
   {
-    "Repository": "Extension interface for CVA6",
+    "Name": "Extension interface for CVA6",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Common extension interfaces",
     "URL": "",
@@ -221,7 +221,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Interface between CVA6 and Vector accelerator",
+    "Name": "Interface between CVA6 and Vector accelerator",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "Common extension interfaces",
     "URL": "https://github.com/pulp-platform/ara (branch: mp/xif , commit: f06204b )",
@@ -234,7 +234,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "XNG NOEL-V BSP update to RISC-V new specifications",
+    "Name": "XNG NOEL-V BSP update to RISC-V new specifications",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "SW interfaces to general purpose cores",
     "URL": "",
@@ -247,7 +247,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "CVA6 multicore experiments and analysis",
+    "Name": "CVA6 multicore experiments and analysis",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "SW interfaces to general purpose cores",
     "URL": "",
@@ -260,7 +260,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "SW Abstraction Layer for RISC-V Processors",
+    "Name": "SW Abstraction Layer for RISC-V Processors",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "SW interfaces to general purpose cores",
     "URL": "",
@@ -273,7 +273,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "NOEL-V software tools",
+    "Name": "NOEL-V software tools",
     "Category" : "Cores, interfaces, peripherals & NoCs",
     "Subcategory" : "SW interfaces to general purpose cores",
     "URL": "",
@@ -286,7 +286,7 @@
     "Comment": "GPL"
   },
   {
-    "Repository": "Safety-related Traffic Injector",
+    "Name": "Safety-related Traffic Injector",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "https://github.com/bsc-loca/SafeTI/",
@@ -299,7 +299,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "IPs with integrated Context-Aware PMCs",
+    "Name": "IPs with integrated Context-Aware PMCs",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -312,7 +312,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "Forward-Edge Control Flow Integrity Unit",
+    "Name": "Forward-Edge Control Flow Integrity Unit",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -325,7 +325,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Backward-Edge Control Flow Integrity Unit",
+    "Name": "Backward-Edge Control Flow Integrity Unit",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -338,7 +338,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Cryptographically Tagged Memory Unit",
+    "Name": "Cryptographically Tagged Memory Unit",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -351,7 +351,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Enclave Memory Isolation Unit",
+    "Name": "Enclave Memory Isolation Unit",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -364,7 +364,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Lightweight Tweakable Inline Memory Encryption Engine",
+    "Name": "Lightweight Tweakable Inline Memory Encryption Engine",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -377,7 +377,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Memory subsystem support for Bytecode VMs",
+    "Name": "Memory subsystem support for Bytecode VMs",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -390,7 +390,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "Root-of-Trust Unit Design and Interface with RISC-V Host Processor (TitanCFI)",
+    "Name": "Root-of-Trust Unit Design and Interface with RISC-V Host Processor (TitanCFI)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "https://github.com/pulp-platform/opentitan",
@@ -403,7 +403,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Integration and support in XNG hypervisor for SafeTI and SafeSU IPs",
+    "Name": "Integration and support in XNG hypervisor for SafeTI and SafeSU IPs",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -416,7 +416,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Safety Control",
+    "Name": "Safety Control",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -429,7 +429,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "High-Performance Cache Analysis",
+    "Name": "High-Performance Cache Analysis",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Safety and Security modules",
     "URL": "",
@@ -442,7 +442,7 @@
     "Comment": ""
   },
   {
-    "Repository": "Floating-Point Unit (FPU) for RISC-V",
+    "Name": "Floating-Point Unit (FPU) for RISC-V",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Accelerator infrastructure, memories, arithmetic units, interfaces and virtualization",
     "URL": "",
@@ -455,7 +455,7 @@
     "Comment": "Open Source"
   },
   {
-    "Repository": "FPU for mixed-precision computing",
+    "Name": "FPU for mixed-precision computing",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Accelerator infrastructure, memories, arithmetic units, interfaces and virtualization",
     "URL": "",
@@ -468,7 +468,7 @@
     "Comment": "Multiple"
   },
   {
-    "Repository": "Scratchpad Memory",
+    "Name": "Scratchpad Memory",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Accelerator infrastructure, memories, arithmetic units, interfaces and virtualization",
     "URL": "",
@@ -481,7 +481,7 @@
     "Comment": "GPL v3.0"
   },
   {
-    "Repository": "Safety-related Statistics Unit (SafeSU)",
+    "Name": "Safety-related Statistics Unit (SafeSU)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Accelerator infrastructure, memories, arithmetic units, interfaces and virtualization",
     "URL": "https://github.com/bsc-loca/SafeSU/",
@@ -494,20 +494,20 @@
     "Comment": ""
   },
   {
-    "Repository": "ID 3.3.01",
+    "Name": "ID 3.3.01",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Monitoring infrastructure",
     "URL": "BSC",
     "Project": "ISOLDE",
     "WI": ["TBD"],
-    "Partners": "MIT",
-    "Status": "MIT",
+    "Partners": "",
+    "Status": "",
     "Description": "",
-    "License": "",
+    "License": "MIT",
     "Comment": ""
   },
   {
-    "Repository": "Time Contract Monitoring Co-Processor (TCCP)",
+    "Name": "Time Contract Monitoring Co-Processor (TCCP)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Monitoring infrastructure",
     "URL": "https://github.com/offis/isolde-tccp",
@@ -520,7 +520,7 @@
     "Comment": ""
   },
   {
-    "Repository": "Context-Aware PMC Interface (CA-PMC-IF)",
+    "Name": "Context-Aware PMC Interface (CA-PMC-IF)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Monitoring infrastructure",
     "URL": "",
@@ -533,7 +533,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "Run-time power monitoring instrumentation (RTPM)",
+    "Name": "Run-time power monitoring instrumentation (RTPM)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Monitoring infrastructure",
     "URL": "",
@@ -546,7 +546,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Tensor Processing Unit (TPU)",
+    "Name": "Tensor Processing Unit (TPU)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "https://github.com/pulp-platform/redmule",
@@ -559,7 +559,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Parallel Computing Accelerator (PCA)",
+    "Name": "Parallel Computing Accelerator (PCA)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "",
@@ -572,7 +572,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "AI/ML Accelerator (AMA)",
+    "Name": "AI/ML Accelerator (AMA)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "",
@@ -585,7 +585,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Vector Processing Unit (with multi-precision capabilities) (VPU)",
+    "Name": "Vector Processing Unit (with multi-precision capabilities) (VPU)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "https://github.com/pulp-platform/ara",
@@ -598,7 +598,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "CNN Accelerator for an Event-based Sparse Neural Networks (ECNNA)",
+    "Name": "CNN Accelerator for an Event-based Sparse Neural Networks (ECNNA)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "",
@@ -611,7 +611,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "SIMD/Vector Accelerator",
+    "Name": "SIMD/Vector Accelerator",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "",
@@ -624,7 +624,7 @@
     "Comment": "GPL v3.0"
   },
   {
-    "Repository": "SIMD/Vector Accelerator",
+    "Name": "SIMD/Vector Accelerator",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "SIMD/Vector, AI accelerator and tensor processor unit design",
     "URL": "",
@@ -637,7 +637,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "HLS-based Post-Quantum Cryptographic Accelerator (HLS-PQC)",
+    "Name": "HLS-based Post-Quantum Cryptographic Accelerator (HLS-PQC)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Cryptographic and security accelerators",
     "URL": "To be published",
@@ -650,7 +650,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Multipurpose Accelerator for PQC",
+    "Name": "Multipurpose Accelerator for PQC",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Cryptographic and security accelerators",
     "URL": "",
@@ -663,7 +663,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Accelerator for post-quantum key encapsulation mechanism BIKE (ACC-BIKE)",
+    "Name": "Accelerator for post-quantum key encapsulation mechanism BIKE (ACC-BIKE)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Cryptographic and security accelerators",
     "URL": "",
@@ -676,7 +676,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Number Theoretic Transform Algorithms for Post Quantum Cryptography (NTT)",
+    "Name": "Number Theoretic Transform Algorithms for Post Quantum Cryptography (NTT)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Cryptographic and security accelerators",
     "URL": "",
@@ -689,7 +689,7 @@
     "Comment": "GPL v3.0"
   },
   {
-    "Repository": "Secured RISC-V Processor with Cryptographic Accelerators (SEC)",
+    "Name": "Secured RISC-V Processor with Cryptographic Accelerators (SEC)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Cryptographic and security accelerators",
     "URL": "Not ready yet",
@@ -702,20 +702,20 @@
     "Comment": "GPL v3.0"
   },
   {
-    "Repository": "Motor Control accelerator",
+    "Name": "Motor Control accelerator",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Signal processing, neuromorphic and application-specific instruction set processors",
     "URL": "",
     "Project": "ISOLDE",
     "WI": ["ID 3.6.01"],
-    "Partners": "CODA, BUT, NXP-CZ",
+    "Partners": ["CODA", "BUT", "NXP-CZ"],
     "Status": "",
     "Description": "TBD",
     "License": "Proprietary",
     "Comment": "Proprietary"
   },
   {
-    "Repository": "SCA",
+    "Name": "SCA",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Signal processing, neuromorphic and application-specific instruction set processors",
     "URL": "",
@@ -728,7 +728,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "LDPC",
+    "Name": "LDPC",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Signal processing, neuromorphic and application-specific instruction set processors",
     "URL": "",
@@ -741,7 +741,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Neuromorphic HW Accelerator",
+    "Name": "Neuromorphic HW Accelerator",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Signal processing, neuromorphic and application-specific instruction set processors",
     "URL": "Not ready yet",
@@ -754,7 +754,7 @@
     "Comment": "Solderpad"
   },
   {
-    "Repository": "Fast Fourier Transform Algorithms for SIMD and Vector Accelerators (FFT)",
+    "Name": "Fast Fourier Transform Algorithms for SIMD and Vector Accelerators (FFT)",
     "Category" : "Accelerators and extensions",
     "Subcategory" : "Signal processing, neuromorphic and application-specific instruction set processors",
     "URL": "",
@@ -767,7 +767,7 @@
     "Comment": "GPL v3.0"
   },
   {
-    "Repository": "Neural Network Drivers",
+    "Name": "Neural Network Drivers",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -780,7 +780,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "AI/ML Accelerator driver",
+    "Name": "AI/ML Accelerator driver",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -793,7 +793,7 @@
     "Comment": "Multiple"
   },
   {
-    "Repository": "Optimization of WebAssembly Interpreter",
+    "Name": "Optimization of WebAssembly Interpreter",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -806,20 +806,20 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "Use of device tree abstraction for Linux on RISC-V",
+    "Name": "Use of device tree abstraction for Linux on RISC-V",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
     "Project": "ISOLDE",
     "WI": ["ID 4.1.05"],
-    "Partners": "CONS, SYSGO",
+    "Partners": ["CONS", "SYSGO"],
     "Status": "",
     "Description": "TBD",
     "License": "Open Source",
     "Comment": "Open Source"
   },
   {
-    "Repository": "Execution Framework for Space edge computing",
+    "Name": "Execution Framework for Space edge computing",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -832,7 +832,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Run-Time Environment for end-users",
+    "Name": "Run-Time Environment for end-users",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -845,7 +845,7 @@
     "Comment": "Multiple"
   },
   {
-    "Repository": "PikeOS support for multicore CVA6",
+    "Name": "PikeOS support for multicore CVA6",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "Not applicable",
@@ -858,7 +858,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "XNG BSP to CVA-6 processor core",
+    "Name": "XNG BSP to CVA-6 processor core",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -871,7 +871,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Development of System Software",
+    "Name": "Development of System Software",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "",
@@ -884,7 +884,7 @@
     "Comment": "Open Source"
   },
   {
-    "Repository": "Lauterbach support for CVA6 (instructions how to use Lauterbach on CVA6)",
+    "Name": "Lauterbach support for CVA6 (instructions how to use Lauterbach on CVA6)",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "System SW design, implementation and testing",
     "URL": "https://www.sysgo.com/blog/article/interfacing-multi-core-cva6-on-the-risc-v-culsans-platform-with-lauterbach",
@@ -897,7 +897,7 @@
     "Comment": "Public domain (CC0) for the Vivado/Lauterbach debugger configuration code contained therein."
   },
   {
-    "Repository": "Toolchain for Hardware-aware Neural Network Optimization",
+    "Name": "Toolchain for Hardware-aware Neural Network Optimization",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -910,7 +910,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "RF-SP: Resource-efficient IoT data processing and analytics",
+    "Name": "RF-SP: Resource-efficient IoT data processing and analytics",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -923,7 +923,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "Model-based generation framework for hardware safety pattern",
+    "Name": "Model-based generation framework for hardware safety pattern",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -936,7 +936,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "Compiler Support for Approximate Computing",
+    "Name": "Compiler Support for Approximate Computing",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -949,7 +949,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "AI/ML Accelerator Compiler Toolchain",
+    "Name": "AI/ML Accelerator Compiler Toolchain",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -962,7 +962,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "TPU HAL",
+    "Name": "TPU HAL",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -975,7 +975,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "HAL for RoT unit as a secure-coprocessor",
+    "Name": "HAL for RoT unit as a secure-coprocessor",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -988,7 +988,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "CFI software algorithm in OT firmware",
+    "Name": "CFI software algorithm in OT firmware",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1001,7 +1001,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "OT-based secure boot support (TitanBoot)",
+    "Name": "OT-based secure boot support (TitanBoot)",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1014,7 +1014,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "OpenMP Lite",
+    "Name": "OpenMP Lite",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1027,7 +1027,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "LLVM and debugger support for Forward-edge CFI",
+    "Name": "LLVM and debugger support for Forward-edge CFI",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1040,7 +1040,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "LLVM and debugger support for backward-edge CFI",
+    "Name": "LLVM and debugger support for backward-edge CFI",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1053,7 +1053,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "LLVM and debugger support for cryptographically tagged memory",
+    "Name": "LLVM and debugger support for cryptographically tagged memory",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1066,7 +1066,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Debugger support for enclave memory isolation",
+    "Name": "Debugger support for enclave memory isolation",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1079,7 +1079,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "LLVM/MLIR extensions for PQC and CNN accelerators by SAL",
+    "Name": "LLVM/MLIR extensions for PQC and CNN accelerators by SAL",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1092,7 +1092,7 @@
     "Comment": "Multiple"
   },
   {
-    "Repository": "Intel Shuttle Program",
+    "Name": "Intel Shuttle Program",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1105,7 +1105,7 @@
     "Comment": ""
   },
   {
-    "Repository": "Support for SIMD/Vector Accelerator and scratchpad memory",
+    "Name": "Support for SIMD/Vector Accelerator and scratchpad memory",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1118,7 +1118,7 @@
     "Comment": "GPL v3.0"
   },
   {
-    "Repository": "Safety Compliant Math and Motor Control Library",
+    "Name": "Safety Compliant Math and Motor Control Library",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "Not applicable",
@@ -1131,7 +1131,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Basic toolchain for the many-core parallel accelerator",
+    "Name": "Basic toolchain for the many-core parallel accelerator",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "Application development tools design, implementation and testing",
     "URL": "",
@@ -1144,7 +1144,7 @@
     "Comment": "Multiple"
   },
   {
-    "Repository": "Integrate system level simulators with extra-functional properties",
+    "Name": "Integrate system level simulators with extra-functional properties",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1157,7 +1157,7 @@
     "Comment": "Apache V2.0"
   },
   {
-    "Repository": "Time Contract Co-processor Compiler (TCCP-CO)",
+    "Name": "Time Contract Co-processor Compiler (TCCP-CO)",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "https://github.com/offis/isolde-tccp",
@@ -1170,7 +1170,7 @@
     "Comment": ""
   },
   {
-    "Repository": "Power/Performance Modeling for Design Space Exploration PPM-DSE",
+    "Name": "Power/Performance Modeling for Design Space Exploration PPM-DSE",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1183,7 +1183,7 @@
     "Comment": ""
   },
   {
-    "Repository": "Bit-accurate FPGA fault injection (BAFFI) tool",
+    "Name": "Bit-accurate FPGA fault injection (BAFFI) tool",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1196,7 +1196,7 @@
     "Comment": "MIT"
   },
   {
-    "Repository": "Simulation-based HW/SW co-verification approach",
+    "Name": "Simulation-based HW/SW co-verification approach",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1209,7 +1209,7 @@
     "Comment": "TBD"
   },
   {
-    "Repository": "Software simulator for the AI/ML Accelerator",
+    "Name": "Software simulator for the AI/ML Accelerator",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1222,7 +1222,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Verilator-based Fault-Injection Framework",
+    "Name": "Verilator-based Fault-Injection Framework",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1235,20 +1235,20 @@
     "Comment": "LGPL 3.0, Apache V2.0"
   },
   {
-    "Repository": "Open-Source Verification Flow for High Performance Cores, Accelerators and Demonstrators",
+    "Name": "Open-Source Verification Flow for High Performance Cores, Accelerators and Demonstrators",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
     "Project": "ISOLDE",
     "WI": ["ID 4.3.08"],
-    "Partners": "IFX, HM",
+    "Partners": ["IFX", "HM"],
     "Status": "",
     "Description": "TBD",
     "License": "Open Source",
     "Comment": "Open Source"
   },
   {
-    "Repository": "Tooling to ensure compliance with multicore timing certification objectives",
+    "Name": "Tooling to ensure compliance with multicore timing certification objectives",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1261,7 +1261,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Optimizing WCET with LAVINIUM Toolchain: A Scheduling Solution for Improved Reliability",
+    "Name": "Optimizing WCET with LAVINIUM Toolchain: A Scheduling Solution for Improved Reliability",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1274,7 +1274,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Fault-Injection-Analysis of FPU Unit",
+    "Name": "Fault-Injection-Analysis of FPU Unit",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1287,7 +1287,7 @@
     "Comment": "Open Source"
   },
   {
-    "Repository": "XNG hypervisor integration of validation tools",
+    "Name": "XNG hypervisor integration of validation tools",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
@@ -1300,7 +1300,7 @@
     "Comment": "Proprietary"
   },
   {
-    "Repository": "Hypervisor runtime fault diagnosis tests integration",
+    "Name": "Hypervisor runtime fault diagnosis tests integration",
     "Category" : "Operating systems and applications SW",
     "Subcategory" : "SW for HW design and validation",
     "URL": "",
