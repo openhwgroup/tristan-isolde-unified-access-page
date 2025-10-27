@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: TRISTAN and ISOLDE Unified Access Page
+message: 'If you use this repository, please cite it as below.'
+type: dataset
+authors:
+  - name: TRISTAN project contributors
+    website: 'https://cordis.europa.eu/project/id/101095947'
+  - name: ISOLDE project contributors
+    website: 'https://cordis.europa.eu/project/id/101112274'
+identifiers:
+  - type: url
+    value: >-
+      https://github.com/openhwgroup/tristan-isolde-unified-access-page
+repository-code: >-
+  https://github.com/openhwgroup/tristan-isolde-unified-access-page
+url: 'https://tristan-project.eu/tristan-ips'
+abstract: >-
+  It provides references and descriptions of all the TRISTAN
+  and ISOLDE IPs (hardware and software). It serves as a
+  Virtual Repository page, gathering all the information
+  about the TRISTAN and ISOLDE repositories, their status,
+  and the TRISTAN and ISOLDE partners involved in them.
+version: main
+date-released: '2025-09-29'
