@@ -76,6 +76,45 @@ body {
     box-shadow: 0 1px 0 rgba(0,0,0,0.04);
   }
 
+/* Style the header filter button so the column name itself acts as the toggle */
+.header-filter-btn {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 6px 0;
+  font-size: inherit;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+}
+.header-filter-btn:focus {
+  outline: 3px solid rgba(59,130,246,0.12);
+}
+
+/* Caret pseudo-element: an unobtrusive triangle placed to the right of the header */
+.header-filter-btn {
+  position: relative;
+  padding-right: 22px; /* room for caret */
+}
+.header-filter-btn::after {
+  content: '';
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid currentColor; /* downward pointing triangle */
+  transition: transform 150ms ease, opacity 120ms ease;
+  opacity: 0.9;
+}
+.header-filter-btn[aria-expanded="true"]::after {
+  transform: translateY(-50%) rotate(180deg); /* rotate to point up when open */
+}
+
   /* Increase hit area for touch/pointer devices */
   @media (pointer: coarse) {
     .resizer {
@@ -226,5 +265,4 @@ details summary {
   padding: 0.5em;
   font-weight: 600;
   color: #0f4bb8;
-  /* list-style: none; */ /* remove default marker in some UAs */
 }

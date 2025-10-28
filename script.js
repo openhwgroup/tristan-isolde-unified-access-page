@@ -200,33 +200,29 @@ function buildTable() {
     th.style.position = 'relative';
     th.style.verticalAlign = 'top';
 
-    // Header text
-    const headerText = document.createElement('div');
-    headerText.textContent = col;
-    headerText.style.marginBottom = '4px';
-    th.appendChild(headerText);
-
-    // Dropdown
+    // Header button: use the column name itself as the dropdown toggle for filters
     const dropdown = document.createElement('div');
     dropdown.className = 'custom-dropdown';
     dropdown.tabIndex = 0;
 
-    const dropdownBtn = document.createElement('button');
-    dropdownBtn.textContent = `Filter ${col} ▼`;
-    dropdownBtn.type = 'button';
-    dropdownBtn.className = 'dropdown-btn';
+  const headerBtn = document.createElement('button');
+  // text content is just the column name; caret is provided via CSS ::after
+  headerBtn.textContent = col;
+    headerBtn.type = 'button';
+    headerBtn.className = 'header-filter-btn';
     // Accessibility: indicate this button opens a popup and manage expanded state
-    dropdownBtn.setAttribute('aria-haspopup', 'true');
-    dropdownBtn.setAttribute('aria-expanded', 'false');
+    headerBtn.setAttribute('aria-haspopup', 'true');
+    headerBtn.setAttribute('aria-expanded', 'false');
     const portalId = `portal-dropdown-${col.replace(/\s+/g,'_')}-${i}`;
-    dropdownBtn.setAttribute('aria-controls', portalId);
+    headerBtn.setAttribute('aria-controls', portalId);
     // Keyboard: allow Enter/Space to open the dropdown
-    dropdownBtn.addEventListener('keydown', e => {
+    headerBtn.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        dropdownBtn.click();
+        headerBtn.click();
       }
     });
+    th.appendChild(headerBtn);
 
   const dropdownContent = document.createElement('div');
   dropdownContent.className = 'dropdown-content';
@@ -265,18 +261,26 @@ function buildTable() {
       dropdownContent.appendChild(label);
     });
 
-    dropdown.appendChild(dropdownBtn);
+  // attach header button as the visible toggle
+  dropdown.appendChild(headerBtn);
     dropdown.appendChild(dropdownContent);
     th.appendChild(dropdown);
 
     // Toggle dropdown visibility
-    dropdownBtn.addEventListener('click', e => {
+    headerBtn.addEventListener('click', e => {
       e.stopPropagation();
-      // Remove any existing portal dropdowns
+      // If this column's portal is already open, close it (toggle behavior)
+      const existingPortal = document.getElementById(portalId);
+      if (existingPortal) {
+        existingPortal.remove();
+        headerBtn.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      // Remove any other existing portal dropdowns
       document.querySelectorAll('.portal-dropdown').forEach(dc => dc.remove());
 
-      // Get button position
-      const rect = dropdownBtn.getBoundingClientRect();
+  // Get button position
+  const rect = headerBtn.getBoundingClientRect();
 
   // Clone dropdownContent and expose it as a portal dropdown
   const portalDropdown = dropdownContent.cloneNode(true);
@@ -312,24 +316,37 @@ function buildTable() {
         });
       });
 
-      document.body.appendChild(portalDropdown);
-      // Mark as expanded for assistive tech
-      dropdownBtn.setAttribute('aria-expanded', 'true');
+  document.body.appendChild(portalDropdown);
+  // Mark as expanded for assistive tech
+  headerBtn.setAttribute('aria-expanded', 'true');
 
       // Hide on outside click
       document.addEventListener('click', function hideDropdown(ev) {
-        if (!portalDropdown.contains(ev.target) && ev.target !== dropdownBtn) {
+        if (!portalDropdown.contains(ev.target) && ev.target !== headerBtn) {
           portalDropdown.remove();
-          dropdownBtn.setAttribute('aria-expanded', 'false');
+          headerBtn.setAttribute('aria-expanded', 'false');
           document.removeEventListener('click', hideDropdown);
+          // remove esc handler if present
+          document.removeEventListener('keydown', escHandler);
         }
       });
-    });
 
+      // Close on Escape key for accessibility
+      function escHandler(ev) {
+        if (ev.key === 'Escape' || ev.key === 'Esc') {
+          if (portalDropdown && portalDropdown.parentNode) {
+            portalDropdown.remove();
+          }
+          headerBtn.setAttribute('aria-expanded', 'false');
+          document.removeEventListener('keydown', escHandler);
+        }
+      }
+      document.addEventListener('keydown', escHandler);
+    });
     // Hide dropdown when clicking outside (original inline content)
     document.addEventListener('click', () => {
       dropdownContent.style.display = 'none';
-      dropdownBtn.setAttribute('aria-expanded', 'false');
+      headerBtn.setAttribute('aria-expanded', 'false');
     });
     dropdown.addEventListener('click', e => e.stopPropagation());
 
