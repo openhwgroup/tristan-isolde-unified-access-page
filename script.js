@@ -2,10 +2,11 @@
 
 
 // Configuration
+// TODO: Find mechanism to automatically point to the repo and branch where this GitHub Page is hosted
 const GITHUB_API_URL =
-  // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+  'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
   // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
-  'https://api.github.com/repos/cairo-caplan/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+  // 'https://api.github.com/repos/cairo-caplan/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
 
 // Cached DOM Elements
 const statusEl   = document.getElementById('status');
