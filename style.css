@@ -1,8 +1,13 @@
-// Copyright (c) 2025 Eclipse Foundation
+/* Copyright (c) 2025 Eclipse Foundation */
 
 body {
-    font-family: Arial, sans-serif;
+    /* Use a modern system stack for better rendering and larger base size */
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     margin: 20px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: #222;
+    background: #f6f8fb;
   }
   
   #export-btn {
@@ -12,11 +17,14 @@ body {
   }
   
   .table-container {
-    --row-height: 40px;
-    max-height: calc(var(--row-height) * 20); /* 20 rows */
+    --row-height: 48px;
+    max-height: calc(var(--row-height) * 18); /* visible rows */
     overflow-y: auto;
-    /* overflow: visible; */
-    border: 1px solid #ccc;
+    border-radius: 10px;
+    border: 1px solid rgba(15,23,42,0.08);
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    padding: 6px; /* breathing room for sticky headers */
   }
 
   /* 1) fixed table layout so explicit widths work */
@@ -24,6 +32,8 @@ body {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
+    font-size: 0.98rem; /* slightly larger readable text */
+    color: #1f2937;
   }
 
   /* 2) make each header cell a positioning context */
@@ -44,42 +54,112 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    width: 5px;
+    width: 8px;
     height: 100%;
     cursor: col-resize;
+    -webkit-user-select: none;
     user-select: none;
-    z-index: 10;
+    z-index: 20;
+    /* make handle visible */
+    background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.04));
+    opacity: 0.6;
+    transition: opacity 120ms ease, background 120ms ease;
+  }
+  .resizer:hover { opacity: 1; background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06)); }
+  /* Visible focus for keyboard users */
+  .resizer:focus {
+    outline: 3px solid rgba(79,70,229,0.18);
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+  }
+  .dropdown-btn:focus {
+    outline: 3px solid rgba(59,130,246,0.12);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  }
+
+/* Style the header filter button so the column name itself acts as the toggle */
+.header-filter-btn {
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 6px 0;
+  font-size: inherit;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+}
+.header-filter-btn:focus {
+  outline: 3px solid rgba(59,130,246,0.12);
+}
+
+/* Caret pseudo-element: an unobtrusive triangle placed to the right of the header */
+.header-filter-btn {
+  position: relative;
+  padding-right: 22px; /* room for caret */
+}
+.header-filter-btn::after {
+  content: '';
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid currentColor; /* downward pointing triangle */
+  transition: transform 150ms ease, opacity 120ms ease;
+  opacity: 0.9;
+}
+.header-filter-btn[aria-expanded="true"]::after {
+  transform: translateY(-50%) rotate(180deg); /* rotate to point up when open */
+}
+
+  /* Increase hit area for touch/pointer devices */
+  @media (pointer: coarse) {
+    .resizer {
+      width: 18px;
+      right: -6px; /* expand clickable area outward */
+    }
+    .dropdown-content label {
+      padding: 12px 8px;
+    }
   }
   
   /* Sticky header row with column names */
   #data-table thead tr:first-child th {
     position: sticky;
     top: 0;
-    background-color: #4B87CB;
+    background-color: #0f4bb8; /* stronger blue */
     color: #FFFFFF;
     z-index: 101; /* Increased z-index */
     overflow: visible; /* Ensure dropdown can overflow */
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 12px 14px;
+    text-transform: none;
   }
 
-  #data-table tbody tr:nth-child(even) {
-    background-color: #FFFFFF;
-  }
-  #data-table tbody tr:nth-child(odd) {
-    background-color: #F9F9F9;
-  }
+  /* striped rows */
+  #data-table tbody tr:nth-child(even) { background-color: #ffffff; }
+  #data-table tbody tr:nth-child(odd)  { background-color: #fcfdff; }
+  #data-table tbody tr:hover { background-color: #eef6ff; }
   
   /* Sticky filter row beneath column names */
   #data-table thead tr:nth-child(2) th {
     position: sticky;
-    top: 40px; /* adjust if header row height changes */
+    top: 56px; /* adjusted for larger header */
     background-color: #ffffff;
-    z-index: 1;
+    z-index: 90;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
   
   th, td {
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(15,23,42,0.06);
     text-align: left;
+    vertical-align: middle;
   }
   
   select {
@@ -105,13 +185,15 @@ body {
     left: 0;
     top: 100%;
     background: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(15,23,42,0.08);
     z-index: 99999; /* Very high */
-    max-height: 200px;
+    max-height: 260px;
     overflow-y: auto;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+    border-radius: 6px;
   }
+  .dropdown-content label { display: block; cursor: pointer; padding: 6px; }
   th {
     vertical-align: top;
   }
@@ -120,8 +202,14 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 
-
-  @media screen and (max-width: 600px) {
+  /* Mobile stacked layout
+    - each row or data entry becomes a 2-col table: left col labels, right col values
+    - activated when the width of the Browser window or device screen res is small
+  */
+  @media screen and (max-width: 1000px) {
+     /* reserve a fixed label column width for the
+     field names so they align and don't wrap unpredictably. */
+  :root { --mobile-label-width: 120px; }
   #data-table, #data-table thead, #data-table tbody, #data-table th, #data-table td, #data-table tr {
     display: block;
     width: 100%;
@@ -138,22 +226,43 @@ body {
   }
   #data-table td {
     position: relative;
-    padding-left: 50%;
+    /* left padding equals the label column width + a small gap */
+    padding-left: calc(var(--mobile-label-width) + 8px);
     border: none;
     border-bottom: 1px solid #eee;
-    min-height: 40px;
+    min-height: 48px;
     box-sizing: border-box;
   }
   #data-table td:before {
     position: absolute;
     left: 0;
     top: 0;
-    width: 48%;
+    width: var(--mobile-label-width);
     padding-left: 8px;
     white-space: nowrap;
     font-weight: bold;
     color: #4B87CB;
     content: attr(data-label);
     font-size: 0.95em;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
+
+/* Used for the About section. Hidden by def */
+details {
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+  background: #fff;
+  margin-bottom: 1em;
+  display: block;
+}
+
+details summary {
+  display: block;
+  cursor: pointer;
+  padding: 0.5em;
+  font-weight: 600;
+  color: #0f4bb8;
 }

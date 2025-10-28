@@ -2,6 +2,7 @@
 
 
 // Configuration
+// TODO: Find mechanism to automatically point to the repo and branch where this GitHub Page is hosted
 const GITHUB_API_URL =
   'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
   // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
@@ -15,6 +16,22 @@ const loadRadios = document.querySelectorAll('input[name="load-mode"]');
 const table      = document.getElementById('data-table');
 const thead      = table.querySelector('thead');
 const tbody      = table.querySelector('tbody');
+
+// Screen-reader live region for announcements (visually hidden but readable)
+let srStatus = document.getElementById('sr-status');
+if (!srStatus) {
+  srStatus = document.createElement('div');
+  srStatus.id = 'sr-status';
+  srStatus.setAttribute('role', 'status');
+  srStatus.setAttribute('aria-live', 'polite');
+  // visually hide but keep available to assistive tech
+  srStatus.style.position = 'absolute';
+  srStatus.style.left = '-9999px';
+  srStatus.style.width = '1px';
+  srStatus.style.height = '1px';
+  srStatus.style.overflow = 'hidden';
+  document.body.appendChild(srStatus);
+}
 
 // State
 let masterData   = [];
@@ -81,7 +98,8 @@ fileInput.addEventListener('change', async event => {
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
-    statusEl.textContent = 'Local files loaded.';
+  statusEl.textContent = 'Local files loaded.';
+  srStatus.textContent = `${filteredData.length} items loaded from local files.`;
     exportBtn.disabled = false;
   } catch(err) {
     statusEl.textContent = 'Error: ' + err;
@@ -118,7 +136,8 @@ async function loadFromGitHub() {
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
-    statusEl.textContent = 'GitHub data loaded.';
+  statusEl.textContent = 'GitHub data loaded.';
+  srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
     exportBtn.disabled = false;
   } catch(err) {
     statusEl.textContent = 'Error: ' + err.message;
@@ -126,7 +145,7 @@ async function loadFromGitHub() {
   }
 }
 
-// Helpers 
+// Helpers
 function resetTable() {
   masterData = [];
   filteredData = [];
@@ -136,14 +155,15 @@ function resetTable() {
   exportBtn.disabled = true;
 }
 
-// derive and reorder columns → Project, Category, then rest
+// derive and reorder columns → Name, Category, Project, then the rest
 function deriveColumns() {
   const raw = Object.keys(masterData[0]||{});
   const ordered = [];
-  if (raw.includes('Project'))  ordered.push('Project');
+  if (raw.includes('Name'))     ordered.push('Name');
   if (raw.includes('Category')) ordered.push('Category');
+  if (raw.includes('Project'))  ordered.push('Project');
   raw.forEach(c => {
-    if (c!=='Project' && c!=='Category') ordered.push(c);
+    if (!['Name', 'Category', 'Project'].includes(c)) ordered.push(c);
   });
   columns = ordered;
 }
@@ -160,35 +180,56 @@ function buildTable() {
     table.insertBefore(cg, thead);
   }
   cg.innerHTML = '';
-  visibleColumns.forEach(() => {
+  // Default initial column widths
+  const DEFAULT_COL_WIDTHS = {
+    'Project': '140px',
+    'Name': '320px',
+    'Category': '180px',
+    'License': '130px',
+  };
+
+  visibleColumns.forEach(col => {
     const colEl = document.createElement('col');
+    const w = DEFAULT_COL_WIDTHS[col];
+    if (w) colEl.style.width = w;
     cg.appendChild(colEl);
   });
 
   const headerRow = document.createElement('tr');
-  visibleColumns.forEach(col => {
+  visibleColumns.forEach((col, i) => {
     const th = document.createElement('th');
     th.style.position = 'relative';
     th.style.verticalAlign = 'top';
 
-    // Header text
-    const headerText = document.createElement('div');
-    headerText.textContent = col;
-    headerText.style.marginBottom = '4px';
-    th.appendChild(headerText);
-
-    // Dropdown
+    // Header button: use the column name itself as the dropdown toggle for filters
     const dropdown = document.createElement('div');
     dropdown.className = 'custom-dropdown';
     dropdown.tabIndex = 0;
 
-    const dropdownBtn = document.createElement('button');
-    dropdownBtn.textContent = `Filter ${col} ▼`;
-    dropdownBtn.type = 'button';
-    dropdownBtn.className = 'dropdown-btn';
+  const headerBtn = document.createElement('button');
+  // text content is just the column name; caret is provided via CSS ::after
+  headerBtn.textContent = col;
+    headerBtn.type = 'button';
+    headerBtn.className = 'header-filter-btn';
+    // Accessibility: indicate this button opens a popup and manage expanded state
+    headerBtn.setAttribute('aria-haspopup', 'true');
+    headerBtn.setAttribute('aria-expanded', 'false');
+    const portalId = `portal-dropdown-${col.replace(/\s+/g,'_')}-${i}`;
+    headerBtn.setAttribute('aria-controls', portalId);
+    // Keyboard: allow Enter/Space to open the dropdown
+    headerBtn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        headerBtn.click();
+      }
+    });
+    th.appendChild(headerBtn);
 
-    const dropdownContent = document.createElement('div');
-    dropdownContent.className = 'dropdown-content';
+  const dropdownContent = document.createElement('div');
+  dropdownContent.className = 'dropdown-content';
+  // Accessibility: mark as a popup menu for assistive tech
+  dropdownContent.setAttribute('role', 'menu');
+  dropdownContent.setAttribute('aria-label', `Filter ${col}`);
 
     // Only show filter options present in filteredData
     const values = filteredData.flatMap(r => {
@@ -200,33 +241,52 @@ function buildTable() {
     uniqueVals.forEach(val => {
       const label = document.createElement('label');
       label.style.display = 'block';
+      label.style.padding = '6px';
+      label.style.cursor = 'pointer';
+      // role for the label container
+      label.setAttribute('role', 'menuitem');
       const cb = document.createElement('input');
       cb.type = 'checkbox';
       cb.value = val;
       cb.dataset.column = col;
       cb.checked = filterState[col]?.includes(val) || false; // preserve checked state
-      cb.addEventListener('change', applyFilters);
+      // Accessibility: expose checkbox state
+      cb.setAttribute('role', 'menuitemcheckbox');
+      cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+      cb.addEventListener('change', e => {
+        cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+        applyFilters(e);
+      });
       label.appendChild(cb);
       label.appendChild(document.createTextNode(val));
       dropdownContent.appendChild(label);
     });
 
-    dropdown.appendChild(dropdownBtn);
+  // attach header button as the visible toggle
+  dropdown.appendChild(headerBtn);
     dropdown.appendChild(dropdownContent);
     th.appendChild(dropdown);
 
     // Toggle dropdown visibility
-    dropdownBtn.addEventListener('click', e => {
+    headerBtn.addEventListener('click', e => {
       e.stopPropagation();
-      // Remove any existing portal dropdowns
+      // If this column's portal is already open, close it (toggle behavior)
+      const existingPortal = document.getElementById(portalId);
+      if (existingPortal) {
+        existingPortal.remove();
+        headerBtn.setAttribute('aria-expanded', 'false');
+        return;
+      }
+      // Remove any other existing portal dropdowns
       document.querySelectorAll('.portal-dropdown').forEach(dc => dc.remove());
 
-      // Get button position
-      const rect = dropdownBtn.getBoundingClientRect();
+  // Get button position
+  const rect = headerBtn.getBoundingClientRect();
 
-      // Clone dropdownContent
-      const portalDropdown = dropdownContent.cloneNode(true);
-      portalDropdown.className = 'dropdown-content portal-dropdown';
+  // Clone dropdownContent and expose it as a portal dropdown
+  const portalDropdown = dropdownContent.cloneNode(true);
+  portalDropdown.className = 'dropdown-content portal-dropdown';
+  portalDropdown.id = portalId;
       portalDropdown.style.position = 'absolute';
       portalDropdown.style.left = rect.left + 'px';
       portalDropdown.style.top = (rect.bottom + window.scrollY) + 'px';
@@ -241,29 +301,53 @@ function buildTable() {
       // Sync checked state from original dropdown
       portalDropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
         const orig = dropdownContent.querySelector(`input[value="${cb.value}"]`);
-        if (orig) cb.checked = orig.checked;
+        if (orig) {
+          cb.checked = orig.checked;
+          cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+        }
 
         // When changed, update original dropdown and apply filter
         cb.addEventListener('change', () => {
-          if (orig) orig.checked = cb.checked;
+          if (orig) {
+            orig.checked = cb.checked;
+            orig.setAttribute('aria-checked', orig.checked ? 'true' : 'false');
+          }
+          cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
           applyFilters();
         });
       });
 
-      document.body.appendChild(portalDropdown);
+  document.body.appendChild(portalDropdown);
+  // Mark as expanded for assistive tech
+  headerBtn.setAttribute('aria-expanded', 'true');
 
       // Hide on outside click
       document.addEventListener('click', function hideDropdown(ev) {
-        if (!portalDropdown.contains(ev.target) && ev.target !== dropdownBtn) {
+        if (!portalDropdown.contains(ev.target) && ev.target !== headerBtn) {
           portalDropdown.remove();
+          headerBtn.setAttribute('aria-expanded', 'false');
           document.removeEventListener('click', hideDropdown);
+          // remove esc handler if present
+          document.removeEventListener('keydown', escHandler);
         }
       });
-    });
 
-    // Hide dropdown when clicking outside
+      // Close on Escape key for accessibility
+      function escHandler(ev) {
+        if (ev.key === 'Escape' || ev.key === 'Esc') {
+          if (portalDropdown && portalDropdown.parentNode) {
+            portalDropdown.remove();
+          }
+          headerBtn.setAttribute('aria-expanded', 'false');
+          document.removeEventListener('keydown', escHandler);
+        }
+      }
+      document.addEventListener('keydown', escHandler);
+    });
+    // Hide dropdown when clicking outside (original inline content)
     document.addEventListener('click', () => {
       dropdownContent.style.display = 'none';
+      headerBtn.setAttribute('aria-expanded', 'false');
     });
     dropdown.addEventListener('click', e => e.stopPropagation());
 
@@ -314,8 +398,14 @@ function applyFilters() {
       })
     )
   );
-
   renderRows(filteredData);
+  // Announce filter results to assistive tech
+  try {
+    const activeFilters = Object.entries(filterState).map(([c,vals]) => `${c}: ${vals.join(', ')}`).join('; ');
+    srStatus.textContent = `${filteredData.length} results.` + (activeFilters ? ` Active filters: ${activeFilters}.` : '');
+  } catch (e) {
+    srStatus.textContent = `${filteredData.length} results.`;
+  }
   buildTable(); // <-- ensures dropdowns are rebuilt from filteredData
 }
 
@@ -336,13 +426,34 @@ function renderRows(rows) {
     visibleColumns.forEach(col => {
       const td = document.createElement('td');
       td.setAttribute('data-label', col);
-      if (col === 'URL' && row[col]) {
-        const a = document.createElement('a');
-        a.href = row[col];
-        a.textContent = row[col];
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        td.appendChild(a);
+          // If both Name and URL are present in the data set, hide the
+          // URL column from the view and render the Name cell as a
+          // hyperlink pointing to the URL value when available.
+          if (col === 'Name') {
+            const nameVal = row['Name'];
+            const urlVal = row['URL'];
+            if (urlVal) {
+              const a = document.createElement('a');
+              a.href = urlVal;
+              a.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? urlVal);
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              td.appendChild(a);
+            } else {
+              td.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? '');
+            }
+      } else if (col === 'URL') {
+        // Keep URL rendering for cases where URL is visible (fallback)
+        if (row[col]) {
+          const a = document.createElement('a');
+          a.href = row[col];
+          a.textContent = row[col];
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          td.appendChild(a);
+        } else {
+          td.textContent = '';
+        }
       } else {
         td.textContent = row[col] ?? '';
       }
@@ -352,7 +463,7 @@ function renderRows(rows) {
   });
 }
 
-// CSV export (unchanged)
+// CSV export
 exportBtn.addEventListener('click', () => {
   if (!filteredData.length) return;
   const lines = [visibleColumns.join(',')];
@@ -366,7 +477,7 @@ exportBtn.addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 
-// Auto‐start GitHub mode on first load 
+// Auto‐start GitHub mode on first load
 document.addEventListener('DOMContentLoaded', () => {
   // trigger the default “github” radio
   document.querySelector('input[name="load-mode"][value="github"]')
@@ -380,29 +491,70 @@ function makeResizable(headerRow) {
     resizer.className = 'resizer';
     th.appendChild(resizer);
 
+    // Make the resizer keyboard and pointer accessible
+    resizer.tabIndex = 0;
+    resizer.setAttribute('role', 'separator');
+    resizer.setAttribute('aria-orientation', 'horizontal');
+    const headerLabel = th.querySelector('div')?.textContent?.trim() || `column ${i+1}`;
+    resizer.setAttribute('aria-label', `Resize ${headerLabel}`);
+
     let startX, startWidth;
-    const onMouseMove = e => {
-      const delta = e.pageX - startX;
+    const onPointerMove = e => {
+      const x = e.pageX ?? (e.touches && e.touches[0] && e.touches[0].pageX) ?? e.clientX;
+      const delta = x - startX;
       cols[i].style.width = startWidth + delta + 'px';
     };
-    const onMouseUp = () => {
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
+    const onPointerUp = e => {
+      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('pointerup', onPointerUp);
+      try { resizer.releasePointerCapture && resizer.releasePointerCapture(e.pointerId); } catch(_) {}
     };
 
+    // Pointer (mouse/touch/pen) handling
+    resizer.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      startX = e.pageX || e.clientX;
+      startWidth = th.offsetWidth;
+      try { resizer.setPointerCapture && resizer.setPointerCapture(e.pointerId); } catch(_) {}
+      document.addEventListener('pointermove', onPointerMove);
+      document.addEventListener('pointerup', onPointerUp);
+    });
+
+    // Fallback mouse handling (older browsers)
+    const onMouseMove = e => onPointerMove(e);
+    const onMouseUp = e => onPointerUp(e);
     resizer.addEventListener('mousedown', e => {
       startX = e.pageX;
       startWidth = th.offsetWidth;
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     });
+
+    // Keyboard support: Arrow keys adjust width in 10px increments
+    resizer.addEventListener('keydown', e => {
+      const cur = parseInt(getComputedStyle(cols[i]).width, 10) || th.offsetWidth;
+      if (e.key === 'ArrowLeft') {
+        cols[i].style.width = Math.max(20, cur - 10) + 'px';
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight') {
+        cols[i].style.width = (cur + 10) + 'px';
+        e.preventDefault();
+      }
+    });
   });
 }
 
+// Ensure primary columns appear first in any visibleColumns/orderings
+function reorderPrimaryFirst(arr) {
+  if (!Array.isArray(arr)) return arr;
+  const primaries = ['Name', 'Category', 'Project'];
+  const set = new Set(arr);
+  const head = primaries.filter(p => set.has(p));
+  const tail = arr.filter(c => !primaries.includes(c));
+  return [...head, ...tail];
+}
 
-
-
-const defaultColumns = ["Project", "Category", "Repository", "URL", "License", "Status"];
+const defaultColumns = ["Name", "Category", "Project", "URL", "License", "Status"];
 let viewMode = "default";
 let visibleColumns = [];
 
@@ -412,6 +564,8 @@ function updateVisibleColumns() {
   } else {
     visibleColumns = [...columns];
   }
+  // Ensure primary ordering is respected
+  visibleColumns = reorderPrimaryFirst(visibleColumns);
 }
 
 // Show/hide the view dropdown
@@ -443,16 +597,23 @@ function updateVisibleColumns() {
   } else {
     visibleColumns = [...columns];
   }
+  // If both Name and URL exist in the dataset, hide the URL column
+  // from the visible columns because Name will be rendered as a
+  // hyperlink using the URL value.
+  if (columns.includes('Name') && columns.includes('URL')) {
+    visibleColumns = visibleColumns.filter(c => c !== 'URL');
+  }
 }
 
 // When columns are derived, update visibleColumns for current view
 function deriveColumns() {
   const raw = Object.keys(masterData[0]||{});
   const ordered = [];
-  if (raw.includes('Project'))  ordered.push('Project');
+  if (raw.includes('Name'))     ordered.push('Name');
   if (raw.includes('Category')) ordered.push('Category');
+  if (raw.includes('Project'))  ordered.push('Project');
   raw.forEach(c => {
-    if (c!=='Project' && c!=='Category') ordered.push(c);
+    if (!['Name', 'Category', 'Project'].includes(c)) ordered.push(c);
   });
   columns = ordered;
   updateVisibleColumns();
