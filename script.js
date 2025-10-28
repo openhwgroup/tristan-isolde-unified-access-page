@@ -179,8 +179,18 @@ function buildTable() {
     table.insertBefore(cg, thead);
   }
   cg.innerHTML = '';
-  visibleColumns.forEach(() => {
+  // Default initial column widths
+  const DEFAULT_COL_WIDTHS = {
+    'Project': '140px',
+    'Name': '320px',
+    'Category': '180px',
+    'License': '130px',
+  };
+
+  visibleColumns.forEach(col => {
     const colEl = document.createElement('col');
+    const w = DEFAULT_COL_WIDTHS[col];
+    if (w) colEl.style.width = w;
     cg.appendChild(colEl);
   });
 

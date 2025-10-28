@@ -163,8 +163,14 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 
-
-  @media screen and (max-width: 600px) {
+  /* Mobile stacked layout
+    - each row or data entry becomes a 2-col table: left col labels, right col values
+    - activated when the width of the Browser window or device screen res is small
+  */
+  @media screen and (max-width: 1000px) {
+     /* reserve a fixed label column width for the
+     field names so they align and don't wrap unpredictably. */
+  :root { --mobile-label-width: 120px; }
   #data-table, #data-table thead, #data-table tbody, #data-table th, #data-table td, #data-table tr {
     display: block;
     width: 100%;
@@ -181,7 +187,8 @@ body {
   }
   #data-table td {
     position: relative;
-    padding-left: 50%;
+    /* left padding equals the label column width + a small gap */
+    padding-left: calc(var(--mobile-label-width) + 8px);
     border: none;
     border-bottom: 1px solid #eee;
     min-height: 48px;
@@ -191,13 +198,15 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    width: 48%;
+    width: var(--mobile-label-width);
     padding-left: 8px;
     white-space: nowrap;
     font-weight: bold;
     color: #4B87CB;
     content: attr(data-label);
     font-size: 0.95em;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
