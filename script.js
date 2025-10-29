@@ -484,6 +484,76 @@ document.addEventListener('DOMContentLoaded', () => {
           .dispatchEvent(new Event('change'));
 });
 
+// Preselect filters
+// 1) Through GET method, which is embedded on the URL
+//    Ex: ?filter_Project=TRISTAN or ?filter_Project=TRISTAN,ISOLDE
+// 2) POST method, through postMessage from a parent frame:
+//    Ex: window.postMessage({ type: 'setFilters', filters: { Project: ['TRISTAN'] } }, '*')
+
+function parseFiltersFromQuery() {
+  const params = new URLSearchParams(window.location.search || '');
+  const filters = {};
+  for (const [k,v] of params.entries()) {
+    // Accept either filter_<Column>=v or plain column param like Project=TRISTAN
+    if (k.startsWith('filter_')) {
+      const col = k.replace(/^filter_/, '');
+      filters[col] = v.split(',').map(s=>decodeURIComponent(s).trim()).filter(Boolean);
+    } else {
+      filters[k] = v.split(',').map(s=>decodeURIComponent(s).trim()).filter(Boolean);
+    }
+  }
+  return filters;
+}
+
+function setInitialFilterSelections(filters) {
+  if (!filters || typeof filters !== 'object') return;
+  // For each custom-dropdown in the header, set checkboxes that match
+  const headerDropdowns = Array.from(thead.querySelectorAll('.custom-dropdown'));
+  headerDropdowns.forEach(dropdown => {
+    const btn = dropdown.querySelector('.header-filter-btn');
+    const col = btn?.textContent?.trim();
+    if (!col) return;
+    const want = filters[col];
+    if (!want || !want.length) return;
+    // Set inline checkbox states
+    dropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      if (want.includes(cb.value)) {
+        cb.checked = true;
+        cb.setAttribute('aria-checked', 'true');
+      } else {
+        cb.checked = false;
+        cb.setAttribute('aria-checked', 'false');
+      }
+    });
+  });
+  // Now apply filters based on those checkboxes
+  applyFilters();
+}
+
+// Accept filters via postMessage for cross-document embedding
+window.addEventListener('message', (ev) => {
+  try {
+    const msg = ev.data;
+    if (!msg || typeof msg !== 'object') return;
+    if (msg.type === 'setFilters' && msg.filters) {
+      // If the table is already built, apply immediately; otherwise store and apply after build
+      setInitialFilterSelections(msg.filters);
+    }
+  } catch (e) {
+    console.debug('Ignored message', e);
+  }
+});
+
+// If URL encodes filters, try to apply after initial build
+document.addEventListener('DOMContentLoaded', () => {
+  // parse and apply filters from URL (if any) after a short delay when table is built
+  const urlFilters = parseFiltersFromQuery();
+  if (Object.keys(urlFilters).length) {
+    // attempt to apply after build completes
+    setTimeout(() => setInitialFilterSelections(urlFilters), 250);
+  }
+});
+
 function makeResizable(headerRow) {
   const cols = table.querySelectorAll('col');
   headerRow.querySelectorAll('th').forEach((th, i) => {
