@@ -2,7 +2,7 @@
 
 # Copyright (c) 2025 Eclipse Foundation
 """
-Validate all JSON files under `ips/` against the provided `ips/schema.json`.
+Validate all JSON files under `ips/` against the provided `cfg/schema.json`.
 
 Usage:
   python3 scripts/validate_ips.py         # prints results, returns non-zero on error
@@ -23,7 +23,7 @@ except Exception:
     sys.exit(2)
 
 ROOT = Path(__file__).resolve().parents[1]
-SCHEMA_PATH = ROOT / 'ips' / 'schema.json'
+SCHEMA_PATH = ROOT / 'cfg' / 'schema.json'
 
 def load_schema(strict=False):
     with open(SCHEMA_PATH, 'r', encoding='utf-8') as fh:

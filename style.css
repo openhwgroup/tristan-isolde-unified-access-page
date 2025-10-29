@@ -187,7 +187,7 @@ body {
     background: #fff;
     border: 1px solid rgba(15,23,42,0.08);
     z-index: 99999; /* Very high */
-    max-height: 260px;
+    max-height: 300px;
     overflow-y: auto;
     width: 100%;
     box-shadow: 0 6px 18px rgba(16,24,40,0.08);

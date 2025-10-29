@@ -7,6 +7,8 @@ const GITHUB_API_URL =
   'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
   // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
   // 'https://api.github.com/repos/cairo-caplan/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+const CATEGORIES_URL = 'cfg/categories.json';
+const PROJECTS_URL = 'cfg/projects.json';
 
 // Cached DOM Elements
 const statusEl   = document.getElementById('status');
@@ -39,6 +41,43 @@ let filteredData = [];
 let columns      = [];
 let searchText   = '';
 let filterState = {}; // { columnName: [checkedValues] }
+let allowedCategories = [];
+let projectsData = [];
+
+async function loadAllowedCategories() {
+  try {
+    const response = await fetch(CATEGORIES_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to load categories: ${response.statusText}`);
+    }
+    allowedCategories = await response.json();
+  } catch (error) {
+    console.error(error);
+    statusEl.textContent = 'Error: Could not load categories.';
+  }
+}
+
+async function loadProjectsData() {
+  try {
+    const response = await fetch(PROJECTS_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to load projects: ${response.statusText}`);
+    }
+    projectsData = await response.json();
+  } catch (error) {
+    console.error(error);
+    statusEl.textContent = 'Error: Could not load projects.';
+  }
+}
+
+function findCategory(categoryString) {
+  if (!categoryString) return null;
+  const cat = allowedCategories.find(c =>
+    c.name.toLowerCase() === categoryString.toLowerCase() ||
+    (c.aliases && c.aliases.map(a => a.toLowerCase()).includes(categoryString.toLowerCase()))
+  );
+  return cat ? cat.name : null;
+}
 
 // Add event listener for the search input
 document.getElementById('search-input').addEventListener('input', e => {
@@ -48,15 +87,17 @@ document.getElementById('search-input').addEventListener('input', e => {
 
 // Entry Point: Handle Load-Mode Switch
 loadRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
+  radio.addEventListener('change', async () => {
     resetTable();
     if (radio.value === 'github' && radio.checked) {
       fileInput.style.display = 'none';
+      await loadProjectsData();
       loadFromGitHub();
     }
     if (radio.value === 'local' && radio.checked) {
       fileInput.style.display = 'inline-block';
       statusEl.textContent = 'Select one or more local JSON files.';
+      await loadProjectsData();
     }
   });
 });
@@ -67,6 +108,7 @@ fileInput.addEventListener('change', async event => {
   if (!files.length) return;
   resetTable();
   try {
+    await loadAllowedCategories();
     statusEl.textContent = `Reading ${files.length} local file(s)…`;
     const arrs = await Promise.all(files.map(file => {
       return new Promise((res, rej) => {
@@ -78,10 +120,16 @@ fileInput.addEventListener('change', async event => {
             const dotCount = (file.name.match(/\./g) || []).length;
             if (dotCount >= 2) {
               const match = file.name.match(/^.*\.(.*?)\.json$/i);
-              const category = match ? match[1] : file.name.replace(/\.json$/i,'');
-              res(Array.isArray(data)
-                ? data.map(item => ({ ...item, Category: category }))
-                : []);
+              const categoryString = match ? match[1] : file.name.replace(/\.json$/i,'');
+              const categoryName = findCategory(categoryString);
+              if (categoryName) {
+                res(Array.isArray(data)
+                  ? data.map(item => ({ ...item, Category: categoryName }))
+                  : []);
+              } else {
+                console.warn(`Skipping file with invalid category: ${file.name}`);
+                res([]);
+              }
             } else {
               res(Array.isArray(data) ? data : []);
             }
@@ -110,6 +158,7 @@ fileInput.addEventListener('change', async event => {
 // GitHub Loading
 async function loadFromGitHub() {
   try {
+    await loadAllowedCategories();
     statusEl.textContent = 'Fetching file list from GitHub…';
     const resp = await fetch(GITHUB_API_URL);
     if (!resp.ok) throw new Error(`GitHub API ${resp.status}`);
@@ -123,10 +172,16 @@ async function loadFromGitHub() {
       const dotCount = (f.name.match(/\./g) || []).length;
       if (dotCount >= 2) {
         const match = f.name.match(/^.*\.(.*?)\.json$/i);
-        const category = match ? match[1] : f.name.replace(/\.json$/i,'');
-        return Array.isArray(data)
-          ? data.map(item => ({ ...item, Category: category }))
-          : [];
+        const categoryString = match ? match[1] : f.name.replace(/\.json$/i,'');
+        const categoryName = findCategory(categoryString);
+        if (categoryName) {
+          return Array.isArray(data)
+            ? data.map(item => ({ ...item, Category: categoryName }))
+            : [];
+        } else {
+          console.warn(`Skipping file with invalid category: ${f.name}`);
+          return [];
+        }
       } else {
         return Array.isArray(data) ? data : [];
       }
@@ -231,11 +286,20 @@ function buildTable() {
   dropdownContent.setAttribute('role', 'menu');
   dropdownContent.setAttribute('aria-label', `Filter ${col}`);
 
+    // Add search input to dropdown
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Search...';
+    searchInput.style.width = '100%';
+    dropdownContent.appendChild(searchInput);
+
     // Only show filter options present in filteredData
-    const values = filteredData.flatMap(r => {
-      const v = r[col];
-      return Array.isArray(v) ? v : [v];
-    });
+    const values = col === 'Category'
+      ? allowedCategories.map(c => c.name)
+      : filteredData.flatMap(r => {
+          const v = r[col];
+          return Array.isArray(v) ? v : [v];
+        });
     const uniqueVals = [...new Set(values)];
 
     uniqueVals.forEach(val => {
@@ -294,9 +358,22 @@ function buildTable() {
       portalDropdown.style.display = 'block';
       portalDropdown.style.background = '#fff';
       portalDropdown.style.border = '1px solid #ccc';
-      portalDropdown.style.maxHeight = '200px';
+      portalDropdown.style.maxHeight = '400px';
       portalDropdown.style.overflowY = 'auto';
       portalDropdown.style.width = rect.width + 'px';
+
+      // Add search functionality to the portal dropdown's search input
+      const portalSearchInput = portalDropdown.querySelector('input[type="text"]');
+      if (portalSearchInput) {
+        portalSearchInput.addEventListener('input', e => {
+          const filter = e.target.value.toLowerCase();
+          const labels = portalDropdown.querySelectorAll('label');
+          labels.forEach(label => {
+            const text = label.textContent.toLowerCase();
+            label.style.display = text.includes(filter) ? 'block' : 'none';
+          });
+        });
+      }
 
       // Sync checked state from original dropdown
       portalDropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
@@ -426,22 +503,30 @@ function renderRows(rows) {
     visibleColumns.forEach(col => {
       const td = document.createElement('td');
       td.setAttribute('data-label', col);
-          // If both Name and URL are present in the data set, hide the
-          // URL column from the view and render the Name cell as a
-          // hyperlink pointing to the URL value when available.
-          if (col === 'Name') {
-            const nameVal = row['Name'];
-            const urlVal = row['URL'];
-            if (urlVal) {
-              const a = document.createElement('a');
-              a.href = urlVal;
-              a.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? urlVal);
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              td.appendChild(a);
-            } else {
-              td.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? '');
-            }
+      if (col === 'Project') {
+        const project = projectsData.find(p => p.name === row[col]);
+        if (project && project.logo) {
+          const img = document.createElement('img');
+          img.src = project.logo;
+          img.alt = project.name;
+          img.style.height = '64px';
+          td.appendChild(img);
+        } else {
+          td.textContent = row[col] ?? '';
+        }
+      } else if (col === 'Name') {
+        const nameVal = row['Name'];
+        const urlVal = row['URL'];
+        if (urlVal) {
+          const a = document.createElement('a');
+          a.href = urlVal;
+          a.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? urlVal);
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          td.appendChild(a);
+        } else {
+          td.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? '');
+        }
       } else if (col === 'URL') {
         // Keep URL rendering for cases where URL is visible (fallback)
         if (row[col]) {
