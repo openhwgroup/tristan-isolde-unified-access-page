@@ -514,7 +514,7 @@
     "Project": "ISOLDE",
     "WI": ["ID 3.3.02"],
     "Partners": "OFFIS",
-    "Status": "Work in progress;",
+    "Status": "Work in progress",
     "Description": "The Time Contract Co-Processor (TCCP), a reconfigurable open-source co-processor for RISC-V systems.",
     "License": "Apache V2.0",
     "Comment": ""
