@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlFilters = parseFiltersFromQuery();
   if (Object.keys(urlFilters).length) {
     // attempt to apply after build completes
-    setTimeout(() => setInitialFilterSelections(urlFilters), 250);
+    setTimeout(() => setInitialFilterSelections(urlFilters), 1000);
   }
 });
 
