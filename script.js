@@ -152,6 +152,7 @@ fileInput.addEventListener('change', async event => {
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
+    setInitialFilterSelections(parseFiltersFromQuery()); // Apply URL filters now
   statusEl.textContent = 'Local files loaded.';
   srStatus.textContent = `${filteredData.length} items loaded from local files.`;
     exportBtn.disabled = false;
@@ -198,6 +199,7 @@ async function loadFromGitHub() {
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
+    setInitialFilterSelections(parseFiltersFromQuery()); // Apply URL filters now
   statusEl.textContent = 'GitHub data loaded.';
   srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
     exportBtn.disabled = false;
@@ -480,20 +482,25 @@ function buildTable(skipPortalId = null) {
 }
 
 // Update applyFilters for OR logic
-function applyFilters() {
-  // Update filterState
-  const newFilterState = {};
-  // We only need to read from the original dropdowns in the thead,
-  // since the portal dropdowns sync their state back to them.
-  const headerDropdowns = thead.querySelectorAll('.custom-dropdown');
-  headerDropdowns.forEach(dropdown => {
-    const checkedCbs = dropdown.querySelectorAll('input[type="checkbox"]:checked'); // This can be empty
-    if (checkedCbs.length > 0) {
-      const col = checkedCbs[0].dataset.column;
-      newFilterState[col] = Array.from(checkedCbs).map(cb => cb.value);
+function applyFilters(initialState = null) {
+  if (initialState) {
+    // If an initial state is provided (from URL), use it directly.
+    filterState = initialState;
+  } else {
+    // Otherwise, build the filter state from the DOM (user interaction).
+    const newFilterState = {};
+    const openPortal = document.querySelector('.portal-dropdown');
+    if (openPortal) {
+      const checkedCbs = openPortal.querySelectorAll('input[type="checkbox"]:checked');
+      if (checkedCbs.length > 0) {
+        const col = checkedCbs[0].dataset.column;
+        newFilterState[col] = Array.from(checkedCbs).map(cb => cb.value);
+      }
     }
-  });
-  filterState = newFilterState;
+    // Merge with existing filters from other columns
+    filterState = newFilterState;
+  }
+
   // Filtering logic
   filteredData = masterData.filter(row =>
     Object.entries(filterState).every(([col, vals]) => {
@@ -769,28 +776,9 @@ function parseFiltersFromQuery() {
 }
 
 function setInitialFilterSelections(filters) {
-  if (!filters || typeof filters !== 'object') return;
-  // For each custom-dropdown in the header, set checkboxes that match
-  const headerDropdowns = Array.from(thead.querySelectorAll('.custom-dropdown'));
-  headerDropdowns.forEach(dropdown => {
-    const btn = dropdown.querySelector('.header-filter-btn');
-    const col = btn?.textContent?.trim();
-    if (!col) return;
-    const want = filters[col];
-    if (!want || !want.length) return;
-    // Set inline checkbox states
-    dropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-      if (want.includes(cb.value)) {
-        cb.checked = true;
-        cb.setAttribute('aria-checked', 'true');
-      } else {
-        cb.checked = false;
-        cb.setAttribute('aria-checked', 'false');
-      }
-    });
-  });
-  // Now apply filters based on those checkboxes
-  applyFilters();
+  if (!filters || Object.keys(filters).length === 0) return;
+  // Pass the filters from the URL directly to applyFilters.
+  applyFilters(filters);
 }
 
 // Accept filters via postMessage for cross-document embedding
@@ -804,16 +792,6 @@ window.addEventListener('message', (ev) => {
     }
   } catch (e) {
     console.debug('Ignored message', e);
-  }
-});
-
-// If URL encodes filters, try to apply after initial build
-document.addEventListener('DOMContentLoaded', () => {
-  // parse and apply filters from URL (if any) after a short delay when table is built
-  const urlFilters = parseFiltersFromQuery();
-  if (Object.keys(urlFilters).length) {
-    // attempt to apply after build completes
-    setTimeout(() => setInitialFilterSelections(urlFilters), 1000);
   }
 });
 
