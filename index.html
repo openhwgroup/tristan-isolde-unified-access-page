@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Virtual Repository view - Unified Access Page next version candidate</title>
+  <title>Unified Access Page</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -28,49 +28,50 @@
     <p>The TRISTAN and ISOLDE Unified Access Page is the deliverable of the TRISTAN Task 2 of the Work Package 7 (7.2) and ISOLDE Work Package WP6.</p>
   </details>
 
-  <!-- <h1>Virtual Repository view  - Unified Access Page next version candidate</h1> -->
-
-  <!-- Load Mode Toggle -->
-  <div id="load-options">
-    <label>
-      <input type="radio" name="load-mode" value="github" checked>
-      Load from GitHub
-    </label>
-    <label style="margin-left:1em">
-      <input type="radio" name="load-mode" value="local">
-      Load Local Files
-    </label>
+  <div class="search-and-settings-container" style="position: relative;">
     <input
-      type="file"
-      id="file-input"
-      multiple
-      accept=".json"
-      style="display: none; margin-left:1em;"
+      type="text"
+      id="search-input"
+      placeholder="Search all fields..."
     />
-  </div>
+    <button id="settings-toggle-btn" title="Open Settings" aria-label="Open Settings Panel">⚙️</button>
 
-    <div style="display:inline-block; position:relative; margin-right:10px;">
-    <button id="view-toggle-btn" style="padding: 6px 12px;">Table View ▼</button>
-    <div id="view-toggle-dropdown" style="display:none; position:absolute; left:0; top:100%; background:#fff; border:1px solid #ccc; z-index:10000; box-shadow:0 2px 8px rgba(0,0,0,0.15);">
-      <label style="display:block; padding:6px; cursor:pointer;">
-        <input type="radio" name="table-view" value="default" checked>
-        Default
-      </label>
-      <label style="display:block; padding:6px; cursor:pointer;">
-        <input type="radio" name="table-view" value="detailed">
-        Detailed
-      </label>
+    <div id="settings-panel" class="floating-panel" hidden>
+      <h3>Settings</h3>
+
+      <div id="load-options" class="settings-group">
+        <h4>Data source</h4>
+        <label>
+          <input type="radio" name="load-mode" value="github" checked>
+          Load from GitHub
+        </label>
+        <label>
+          <input type="radio" name="load-mode" value="local">
+          Load from local files
+        </label>
+        <input
+          type="file"
+          id="file-input"
+          multiple
+          accept=".json"
+          style="display: none; margin-left:1em;"
+        />
+      </div>
+
+      <div class="settings-group">
+        <h4>Table View</h4>
+        <label><input type="radio" name="table-view" value="default" checked>Default</label>
+        <label><input type="radio" name="table-view" value="detailed">Detailed</label>
+      </div>
+      <div class="settings-group">
+        <h4>Controls</h4>
+        <button onclick="window.location.href='editor.html'">Edit table data</button>
+        <button id="export-btn" disabled>Export CSV</button>
+      </div>
+      <div id="status" class="settings-group">Choose a load mode to begin.</div>
     </div>
   </div>
-  <button id="export-btn" disabled>Export CSV</button>
-  <div id="status">Choose a load mode to begin.</div>
 
-  <input
-    type="text"
-    id="search-input"
-    placeholder="Search all fields..."
-    style="margin-bottom: 10px; width: 100%; padding: 6px;"
-  />
   <div class="table-container">
     <table id="data-table">
       <thead></thead>
