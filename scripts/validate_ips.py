@@ -14,6 +14,8 @@ import argparse
 import glob
 import json
 import sys
+import re
+from urllib.parse import urlparse
 from pathlib import Path
 
 try:
@@ -39,9 +41,35 @@ def load_schema(strict=False):
 def validate_file(path, schema):
     with open(path, 'r', encoding='utf-8') as fh:
         data = json.load(fh)
+
+    # Custom validator for URI format that allows empty strings
+    def is_uri_or_empty(instance):
+        if not isinstance(instance, str):
+            return True # Let the "type" validation handle non-strings
+        if instance == "":
+            return True # Allow empty strings
+
+        # Use Python's built-in URL parser for robust validation.
+        # It must have a scheme (http, https, etc.) OR a network location
+        try:
+            result = urlparse(instance)
+            # If a scheme is present, it's a valid URI.
+            if result.scheme:
+                return True
+            # If no scheme, re-parse with a prepended scheme to correctly identify the netloc.
+            # This handles cases like 'www.github.com'.
+            result_with_scheme = urlparse('//' + instance)
+            # A valid netloc must exist AND contain at least one dot.
+            return bool(result_with_scheme.netloc and '.' in result_with_scheme.netloc)
+        except ValueError:
+            return False
+
+    # Create a format checker and extend it with our custom check for "uri"
+    format_checker = jsonschema.FormatChecker()
+    format_checker.checks("uri", raises=(ValueError,))(is_uri_or_empty)
     # use jsonschema validator (Draft7) which is declared in schema
     resolver = jsonschema.RefResolver(base_uri=f'file://{SCHEMA_PATH}', referrer=schema)
-    validator = jsonschema.Draft7Validator(schema, resolver=resolver)
+    validator = jsonschema.Draft7Validator(schema, resolver=resolver, format_checker=format_checker)
     errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
     return errors
 
