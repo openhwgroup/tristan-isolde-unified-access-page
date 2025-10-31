@@ -7,6 +7,12 @@ const GITHUB_API_URL =
   'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
   // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
   // 'https://api.github.com/repos/cairo-caplan/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+const CATEGORIES_URL = 'cfg/categories.json';
+const PROJECTS_URL = 'cfg/projects.json';
+
+const defaultColumns = ["Name", "Category", "Project", "URL", "License", "Status", "Description"];
+let viewMode = "default";
+
 
 // Cached DOM Elements
 const statusEl   = document.getElementById('status');
@@ -38,7 +44,45 @@ let masterData   = [];
 let filteredData = [];
 let columns      = [];
 let searchText   = '';
-let filterState = {}; // { columnName: [checkedValues] }
+let filterState = {};
+let allowedCategories = [];
+let projectsData = [];
+let visibleColumns = [];
+
+async function loadAllowedCategories() {
+  try {
+    const response = await fetch(CATEGORIES_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to load categories: ${response.statusText}`);
+    }
+    allowedCategories = await response.json();
+  } catch (error) {
+    console.error(error);
+    statusEl.textContent = 'Error: Could not load categories.';
+  }
+}
+
+async function loadProjectsData() {
+  try {
+    const response = await fetch(PROJECTS_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to load projects: ${response.statusText}`);
+    }
+    projectsData = await response.json();
+  } catch (error) {
+    console.error(error);
+    statusEl.textContent = 'Error: Could not load projects.';
+  }
+}
+
+function findCategory(categoryString) {
+  if (!categoryString) return null;
+  const cat = allowedCategories.find(c =>
+    c.name.toLowerCase() === categoryString.toLowerCase() ||
+    (c.aliases && c.aliases.map(a => a.toLowerCase()).includes(categoryString.toLowerCase()))
+  );
+  return cat ? cat.name : null;
+}
 
 // Add event listener for the search input
 document.getElementById('search-input').addEventListener('input', e => {
@@ -48,15 +92,17 @@ document.getElementById('search-input').addEventListener('input', e => {
 
 // Entry Point: Handle Load-Mode Switch
 loadRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
+  radio.addEventListener('change', async () => {
     resetTable();
     if (radio.value === 'github' && radio.checked) {
       fileInput.style.display = 'none';
+      await loadProjectsData();
       loadFromGitHub();
     }
     if (radio.value === 'local' && radio.checked) {
       fileInput.style.display = 'inline-block';
       statusEl.textContent = 'Select one or more local JSON files.';
+      await loadProjectsData();
     }
   });
 });
@@ -67,6 +113,7 @@ fileInput.addEventListener('change', async event => {
   if (!files.length) return;
   resetTable();
   try {
+    await loadAllowedCategories();
     statusEl.textContent = `Reading ${files.length} local file(s)…`;
     const arrs = await Promise.all(files.map(file => {
       return new Promise((res, rej) => {
@@ -78,10 +125,16 @@ fileInput.addEventListener('change', async event => {
             const dotCount = (file.name.match(/\./g) || []).length;
             if (dotCount >= 2) {
               const match = file.name.match(/^.*\.(.*?)\.json$/i);
-              const category = match ? match[1] : file.name.replace(/\.json$/i,'');
-              res(Array.isArray(data)
-                ? data.map(item => ({ ...item, Category: category }))
-                : []);
+              const categoryString = match ? match[1] : file.name.replace(/\.json$/i,'');
+              const categoryName = findCategory(categoryString);
+              if (categoryName) {
+                res(Array.isArray(data)
+                  ? data.map(item => ({ ...item, Category: categoryName }))
+                  : []);
+              } else {
+                console.warn(`Skipping file with invalid category: ${file.name}`);
+                res([]);
+              }
             } else {
               res(Array.isArray(data) ? data : []);
             }
@@ -95,6 +148,7 @@ fileInput.addEventListener('change', async event => {
     }));
 
     masterData   = arrs.flat();
+    masterData.sort((a, b) => String(a.Name ?? '').localeCompare(String(b.Name ?? '')));
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
@@ -110,6 +164,7 @@ fileInput.addEventListener('change', async event => {
 // GitHub Loading
 async function loadFromGitHub() {
   try {
+    await loadAllowedCategories();
     statusEl.textContent = 'Fetching file list from GitHub…';
     const resp = await fetch(GITHUB_API_URL);
     if (!resp.ok) throw new Error(`GitHub API ${resp.status}`);
@@ -123,16 +178,23 @@ async function loadFromGitHub() {
       const dotCount = (f.name.match(/\./g) || []).length;
       if (dotCount >= 2) {
         const match = f.name.match(/^.*\.(.*?)\.json$/i);
-        const category = match ? match[1] : f.name.replace(/\.json$/i,'');
-        return Array.isArray(data)
-          ? data.map(item => ({ ...item, Category: category }))
-          : [];
+        const categoryString = match ? match[1] : f.name.replace(/\.json$/i,'');
+        const categoryName = findCategory(categoryString);
+        if (categoryName) {
+          return Array.isArray(data)
+            ? data.map(item => ({ ...item, Category: categoryName }))
+            : [];
+        } else {
+          console.warn(`Skipping file with invalid category: ${f.name}`);
+          return [];
+        }
       } else {
         return Array.isArray(data) ? data : [];
       }
     }));
 
     masterData   = arrs.flat();
+    masterData.sort((a, b) => String(a.Name ?? '').localeCompare(String(b.Name ?? '')));
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
@@ -155,20 +217,7 @@ function resetTable() {
   exportBtn.disabled = true;
 }
 
-// derive and reorder columns → Name, Category, Project, then the rest
-function deriveColumns() {
-  const raw = Object.keys(masterData[0]||{});
-  const ordered = [];
-  if (raw.includes('Name'))     ordered.push('Name');
-  if (raw.includes('Category')) ordered.push('Category');
-  if (raw.includes('Project'))  ordered.push('Project');
-  raw.forEach(c => {
-    if (!['Name', 'Category', 'Project'].includes(c)) ordered.push(c);
-  });
-  columns = ordered;
-}
-
-function buildTable() {
+function buildTable(skipPortalId = null) {
   // clear old
   thead.innerHTML = '';
   tbody.innerHTML = '';
@@ -185,7 +234,8 @@ function buildTable() {
     'Project': '140px',
     'Name': '320px',
     'Category': '180px',
-    'License': '130px',
+    'License': '170px',
+    'Status': '170px',
   };
 
   visibleColumns.forEach(col => {
@@ -231,54 +281,103 @@ function buildTable() {
   dropdownContent.setAttribute('role', 'menu');
   dropdownContent.setAttribute('aria-label', `Filter ${col}`);
 
-    // Only show filter options present in filteredData
-    const values = filteredData.flatMap(r => {
-      const v = r[col];
-      return Array.isArray(v) ? v : [v];
-    });
-    const uniqueVals = [...new Set(values)];
+  // attach header button as the visible toggle
+  dropdown.appendChild(headerBtn);
+  dropdown.appendChild(dropdownContent);
+  th.appendChild(dropdown);
 
-    uniqueVals.forEach(val => {
+  // Toggle dropdown visibility
+  headerBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    // If this column's portal is already open, close it (toggle behavior)
+    const existingPortal = document.getElementById(portalId);
+    if (existingPortal) {
+      existingPortal.remove();
+      headerBtn.setAttribute('aria-expanded', 'false');
+      return;
+    }
+
+    // Clear previous content and rebuild it based on the CURRENT filter state.
+    dropdownContent.innerHTML = '';
+
+    // Add search input to dropdown
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Search...';
+    searchInput.style.width = '100%';
+    dropdownContent.appendChild(searchInput);
+
+    // 1. Get all possible unique values for the current column from the master dataset.
+    const allPossibleValues = [...new Set(masterData.flatMap(r => {
+        const v = r[col];
+        return Array.isArray(v) ? v : [v];
+    }))].sort();
+
+    // 2. Determine which values are currently selected for this column.
+    const selectedValues = new Set(filterState[col] || []);
+
+    // 3. Determine which values are "valid" based on filters applied to *other* columns.
+    const otherFilters = { ...filterState };
+    delete otherFilters[col];
+    const partiallyFilteredData = masterData.filter(row =>
+      Object.entries(otherFilters).every(([filterCol, vals]) => {
+        const cell = row[filterCol];
+        return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
+      })
+    );
+    const validValues = new Set(partiallyFilteredData.flatMap(r => {
+        const v = r[col];
+        return Array.isArray(v) ? v : [v];
+    }));
+
+    // 4. Categorize all possible values for sorting and rendering.
+    const items = allPossibleValues.map(val => ({
+      value: val,
+      isSelected: selectedValues.has(val),
+      isValid: validValues.has(val)
+    }));
+
+    // 5. Sort the items: selected first, then valid, then invalid (grayed out).
+    items.sort((a, b) => {
+      if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
+      if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
+      return String(a.value ?? '').localeCompare(String(b.value ?? ''));
+    });
+
+    // 6. Create and append the checkbox elements.
+    items.forEach(item => {
       const label = document.createElement('label');
       label.style.display = 'block';
       label.style.padding = '6px';
       label.style.cursor = 'pointer';
-      // role for the label container
       label.setAttribute('role', 'menuitem');
+
       const cb = document.createElement('input');
       cb.type = 'checkbox';
-      cb.value = val;
+      cb.value = item.value;
       cb.dataset.column = col;
-      cb.checked = filterState[col]?.includes(val) || false; // preserve checked state
-      // Accessibility: expose checkbox state
+      cb.checked = item.isSelected;
       cb.setAttribute('role', 'menuitemcheckbox');
       cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
-      cb.addEventListener('change', e => {
-        cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
-        applyFilters(e);
-      });
+
+      if (!item.isValid && !item.isSelected) {
+        cb.disabled = true;
+        label.style.color = '#999';
+        label.style.cursor = 'not-allowed';
+      }
+
       label.appendChild(cb);
-      label.appendChild(document.createTextNode(val));
+      label.appendChild(document.createTextNode(item.value));
       dropdownContent.appendChild(label);
     });
+    // --- END: On-demand dropdown generation ---
 
-  // attach header button as the visible toggle
-  dropdown.appendChild(headerBtn);
-    dropdown.appendChild(dropdownContent);
-    th.appendChild(dropdown);
-
-    // Toggle dropdown visibility
-    headerBtn.addEventListener('click', e => {
-      e.stopPropagation();
-      // If this column's portal is already open, close it (toggle behavior)
-      const existingPortal = document.getElementById(portalId);
-      if (existingPortal) {
-        existingPortal.remove();
-        headerBtn.setAttribute('aria-expanded', 'false');
-        return;
+    // Remove any other existing portal dropdowns
+    document.querySelectorAll('.portal-dropdown').forEach(dc => {
+      if (dc.id !== skipPortalId) {
+        dc.remove();
       }
-      // Remove any other existing portal dropdowns
-      document.querySelectorAll('.portal-dropdown').forEach(dc => dc.remove());
+    });
 
   // Get button position
   const rect = headerBtn.getBoundingClientRect();
@@ -287,6 +386,7 @@ function buildTable() {
   const portalDropdown = dropdownContent.cloneNode(true);
   portalDropdown.className = 'dropdown-content portal-dropdown';
   portalDropdown.id = portalId;
+      portalDropdown.dataset.column = col; // Add column context to the portal
       portalDropdown.style.position = 'absolute';
       portalDropdown.style.left = rect.left + 'px';
       portalDropdown.style.top = (rect.bottom + window.scrollY) + 'px';
@@ -294,9 +394,22 @@ function buildTable() {
       portalDropdown.style.display = 'block';
       portalDropdown.style.background = '#fff';
       portalDropdown.style.border = '1px solid #ccc';
-      portalDropdown.style.maxHeight = '200px';
+      portalDropdown.style.maxHeight = '400px';
       portalDropdown.style.overflowY = 'auto';
       portalDropdown.style.width = rect.width + 'px';
+
+      // Add search functionality to the portal dropdown's search input
+      const portalSearchInput = portalDropdown.querySelector('input[type="text"]');
+      if (portalSearchInput) {
+        portalSearchInput.addEventListener('input', e => {
+          const filter = e.target.value.toLowerCase();
+          const labels = portalDropdown.querySelectorAll('label');
+          labels.forEach(label => {
+            const text = label.textContent.toLowerCase();
+            label.style.display = text.includes(filter) ? 'block' : 'none';
+          });
+        });
+      }
 
       // Sync checked state from original dropdown
       portalDropdown.querySelectorAll('input[type="checkbox"]').forEach(cb => {
@@ -313,7 +426,9 @@ function buildTable() {
             orig.setAttribute('aria-checked', orig.checked ? 'true' : 'false');
           }
           cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+
           applyFilters();
+          refreshOpenDropdown();
         });
       });
 
@@ -324,8 +439,11 @@ function buildTable() {
       // Hide on outside click
       document.addEventListener('click', function hideDropdown(ev) {
         if (!portalDropdown.contains(ev.target) && ev.target !== headerBtn) {
-          portalDropdown.remove();
-          headerBtn.setAttribute('aria-expanded', 'false');
+          const p = document.getElementById(portalId);
+          if (p) {
+            p.remove();
+            headerBtn.setAttribute('aria-expanded', 'false');
+          }
           document.removeEventListener('click', hideDropdown);
           // remove esc handler if present
           document.removeEventListener('keydown', escHandler);
@@ -364,19 +482,18 @@ function buildTable() {
 // Update applyFilters for OR logic
 function applyFilters() {
   // Update filterState
-  filterState = {};
-  const dropdowns = [
-    ...thead.querySelectorAll('.custom-dropdown'),
-    ...document.querySelectorAll('.portal-dropdown')
-  ];
-  dropdowns.forEach(dropdown => {
-    const checked = Array.from(dropdown.querySelectorAll('input[type="checkbox"]:checked'));
-    if (checked.length) {
-      const col = checked[0].dataset.column;
-      filterState[col] = checked.map(cb => cb.value);
+  const newFilterState = {};
+  // We only need to read from the original dropdowns in the thead,
+  // since the portal dropdowns sync their state back to them.
+  const headerDropdowns = thead.querySelectorAll('.custom-dropdown');
+  headerDropdowns.forEach(dropdown => {
+    const checkedCbs = dropdown.querySelectorAll('input[type="checkbox"]:checked'); // This can be empty
+    if (checkedCbs.length > 0) {
+      const col = checkedCbs[0].dataset.column;
+      newFilterState[col] = Array.from(checkedCbs).map(cb => cb.value);
     }
   });
-
+  filterState = newFilterState;
   // Filtering logic
   filteredData = masterData.filter(row =>
     Object.entries(filterState).every(([col, vals]) => {
@@ -398,7 +515,7 @@ function applyFilters() {
       })
     )
   );
-  renderRows(filteredData);
+
   // Announce filter results to assistive tech
   try {
     const activeFilters = Object.entries(filterState).map(([c,vals]) => `${c}: ${vals.join(', ')}`).join('; ');
@@ -406,7 +523,111 @@ function applyFilters() {
   } catch (e) {
     srStatus.textContent = `${filteredData.length} results.`;
   }
-  buildTable(); // <-- ensures dropdowns are rebuilt from filteredData
+  // Always render the rows with the newly filtered data.
+  renderRows(filteredData);
+}
+
+function refreshOpenDropdown() {
+  const openPortal = document.querySelector('.portal-dropdown');
+  if (!openPortal) return;
+
+  const col = openPortal.dataset.column;
+
+  // This logic is duplicated from buildTable, now isolated for just refreshing a dropdown
+  const allPossibleValues = [...new Set(masterData.flatMap(r => {
+    const v = r[col];
+    return Array.isArray(v) ? v : [v];
+  }))].sort();
+
+  const selectedValues = new Set(filterState[col] || []);
+
+  const otherFilters = { ...filterState };
+  delete otherFilters[col];
+  const partiallyFilteredData = masterData.filter(row =>
+    Object.entries(otherFilters).every(([filterCol, vals]) => {
+      const cell = row[filterCol];
+      return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
+    })
+  );
+  const validValues = new Set(partiallyFilteredData.flatMap(r => {
+      const v = r[col];
+      return Array.isArray(v) ? v : [v];
+  }));
+
+  const items = allPossibleValues.map(val => ({
+    value: val,
+    isSelected: selectedValues.has(val),
+    isValid: validValues.has(val)
+  }));
+
+  items.sort((a, b) => {
+    if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
+    if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
+    return String(a.value ?? '').localeCompare(String(b.value ?? ''));
+  });
+
+  // Store the search input element to re-insert it later
+  const searchInput = openPortal.querySelector('input[type="text"]');
+  // Create a document fragment to hold the reordered labels
+  const fragment = document.createDocumentFragment();
+
+  // Create a map of existing label elements for efficient lookup and to preserve existing DOM elements
+  const existingLabelElements = new Map();
+  openPortal.querySelectorAll('label').forEach(label => {
+    const cb = label.querySelector('input[type="checkbox"]');
+    if (cb) {
+      existingLabelElements.set(cb.value, label);
+    }
+  });
+
+  // Clear all existing content from the portal (except the search input if it's the only thing we want to preserve)
+  // This is the most robust way to ensure correct reordering.
+  openPortal.innerHTML = '';
+  if (searchInput) {
+    openPortal.appendChild(searchInput);
+  }
+
+  // Re-order and update labels based on the sorted items array and append to fragment
+  items.forEach(item => {
+    const label = existingLabelElements.get(item.value);
+    if (!label) return;
+
+    const cb = label.querySelector('input');
+    // Ensure checked state is updated
+    cb.checked = item.isSelected;
+    cb.disabled = !item.isValid && !item.isSelected;
+    label.style.color = cb.disabled ? '#999' : '';
+    label.style.cursor = cb.disabled ? 'not-allowed' : 'pointer';
+    cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+
+    // Re-apply display style in case it was hidden by search filter
+    // This ensures that if a search filter is active, only matching items are shown,
+    // but if it's cleared, all items become visible again.
+    if (searchInput && searchInput.value) {
+      const filterText = searchInput.value.toLowerCase();
+      const labelText = label.textContent.toLowerCase();
+      label.style.display = labelText.includes(filterText) ? 'block' : 'none';
+    } else {
+      label.style.display = 'block'; // Show all if no search filter
+    }
+
+    fragment.appendChild(label);
+  });
+
+  // Append the sorted and updated labels after the search input
+  openPortal.appendChild(fragment);
+}
+
+function isValidUrl(string) {
+  if (!string) return false;
+  try {
+    // Use the URL constructor to check for validity.
+    // It will throw a TypeError if the URL is malformed.
+    new URL(string);
+    return true;
+  } catch (_) {
+    return false;
+  }
 }
 
 function renderRows(rows) {
@@ -426,22 +647,30 @@ function renderRows(rows) {
     visibleColumns.forEach(col => {
       const td = document.createElement('td');
       td.setAttribute('data-label', col);
-          // If both Name and URL are present in the data set, hide the
-          // URL column from the view and render the Name cell as a
-          // hyperlink pointing to the URL value when available.
-          if (col === 'Name') {
-            const nameVal = row['Name'];
-            const urlVal = row['URL'];
-            if (urlVal) {
-              const a = document.createElement('a');
-              a.href = urlVal;
-              a.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? urlVal);
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              td.appendChild(a);
-            } else {
-              td.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? '');
-            }
+      if (col === 'Project') {
+        const project = projectsData.find(p => p.name === row[col]);
+        if (project && project.logo) {
+          const img = document.createElement('img');
+          img.src = project.logo;
+          img.alt = project.name;
+          img.style.height = '64px';
+          td.appendChild(img);
+        } else {
+          td.textContent = row[col] ?? '';
+        }
+      } else if (col === 'Name') {
+        const nameVal = row['Name'];
+        const urlVal = row['URL'];
+        if (isValidUrl(urlVal)) {
+          const a = document.createElement('a');
+          a.href = urlVal;
+          a.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? urlVal);
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          td.appendChild(a);
+        } else {
+          td.textContent = Array.isArray(nameVal) ? nameVal.join(', ') : (nameVal ?? '');
+        }
       } else if (col === 'URL') {
         // Keep URL rendering for cases where URL is visible (fallback)
         if (row[col]) {
@@ -482,6 +711,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // trigger the default “github” radio
   document.querySelector('input[name="load-mode"][value="github"]')
           .dispatchEvent(new Event('change'));
+});
+
+// Settings Panel Toggle Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const settingsToggleBtn = document.getElementById('settings-toggle-btn');
+  const settingsPanel = document.getElementById('settings-panel');
+  const settingsCloseBtn = document.getElementById('settings-close-btn');
+
+  function showSettingsPanel() {
+    settingsPanel.hidden = false;
+  }
+
+  function hideSettingsPanel() {
+    settingsPanel.hidden = true;
+  }
+
+  settingsToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (settingsPanel.hidden) {
+      showSettingsPanel();
+    } else {
+      hideSettingsPanel();
+    }
+  });
+
+  if (settingsCloseBtn) {
+    settingsCloseBtn.addEventListener('click', hideSettingsPanel);
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!settingsPanel.hidden && !settingsPanel.contains(e.target) && e.target !== settingsToggleBtn) {
+      hideSettingsPanel();
+    }
+  });
 });
 
 // Preselect filters
@@ -617,42 +880,15 @@ function makeResizable(headerRow) {
 // Ensure primary columns appear first in any visibleColumns/orderings
 function reorderPrimaryFirst(arr) {
   if (!Array.isArray(arr)) return arr;
-  const primaries = ['Name', 'Category', 'Project'];
+  const primaries = ['Name', 'Category', 'Project' , 'License', 'Status', 'Description'];
   const set = new Set(arr);
   const head = primaries.filter(p => set.has(p));
   const tail = arr.filter(c => !primaries.includes(c));
   return [...head, ...tail];
 }
 
-const defaultColumns = ["Name", "Category", "Project", "URL", "License", "Status"];
-let viewMode = "default";
-let visibleColumns = [];
-
-function updateVisibleColumns() {
-  if (viewMode === "default") {
-    visibleColumns = defaultColumns.filter(col => columns.includes(col));
-  } else {
-    visibleColumns = [...columns];
-  }
-  // Ensure primary ordering is respected
-  visibleColumns = reorderPrimaryFirst(visibleColumns);
-}
-
-// Show/hide the view dropdown
-const viewToggleBtn = document.getElementById('view-toggle-btn');
-const viewToggleDropdown = document.getElementById('view-toggle-dropdown');
-viewToggleBtn.addEventListener('click', e => {
-  e.stopPropagation();
-  viewToggleDropdown.style.display =
-    viewToggleDropdown.style.display === 'block' ? 'none' : 'block';
-});
-document.addEventListener('click', () => {
-  viewToggleDropdown.style.display = 'none';
-});
-viewToggleDropdown.addEventListener('click', e => e.stopPropagation());
-
 // Handle view change
-viewToggleDropdown.querySelectorAll('input[name="table-view"]').forEach(radio => {
+document.querySelectorAll('input[name="table-view"]').forEach(radio => {
   radio.addEventListener('change', e => {
     viewMode = e.target.value;
     updateVisibleColumns();
@@ -682,8 +918,11 @@ function deriveColumns() {
   if (raw.includes('Name'))     ordered.push('Name');
   if (raw.includes('Category')) ordered.push('Category');
   if (raw.includes('Project'))  ordered.push('Project');
+  if (raw.includes('License'))  ordered.push('License');
+  if (raw.includes('Status'))  ordered.push('Status');
+  if (raw.includes('Description'))  ordered.push('Description');
   raw.forEach(c => {
-    if (!['Name', 'Category', 'Project'].includes(c)) ordered.push(c);
+    if (!['Name', 'Category', 'Project', 'License', 'Status', 'Description'].includes(c)) ordered.push(c);
   });
   columns = ordered;
   updateVisibleColumns();

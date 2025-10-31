@@ -721,7 +721,7 @@
   },
   {
     "Name": "SoCDSL",
-    "URL": "TBD (in progress)",
+    "URL": "",
     "License": "TBD (in progress)",
     "Status": "In progress",
     "Description": "Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​",
@@ -745,7 +745,7 @@
   },
   {
     "Name": "Co-processor Generator Tool",
-    "URL": "TBD (in progress)",
+    "URL": "",
     "License": "TBD (in progress)",
     "Status": "In progress",
     "Description": "Tool to generate CV-X-IF compliant co-processors based on user definition of operations/instructions.",
@@ -757,7 +757,7 @@
   },
   {
     "Name": "SUNRISE",
-    "URL": "TBD (in progress)",
+    "URL": "",
     "License": "TBD (in progress)",
     "Status": "in progress",
     "Description": "Scalable UNified Restful Infrasructure for System Evaluation.",
@@ -769,7 +769,7 @@
   },
   {
     "Name": "kMLeon",
-    "URL": "TBD (in progress)",
+    "URL": "",
     "License": "Proprietary",
     "Status": "Released",
     "Description": "ML-based tool for the automatic generation of extra-functional models (e.g. performance, power).",
@@ -805,7 +805,7 @@
   },
   {
     "Name": "CV-VeriGen",
-    "URL": "TBD (in progress)",
+    "URL": "",
     "License": "TBD (in progress)",
     "Status": "In progress",
     "Description": "UVM SystemVerilog RISC-V CPU model for functional verification of custom ISA (support for CV-X-IF)",

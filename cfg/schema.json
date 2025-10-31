@@ -14,7 +14,7 @@
         ]
       },
       "Subcategory": { "type": "string" },
-      "URL": { "type": "string" },
+      "URL": { "type": "string", "format": "uri" },
       "Project": { "type": "string" },
       "WI": {
         "oneOf": [
