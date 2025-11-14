@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Hardware",
+    "aliases": ["HW"]
+  },
+  {
+    "name": "Core",
+    "aliases": ["IP Core"]
+  },
+  {
+    "name": "Interface",
+    "aliases": ["IF"]
+  },
+  {
+    "name": "Peripheral",
+    "aliases": []
+  },
+  {
+    "name": "Accelerator",
+    "aliases": ["Acc"]
+  },
+  {
+    "name": "Extension",
+    "aliases": ["Ext"]
+  },
+  {
+    "name": "Software",
+    "aliases": ["SW"]
+  },
+  {
+    "name": "Operational System",
+    "aliases": ["OS"]
+  },
+  {
+    "name": "Tool",
+    "aliases": ["Software Tool"]
+  },
+  {
+    "name": "Compiler",
+    "aliases": []
+  },
+  {
+    "name": "Static Software Analysis",
+    "aliases": []
+  },
+  {
+    "name": "Virtual Prototype",
+    "aliases": ["VP"]
+  },
+  {
+    "name": "High-Level Synthesis",
+    "aliases": ["HLS"]
+  },
+  {
+    "name": "Core Generator",
+    "aliases": ["Generator"]
+  },
+  {
+    "name": "Formal Functional Security Verification",
+    "aliases": []
+  },
+  {
+    "name": "Visualisation and Debugging",
+    "aliases": []
+  },
+  {
+    "name": "On-Chip Debug System",
+    "aliases": ["OCDS"]
+  },
+  {
+    "name": "Fault Simulation",
+    "aliases": []
+  },
+  {
+    "name": "Software-Based Self-Test",
+    "aliases": ["SBST"]
+  },
+  {
+    "name": "Self-Test & Test",
+    "aliases": []
+  },
+  {
+    "name": "Design Specific Language (DSL)",
+    "aliases": []
+  },
+  {
+    "name": "Software Library",
+    "aliases": ["Library", "Lib"]
+  },
+  {
+    "name": "Chip Integration",
+    "aliases": []
+  },
+  {
+    "name": "Subsystem",
+    "aliases": []
+  },
+  {
+    "name": "Application Software",
+    "aliases": []
+  }
+]

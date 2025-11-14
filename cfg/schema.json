@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Virtual Repository IP list (array of entries)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["Name", "Category"],
+    "properties": {
+      "Name": { "type": "string", "minLength": 1 },
+      "Category": {
+        "oneOf": [
+          { "type": "array", "items": { "type": "string" } },
+          { "type": "string" }
+        ]
+      },
+      "Subcategory": { "type": "string" },
+      "URL": { "type": "string", "format": "uri" },
+      "Project": { "type": "string" },
+      "WI": {
+        "oneOf": [
+          { "type": "array", "items": { "type": "string" } },
+          { "type": "string" }
+        ]
+      },
+      "Partners": {
+        "oneOf": [
+          { "type": "array", "items": { "type": "string" } },
+          { "type": "string" }
+        ]
+      },
+      "Status": { "type": "string" },
+      "Description": { "type": "string" },
+      "License": { "type": "string" },
+      "Comment": { "type": "string" }
+    },
+    "additionalProperties": true
+  }
+}
