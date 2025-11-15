@@ -2,15 +2,15 @@
 
 
 // Configuration
-// TODO: Find mechanism to automatically point to the repo and branch where this GitHub Page is hosted
-const GITHUB_API_URL =
-  'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
-  // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
-  // 'https://api.github.com/repos/cairo-caplan/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+const BASE_URL = (window.location.href).replace("index.html", ""); //local hosting
+// 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/';
+
+
+const IPS_PATH = '/ips/';
 const CATEGORIES_URL = 'cfg/categories.json';
 const PROJECTS_URL = 'cfg/projects.json';
 
-const defaultColumns = ["Name", "Category", "Project", "URL", "License", "Status", "Description"];
+const defaultColumns = ["Name", "Category", "URL", "License", "Status", "Project", "Description"];
 let viewMode = "default";
 
 
@@ -97,7 +97,7 @@ loadRadios.forEach(radio => {
     if (radio.value === 'github' && radio.checked) {
       fileInput.style.display = 'none';
       await loadProjectsData();
-      loadFromGitHub();
+      loadDataFromServer();
     }
     if (radio.value === 'local' && radio.checked) {
       fileInput.style.display = 'inline-block';
@@ -162,29 +162,98 @@ fileInput.addEventListener('change', async event => {
   }
 });
 
-// GitHub Loading
-async function loadFromGitHub() {
-  try {
+// Load Virtual Repo IPs info from server (GitHub or self hosted)
+async function loadDataFromServer() {
+  var ips_url;
+
+  // If there is a query string on the base URL (for the IPs),
+  // concatenate the 'ips' subpath just before it.
+  // Useful to allow loading different branches from GitHub
+  const queryPos = BASE_URL.indexOf("?");
+  ips_url = (queryPos !== -1)?
+    BASE_URL.slice(0, queryPos) + IPS_PATH + BASE_URL.slice(queryPos)
+    : ips_url = BASE_URL + IPS_PATH;
+
+  try{
     await loadAllowedCategories();
     statusEl.textContent = 'Fetching file list from GitHub…';
-    const resp = await fetch(GITHUB_API_URL);
-    if (!resp.ok) throw new Error(`GitHub API ${resp.status}`);
-    const items = await resp.json();
-    const jsonFiles = items.filter(i => i.type==='file' && i.name.endsWith('.json'));
-    statusEl.textContent = `Found ${jsonFiles.length} remote JSONs; loading…`;
 
-    const arrs = await Promise.all(jsonFiles.map(async f => {
-      const txt = await fetch(f.download_url).then(r=>r.text());
-      const data = JSON.parse(txt);
+    const resp = await fetch(ips_url);
+    if (!resp.ok) throw new Error(`Fetch ${resp.status}`);
+
+    // Try to parse JSON first. Some environments (GitHub API) return
+    // an array of objects with download_url; some local dev setups may
+    // return a JSON array of filenames. If JSON parsing fails, fall
+    // back to parsing the response as HTML and extracting <a href="*.json"> links.
+    const text = await resp.text();
+    let parsed = null;
+    try {
+      parsed = JSON.parse(text);
+    } catch (e) {
+      parsed = null;
+    }
+
+    let fileEntries = [];
+
+    if (Array.isArray(parsed)) {
+      // Case A: array of strings (filenames) or array of objects (GitHub API)
+      if (parsed.length && typeof parsed[0] === 'string') {
+        // Array of filenames — resolve relative to the base URL
+        const base = ips_url.endsWith('/') ? ips_url : ips_url + '/';
+        fileEntries = parsed.filter(n => n.endsWith('.json')).map(n => ({ name: n, url: new URL(n, base).toString() }));
+      } else {
+        // Array of objects (likely GitHub API). Prefer download_url, fall back to url/html_url
+        fileEntries = parsed
+          .filter(i => i && ((i.type === 'file') || (i.name && i.name.endsWith('.json'))))
+          .map(i => ({ name: i.name, url: i.download_url || i.url || i.html_url }));
+      }
+    } else {
+      // Case B: Not JSON — try to extract hrefs from HTML listing
+      const hrefs = Array.from(text.matchAll(/href=["']([^"']+\.json)["']/gi)).map(m => m[1]);
+      fileEntries = hrefs.map(h => {
+        try {
+          const full = new URL(h, ips_url).toString();
+          const name = full.split('/').pop();
+          return { name, url: full };
+        } catch (e) {
+          return null;
+        }
+      }).filter(Boolean);
+    }
+
+    // Deduplicate by filename (keep first seen)
+    const seen = new Map();
+    fileEntries.forEach(fe => {
+      if (!fe || !fe.name || !fe.url) return;
+      if (!fe.name.endsWith('.json')) return;
+      if (!seen.has(fe.name)) seen.set(fe.name, fe.url);
+    });
+
+    const finalFiles = Array.from(seen.entries()).map(([name, url]) => ({ name, url }));
+    statusEl.textContent = `Found ${finalFiles.length} remote JSONs; loading…`;
+
+    const arrs = await Promise.all(finalFiles.map(async f => {
+      const r = await fetch(f.url);
+      if (!r.ok) {
+        console.warn(`Failed to fetch ${f.url}: ${r.status}`);
+        return [];
+      }
+      const txt2 = await r.text();
+      let data;
+      try {
+        data = JSON.parse(txt2);
+      } catch (e) {
+        console.warn(`Invalid JSON at ${f.url}`);
+        return [];
+      }
+
       const dotCount = (f.name.match(/\./g) || []).length;
       if (dotCount >= 2) {
         const match = f.name.match(/^.*\.(.*?)\.json$/i);
-        const categoryString = match ? match[1] : f.name.replace(/\.json$/i,'');
+        const categoryString = match ? match[1] : f.name.replace(/\.json$/i, '');
         const categoryName = findCategory(categoryString);
         if (categoryName) {
-          return Array.isArray(data)
-            ? data.map(item => ({ ...item, Category: categoryName }))
-            : [];
+          return Array.isArray(data) ? data.map(item => ({ ...item, Category: categoryName })) : [];
         } else {
           console.warn(`Skipping file with invalid category: ${f.name}`);
           return [];
@@ -194,17 +263,17 @@ async function loadFromGitHub() {
       }
     }));
 
-    masterData   = arrs.flat();
+    masterData = arrs.flat();
     masterData.sort((a, b) => String(a.Name ?? '').localeCompare(String(b.Name ?? '')));
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
     setInitialFilterSelections(parseFiltersFromQuery()); // Apply URL filters now
-  statusEl.textContent = 'GitHub data loaded.';
-  srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
+    statusEl.textContent = 'GitHub data loaded.';
+    srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
     exportBtn.disabled = false;
-  } catch(err) {
-    statusEl.textContent = 'Error: ' + err.message;
+  } catch (err) {
+    statusEl.textContent = 'Error: ' + (err.message || err);
     console.error(err);
   }
 }
@@ -248,19 +317,33 @@ function buildTable(skipPortalId = null) {
   });
 
   const headerRow = document.createElement('tr');
+  const SKIP_DROPDOWN = new Set(['Description', 'Comment']);
+
   visibleColumns.forEach((col, i) => {
     const th = document.createElement('th');
     th.style.position = 'relative';
     th.style.verticalAlign = 'top';
+
+    // If this column is in the skip-list, render a plain, non-interactive label
+    if (SKIP_DROPDOWN.has(col)) {
+      const labelDiv = document.createElement('div');
+      labelDiv.className = 'header-label';
+      labelDiv.textContent = col;
+      labelDiv.style.padding = '6px 4px';
+      labelDiv.setAttribute('aria-hidden', 'false');
+      th.appendChild(labelDiv);
+      headerRow.appendChild(th);
+      return; // skip dropdown construction and listeners for this column
+    }
 
     // Header button: use the column name itself as the dropdown toggle for filters
     const dropdown = document.createElement('div');
     dropdown.className = 'custom-dropdown';
     dropdown.tabIndex = 0;
 
-  const headerBtn = document.createElement('button');
-  // text content is just the column name; caret is provided via CSS ::after
-  headerBtn.textContent = col;
+    const headerBtn = document.createElement('button');
+    // text content is just the column name; caret is provided via CSS ::after
+    headerBtn.textContent = col;
     headerBtn.type = 'button';
     headerBtn.className = 'header-filter-btn';
     // Accessibility: indicate this button opens a popup and manage expanded state
@@ -277,117 +360,117 @@ function buildTable(skipPortalId = null) {
     });
     th.appendChild(headerBtn);
 
-  const dropdownContent = document.createElement('div');
-  dropdownContent.className = 'dropdown-content';
-  // Accessibility: mark as a popup menu for assistive tech
-  dropdownContent.setAttribute('role', 'menu');
-  dropdownContent.setAttribute('aria-label', `Filter ${col}`);
+    const dropdownContent = document.createElement('div');
+    dropdownContent.className = 'dropdown-content';
+    // Accessibility: mark as a popup menu for assistive tech
+    dropdownContent.setAttribute('role', 'menu');
+    dropdownContent.setAttribute('aria-label', `Filter ${col}`);
 
-  // attach header button as the visible toggle
-  dropdown.appendChild(headerBtn);
-  dropdown.appendChild(dropdownContent);
-  th.appendChild(dropdown);
+    // attach header button as the visible toggle
+    dropdown.appendChild(headerBtn);
+    dropdown.appendChild(dropdownContent);
+    th.appendChild(dropdown);
 
-  // Toggle dropdown visibility
-  headerBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    // If this column's portal is already open, close it (toggle behavior)
-    const existingPortal = document.getElementById(portalId);
-    if (existingPortal) {
-      existingPortal.remove();
-      headerBtn.setAttribute('aria-expanded', 'false');
-      return;
-    }
-
-    // Clear previous content and rebuild it based on the CURRENT filter state.
-    dropdownContent.innerHTML = '';
-
-    // Add search input to dropdown
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = 'Search...';
-    searchInput.style.width = '100%';
-    dropdownContent.appendChild(searchInput);
-
-    // 1. Get all possible unique values for the current column from the master dataset.
-    const allPossibleValues = [...new Set(masterData.flatMap(r => {
-        const v = r[col];
-        return Array.isArray(v) ? v : [v];
-    }))].sort();
-
-    // 2. Determine which values are currently selected for this column.
-    const selectedValues = new Set(filterState[col] || []);
-
-    // 3. Determine which values are "valid" based on filters applied to *other* columns.
-    const otherFilters = { ...filterState };
-    delete otherFilters[col];
-    const partiallyFilteredData = masterData.filter(row =>
-      Object.entries(otherFilters).every(([filterCol, vals]) => {
-        const cell = row[filterCol];
-        return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
-      })
-    );
-    const validValues = new Set(partiallyFilteredData.flatMap(r => {
-        const v = r[col];
-        return Array.isArray(v) ? v : [v];
-    }));
-
-    // 4. Categorize all possible values for sorting and rendering.
-    const items = allPossibleValues.map(val => ({
-      value: val,
-      isSelected: selectedValues.has(val),
-      isValid: validValues.has(val)
-    }));
-
-    // 5. Sort the items: selected first, then valid, then invalid (grayed out).
-    items.sort((a, b) => {
-      if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
-      if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
-      return String(a.value ?? '').localeCompare(String(b.value ?? ''));
-    });
-
-    // 6. Create and append the checkbox elements.
-    items.forEach(item => {
-      const label = document.createElement('label');
-      label.style.display = 'block';
-      label.style.padding = '6px';
-      label.style.cursor = 'pointer';
-      label.setAttribute('role', 'menuitem');
-
-      const cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.value = item.value;
-      cb.dataset.column = col;
-      cb.checked = item.isSelected;
-      cb.setAttribute('role', 'menuitemcheckbox');
-      cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
-
-      if (!item.isValid && !item.isSelected) {
-        cb.disabled = true;
-        label.style.color = '#999';
-        label.style.cursor = 'not-allowed';
+    // Toggle dropdown visibility
+    headerBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      // If this column's portal is already open, close it (toggle behavior)
+      const existingPortal = document.getElementById(portalId);
+      if (existingPortal) {
+        existingPortal.remove();
+        headerBtn.setAttribute('aria-expanded', 'false');
+        return;
       }
 
-      label.appendChild(cb);
-      label.appendChild(document.createTextNode(item.value));
-      dropdownContent.appendChild(label);
-    });
-    // --- END: On-demand dropdown generation ---
+      // Clear previous content and rebuild it based on the CURRENT filter state.
+      dropdownContent.innerHTML = '';
 
-    // Remove any other existing portal dropdowns
-    document.querySelectorAll('.portal-dropdown').forEach(dc => {
-      if (dc.id !== skipPortalId) {
-        dc.remove();
-      }
-    });
+      // Add search input to dropdown
+      const searchInput = document.createElement('input');
+      searchInput.type = 'text';
+      searchInput.placeholder = 'Search...';
+      searchInput.style.width = '100%';
+      dropdownContent.appendChild(searchInput);
 
-  // Get button position
-  const rect = headerBtn.getBoundingClientRect();
+      // 1. Get all possible unique values for the current column from the master dataset.
+      const allPossibleValues = [...new Set(masterData.flatMap(r => {
+        const v = r[col];
+        return Array.isArray(v) ? v : [v];
+      }))].sort();
 
-  // Clone dropdownContent and expose it as a portal dropdown
-  const portalDropdown = dropdownContent.cloneNode(true);
-  portalDropdown.className = 'dropdown-content portal-dropdown';
-  portalDropdown.id = portalId;
+      // 2. Determine which values are currently selected for this column.
+      const selectedValues = new Set(filterState[col] || []);
+
+      // 3. Determine which values are "valid" based on filters applied to *other* columns.
+      const otherFilters = { ...filterState };
+      delete otherFilters[col];
+      const partiallyFilteredData = masterData.filter(row =>
+        Object.entries(otherFilters).every(([filterCol, vals]) => {
+          const cell = row[filterCol];
+          return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
+        })
+      );
+      const validValues = new Set(partiallyFilteredData.flatMap(r => {
+        const v = r[col];
+        return Array.isArray(v) ? v : [v];
+      }));
+
+      // 4. Categorize all possible values for sorting and rendering.
+      const items = allPossibleValues.map(val => ({
+        value: val,
+        isSelected: selectedValues.has(val),
+        isValid: validValues.has(val)
+      }));
+
+      // 5. Sort the items: selected first, then valid, then invalid (grayed out).
+      items.sort((a, b) => {
+        if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
+        if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
+        return String(a.value ?? '').localeCompare(String(b.value ?? ''));
+      });
+
+      // 6. Create and append the checkbox elements.
+      items.forEach(item => {
+        const label = document.createElement('label');
+        label.style.display = 'block';
+        label.style.padding = '6px';
+        label.style.cursor = 'pointer';
+        label.setAttribute('role', 'menuitem');
+
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.value = item.value;
+        cb.dataset.column = col;
+        cb.checked = item.isSelected;
+        cb.setAttribute('role', 'menuitemcheckbox');
+        cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+
+        if (!item.isValid && !item.isSelected) {
+          cb.disabled = true;
+          label.style.color = '#999';
+          label.style.cursor = 'not-allowed';
+        }
+
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(item.value));
+        dropdownContent.appendChild(label);
+      });
+      // --- END: On-demand dropdown generation ---
+
+      // Remove any other existing portal dropdowns
+      document.querySelectorAll('.portal-dropdown').forEach(dc => {
+        if (dc.id !== skipPortalId) {
+          dc.remove();
+        }
+      });
+
+      // Get button position
+      const rect = headerBtn.getBoundingClientRect();
+
+      // Clone dropdownContent and expose it as a portal dropdown
+      const portalDropdown = dropdownContent.cloneNode(true);
+      portalDropdown.className = 'dropdown-content portal-dropdown';
+      portalDropdown.id = portalId;
       portalDropdown.dataset.column = col; // Add column context to the portal
       portalDropdown.style.position = 'absolute';
       portalDropdown.style.left = rect.left + 'px';
@@ -434,9 +517,9 @@ function buildTable(skipPortalId = null) {
         });
       });
 
-  document.body.appendChild(portalDropdown);
-  // Mark as expanded for assistive tech
-  headerBtn.setAttribute('aria-expanded', 'true');
+      document.body.appendChild(portalDropdown);
+      // Mark as expanded for assistive tech
+      headerBtn.setAttribute('aria-expanded', 'true');
 
       // Hide on outside click
       document.addEventListener('click', function hideDropdown(ev) {
@@ -464,6 +547,7 @@ function buildTable(skipPortalId = null) {
       }
       document.addEventListener('keydown', escHandler);
     });
+
     // Hide dropdown when clicking outside (original inline content)
     document.addEventListener('click', () => {
       dropdownContent.style.display = 'none';
@@ -895,12 +979,12 @@ function deriveColumns() {
   const ordered = [];
   if (raw.includes('Name'))     ordered.push('Name');
   if (raw.includes('Category')) ordered.push('Category');
-  if (raw.includes('Project'))  ordered.push('Project');
   if (raw.includes('License'))  ordered.push('License');
   if (raw.includes('Status'))  ordered.push('Status');
+  if (raw.includes('Project'))  ordered.push('Project');
   if (raw.includes('Description'))  ordered.push('Description');
   raw.forEach(c => {
-    if (!['Name', 'Category', 'Project', 'License', 'Status', 'Description'].includes(c)) ordered.push(c);
+    if (!['Name', 'Category', 'License', 'Status', 'Project', 'Description'].includes(c)) ordered.push(c);
   });
   columns = ordered;
   updateVisibleColumns();

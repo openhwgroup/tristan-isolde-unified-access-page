@@ -28,7 +28,7 @@
     "aliases": ["SW"]
   },
   {
-    "name": "Operational System",
+    "name": "Operating System",
     "aliases": ["OS"]
   },
   {
@@ -97,6 +97,14 @@
   },
   {
     "name": "Application Software",
+    "aliases": []
+  },
+  {
+    "name": "Artificial Intelligence",
+    "aliases": ["AI"]
+  },
+  {
+    "name": "Security",
     "aliases": []
   }
 ]

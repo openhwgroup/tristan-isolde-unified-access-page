@@ -9,13 +9,13 @@ body {
     color: #222;
     background: #f6f8fb;
   }
-  
+
   #export-btn {
     margin-bottom: 10px;
     padding: 8px 12px;
     cursor: pointer;
   }
-  
+
   .table-container {
     --row-height: 48px;
     max-height: calc(var(--row-height) * 18); /* visible rows */
@@ -32,12 +32,13 @@ body {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
-    font-size: 0.98rem; /* slightly larger readable text */
+    font-size: 0.9rem;
     color: #1f2937;
   }
 
   /* 2) make each header cell a positioning context */
   #data-table th {
+    font-size: 1rem;
     position: relative;
     overflow: visible;
   }
@@ -156,7 +157,7 @@ body {
   }
   
   th, td {
-    padding: 12px 14px;
+    padding: 6px 10px;
     border-bottom: 1px solid rgba(15,23,42,0.06);
     text-align: left;
     vertical-align: middle;
