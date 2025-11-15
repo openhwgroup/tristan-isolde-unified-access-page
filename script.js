@@ -2,7 +2,9 @@
 
 
 // Configuration
-const BASE_URL = (window.location.href).replace("index.html", ""); //local hosting
+const BASE_URL =
+(window.location.href).replace("index.html", ""); //local hosting
+// 'https://cairo-caplan.github.io/tristan-isolde-unified-access-page';
 // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/';
 
 
@@ -82,6 +84,121 @@ function findCategory(categoryString) {
     (c.aliases && c.aliases.map(a => a.toLowerCase()).includes(categoryString.toLowerCase()))
   );
   return cat ? cat.name : null;
+}
+
+// Derive a GitHub API contents URL from a GitHub Pages or repo URL.
+// Examples supported:
+// - https://{owner}.github.io/{repo}  -> https://api.github.com/repos/{owner}/{repo}/contents/ips
+// - https://github.com/{owner}/{repo}  -> https://api.github.com/repos/{owner}/{repo}/contents/ips
+function deriveGithubApiContentsUrl(base) {
+  try {
+    const u = new URL(base);
+    const host = u.hostname.toLowerCase();
+    const rawPath = u.pathname.replace(/^\/+|\/+$/g, ''); // trim slashes
+
+    // Case: user/project pages like owner.github.io/repo
+    if (host.endsWith('.github.io')) {
+      const owner = host.replace('.github.io', '');
+      const repo = rawPath.split('/')[0] || '';
+      if (!repo) return null; // can't derive repo
+      return `https://api.github.com/repos/${owner}/${repo}/contents/ips`;
+    }
+
+    // Case: direct github.com URL
+    if (host === 'github.com') {
+      const parts = rawPath.split('/').filter(Boolean);
+      if (parts.length >= 2) {
+        const owner = parts[0];
+        const repo = parts[1];
+        return `https://api.github.com/repos/${owner}/${repo}/contents/ips`;
+      }
+    }
+
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Try to derive a raw.githubusercontent.com URL for a given filename.
+// Uses BASE_URL or the provided file url as hints. Best-effort only;
+// assumes branch "main" if none can be determined.
+function deriveRawUrlFromHints(base, filename, hintUrl) {
+  try {
+    // 1) Try to extract owner/repo from the API contents URL derived from base
+    const api = deriveGithubApiContentsUrl(base);
+    let owner = null, repo = null, branch = 'main';
+    if (api) {
+      const m = api.match(/repos\/([^\/]+)\/([^\/]+)\/contents/);
+      if (m) {
+        owner = m[1]; repo = m[2];
+      }
+    }
+
+    // 2) If not found, inspect the hintUrl (could be api.github.com, github.com, or a pages URL)
+    if (!owner || !repo) {
+      if (hintUrl) {
+        try {
+          const u = new URL(hintUrl);
+          if (u.hostname === 'api.github.com') {
+            const parts = u.pathname.split('/').filter(Boolean);
+            // /repos/{owner}/{repo}/contents/...
+            const reposIdx = parts.indexOf('repos');
+            if (reposIdx !== -1 && parts.length >= reposIdx + 3) {
+              owner = parts[reposIdx + 1];
+              repo = parts[reposIdx + 2];
+            }
+            // Attempt to pick a ref query param if present
+            const ref = u.searchParams.get('ref');
+            if (ref) branch = ref;
+          } else if (u.hostname === 'github.com') {
+            const parts = u.pathname.split('/').filter(Boolean);
+            // /{owner}/{repo}/blob/{branch}/path
+            if (parts.length >= 2) {
+              owner = parts[0]; repo = parts[1];
+              const blobIdx = parts.indexOf('blob');
+              if (blobIdx !== -1 && parts.length > blobIdx + 1) branch = parts[blobIdx + 1];
+            }
+          } else if (u.hostname.endsWith('.github.io')) {
+            owner = u.hostname.replace('.github.io','');
+            const segments = u.pathname.replace(/^\/+|\/+$/g,'').split('/').filter(Boolean);
+            if (segments.length) repo = segments[0];
+          }
+        } catch (_) {}
+      }
+    }
+
+    if (owner && repo) {
+      return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/ips/${filename}`;
+    }
+  } catch (e) {
+    // fallback returns null
+  }
+  return null;
+}
+
+// Update or create a small badge element next to `#status` that shows which
+// source was ultimately used to build the file list. Use short labels.
+function updateFetchSourceBadge(sourceLabel) {
+  try {
+    let badge = document.getElementById('fetch-source-badge');
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.id = 'fetch-source-badge';
+      badge.style.marginLeft = '10px';
+      badge.style.fontSize = '0.86em';
+      badge.style.padding = '2px 6px';
+      badge.style.borderRadius = '4px';
+      badge.style.background = '#eef';
+      badge.style.color = '#033';
+      // insert after the status element so status text updates won't remove it
+      if (statusEl && statusEl.parentNode) statusEl.parentNode.insertBefore(badge, statusEl.nextSibling);
+    }
+    badge.textContent = sourceLabel;
+  } catch (e) {
+    // non-fatal
+    console.debug('Could not update fetch source badge', e);
+  }
 }
 
 // Add event listener for the search input
@@ -166,26 +283,76 @@ fileInput.addEventListener('change', async event => {
 async function loadDataFromServer() {
   var ips_url;
 
-  // If there is a query string on the base URL (for the IPs),
-  // concatenate the 'ips' subpath just before it.
-  // Useful to allow loading different branches from GitHub
+  // Normalize BASE_URL and avoid double-appending IPS_PATH.
+  // Many callers set BASE_URL to the site root (e.g. https://.../),
+  // and we append IPS_PATH. But if BASE_URL already contains
+  // the ips subpath (e.g. someone set BASE_URL = '.../ips/'),
+  // appending would produce '.../ips/ips/' and result in 404s.
+  // Build ips_url by separating query part (if present), ensuring
+  // the base path ends with exactly one IPS_PATH, then reattach query.
   const queryPos = BASE_URL.indexOf("?");
-  ips_url = (queryPos !== -1)?
-    BASE_URL.slice(0, queryPos) + IPS_PATH + BASE_URL.slice(queryPos)
-    : ips_url = BASE_URL + IPS_PATH;
+  const baseNoQuery = queryPos !== -1 ? BASE_URL.slice(0, queryPos) : BASE_URL;
+  const queryPart = queryPos !== -1 ? BASE_URL.slice(queryPos) : '';
+
+  // Ensure there is exactly one trailing slash on baseNoQuery for safe concatenation
+  const normalizedBase = baseNoQuery.endsWith('/') ? baseNoQuery : baseNoQuery + '/';
+
+  if (normalizedBase.endsWith(IPS_PATH)) {
+    // BASE_URL already points into the ips folder; use it as-is (preserving query)
+    ips_url = normalizedBase + queryPart.replace(/^[?]/, '') ? normalizedBase + queryPart : normalizedBase;
+    // Note: if BASE_URL already had a query, queryPart includes the leading '?'
+    // the above ternary keeps behavior consistent.
+    // Simpler: keep the original BASE_URL to preserve any query exactly.
+    ips_url = BASE_URL;
+  } else {
+    // Append IPS_PATH once, then reattach any query string.
+    ips_url = normalizedBase + IPS_PATH.replace(/^\//, '');
+    if (queryPart) ips_url += queryPart;
+  }
 
   try{
     await loadAllowedCategories();
     statusEl.textContent = 'Fetching file list from GitHub…';
 
-    const resp = await fetch(ips_url);
-    if (!resp.ok) throw new Error(`Fetch ${resp.status}`);
+  // Diagnostic: show which URL we're fetching
+  console.info('Fetching IPS list from:', ips_url);
+  statusEl.textContent = `Fetching file list from ${ips_url}…`;
+  // indicate we attempted the pages listing first
+  updateFetchSourceBadge('Pages listing (attempt)');
 
-    // Try to parse JSON first. Some environments (GitHub API) return
-    // an array of objects with download_url; some local dev setups may
-    // return a JSON array of filenames. If JSON parsing fails, fall
-    // back to parsing the response as HTML and extracting <a href="*.json"> links.
-    const text = await resp.text();
+    let resp = await fetch(ips_url);
+
+    // If the pages URL returns a non-OK status, attempt a GitHub API fallback
+    // immediately rather than aborting — this handles GitHub Pages 404s or
+    // directory listings that aren't machine-friendly.
+    if (!resp.ok) {
+      console.warn(`Primary fetch failed (${resp.status}) for ${ips_url}`);
+      statusEl.textContent = `Fetch ${resp.status} from pages; trying GitHub API fallback…`;
+      try {
+        const apiUrl = deriveGithubApiContentsUrl(BASE_URL) || 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
+        const apiResp = await fetch(apiUrl);
+        if (apiResp.ok) {
+          // Use the API response body as the primary 'text' source below
+          const apiText = await apiResp.text();
+          var text = apiText;
+          // Indicate whether we used a derived API URL or the default fallback
+          const usedDerived = !!deriveGithubApiContentsUrl(BASE_URL);
+          updateFetchSourceBadge(
+            usedDerived ?
+              'Derived GitHub API ' + apiUrl :
+              'Default GitHub API fallback (openhwgroup/tristan-isolde-unified-access-page)');
+        } else {
+          throw new Error(`API fallback fetch ${apiResp.status}`);
+        }
+      } catch (e) {
+        // Re-throw a helpful error for the outer catch to handle and report
+        throw new Error(`Failed to fetch IPS list from pages (${resp.status}) and API fallback failed: ${e.message}`);
+      }
+    } else {
+      // Normal path: read the response text from the primary fetch
+      var text = await resp.text();
+      updateFetchSourceBadge('Pages listing');
+    }
     let parsed = null;
     try {
       parsed = JSON.parse(text);
@@ -229,13 +396,85 @@ async function loadDataFromServer() {
       if (!seen.has(fe.name)) seen.set(fe.name, fe.url);
     });
 
-    const finalFiles = Array.from(seen.entries()).map(([name, url]) => ({ name, url }));
+    let finalFiles = Array.from(seen.entries()).map(([name, url]) => ({ name, url }));
+
+    // If we didn't find any files via the pages listing, and we're likely
+    // running on GitHub Pages, try the GitHub API fallback which reliably
+    // lists repository contents (including download_url fields).
+    if (finalFiles.length === 0) {
+      const hostname = (window.location && window.location.hostname) ? window.location.hostname : '';
+      const isGithubPages = hostname.includes('.github.io') || BASE_URL.includes('.github.io');
+      if (isGithubPages) {
+        try {
+          statusEl.textContent = 'No files found in Pages listing — trying GitHub API fallback…';
+          const derived = deriveGithubApiContentsUrl(BASE_URL);
+          const apiUrl = derived || 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
+          const apiResp = await fetch(apiUrl);
+          if (apiResp && apiResp.ok) {
+            const apiJson = await apiResp.json();
+            if (Array.isArray(apiJson) && apiJson.length) {
+              const apiFiles = apiJson
+                .filter(i => i && ((i.type === 'file') || (i.name && i.name.endsWith('.json'))))
+                .map(i => ({ name: i.name, url: i.download_url || i.url || i.html_url }));
+              const seenApi = new Map();
+              apiFiles.forEach(f => { if (f && f.name && f.url && !seenApi.has(f.name)) seenApi.set(f.name, f.url); });
+              const apiFinal = Array.from(seenApi.entries()).map(([name, url]) => ({ name, url }));
+              if (apiFinal.length) {
+                finalFiles = apiFinal;
+                // indicate which API we used
+                updateFetchSourceBadge(
+                  derived ?
+                    'Derived GitHub API ' + apiUrl :
+                    'Default GitHub API fallback (openhwgroup/tristan-isolde-unified-access-page)');
+              }
+            }
+          }
+        } catch (e) {
+          console.warn('GitHub API fallback failed', e);
+        }
+      }
+    }
+
     statusEl.textContent = `Found ${finalFiles.length} remote JSONs; loading…`;
 
     const arrs = await Promise.all(finalFiles.map(async f => {
-      const r = await fetch(f.url);
-      if (!r.ok) {
-        console.warn(`Failed to fetch ${f.url}: ${r.status}`);
+      // Try the primary URL first
+      let r = null;
+      try { r = await fetch(f.url); } catch (e) { r = null; }
+      if (!r || !r.ok) {
+        console.warn(`Failed to fetch ${f.url}: ${r ? r.status : 'network'}`);
+        // Best-effort: attempt a raw.githubusercontent.com URL derived from hints
+        const rawUrl = deriveRawUrlFromHints(BASE_URL, f.name, f.url);
+        if (rawUrl) {
+          try {
+            const r2 = await fetch(rawUrl);
+            if (r2 && r2.ok) {
+              console.info(`Fetched ${f.name} from raw.githubusercontent fallback`);
+              updateFetchSourceBadge('raw.githubusercontent.com fallback');
+              const txt2 = await r2.text();
+              try {
+                const data = JSON.parse(txt2);
+                // proceed with category injection below
+                const dotCount = (f.name.match(/\./g) || []).length;
+                if (dotCount >= 2) {
+                  const match = f.name.match(/^.*\.(.*?)\.json$/i);
+                  const categoryString = match ? match[1] : f.name.replace(/\.json$/i, '');
+                  const categoryName = findCategory(categoryString);
+                  if (categoryName) return Array.isArray(data) ? data.map(item => ({ ...item, Category: categoryName })) : [];
+                  console.warn(`Skipping file with invalid category: ${f.name}`);
+                  return [];
+                } else {
+                  return Array.isArray(data) ? data : [];
+                }
+              } catch (e) {
+                console.warn(`Invalid JSON at ${rawUrl}`);
+                return [];
+              }
+            }
+          } catch (e) {
+            console.warn('raw.githubusercontent fallback failed', e);
+          }
+        }
         return [];
       }
       const txt2 = await r.text();
