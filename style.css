@@ -1,3 +1,5 @@
+/* Copyright (c) 2025 Eclipse Foundation */
+
 /* =========================================================
    Global layout & typography
    ========================================================= */
@@ -180,12 +182,13 @@ main {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   color: #1f2937;
 }
 
 /* Make header cells positioning context for resizer and dropdown */
 #data-table th {
+  font-size: 1rem;
   position: relative;
   overflow: visible;
 }
@@ -300,7 +303,7 @@ main {
 }
 
 th, td {
-  padding: 12px 14px;
+  padding: 6px 10px;
   border-bottom: 1px solid rgba(15,23,42,0.06);
   text-align: left;
   vertical-align: middle;

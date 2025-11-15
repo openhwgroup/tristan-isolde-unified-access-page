@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('editor-page');
 
-  const GITHUB_API_URL = 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+  const GITHUB_API_URL = 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=main';
   const CATEGORIES_URL = 'cfg/categories.json';
 
   const fileSelector = document.getElementById('file-selector');

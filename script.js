@@ -2,15 +2,17 @@
 
 
 // Configuration
-// TODO: Find mechanism to automatically point to the repo and branch where this GitHub Page is hosted
-const GITHUB_API_URL =
-  'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
-  // 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
-  // 'https://api.github.com/repos/cairo-caplan/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
+const BASE_URL =
+(window.location.href).replace("index.html", ""); //local hosting
+// 'https://cairo-caplan.github.io/tristan-isolde-unified-access-page';
+// 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/';
+
+
+const IPS_PATH = '/ips/';
 const CATEGORIES_URL = 'cfg/categories.json';
 const PROJECTS_URL = 'cfg/projects.json';
 
-const defaultColumns = ["Name", "Category", "Project", "URL", "License", "Status", "Description"];
+const defaultColumns = ["Name", "Category", "URL", "License", "Status", "Project", "Description"];
 let viewMode = "default";
 
 
@@ -84,6 +86,121 @@ function findCategory(categoryString) {
   return cat ? cat.name : null;
 }
 
+// Derive a GitHub API contents URL from a GitHub Pages or repo URL.
+// Examples supported:
+// - https://{owner}.github.io/{repo}  -> https://api.github.com/repos/{owner}/{repo}/contents/ips
+// - https://github.com/{owner}/{repo}  -> https://api.github.com/repos/{owner}/{repo}/contents/ips
+function deriveGithubApiContentsUrl(base) {
+  try {
+    const u = new URL(base);
+    const host = u.hostname.toLowerCase();
+    const rawPath = u.pathname.replace(/^\/+|\/+$/g, ''); // trim slashes
+
+    // Case: user/project pages like owner.github.io/repo
+    if (host.endsWith('.github.io')) {
+      const owner = host.replace('.github.io', '');
+      const repo = rawPath.split('/')[0] || '';
+      if (!repo) return null; // can't derive repo
+      return `https://api.github.com/repos/${owner}/${repo}/contents/ips`;
+    }
+
+    // Case: direct github.com URL
+    if (host === 'github.com') {
+      const parts = rawPath.split('/').filter(Boolean);
+      if (parts.length >= 2) {
+        const owner = parts[0];
+        const repo = parts[1];
+        return `https://api.github.com/repos/${owner}/${repo}/contents/ips`;
+      }
+    }
+
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Try to derive a raw.githubusercontent.com URL for a given filename.
+// Uses BASE_URL or the provided file url as hints. Best-effort only;
+// assumes branch "main" if none can be determined.
+function deriveRawUrlFromHints(base, filename, hintUrl) {
+  try {
+    // 1) Try to extract owner/repo from the API contents URL derived from base
+    const api = deriveGithubApiContentsUrl(base);
+    let owner = null, repo = null, branch = 'main';
+    if (api) {
+      const m = api.match(/repos\/([^\/]+)\/([^\/]+)\/contents/);
+      if (m) {
+        owner = m[1]; repo = m[2];
+      }
+    }
+
+    // 2) If not found, inspect the hintUrl (could be api.github.com, github.com, or a pages URL)
+    if (!owner || !repo) {
+      if (hintUrl) {
+        try {
+          const u = new URL(hintUrl);
+          if (u.hostname === 'api.github.com') {
+            const parts = u.pathname.split('/').filter(Boolean);
+            // /repos/{owner}/{repo}/contents/...
+            const reposIdx = parts.indexOf('repos');
+            if (reposIdx !== -1 && parts.length >= reposIdx + 3) {
+              owner = parts[reposIdx + 1];
+              repo = parts[reposIdx + 2];
+            }
+            // Attempt to pick a ref query param if present
+            const ref = u.searchParams.get('ref');
+            if (ref) branch = ref;
+          } else if (u.hostname === 'github.com') {
+            const parts = u.pathname.split('/').filter(Boolean);
+            // /{owner}/{repo}/blob/{branch}/path
+            if (parts.length >= 2) {
+              owner = parts[0]; repo = parts[1];
+              const blobIdx = parts.indexOf('blob');
+              if (blobIdx !== -1 && parts.length > blobIdx + 1) branch = parts[blobIdx + 1];
+            }
+          } else if (u.hostname.endsWith('.github.io')) {
+            owner = u.hostname.replace('.github.io','');
+            const segments = u.pathname.replace(/^\/+|\/+$/g,'').split('/').filter(Boolean);
+            if (segments.length) repo = segments[0];
+          }
+        } catch (_) {}
+      }
+    }
+
+    if (owner && repo) {
+      return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/ips/${filename}`;
+    }
+  } catch (e) {
+    // fallback returns null
+  }
+  return null;
+}
+
+// Update or create a small badge element next to `#status` that shows which
+// source was ultimately used to build the file list. Use short labels.
+function updateFetchSourceBadge(sourceLabel) {
+  try {
+    let badge = document.getElementById('fetch-source-badge');
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.id = 'fetch-source-badge';
+      badge.style.marginLeft = '10px';
+      badge.style.fontSize = '0.86em';
+      badge.style.padding = '2px 6px';
+      badge.style.borderRadius = '4px';
+      badge.style.background = '#eef';
+      badge.style.color = '#033';
+      // insert after the status element so status text updates won't remove it
+      if (statusEl && statusEl.parentNode) statusEl.parentNode.insertBefore(badge, statusEl.nextSibling);
+    }
+    badge.textContent = sourceLabel;
+  } catch (e) {
+    // non-fatal
+    console.debug('Could not update fetch source badge', e);
+  }
+}
+
 // Add event listener for the search input
 document.getElementById('search-input').addEventListener('input', e => {
   searchText = e.target.value.trim().toLowerCase();
@@ -97,7 +214,7 @@ loadRadios.forEach(radio => {
     if (radio.value === 'github' && radio.checked) {
       fileInput.style.display = 'none';
       await loadProjectsData();
-      loadFromGitHub();
+      loadDataFromServer();
     }
     if (radio.value === 'local' && radio.checked) {
       fileInput.style.display = 'inline-block';
@@ -162,29 +279,220 @@ fileInput.addEventListener('change', async event => {
   }
 });
 
-// GitHub Loading
-async function loadFromGitHub() {
-  try {
+// Load Virtual Repo IPs info from server (GitHub or self hosted)
+async function loadDataFromServer() {
+  var ips_url;
+
+  // Normalize BASE_URL and avoid double-appending IPS_PATH.
+  // Many callers set BASE_URL to the site root (e.g. https://.../),
+  // and we append IPS_PATH. But if BASE_URL already contains
+  // the ips subpath (e.g. someone set BASE_URL = '.../ips/'),
+  // appending would produce '.../ips/ips/' and result in 404s.
+  // Build ips_url by separating query part (if present), ensuring
+  // the base path ends with exactly one IPS_PATH, then reattach query.
+  const queryPos = BASE_URL.indexOf("?");
+  const baseNoQuery = queryPos !== -1 ? BASE_URL.slice(0, queryPos) : BASE_URL;
+  const queryPart = queryPos !== -1 ? BASE_URL.slice(queryPos) : '';
+
+  // Ensure there is exactly one trailing slash on baseNoQuery for safe concatenation
+  const normalizedBase = baseNoQuery.endsWith('/') ? baseNoQuery : baseNoQuery + '/';
+
+  if (normalizedBase.endsWith(IPS_PATH)) {
+    // BASE_URL already points into the ips folder; use it as-is (preserving query)
+    ips_url = normalizedBase + queryPart.replace(/^[?]/, '') ? normalizedBase + queryPart : normalizedBase;
+    // Note: if BASE_URL already had a query, queryPart includes the leading '?'
+    // the above ternary keeps behavior consistent.
+    // Simpler: keep the original BASE_URL to preserve any query exactly.
+    ips_url = BASE_URL;
+  } else {
+    // Append IPS_PATH once, then reattach any query string.
+    ips_url = normalizedBase + IPS_PATH.replace(/^\//, '');
+    if (queryPart) ips_url += queryPart;
+  }
+
+  try{
     await loadAllowedCategories();
     statusEl.textContent = 'Fetching file list from GitHub…';
-    const resp = await fetch(GITHUB_API_URL);
-    if (!resp.ok) throw new Error(`GitHub API ${resp.status}`);
-    const items = await resp.json();
-    const jsonFiles = items.filter(i => i.type==='file' && i.name.endsWith('.json'));
-    statusEl.textContent = `Found ${jsonFiles.length} remote JSONs; loading…`;
 
-    const arrs = await Promise.all(jsonFiles.map(async f => {
-      const txt = await fetch(f.download_url).then(r=>r.text());
-      const data = JSON.parse(txt);
+  // Diagnostic: show which URL we're fetching
+  console.info('Fetching IPS list from:', ips_url);
+  statusEl.textContent = `Fetching file list from ${ips_url}…`;
+  // indicate we attempted the pages listing first
+  updateFetchSourceBadge('Pages listing (attempt)');
+
+    let resp = await fetch(ips_url);
+
+    // If the pages URL returns a non-OK status, attempt a GitHub API fallback
+    // immediately rather than aborting — this handles GitHub Pages 404s or
+    // directory listings that aren't machine-friendly.
+    if (!resp.ok) {
+      console.warn(`Primary fetch failed (${resp.status}) for ${ips_url}`);
+      statusEl.textContent = `Fetch ${resp.status} from pages; trying GitHub API fallback…`;
+      try {
+        const apiUrl = deriveGithubApiContentsUrl(BASE_URL) || 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
+        const apiResp = await fetch(apiUrl);
+        if (apiResp.ok) {
+          // Use the API response body as the primary 'text' source below
+          const apiText = await apiResp.text();
+          var text = apiText;
+          // Indicate whether we used a derived API URL or the default fallback
+          const usedDerived = !!deriveGithubApiContentsUrl(BASE_URL);
+          updateFetchSourceBadge(
+            usedDerived ?
+              'Derived GitHub API ' + apiUrl :
+              'Default GitHub API fallback (openhwgroup/tristan-isolde-unified-access-page)');
+        } else {
+          throw new Error(`API fallback fetch ${apiResp.status}`);
+        }
+      } catch (e) {
+        // Re-throw a helpful error for the outer catch to handle and report
+        throw new Error(`Failed to fetch IPS list from pages (${resp.status}) and API fallback failed: ${e.message}`);
+      }
+    } else {
+      // Normal path: read the response text from the primary fetch
+      var text = await resp.text();
+      updateFetchSourceBadge('Pages listing');
+    }
+    let parsed = null;
+    try {
+      parsed = JSON.parse(text);
+    } catch (e) {
+      parsed = null;
+    }
+
+    let fileEntries = [];
+
+    if (Array.isArray(parsed)) {
+      // Case A: array of strings (filenames) or array of objects (GitHub API)
+      if (parsed.length && typeof parsed[0] === 'string') {
+        // Array of filenames — resolve relative to the base URL
+        const base = ips_url.endsWith('/') ? ips_url : ips_url + '/';
+        fileEntries = parsed.filter(n => n.endsWith('.json')).map(n => ({ name: n, url: new URL(n, base).toString() }));
+      } else {
+        // Array of objects (likely GitHub API). Prefer download_url, fall back to url/html_url
+        fileEntries = parsed
+          .filter(i => i && ((i.type === 'file') || (i.name && i.name.endsWith('.json'))))
+          .map(i => ({ name: i.name, url: i.download_url || i.url || i.html_url }));
+      }
+    } else {
+      // Case B: Not JSON — try to extract hrefs from HTML listing
+      const hrefs = Array.from(text.matchAll(/href=["']([^"']+\.json)["']/gi)).map(m => m[1]);
+      fileEntries = hrefs.map(h => {
+        try {
+          const full = new URL(h, ips_url).toString();
+          const name = full.split('/').pop();
+          return { name, url: full };
+        } catch (e) {
+          return null;
+        }
+      }).filter(Boolean);
+    }
+
+    // Deduplicate by filename (keep first seen)
+    const seen = new Map();
+    fileEntries.forEach(fe => {
+      if (!fe || !fe.name || !fe.url) return;
+      if (!fe.name.endsWith('.json')) return;
+      if (!seen.has(fe.name)) seen.set(fe.name, fe.url);
+    });
+
+    let finalFiles = Array.from(seen.entries()).map(([name, url]) => ({ name, url }));
+
+    // If we didn't find any files via the pages listing, and we're likely
+    // running on GitHub Pages, try the GitHub API fallback which reliably
+    // lists repository contents (including download_url fields).
+    if (finalFiles.length === 0) {
+      const hostname = (window.location && window.location.hostname) ? window.location.hostname : '';
+      const isGithubPages = hostname.includes('.github.io') || BASE_URL.includes('.github.io');
+      if (isGithubPages) {
+        try {
+          statusEl.textContent = 'No files found in Pages listing — trying GitHub API fallback…';
+          const derived = deriveGithubApiContentsUrl(BASE_URL);
+          const apiUrl = derived || 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips';
+          const apiResp = await fetch(apiUrl);
+          if (apiResp && apiResp.ok) {
+            const apiJson = await apiResp.json();
+            if (Array.isArray(apiJson) && apiJson.length) {
+              const apiFiles = apiJson
+                .filter(i => i && ((i.type === 'file') || (i.name && i.name.endsWith('.json'))))
+                .map(i => ({ name: i.name, url: i.download_url || i.url || i.html_url }));
+              const seenApi = new Map();
+              apiFiles.forEach(f => { if (f && f.name && f.url && !seenApi.has(f.name)) seenApi.set(f.name, f.url); });
+              const apiFinal = Array.from(seenApi.entries()).map(([name, url]) => ({ name, url }));
+              if (apiFinal.length) {
+                finalFiles = apiFinal;
+                // indicate which API we used
+                updateFetchSourceBadge(
+                  derived ?
+                    'Derived GitHub API ' + apiUrl :
+                    'Default GitHub API fallback (openhwgroup/tristan-isolde-unified-access-page)');
+              }
+            }
+          }
+        } catch (e) {
+          console.warn('GitHub API fallback failed', e);
+        }
+      }
+    }
+
+    statusEl.textContent = `Found ${finalFiles.length} remote JSONs; loading…`;
+
+    const arrs = await Promise.all(finalFiles.map(async f => {
+      // Try the primary URL first
+      let r = null;
+      try { r = await fetch(f.url); } catch (e) { r = null; }
+      if (!r || !r.ok) {
+        console.warn(`Failed to fetch ${f.url}: ${r ? r.status : 'network'}`);
+        // Best-effort: attempt a raw.githubusercontent.com URL derived from hints
+        const rawUrl = deriveRawUrlFromHints(BASE_URL, f.name, f.url);
+        if (rawUrl) {
+          try {
+            const r2 = await fetch(rawUrl);
+            if (r2 && r2.ok) {
+              console.info(`Fetched ${f.name} from raw.githubusercontent fallback`);
+              updateFetchSourceBadge('raw.githubusercontent.com fallback');
+              const txt2 = await r2.text();
+              try {
+                const data = JSON.parse(txt2);
+                // proceed with category injection below
+                const dotCount = (f.name.match(/\./g) || []).length;
+                if (dotCount >= 2) {
+                  const match = f.name.match(/^.*\.(.*?)\.json$/i);
+                  const categoryString = match ? match[1] : f.name.replace(/\.json$/i, '');
+                  const categoryName = findCategory(categoryString);
+                  if (categoryName) return Array.isArray(data) ? data.map(item => ({ ...item, Category: categoryName })) : [];
+                  console.warn(`Skipping file with invalid category: ${f.name}`);
+                  return [];
+                } else {
+                  return Array.isArray(data) ? data : [];
+                }
+              } catch (e) {
+                console.warn(`Invalid JSON at ${rawUrl}`);
+                return [];
+              }
+            }
+          } catch (e) {
+            console.warn('raw.githubusercontent fallback failed', e);
+          }
+        }
+        return [];
+      }
+      const txt2 = await r.text();
+      let data;
+      try {
+        data = JSON.parse(txt2);
+      } catch (e) {
+        console.warn(`Invalid JSON at ${f.url}`);
+        return [];
+      }
+
       const dotCount = (f.name.match(/\./g) || []).length;
       if (dotCount >= 2) {
         const match = f.name.match(/^.*\.(.*?)\.json$/i);
-        const categoryString = match ? match[1] : f.name.replace(/\.json$/i,'');
+        const categoryString = match ? match[1] : f.name.replace(/\.json$/i, '');
         const categoryName = findCategory(categoryString);
         if (categoryName) {
-          return Array.isArray(data)
-            ? data.map(item => ({ ...item, Category: categoryName }))
-            : [];
+          return Array.isArray(data) ? data.map(item => ({ ...item, Category: categoryName })) : [];
         } else {
           console.warn(`Skipping file with invalid category: ${f.name}`);
           return [];
@@ -194,17 +502,17 @@ async function loadFromGitHub() {
       }
     }));
 
-    masterData   = arrs.flat();
+    masterData = arrs.flat();
     masterData.sort((a, b) => String(a.Name ?? '').localeCompare(String(b.Name ?? '')));
     filteredData = [...masterData];
     deriveColumns();
     buildTable();
     setInitialFilterSelections(parseFiltersFromQuery()); // Apply URL filters now
-  statusEl.textContent = 'GitHub data loaded.';
-  srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
+    statusEl.textContent = 'GitHub data loaded.';
+    srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
     exportBtn.disabled = false;
-  } catch(err) {
-    statusEl.textContent = 'Error: ' + err.message;
+  } catch (err) {
+    statusEl.textContent = 'Error: ' + (err.message || err);
     console.error(err);
   }
 }
@@ -248,19 +556,33 @@ function buildTable(skipPortalId = null) {
   });
 
   const headerRow = document.createElement('tr');
+  const SKIP_DROPDOWN = new Set(['Description', 'Comment']);
+
   visibleColumns.forEach((col, i) => {
     const th = document.createElement('th');
     th.style.position = 'relative';
     th.style.verticalAlign = 'top';
+
+    // If this column is in the skip-list, render a plain, non-interactive label
+    if (SKIP_DROPDOWN.has(col)) {
+      const labelDiv = document.createElement('div');
+      labelDiv.className = 'header-label';
+      labelDiv.textContent = col;
+      labelDiv.style.padding = '6px 4px';
+      labelDiv.setAttribute('aria-hidden', 'false');
+      th.appendChild(labelDiv);
+      headerRow.appendChild(th);
+      return; // skip dropdown construction and listeners for this column
+    }
 
     // Header button: use the column name itself as the dropdown toggle for filters
     const dropdown = document.createElement('div');
     dropdown.className = 'custom-dropdown';
     dropdown.tabIndex = 0;
 
-  const headerBtn = document.createElement('button');
-  // text content is just the column name; caret is provided via CSS ::after
-  headerBtn.textContent = col;
+    const headerBtn = document.createElement('button');
+    // text content is just the column name; caret is provided via CSS ::after
+    headerBtn.textContent = col;
     headerBtn.type = 'button';
     headerBtn.className = 'header-filter-btn';
     // Accessibility: indicate this button opens a popup and manage expanded state
@@ -277,117 +599,117 @@ function buildTable(skipPortalId = null) {
     });
     th.appendChild(headerBtn);
 
-  const dropdownContent = document.createElement('div');
-  dropdownContent.className = 'dropdown-content';
-  // Accessibility: mark as a popup menu for assistive tech
-  dropdownContent.setAttribute('role', 'menu');
-  dropdownContent.setAttribute('aria-label', `Filter ${col}`);
+    const dropdownContent = document.createElement('div');
+    dropdownContent.className = 'dropdown-content';
+    // Accessibility: mark as a popup menu for assistive tech
+    dropdownContent.setAttribute('role', 'menu');
+    dropdownContent.setAttribute('aria-label', `Filter ${col}`);
 
-  // attach header button as the visible toggle
-  dropdown.appendChild(headerBtn);
-  dropdown.appendChild(dropdownContent);
-  th.appendChild(dropdown);
+    // attach header button as the visible toggle
+    dropdown.appendChild(headerBtn);
+    dropdown.appendChild(dropdownContent);
+    th.appendChild(dropdown);
 
-  // Toggle dropdown visibility
-  headerBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    // If this column's portal is already open, close it (toggle behavior)
-    const existingPortal = document.getElementById(portalId);
-    if (existingPortal) {
-      existingPortal.remove();
-      headerBtn.setAttribute('aria-expanded', 'false');
-      return;
-    }
-
-    // Clear previous content and rebuild it based on the CURRENT filter state.
-    dropdownContent.innerHTML = '';
-
-    // Add search input to dropdown
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = 'Search...';
-    searchInput.style.width = '100%';
-    dropdownContent.appendChild(searchInput);
-
-    // 1. Get all possible unique values for the current column from the master dataset.
-    const allPossibleValues = [...new Set(masterData.flatMap(r => {
-        const v = r[col];
-        return Array.isArray(v) ? v : [v];
-    }))].sort();
-
-    // 2. Determine which values are currently selected for this column.
-    const selectedValues = new Set(filterState[col] || []);
-
-    // 3. Determine which values are "valid" based on filters applied to *other* columns.
-    const otherFilters = { ...filterState };
-    delete otherFilters[col];
-    const partiallyFilteredData = masterData.filter(row =>
-      Object.entries(otherFilters).every(([filterCol, vals]) => {
-        const cell = row[filterCol];
-        return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
-      })
-    );
-    const validValues = new Set(partiallyFilteredData.flatMap(r => {
-        const v = r[col];
-        return Array.isArray(v) ? v : [v];
-    }));
-
-    // 4. Categorize all possible values for sorting and rendering.
-    const items = allPossibleValues.map(val => ({
-      value: val,
-      isSelected: selectedValues.has(val),
-      isValid: validValues.has(val)
-    }));
-
-    // 5. Sort the items: selected first, then valid, then invalid (grayed out).
-    items.sort((a, b) => {
-      if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
-      if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
-      return String(a.value ?? '').localeCompare(String(b.value ?? ''));
-    });
-
-    // 6. Create and append the checkbox elements.
-    items.forEach(item => {
-      const label = document.createElement('label');
-      label.style.display = 'block';
-      label.style.padding = '6px';
-      label.style.cursor = 'pointer';
-      label.setAttribute('role', 'menuitem');
-
-      const cb = document.createElement('input');
-      cb.type = 'checkbox';
-      cb.value = item.value;
-      cb.dataset.column = col;
-      cb.checked = item.isSelected;
-      cb.setAttribute('role', 'menuitemcheckbox');
-      cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
-
-      if (!item.isValid && !item.isSelected) {
-        cb.disabled = true;
-        label.style.color = '#999';
-        label.style.cursor = 'not-allowed';
+    // Toggle dropdown visibility
+    headerBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      // If this column's portal is already open, close it (toggle behavior)
+      const existingPortal = document.getElementById(portalId);
+      if (existingPortal) {
+        existingPortal.remove();
+        headerBtn.setAttribute('aria-expanded', 'false');
+        return;
       }
 
-      label.appendChild(cb);
-      label.appendChild(document.createTextNode(item.value));
-      dropdownContent.appendChild(label);
-    });
-    // --- END: On-demand dropdown generation ---
+      // Clear previous content and rebuild it based on the CURRENT filter state.
+      dropdownContent.innerHTML = '';
 
-    // Remove any other existing portal dropdowns
-    document.querySelectorAll('.portal-dropdown').forEach(dc => {
-      if (dc.id !== skipPortalId) {
-        dc.remove();
-      }
-    });
+      // Add search input to dropdown
+      const searchInput = document.createElement('input');
+      searchInput.type = 'text';
+      searchInput.placeholder = 'Search...';
+      searchInput.style.width = '100%';
+      dropdownContent.appendChild(searchInput);
 
-  // Get button position
-  const rect = headerBtn.getBoundingClientRect();
+      // 1. Get all possible unique values for the current column from the master dataset.
+      const allPossibleValues = [...new Set(masterData.flatMap(r => {
+        const v = r[col];
+        return Array.isArray(v) ? v : [v];
+      }))].sort();
 
-  // Clone dropdownContent and expose it as a portal dropdown
-  const portalDropdown = dropdownContent.cloneNode(true);
-  portalDropdown.className = 'dropdown-content portal-dropdown';
-  portalDropdown.id = portalId;
+      // 2. Determine which values are currently selected for this column.
+      const selectedValues = new Set(filterState[col] || []);
+
+      // 3. Determine which values are "valid" based on filters applied to *other* columns.
+      const otherFilters = { ...filterState };
+      delete otherFilters[col];
+      const partiallyFilteredData = masterData.filter(row =>
+        Object.entries(otherFilters).every(([filterCol, vals]) => {
+          const cell = row[filterCol];
+          return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
+        })
+      );
+      const validValues = new Set(partiallyFilteredData.flatMap(r => {
+        const v = r[col];
+        return Array.isArray(v) ? v : [v];
+      }));
+
+      // 4. Categorize all possible values for sorting and rendering.
+      const items = allPossibleValues.map(val => ({
+        value: val,
+        isSelected: selectedValues.has(val),
+        isValid: validValues.has(val)
+      }));
+
+      // 5. Sort the items: selected first, then valid, then invalid (grayed out).
+      items.sort((a, b) => {
+        if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
+        if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
+        return String(a.value ?? '').localeCompare(String(b.value ?? ''));
+      });
+
+      // 6. Create and append the checkbox elements.
+      items.forEach(item => {
+        const label = document.createElement('label');
+        label.style.display = 'block';
+        label.style.padding = '6px';
+        label.style.cursor = 'pointer';
+        label.setAttribute('role', 'menuitem');
+
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.value = item.value;
+        cb.dataset.column = col;
+        cb.checked = item.isSelected;
+        cb.setAttribute('role', 'menuitemcheckbox');
+        cb.setAttribute('aria-checked', cb.checked ? 'true' : 'false');
+
+        if (!item.isValid && !item.isSelected) {
+          cb.disabled = true;
+          label.style.color = '#999';
+          label.style.cursor = 'not-allowed';
+        }
+
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(item.value));
+        dropdownContent.appendChild(label);
+      });
+      // --- END: On-demand dropdown generation ---
+
+      // Remove any other existing portal dropdowns
+      document.querySelectorAll('.portal-dropdown').forEach(dc => {
+        if (dc.id !== skipPortalId) {
+          dc.remove();
+        }
+      });
+
+      // Get button position
+      const rect = headerBtn.getBoundingClientRect();
+
+      // Clone dropdownContent and expose it as a portal dropdown
+      const portalDropdown = dropdownContent.cloneNode(true);
+      portalDropdown.className = 'dropdown-content portal-dropdown';
+      portalDropdown.id = portalId;
       portalDropdown.dataset.column = col; // Add column context to the portal
       portalDropdown.style.position = 'absolute';
       portalDropdown.style.left = rect.left + 'px';
@@ -434,9 +756,9 @@ function buildTable(skipPortalId = null) {
         });
       });
 
-  document.body.appendChild(portalDropdown);
-  // Mark as expanded for assistive tech
-  headerBtn.setAttribute('aria-expanded', 'true');
+      document.body.appendChild(portalDropdown);
+      // Mark as expanded for assistive tech
+      headerBtn.setAttribute('aria-expanded', 'true');
 
       // Hide on outside click
       document.addEventListener('click', function hideDropdown(ev) {
@@ -464,6 +786,7 @@ function buildTable(skipPortalId = null) {
       }
       document.addEventListener('keydown', escHandler);
     });
+
     // Hide dropdown when clicking outside (original inline content)
     document.addEventListener('click', () => {
       dropdownContent.style.display = 'none';
@@ -895,12 +1218,12 @@ function deriveColumns() {
   const ordered = [];
   if (raw.includes('Name'))     ordered.push('Name');
   if (raw.includes('Category')) ordered.push('Category');
-  if (raw.includes('Project'))  ordered.push('Project');
   if (raw.includes('License'))  ordered.push('License');
   if (raw.includes('Status'))  ordered.push('Status');
+  if (raw.includes('Project'))  ordered.push('Project');
   if (raw.includes('Description'))  ordered.push('Description');
   raw.forEach(c => {
-    if (!['Name', 'Category', 'Project', 'License', 'Status', 'Description'].includes(c)) ordered.push(c);
+    if (!['Name', 'Category', 'License', 'Status', 'Project', 'Description'].includes(c)) ordered.push(c);
   });
   columns = ordered;
   updateVisibleColumns();
