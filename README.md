@@ -13,9 +13,9 @@ The diagram below shows how the TRISTAN and ISOLDE repositories are organized.
 
 The Tristan and ISOLDE Unified Access Page are the deliverable of the TRISTAN Task 2 of the Work Package 7 (7.2) and ISOLDE Task 1 of the Work Package 6 (T6.1).
 
-You can access the Tristan and ISOLDE Unified Access Page [here](https://htmlpreview.github.io/?https://github.com/openhwgroup/tristan-isolde-unified-access-page/blob/main/tristan-isolde-unified-access-page.html).
+You can access the Tristan and ISOLDE Unified Access Page [here](https://openhwgroup.github.io/tristan-isolde-unified-access-page/index.html).
 
-The TRISTAN IPs are also accessible on the official webpage [here](https://tristan-project.eu/tristan-ips/).
+The TRISTAN IPs are also accessible on the official webpage [here](https://tristan-project.eu/tristan-ips/), or on the WIP UAP version of the official webpage [here](https://tristan-project.eu/uap/).
 
 # Acknowledgements
 

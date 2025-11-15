@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unified Access Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Common stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Font Awesome for footer icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="page-with-layout">
+
+  <!-- Shared header -->
+	<header>
+	  <div class="nav-container">
+	
+	    <div class="nav-brand">
+	      <a href="index.html">
+	        <img src="images/unified-riscv-horizontal-logo.png"
+	             alt="Unified RISC-V Logo"
+	             class="nav-logo-img">
+	      </a>
+	    </div>
+	    <nav>
+	      <ul>
+	        <li><a href="index.html">Home</a></li>
+	        <li><a href="unified-access.html">Unified Access</a></li>
+	        <li><a href="editor.html">Editor</a></li>
+	        <li><a href="help.html">Help</a></li>
+	      </ul>
+	    </nav>
+	  </div>
+	</header>
+
+  <!-- Page content: search + settings + table -->
+  <main>
+    <section class="hero">
+      <img src="images/logo_unified-riscv.png" alt="Unified RISC-V Logo" />
+      <h1>Unified RISC-V IP Access Platform</h1>
+    </section>
+    <div class="search-and-settings-container" style="position: relative;">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search all fields..."
+      />
+      <button id="settings-toggle-btn" title="Open Settings" aria-label="Open Settings Panel">⚙️</button>
+
+      <div id="settings-panel" class="floating-panel" hidden>
+        <h3>Settings</h3>
+
+        <div id="load-options" class="settings-group">
+          <h4>Data source</h4>
+          <label>
+            <input type="radio" name="load-mode" value="github" checked>
+            Load from GitHub
+          </label>
+          <label>
+            <input type="radio" name="load-mode" value="local">
+            Load from local files
+          </label>
+          <input
+            type="file"
+            id="file-input"
+            multiple
+            accept=".json"
+            style="display: none; margin-left:1em;"
+          />
+        </div>
+
+        <div class="settings-group">
+          <h4>Table View</h4>
+          <label><input type="radio" name="table-view" value="default" checked>Default</label>
+          <label><input type="radio" name="table-view" value="detailed">Detailed</label>
+        </div>
+
+        <div class="settings-group">
+          <h4>Controls</h4>
+          <button onclick="window.location.href='editor.html'">Edit table data</button>
+          <button id="export-btn" disabled>Export CSV</button>
+        </div>
+
+        <div id="status" class="settings-group">Choose a load mode to begin.</div>
+      </div>
+    </div>
+
+    <div class="table-container table-fullwidth">
+      <table id="data-table">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- Shared footer -->
+  <footer>
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <h4>Funding</h4>
+        <img src="images/eu-funded.png" class="footer-logo" alt="Funded by the European Union">
+        <p>This platform is supported by the European Union.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Chips JU</h4>
+        <img src="images/chips-ju.png" class="footer-logo" alt="Chips JU">
+        <p>Part of the European Chips Joint Undertaking framework.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>OpenHW & Contact</h4>
+        <img src="images/openhw-logo.png" class="footer-logo" alt="OpenHW Logo">
+
+        <a href="mailto:info@openhwgroup.org" class="footer-icon">
+          <i class="fas fa-envelope"></i> info@openhwgroup.org
+        </a>
+        <a href="https://github.com/openhwgroup" class="footer-icon">
+          <i class="fab fa-github"></i> github.com/openhwgroup
+        </a>
+        <a href="https://www.linkedin.com/company/openhwgroup" class="footer-icon">
+          <i class="fab fa-linkedin"></i> @openhwgroup
+        </a>
+        <a href="https://openhwfoundation.org/" class="footer-icon">
+          <i class="fas fa-globe"></i> openhwfoundation.org
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        This project has received funding from the Chips Joint Undertaking (Chips JU)
+        under the European Union’s Horizon Europe Research and Innovation Programme,
+        and from the European Union, under Grant Agreements No. 101095947 (TRISTAN), 101112274 (ISOLDE).
+      </p>
+      <p>© 2025 Unified RISC-V IP Access Platform — All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
