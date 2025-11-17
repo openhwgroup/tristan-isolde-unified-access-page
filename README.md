@@ -40,7 +40,7 @@ Our ambition is to progressively transform this platform into a sustainable, int
 
 
 
-<h2 align="center"> <a href="unified-access.html">🚀 Access the Platform</a></h2>
+<h2 align="center"> <a href="https://openhwgroup.github.io/tristan-isolde-unified-access-page/unified-access.html">🚀 Access the Platform</a></h2>
 
 ---
 
