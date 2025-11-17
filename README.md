@@ -44,7 +44,7 @@ Our ambition is to progressively transform this platform into a sustainable, int
 
 ---
 
-
+ 
 <p align="center">
   <img src="images/eu-funded.png" alt="EU Funding Logo" width="180">
   &nbsp;&nbsp;&nbsp;

@@ -177,14 +177,15 @@ main {
 
 /* Container around the data table */
 .table-container {
-  --row-height: 48px;
-  max-height: calc(var(--row-height) * 18); /* visible rows */
+  position: relative;
   overflow-y: auto;
+  overflow-x: auto;
+  max-height: 70vh; 
   border-radius: 10px;
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15,23,42,0.08);
   background: #ffffff;
-  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
-  padding: 6px; /* breathing room for sticky headers */
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  padding: 0;
 }
 
 /* Main table */
@@ -284,32 +285,26 @@ main {
   }
 }
 
-/* Sticky header row with column names */
-#data-table thead tr:first-child th {
-  position: sticky;
-  top: 0;
-  background-color: #1565c0; /* coherent blue with CTA button */
-  color: #ffffff;
-  z-index: 101;
-  overflow: visible;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 12px 14px;
-}
-
 /* Stripe rows */
 #data-table tbody tr:nth-child(even) { background-color: #ffffff; }
 #data-table tbody tr:nth-child(odd)  { background-color: #fcfdff; }
 #data-table tbody tr:hover           { background-color: #eef6ff; }
 
-/* Sticky filter row beneath column names */
-#data-table thead tr:nth-child(2) th {
+/* Make the whole table header (all rows) sticky inside the scrollable container */
+#data-table thead {
   position: sticky;
-  top: 56px; /* header height */
-  background-color: #ffffff;
-  z-index: 90;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  top: 0;
+  z-index: 102;
+}
+
+/* Visual style for all header cells */
+#data-table thead th {
+  background-color: #1565c0;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.25);
 }
 
 th, td {
@@ -444,6 +439,24 @@ select {
 .table-narrow {
   max-width: 70%;
   margin: 0 auto;
+}
+/* Make the table area align to the window, not to <main> */
+.table-viewport {
+  width: 100vw;                 /* full viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;           /* pull to the left edge of the window */
+  margin-right: -50vw;          /* pull to the right edge of the window */
+  padding: 0 1.5rem;            /* same side padding as the site */
+  box-sizing: border-box;
+}
+
+/* Inner container: centered, max 1500px */
+.table-fixed {
+  max-width: 1500px;            /* never wider than 1200px */
+  width: 100%;                  /* but fluid under 1200px */
+  margin: 0 auto;               /* centered inside the viewport band */
 }
 
 /* =========================================================
