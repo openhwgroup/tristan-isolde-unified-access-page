@@ -1,4 +1,14 @@
-/* Copyright (c) 2025 Eclipse Foundation */
+/*
+ *-------------------------------------------------------------------------------
+ * Copyright (C) 2025 philippe
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ *-------------------------------------------------------------------------------
+*/
 
 /* =========================================================
    Global layout & typography
@@ -422,6 +432,18 @@ select {
   padding-left: 1.5rem;      /* match site padding */
   padding-right: 1.5rem;
   box-sizing: border-box;
+}
+
+/* Medium mode: table takes 80% of the page */
+.table-medium {
+  max-width: 85%;
+  margin: 0 auto;   /* centers the table */
+}
+
+/* Smaller variant if needed: 70% */
+.table-narrow {
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 /* =========================================================
