@@ -190,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clear existing content
     thead.innerHTML = '';
     tbody.innerHTML = '';
-    tfoot.innerHTML = '';
 
     // Render Header
     const headerRow = document.createElement('tr');
