@@ -31,6 +31,26 @@ body.page-with-layout {
 }
 
 /* =========================================================
+   Sponsors style
+   ========================================================= */
+.sponsor-logos {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sponsor-logo {
+  max-height: 200px;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sponsor-logo:hover {
+  transform: scale(1.05);
+}
+/* =========================================================
    Header & navigation (shared)
    ========================================================= */
 
