@@ -1220,6 +1220,11 @@ function updateVisibleColumns() {
   if (columns.includes('Name') && columns.includes('URL')) {
     visibleColumns = visibleColumns.filter(c => c !== 'URL');
   }
+  // Always move Project to the end of visibleColumns
+	if (visibleColumns.includes('Project')) {
+	  visibleColumns = visibleColumns.filter(c => c !== 'Project');
+	  visibleColumns.push('Project');
+	}
 }
 
 // When columns are derived, update visibleColumns for current view
@@ -1230,11 +1235,12 @@ function deriveColumns() {
   if (raw.includes('Category')) ordered.push('Category');
   if (raw.includes('License'))  ordered.push('License');
   if (raw.includes('Status'))  ordered.push('Status');
-  if (raw.includes('Project'))  ordered.push('Project');
+//  if (raw.includes('Project'))  ordered.push('Project');
   if (raw.includes('Description'))  ordered.push('Description');
   raw.forEach(c => {
-    if (!['Name', 'Category', 'License', 'Status', 'Project', 'Description'].includes(c)) ordered.push(c);
+    if (!['Name', 'Category', 'License', 'Status', 'Description', 'Project'].includes(c)) ordered.push(c);
   });
+  if (raw.includes('Project'))  ordered.push('Project'); // ALWAYS LAST
   columns = ordered;
   updateVisibleColumns();
   renderColumnToggleDropdown?.();

@@ -16,19 +16,18 @@
 
 <h1 align="center">European Unified RISC-V IP Access Platform</h1>
 
-Welcome to the **European Unified RISC-V IP Access Platform** — a structured and expandable entry point designed to catalogue, document, and promote the IP assets initially developed in various European research projects such as **TRISTAN**, **ISOLDE**, and many others, with a specific focus on **RISC-V**.
+Welcome to the **European Unified RISC-V IP Access Platform** — a structured and expandable entry point designed to catalogue, document, and promote the IP assets initially developed in various European research projects such as <strong><a href="https://tristan-project.eu/">TRISTAN</a></strong>, <strong><a href="https://isolde-project.eu/">ISOLDE</a></strong>, and many others, with a specific focus on **RISC-V**.
 
-This platform consolidates hardware and software components and offers a coherent view of their maturity, usability, licensing, and integration workflows. Beyond serving as a repository index, it represents an **ongoing effort** to address key recommendations from project evaluations.
+This platform consolidates hardware and software components and offers a coherent view of their maturity, usability, licensing, and integration workflows.
 
 While not all elements are fully implemented yet, the platform already contributes to several priority objectives, including:
 
 - **Improving visibility and accessibility** by centralising information in a single access point;
 - **Strengthening exploitation foundations** by clarifying how IPs relate to project-level strategies;
 - **Facilitating interoperability and documentation** through initial workflow descriptions and structured repository information;
-- **Aligning practices** with related initiatives beyond TRISTAN, such as **ISOLDE**, **Rigoletto**, and others, to move toward consistent governance and IP management;
+- **Aligning practices** with related initiatives beyond **TRISTAN**, such as **ISOLDE**, **Rigoletto**, and others, to move toward consistent governance and IP management;
 - **Supporting internal and external adoption** with clearer structures and integration pathways.
 
----
 
 Additional features — such as KPI-based adoption monitoring, extended interoperability matrices, reinforced internal tooling adoption, and long-term community-building activities — are planned as part of the platform’s **progressive roadmap**.
 
@@ -38,9 +37,16 @@ Our ambition is to progressively transform this platform into a sustainable, int
 
 ---
 
-
-
 <h2 align="center"> <a href="https://openhwgroup.github.io/tristan-isolde-unified-access-page/unified-access.html">🚀 Access the Platform</a></h2>
+
+---
+
+<h2 align="center">Supported by</h2>
+<p align="center">
+	<a href="https://tristan-project.eu/"><img src="images/tristan-logo.png"></a>
+	  &nbsp;&nbsp;&nbsp;
+	<a href="https://isolde-project.eu/"><img src="images/isolde-logo.png"></a>
+</p>
 
 ---
 
