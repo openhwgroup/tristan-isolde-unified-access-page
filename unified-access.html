@@ -9,12 +9,11 @@
 # SPDX-License-Identifier: EPL-2.0
 #-------------------------------------------------------------------------------
 -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>JSON Editor - Unified Access Page</title>
+  <title>Unified Access Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Common stylesheet -->
@@ -24,7 +23,7 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body class="page-with-layout editor-page">
+<body class="page-with-layout">
 
   <!-- Shared header -->
 	<header>
@@ -48,44 +47,57 @@
 	  </div>
 	</header>
 
-  <!-- Page content -->
+  <!-- Page content: search + settings + table -->
   <main>
     <section class="hero">
       <img src="images/logo_unified-riscv.png" alt="Unified RISC-V Logo" />
       <h1>Unified RISC-V IP Access Platform</h1>
-      <h2>Virtual Repository table editor</h2>
     </section>
-    <section class="editor-intro">
-      <a href="unified-access.html">&larr; Back to UAP</a>
-      <p>Use this page to create or edit a Project file (JSON) of the Virtual Repository.</p>
-      <p>
-        You can submit your changes as a GitHub Pull Request to the
-        <a href="https://github.com/openhwgroup/tristan-isolde-unified-access-page/tree/virtual_rep_improv"
-           target="_blank" rel="noopener noreferrer">
-          Unified Access Page (UAP)
-        </a>
-        repository, on OpenHW Foundation's GitHub.
-      </p>
+    <div class="search-and-settings-container" style="position: relative;">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search all fields..."
+      />
+      <button id="settings-toggle-btn" title="Open Settings" aria-label="Open Settings Panel">⚙️</button>
 
-      <div class="editor-controls">
-        <label for="file-selector">Select existing file from GitHub:</label>
-        <select id="file-selector">
-          <option value="">-- Select a file --</option>
-        </select>
-        <button id="load-file-btn">Load</button>
-        <span>&nbsp;or&nbsp;</span>
-        <button id="load-local-btn">Load local file</button>
-        <input type="file" id="local-file-input" accept=".json" style="display: none;" />
-        <span>&nbsp;or&nbsp;</span>
-        <button id="create-new-btn">Create new file</button>
-      </div>
+      <div id="settings-panel" class="floating-panel" hidden>
+        <h3>Settings</h3>
 
-      <div class="editor-controls">
-        <label for="project-name-input">Project Name:</label>
-        <input type="text" id="project-name-input" placeholder="e.g., TRISTAN" disabled />
-        <button id="save-json-btn" disabled>Save to JSON File</button>
+        <div id="load-options" class="settings-group">
+          <h4>Data source</h4>
+          <label>
+            <input type="radio" name="load-mode" value="github" checked>
+            Load from GitHub
+          </label>
+          <label>
+            <input type="radio" name="load-mode" value="local">
+            Load from local files
+          </label>
+          <input
+            type="file"
+            id="file-input"
+            multiple
+            accept=".json"
+            style="display: none; margin-left:1em;"
+          />
+        </div>
+
+        <div class="settings-group">
+          <h4>Table View</h4>
+          <label><input type="radio" name="table-view" value="default" checked>Default</label>
+          <label><input type="radio" name="table-view" value="detailed">Detailed</label>
+        </div>
+
+        <div class="settings-group">
+          <h4>Controls</h4>
+          <button onclick="window.location.href='editor.html'">Edit table data</button>
+          <button id="export-btn" disabled>Export CSV</button>
+        </div>
+
+        <div id="status" class="settings-group">Choose a load mode to begin.</div>
       </div>
-    </section>
+    </div>
 
    <div class="table-viewport">
 	  <div class="table-container table-fixed">
@@ -109,29 +121,26 @@
 	</section>
   </main>
 
-  <script src="editor.js"></script>
+  <script src="script.js"></script>
 
   <!-- Shared footer -->
   <footer>
     <div class="footer-grid">
 
-      <!-- Column 1: EU -->
       <div class="footer-col">
         <h4>Funding</h4>
         <img src="images/eu-funded.png" class="footer-logo" alt="Funded by the European Union">
         <p>This platform is supported by the European Union.</p>
       </div>
 
-      <!-- Column 2: Chips JU -->
       <div class="footer-col">
         <h4>Chips JU</h4>
         <img src="images/chips-ju.png" class="footer-logo" alt="Chips JU">
         <p>Part of the European Chips Joint Undertaking framework.</p>
       </div>
 
-      <!-- Column 3: OpenHW + Contact -->
       <div class="footer-col">
-        <h4>OpenHW &amp; Contact</h4>
+        <h4>OpenHW & Contact</h4>
         <img src="images/openhw-logo.png" class="footer-logo" alt="OpenHW Logo">
 
         <a href="mailto:info@openhwgroup.org" class="footer-icon">

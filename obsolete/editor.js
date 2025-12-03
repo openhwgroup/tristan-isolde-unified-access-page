@@ -1,18 +1,9 @@
-/*
- *-------------------------------------------------------------------------------
- * Copyright (C) 2025 philippe
- * 
- * This program and the accompanying materials are made
- * available under the terms of the Eclipse Public License 2.0
- * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
- * SPDX-License-Identifier: EPL-2.0
- *-------------------------------------------------------------------------------
- */
+// Copyright (c) 2025 Eclipse Foundation
+
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('editor-page');
 
-  const GITHUB_API_URL = 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=main';
+  const GITHUB_API_URL = 'https://api.github.com/repos/openhwgroup/tristan-isolde-unified-access-page/contents/ips?ref=virtual_rep_improv';
   const CATEGORIES_URL = 'cfg/categories.json';
 
   const fileSelector = document.getElementById('file-selector');
@@ -190,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clear existing content
     thead.innerHTML = '';
     tbody.innerHTML = '';
+    tfoot.innerHTML = '';
 
     // Render Header
     const headerRow = document.createElement('tr');

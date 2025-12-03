@@ -1,82 +1,264 @@
-/* Copyright (c) 2025 Eclipse Foundation */
+/*
+ *-------------------------------------------------------------------------------
+ * Copyright (C) 2025 philippe
+ * 
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ *-------------------------------------------------------------------------------
+*/
 
-body {
-    /* Use a modern system stack for better rendering and larger base size */
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin: 20px;
-    font-size: 16px;
-    line-height: 1.45;
-    color: #222;
-    background: #f6f8fb;
-  }
-  
-  #export-btn {
-    margin-bottom: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-  }
-  
-  .table-container {
-    --row-height: 48px;
-    max-height: calc(var(--row-height) * 18); /* visible rows */
-    overflow-y: auto;
-    border-radius: 10px;
-    border: 1px solid rgba(15,23,42,0.08);
-    background: #ffffff;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
-    padding: 6px; /* breathing room for sticky headers */
-  }
+/* =========================================================
+   Global layout & typography
+   ========================================================= */
 
-  /* 1) fixed table layout so explicit widths work */
-  #data-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    font-size: 0.98rem; /* slightly larger readable text */
-    color: #1f2937;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  background-color: #f4f6f8;
+  color: #1b2b3a;
+  min-height: 100vh;
+}
 
-  /* 2) make each header cell a positioning context */
-  #data-table th {
-    position: relative;
-    overflow: visible;
-  }
+/* Used on pages with header + footer layout */
+body.page-with-layout {
+  display: flex;
+  flex-direction: column;
+}
 
-  #data-table th,
-  #data-table td {
-    /* this combo forces wrapping instead of overflow */
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-  
-  /* 3) the draggable handle */
-  .resizer {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 8px;
-    height: 100%;
-    cursor: col-resize;
-    -webkit-user-select: none;
-    user-select: none;
-    z-index: 20;
-    /* make handle visible */
-    background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.04));
-    opacity: 0.6;
-    transition: opacity 120ms ease, background 120ms ease;
-  }
-  .resizer:hover { opacity: 1; background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06)); }
-  /* Visible focus for keyboard users */
-  .resizer:focus {
-    outline: 3px solid rgba(79,70,229,0.18);
-    box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
-  }
-  .dropdown-btn:focus {
-    outline: 3px solid rgba(59,130,246,0.12);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-  }
+/* =========================================================
+   Sponsors style
+   ========================================================= */
+.sponsor-logos {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-/* Style the header filter button so the column name itself acts as the toggle */
+.sponsor-logo {
+  max-height: 200px;
+  object-fit: contain;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sponsor-logo:hover {
+  transform: scale(1.05);
+}
+/* =========================================================
+   Header & navigation (shared)
+   ========================================================= */
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d6d9de;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.5rem;
+}
+
+.nav-logo-text {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #1b2b3a;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.7rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #374a5e;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: #e5a300;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  height: 48px;    /* ajuste ici */
+  width: auto;
+  display: block;
+}
+/* =========================================================
+   Main layout for content pages
+   ========================================================= */
+
+main {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem 3rem;
+}
+
+/* =========================================================
+   Landing page: hero + intro card
+   ========================================================= */
+
+.hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.hero img {
+  max-width: 260px;
+  height: auto;
+}
+
+.hero h1 {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1b2b3a;
+}
+
+.content-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e6e7eb;
+}
+
+.content-card p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #2b3b4b;
+}
+
+.content-card ul {
+  margin: 0 0 1.5rem 1.2rem;
+  padding: 0;
+  color: #2b3b4b;
+}
+
+.content-card li {
+  margin-bottom: 0.4rem;
+}
+
+.content-card strong {
+  color: #e5a300;
+  font-weight: 600;
+}
+
+/* Call-to-action button on landing page */
+.access-button-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.access-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #1e88e5, #1565c0);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: 0.25s ease;
+}
+
+.access-button:hover {
+  background: linear-gradient(135deg, #42a5f5, #1e88e5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   Unified Access table & controls (search/settings)
+   (adapted from the old CSS, color-coherent with landing)
+   ========================================================= */
+
+/* Container around the data table */
+.table-container {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: 70vh; 
+  border-radius: 10px;
+  border: 1px solid rgba(15,23,42,0.08);
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  padding: 0;
+}
+
+/* Main table */
+#data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.9rem;
+  color: #1f2937;
+}
+
+/* Make header cells positioning context for resizer and dropdown */
+#data-table th {
+  font-size: 1rem;
+  position: relative;
+  overflow: visible;
+}
+
+/* Force wrapping instead of overflow */
+#data-table th,
+#data-table td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Column resizer handle */
+.resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+  -webkit-user-select: none;
+  user-select: none;
+  z-index: 20;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.04));
+  opacity: 0.6;
+  transition: opacity 120ms ease, background 120ms ease;
+}
+
+.resizer:hover {
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.06));
+}
+
+/* Focus outline for keyboard users */
+.resizer:focus {
+  outline: 3px solid rgba(79,70,229,0.18);
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.08);
+}
+
+/* Header text as a filter button (with caret) */
 .header-filter-btn {
   background: transparent;
   border: none;
@@ -87,16 +269,15 @@ body {
   font-weight: 600;
   color: inherit;
   cursor: pointer;
+  position: relative;
+  padding-right: 22px; /* room for caret */
 }
+
 .header-filter-btn:focus {
   outline: 3px solid rgba(59,130,246,0.12);
 }
 
-/* Caret pseudo-element: an unobtrusive triangle placed to the right of the header */
-.header-filter-btn {
-  position: relative;
-  padding-right: 22px; /* room for caret */
-}
+/* Caret triangle */
 .header-filter-btn::after {
   content: '';
   position: absolute;
@@ -107,116 +288,122 @@ body {
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid currentColor; /* downward pointing triangle */
+  border-top: 6px solid currentColor;
   transition: transform 150ms ease, opacity 120ms ease;
   opacity: 0.9;
 }
+
 .header-filter-btn[aria-expanded="true"]::after {
-  transform: translateY(-50%) rotate(180deg); /* rotate to point up when open */
+  transform: translateY(-50%) rotate(180deg);
 }
 
-  /* Increase hit area for touch/pointer devices */
-  @media (pointer: coarse) {
-    .resizer {
-      width: 18px;
-      right: -6px; /* expand clickable area outward */
-    }
-    .dropdown-content label {
-      padding: 12px 8px;
-    }
+/* Bigger resizer hit area on touch devices */
+@media (pointer: coarse) {
+  .resizer {
+    width: 18px;
+    right: -6px;
   }
-  
-  /* Sticky header row with column names */
-  #data-table thead tr:first-child th {
-    position: sticky;
-    top: 0;
-    background-color: #0f4bb8; /* stronger blue */
-    color: #FFFFFF;
-    z-index: 101; /* Increased z-index */
-    overflow: visible; /* Ensure dropdown can overflow */
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    padding: 12px 14px;
-    text-transform: none;
+}
+
+/* Stripe rows */
+#data-table tbody tr:nth-child(even) { background-color: #ffffff; }
+#data-table tbody tr:nth-child(odd)  { background-color: #fcfdff; }
+#data-table tbody tr:hover           { background-color: #eef6ff; }
+
+/* Make the whole table header (all rows) sticky inside the scrollable container */
+#data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 102;
+}
+
+/* Visual style for all header cells */
+#data-table thead th {
+  background-color: #1565c0;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.25);
+}
+
+th, td {
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+  text-align: left;
+  vertical-align: middle;
+}
+
+select {
+  width: 100%;
+  padding: 4px;
+}
+
+/* Custom dropdown in header filters */
+.custom-dropdown {
+  position: static;
+  display: block;
+  width: 100%;
+}
+
+.dropdown-btn {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 2px;
+  overflow: visible;
+}
+
+.dropdown-btn:focus {
+  outline: 3px solid rgba(59,130,246,0.12);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #fff;
+  border: 1px solid rgba(15,23,42,0.08);
+  z-index: 99999;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.08);
+  border-radius: 6px;
+}
+
+.dropdown-content label {
+  display: block;
+  cursor: pointer;
+  padding: 6px;
+}
+
+/* Portal dropdown variant */
+.portal-dropdown {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Mobile stacked layout for the table */
+@media screen and (max-width: 1100px) {
+  :root {
+    --mobile-label-width: 120px;
   }
 
-  /* striped rows */
-  #data-table tbody tr:nth-child(even) { background-color: #ffffff; }
-  #data-table tbody tr:nth-child(odd)  { background-color: #fcfdff; }
-  #data-table tbody tr:hover { background-color: #eef6ff; }
-  
-  /* Sticky filter row beneath column names */
-  #data-table thead tr:nth-child(2) th {
-    position: sticky;
-    top: 56px; /* adjusted for larger header */
-    background-color: #ffffff;
-    z-index: 90;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
-  
-  th, td {
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(15,23,42,0.06);
-    text-align: left;
-    vertical-align: middle;
-  }
-  
-  select {
-    width: 100%;
-    padding: 4px;
-  }
-  
-
-  .custom-dropdown {
-    position: static;
+  #data-table,
+  #data-table thead,
+  #data-table tbody,
+  #data-table th,
+  #data-table td,
+  #data-table tr {
     display: block;
     width: 100%;
   }
-  .dropdown-btn {
-    width: 100%;
-    text-align: left;
-    margin-bottom: 2px;
-    overflow: visible;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background: #fff;
-    border: 1px solid rgba(15,23,42,0.08);
-    z-index: 99999; /* Very high */
-    max-height: 300px;
-    overflow-y: auto;
-    width: 100%;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.08);
-    border-radius: 6px;
-  }
-  .dropdown-content label { display: block; cursor: pointer; padding: 6px; }
-  th {
-    vertical-align: top;
-  }
 
-  .portal-dropdown {
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-
-  /* Mobile stacked layout
-    - each row or data entry becomes a 2-col table: left col labels, right col values
-    - activated when the width of the Browser window or device screen res is small
-  */
-  @media screen and (max-width: 1100px) {
-     /* reserve a fixed label column width for the
-     field names so they align and don't wrap unpredictably. */
-  :root { --mobile-label-width: 120px; }
-  #data-table, #data-table thead, #data-table tbody, #data-table th, #data-table td, #data-table tr {
-    display: block;
-    width: 100%;
-  }
   #data-table thead tr {
     display: none;
   }
+
   #data-table tr {
     margin-bottom: 1em;
     border: 1px solid #ddd;
@@ -224,15 +411,16 @@ body {
     background: #fff;
     padding: 8px;
   }
+
   #data-table td {
     position: relative;
-    /* left padding equals the label column width + a small gap */
     padding-left: calc(var(--mobile-label-width) + 8px);
     border: none;
     border-bottom: 1px solid #eee;
     min-height: 48px;
     box-sizing: border-box;
   }
+
   #data-table td:before {
     position: absolute;
     left: 0;
@@ -241,58 +429,87 @@ body {
     padding-left: 8px;
     white-space: nowrap;
     font-weight: bold;
-    color: #4B87CB;
+    color: #1e88e5;
     content: attr(data-label);
     font-size: 0.95em;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
-
-/* Used for the About section. Hidden by def */
-details {
-  border: 1px solid #aaaaaa;
-  border-radius: 4px;
-  padding: 0.5em 0.5em 0;
-  background: #fff;
-  margin-bottom: 1em;
-  display: block;
+/* Allow table to stretch full width across the window */
+.table-fullwidth {
+  width: 100vw;              /* full viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;        /* shift to the left edge */
+  margin-right: -50vw;       /* shift to the right edge */
+  padding-left: 1.5rem;      /* match site padding */
+  padding-right: 1.5rem;
+  box-sizing: border-box;
 }
 
-details summary {
-  display: block;
-  cursor: pointer;
-  padding: 0.5em;
-  font-weight: 600;
-  color: #0f4bb8;
+/* Medium mode: table takes 80% of the page */
+.table-medium {
+  max-width: 85%;
+  margin: 0 auto;   /* centers the table */
 }
+
+/* Smaller variant if needed: 70% */
+.table-narrow {
+  max-width: 70%;
+  margin: 0 auto;
+}
+/* Make the table area align to the window, not to <main> */
+.table-viewport {
+  width: 100vw;                 /* full viewport width */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;           /* pull to the left edge of the window */
+  margin-right: -50vw;          /* pull to the right edge of the window */
+  padding: 0 1.5rem;            /* same side padding as the site */
+  box-sizing: border-box;
+}
+
+/* Inner container: centered, max 1500px */
+.table-fixed {
+  max-width: 1500px;            /* never wider than 1200px */
+  width: 100%;                  /* but fluid under 1200px */
+  margin: 0 auto;               /* centered inside the viewport band */
+}
+
+/* =========================================================
+   Search bar & floating settings panel
+   ========================================================= */
 
 /* Container for search bar and settings button */
 .search-and-settings-container {
   display: grid;
-  grid-template-columns: 1fr auto; /* Search takes remaining space, button takes its own space */
-  position: relative; /* Establish positioning context for the floating panel */
-  gap: 10px; /* Space between search and button */
+  grid-template-columns: 1fr auto;
+  position: relative;
+  gap: 10px;
   align-items: center;
   margin-bottom: 10px;
 }
 
 #search-input {
-  width: 100%; /* Fill the grid cell it's in */
+  width: 100%;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 6px;
+  background-color: #ffffff;
 }
 
-/* Settings Panel Styles */
+/* Settings toggle button */
 #settings-toggle-btn {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
   width: 50px;
-  height: 44px; /* Match input height */
-  font-size: 28px;
+  height: 44px;
+  font-size: 24px;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   display: flex;
@@ -300,9 +517,10 @@ details summary {
   justify-content: center;
 }
 
+/* Floating settings panel */
 .floating-panel {
-  position: absolute; /* Position relative to .search-and-settings-container */
-  top: calc(100% + 10px); /* Place 10px below the container */
+  position: absolute;
+  top: calc(100% + 10px);
   right: 15px;
   width: 320px;
   background: #fff;
@@ -322,20 +540,17 @@ details summary {
   border-bottom: 1px solid #eee;
 }
 
-/* Make headers take the full width */
 .settings-group > h4 {
   flex-basis: 100%;
   margin: 0 0 5px 0;
 }
 
-/* Make labels and buttons take up 50% width each */
 .settings-group > label,
 .settings-group > button {
-  flex: 1 1 calc(50% - 10px); /* Grow, shrink, and base width for 2 columns */
+  flex: 1 1 calc(50% - 10px);
   box-sizing: border-box;
 }
 
-/* Style the buttons within the settings panel for consistency */
 .settings-group > button {
   height: 44px;
   display: flex;
@@ -347,6 +562,7 @@ details summary {
   font-size: 0.95rem;
   transition: background-color 150ms ease-in-out;
 }
+
 .settings-group > button:not([disabled]):hover {
   cursor: pointer;
   background-color: #e9e9e9;
@@ -358,11 +574,10 @@ details summary {
   padding-bottom: 0;
 }
 
-/* Responsive styles for settings panel on mobile */
+/* Responsive settings panel on mobile */
 @media screen and (max-width: 600px) {
   .floating-panel {
     top: 0;
-    right: 0; /* Ensure it covers the full width on mobile */
     left: 0;
     right: 0;
     bottom: 0;
@@ -373,7 +588,17 @@ details summary {
   }
 }
 
-/* --- Editor Page Styles --- */
+/* Export button (if used outside panel) */
+#export-btn {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* =========================================================
+   Editor page styles (for editor.html)
+   ========================================================= */
+
 .editor-controls {
   margin-bottom: 20px;
   padding: 15px;
@@ -384,7 +609,7 @@ details summary {
   gap: 10px;
 }
 
-/* Ensure all interactive elements in the editor controls have the same height */
+/* Make controls in editor consistent in height */
 .editor-controls > button,
 .editor-controls > select,
 .editor-controls > input[type="text"] {
@@ -395,41 +620,43 @@ details summary {
   height: 44px;
 }
 
-/* Add hover effect for enabled buttons in editor controls */
 .editor-controls > button:not([disabled]) {
   cursor: pointer;
   transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
 }
 
 .editor-controls > button:not([disabled]):hover {
-  background-color: #e9e9e9; /* A light grey background */
-  border-color: #adadad; /* A slightly darker border */
+  background-color: #e9e9e9;
+  border-color: #adadad;
 }
 
+/* Editor mode: make cells input-friendly */
 body.editor-page #data-table td {
-  padding: 0; /* Remove padding to let inputs fill the cell */
+  padding: 0;
 }
 
-body.editor-page #data-table input, body.editor-page #data-table select {
+body.editor-page #data-table input,
+body.editor-page #data-table select {
   width: 100%;
   height: 100%;
-  padding: 12px 14px; /* Match original cell padding */
+  padding: 12px 14px;
   box-sizing: border-box;
   border: none;
   border-radius: 0;
+  border-bottom: 1px solid rgba(15,23,42,0.06);
   background-color: transparent;
-  border-bottom: 1px solid rgba(15,23,42,0.06); /* Keep bottom border for row separation */
 }
 
-body.editor-page #data-table input:focus, body.editor-page #data-table select:focus {
-  outline: 2px solid #0f4bb8;
+body.editor-page #data-table input:focus,
+body.editor-page #data-table select:focus {
+  outline: 2px solid #1565c0;
   z-index: 1;
   position: relative;
 }
 
-/* --- Editor Row Actions --- */
+/* Row actions (add/delete) */
 .row-actions-cell {
-  width: 50px !important; /* Fixed width for the actions column */
+  width: 50px !important;
   min-width: 50px !important;
   padding: 0 !important;
   position: relative;
@@ -446,12 +673,12 @@ body.editor-page #data-table input:focus, body.editor-page #data-table select:fo
   width: 100%;
   height: 100%;
   gap: 4px;
-  opacity: 0; /* Hidden by default */
+  opacity: 0;
   transition: opacity 150ms ease-in-out;
 }
 
 body.editor-page #data-table tr:hover .row-actions-container {
-  opacity: 1; /* Show on row hover */
+  opacity: 1;
 }
 
 .row-action-btn {
@@ -470,10 +697,12 @@ body.editor-page #data-table tr:hover .row-actions-container {
   justify-content: center;
   transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
 }
+
 .row-action-btn.add {
   color: #28a745;
   border-color: #28a745;
 }
+
 .row-action-btn.delete {
   color: #dc3545;
   border-color: #dc3545;
@@ -489,7 +718,7 @@ body.editor-page #data-table tr:hover .row-actions-container {
   color: #fff;
 }
 
-/* --- Category Combobox Styles --- */
+/* Category combobox in editor */
 .category-combobox-container {
   position: relative;
   width: 100%;
@@ -522,5 +751,90 @@ body.editor-page #data-table tr:hover .row-actions-container {
 }
 
 body.editor-page #data-table .category-combobox-container input {
-  border-bottom: 1px solid rgba(15,23,42,0.06); /* Ensure input has bottom border */
+  border-bottom: 1px solid rgba(15,23,42,0.06);
+}
+
+/* =========================================================
+   Footer (shared)
+   ========================================================= */
+
+footer {
+  background: linear-gradient(145deg, #0b1220, #000000);
+  color: #e4e8ef;
+  padding: 2.5rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #1d2738;
+}
+
+.footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.footer-col h4 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+}
+
+img.footer-logo {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.footer-col p,
+.footer-col a {
+  font-size: 0.9rem;
+  color: #cfd6e0;
+}
+
+.footer-col a {
+  text-decoration: none;
+}
+
+/* Footer icons (Font Awesome) */
+.footer-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #cfd6e0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.footer-icon i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.footer-icon:hover {
+  color: #f0b93b;
+}
+
+.footer-bottom {
+  max-width: 1100px;
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+  font-size: 0.85rem;
+  color: #aab4c2;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0.3rem 0;
 }

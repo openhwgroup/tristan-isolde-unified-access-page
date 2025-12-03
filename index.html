@@ -1,85 +1,181 @@
-<!-- Copyright (c) 2025 Eclipse Foundation -->
+<!--
+#-------------------------------------------------------------------------------
+# Copyright (C) 2025 Eclipse Foundation
+# 
+# This program and the accompanying materials are made
+# available under the terms of the Eclipse Public License 2.0
+# which is available at https://www.eclipse.org/legal/epl-2.0/
+# 
+# SPDX-License-Identifier: EPL-2.0
+#-------------------------------------------------------------------------------
+-->
 
- <!-- Test me at https://htmlpreview.github.io/?https://github.com/openhwgroup/tristan-isolde-unified-access-page/blob/virtual_rep_improv/index.html -->
+<!-- Test me locally, for example, with:  `python3 -m http.server 8000` -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Unified RISC-V IP Access Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unified Access Page</title>
+
+  <!-- Common stylesheet -->
   <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font Awesome for footer icons -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
+<body class="page-with-layout">
 
-  <details>
-    <summary>About</summary>
-    <h1 id="tristan-unified-access-page">Tristan-Isolde Unified Access Page</h1>
-    <p>It provides references and descriptions of all the <a href="https://tristan-project.eu/">TRISTAN</a> and <a href="https://www.isolde-project.eu/">ISOLDE</a> IPs (hardware and software).
-    It serves as a <code>Virtual Repository</code> page, gathering all the information about the TRISTAN and ISOLDE repositories, their status,
-    and the TRISTAN and ISOLDE partners involved in them.
-    The TRISTAN and ISOLDE Unified Access Page acts like a static page, to provide a single access point to all the repositories TRISTAN and ISOLDE
-    contribute to. The updates and contributions will be upstreamed in the repository themselves.</p>
-    <p>Some of the repositories are hosted on the OpenHW Foundation GitHub forge, some are located on other public pages, and some are closed-source.
-    The diagram below shows how the TRISTAN and ISOLDE repositories are organized.</p>
-    <img src="images/tristan_isolde_virtual_repo.png" style="max-width: 75%; height: auto;" align="center" />
+  <!-- Shared header -->
+	<header>
+	  <div class="nav-container">
+	
+	    <div class="nav-brand">
+	      <a href="index.html">
+	        <img src="images/unified-riscv-horizontal-logo.png"
+	             alt="Unified RISC-V Logo"
+	             class="nav-logo-img">
+	      </a>
+	    </div>
+	    <nav>
+	      <ul>
+	        <li><a href="index.html">Home</a></li>
+	        <li><a href="unified-access.html">Unified Access</a></li>
+	        <li><a href="editor.html">Editor</a></li>
+	        <li><a href="help.html">Help</a></li>
+	      </ul>
+	    </nav>
+	  </div>
+	</header>
 
-    <p>The TRISTAN and ISOLDE Unified Access Page is the deliverable of the TRISTAN Task 2 of the Work Package 7 (7.2) and ISOLDE Work Package WP6.</p>
-  </details>
+  <!-- Page content -->
+  <main>
+    <section class="hero">
+      <img src="images/logo_unified-riscv.png" alt="Unified RISC-V Logo" />
+      <h1>Unified RISC-V IP Access Platform</h1>
+    </section>
 
-  <div class="search-and-settings-container" style="position: relative;">
-    <input
-      type="text"
-      id="search-input"
-      placeholder="Search all fields..."
-    />
-    <button id="settings-toggle-btn" title="Open Settings" aria-label="Open Settings Panel">⚙️</button>
+	<section class="content-card">
+	  <p>
+	    Welcome to the <strong>European Unified RISC-V IP Access Platform</strong> — a structured and
+	    expandable entry point designed to catalogue, document, and promote the IP assets initially
+	    developed in various European research projects such as <strong><a href="https://tristan-project.eu/">TRISTAN</a></strong>, 
+	    <strong><a href="https://isolde-project.eu/">ISOLDE</a></strong>, and many others, with a specific focus on <strong>RISC-V</strong>.
+	  </p>
+	  <p>
+	    This platform consolidates hardware and software components and offers a coherent view of their
+	    maturity, usability, licensing, and integration workflows.
+	  </p>
+	  <p>
+	    While not all elements are fully implemented yet, the platform already contributes to several
+	    priority objectives, including:
+	  </p>
+	  <ul>
+	    <li>
+	      <strong>Improving visibility and accessibility</strong> by centralising information in a
+	      single access point;
+	    </li>
+	    <li>
+	      <strong>Strengthening exploitation foundations</strong> by clarifying how IPs relate to
+	      project-level strategies;
+	    </li>
+	    <li>
+	      <strong>Facilitating interoperability and documentation</strong> through initial workflow
+	      descriptions and structured repository information;
+	    </li>
+	    <li>
+	      <strong>Aligning practices</strong> with related initiatives beyond <strong>TRISTAN</strong>, such as
+	      <strong>ISOLDE</strong>, <strong>Rigoletto</strong>, and others, to move toward consistent
+	      governance and IP management;
+	    </li>
+	    <li>
+	      <strong>Supporting internal and external adoption</strong> with clearer structures and
+	      integration pathways.
+	    </li>
+	  </ul>
+	  <p>
+	    Additional features — such as KPI-based adoption monitoring, extended interoperability matrices,
+	    reinforced internal tooling adoption, and long-term community-building activities — are planned
+	    as part of the platform’s <strong>progressive roadmap</strong>.
+	  </p>
+	  <p>
+	    The platform acts as a <strong>static unified access page</strong>, pointing to repositories
+	    hosted on the <strong>OpenHW Foundation GitHub</strong>, automatically mirrored to a
+	    European-hosted <strong>GitLab</strong> instance and to other public forges as applicable, or
+	    maintained as private assets. It provides documentation, status information, and an evolving
+	    structure designed to better support integration across toolchains, accelerators, and
+	    infrastructure components.
+	  </p>
+	  <p>
+	    Our ambition is to progressively transform this platform into a sustainable, interoperable, and
+	    community-oriented resource for the broader <strong>RISC-V ecosystem</strong> — while
+	    transparently reflecting the incremental progress being made.
+	  </p>
+	  <div class="access-button-container">
+	    <a href="unified-access.html" class="access-button">
+	      🚀 Access the Platform
+	    </a>
+	  </div>
+	</section>
+  <!-- Sponsors -->
+	<section id="sponsors" class="sponsors">
+	  <h2 align="center">Supported by</h2>
+	  <div class="sponsor-logos">
+	    <a href="https://tristan-project.eu/" target="_blank">
+	      <img src="images/tristan-logo.png" alt="TRISTAN Project" class="sponsor-logo">
+	    </a>
+	    <a href="https://isolde-project.eu/" target="_blank">
+	      <img src="images/isolde-logo.png" alt="ISOLDE Project" class="sponsor-logo">
+	    </a>
+	  </div>
+	</section>
+  </main>
+  <!-- Shared footer -->
+  <footer>
+    <div class="footer-grid">
+      <!-- Column 1: EU -->
+      <div class="footer-col">
+        <h4>Funding</h4>
+        <img src="images/eu-funded.png" class="footer-logo" alt="Funded by the European Union">
+        <p>This platform is supported by the European Union.</p>
+      </div>
+      <!-- Column 2: Chips JU -->
+      <div class="footer-col">
+        <h4>Chips JU</h4>
+        <img src="images/chips-ju.png" class="footer-logo" alt="Chips JU">
+        <p>Part of the European Chips Joint Undertaking framework.</p>
+      </div>
+      <!-- Column 3: OpenHW + contact -->
+      <div class="footer-col">
+        <h4>OpenHW & Contact</h4>
+        <img src="images/openhw-logo.png" class="footer-logo" alt="OpenHW Logo">
 
-    <div id="settings-panel" class="floating-panel" hidden>
-      <h3>Settings</h3>
-
-      <div id="load-options" class="settings-group">
-        <h4>Data source</h4>
-        <label>
-          <input type="radio" name="load-mode" value="github" checked>
-          Load from GitHub
-        </label>
-        <label>
-          <input type="radio" name="load-mode" value="local">
-          Load from local files
-        </label>
-        <input
-          type="file"
-          id="file-input"
-          multiple
-          accept=".json"
-          style="display: none; margin-left:1em;"
-        />
+        <a href="mailto:info@openhwgroup.org" class="footer-icon">
+          <i class="fas fa-envelope"></i> info@openhwgroup.org
+        </a>
+        <a href="https://github.com/openhwgroup" class="footer-icon">
+          <i class="fab fa-github"></i> github.com/openhwgroup
+        </a>
+        <a href="https://www.linkedin.com/company/openhwgroup" class="footer-icon">
+          <i class="fab fa-linkedin"></i> @openhwgroup
+        </a>
+        <a href="https://openhwfoundation.org/" class="footer-icon">
+          <i class="fas fa-globe"></i> openhwfoundation.org
+        </a>
       </div>
 
-      <div class="settings-group">
-        <h4>Table View</h4>
-        <label><input type="radio" name="table-view" value="default" checked>Default</label>
-        <label><input type="radio" name="table-view" value="detailed">Detailed</label>
-      </div>
-      <div class="settings-group">
-        <h4>Controls</h4>
-        <button onclick="window.location.href='editor.html'">Edit table data</button>
-        <button id="export-btn" disabled>Export CSV</button>
-      </div>
-      <div id="status" class="settings-group">Choose a load mode to begin.</div>
     </div>
-  </div>
-
-  <div class="table-container">
-    <table id="data-table">
-      <thead></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <script src="script.js"></script>
+    <div class="footer-bottom">
+      <p>
+        This project has received funding from the Chips Joint Undertaking (Chips JU)
+        under the European Union’s Horizon Europe Research and Innovation Programme,
+        and from the European Union, under Grant Agreements No. 101095947 (TRISTAN), 101112274 (ISOLDE).
+      </p>
+      <p>© 2025 Unified RISC-V IP Access Platform — All rights reserved.</p>
+    </div>
+  </footer>
 
 </body>
 </html>

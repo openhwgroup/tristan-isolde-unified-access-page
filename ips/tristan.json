@@ -720,9 +720,9 @@
     "Category": "Tools"
   },
   {
-    "Name": "SoCDSL",
-    "URL": "",
-    "License": "TBD (in progress)",
+    "Name": "SoCDSL (SoCSmith)",
+    "URL": "TBD (in progress)",
+    "License": "TBD (permissive planned)",
     "Status": "In progress",
     "Description": "Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​",
     "Project": "TRISTAN",
@@ -757,9 +757,9 @@
   },
   {
     "Name": "SUNRISE",
-    "URL": "",
-    "License": "TBD (in progress)",
-    "Status": "in progress",
+    "URL": "https://github.com/boschresearch/sunrise.demonstrator",
+    "License": "Apache-2.0",
+    "Status": "Released",
     "Description": "Scalable UNified Restful Infrasructure for System Evaluation.",
     "Project": "TRISTAN",
     "WI": "WI5.1.3",
