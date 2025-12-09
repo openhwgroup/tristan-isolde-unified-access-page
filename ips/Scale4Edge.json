@@ -1,0 +1,64 @@
+[
+  {
+    "Project": "Scale4Edge",
+    "Name": "UPEC: Formal Security Verification",
+    "URL": "https://github.com/RPTU-EIS/symbolic-pmp; https://github.com/RPTU-EIS/upec-boom-verification-suite",
+    "License": "",
+    "Status": "Date of Availability 2025-04-27",
+    "Description": "Unique Program Execution Checking (UPEC) is a method for formally verifying the security of hardware at the RTL. UPEC checks whether confidential data in the system can be stolen by an attacker (user program) for any programs that can be executed on the hardware. UPEC detects all confidentiality violations that are made possible by so-called transient execution side channels of the microarchitecture. Spectre and Meltdown are well-known examples of this class of vulnerabilities. In addition, UPEC also uncovers all confidentiality vulnerabilities that can arise due to design errors (“HW bugs”), which easily occur when implementing protection mechanisms.  In Phase 1 of the Scale4Edge project, the security analysis focuses primarily on cores ranging from smaller in-order cores to larger out-of-order processors. The focus is on transient execution side channels. In Phase 2, UPEC will be extended to entire SoCs. SoCs pose different security challenges than processor cores, including secure system integration, functional design flaws, and system integrity violations.",
+    "WI": [],
+    "Partners": [
+      "RPTU"
+    ],
+    "Comment": "Image Speculative program execution can enable side channel Figure: Speculative program execution can enable side channel  Unique Program Execution Checking (UPEC) is a method for formally verifying the security of hardware at the RTL. UPEC checks whether confidential data in the system can be stolen by an attacker (user program) for any programs that can be executed on the hardware. UPEC detects all confidentiality violations that are made possible by so-called transient execution side channels of the microarchitecture. Spectre and Meltdown are well-known examples of this class of vulnerabilities. In addition, UPEC also uncovers all confidentiality vulnerabilities that can arise due to design errors (“HW bugs”), which easily occur when implementing protection mechanisms.  In Phase 1 of the Scale4Edge project, the security analysis focuses primarily on cores ranging from smaller in-order cores to larger out-of-order processors. The focus is on transient execution side channels. In Phase 2, UPEC will be extended to entire SoCs. SoCs pose different security challenges than processor cores, including secure system integration, functional design flaws, and system integrity violations.  Links Verification IP used for UPEC verification UPEC verificaiton suite for the BOOM processor Visibility Publicly available! ISA Compliance Not Applicable Status Planned Date of Availability 2025-04-27 Contact RPTU Kaiserslautern-Landau Wolfgang Kunz Gottlieb-Daimler-Straße 47 67663 Kaiserslautern Deutschland  Contact Email wolfgang.kunz@rptu.de Contact Phone +49 631 205 2603 Asset Reference Formale Security Analyse (UPEC) Target TRL at the end of phase 1 TRL6: Prototyp in vereinfachter/simulierter Einsatzumgebung --> Anwendungsfälle Target TRL at the end of phase 2 TRL6: Prototyp in vereinfachter/simulierter Einsatzumgebung --> Anwendungsfälle Component is required for safety critical systems Nein Category Formal Functional Security Verification",
+    "Category": [
+      "Formal Functional Security Verification"
+    ]
+  },
+  {
+    "Project": "Scale4Edge",
+    "Name": "Moonlight",
+    "URL": "https://scale4edge-new.edacentrum.de/node/112",
+    "License": "Send an email to eyck@minres.com",
+    "Status": "Date of Availability 2025-07-31",
+    "Description": "Moonlight is a subsystem around a TGC core developed by MINRES. The Good Core (TGC) [1] is a highly flexible, scalable and expandable RISC-V processor core and the TGC variant to be used in the subsystem is configurable.  Moonlight contains a configurable APB3 subsystem with a customizable number of different peripherals, e.g., GPIO, UART, Timer, SPI, I2S Receiver, DMA.  It features an AMBA-compatible high-speed bus connecting a memory system, a CPU, and an APB bridge. As optional additions, application-specific components as well as bridges to other bus systems can be integrated.  [1] https://scale4edge-new.edacentrum.de/node/112",
+    "WI": [],
+    "Partners": [
+      "MINRES"
+    ],
+    "Comment": "Image Moonlight Moonlight is a subsystem around a TGC core developed by MINRES. The Good Core (TGC) [1] is a highly flexible, scalable and expandable RISC-V processor core and the TGC variant to be used in the subsystem is configurable.  Moonlight contains a configurable APB3 subsystem with a customizable number of different peripherals, e.g., GPIO, UART, Timer, SPI, I2S Receiver, DMA.  It features an AMBA-compatible high-speed bus connecting a memory system, a CPU, and an APB bridge. As optional additions, application-specific components as well as bridges to other bus systems can be integrated.  [1] https://scale4edge-new.edacentrum.de/node/112  Visibility Publicly available! License Send an email to eyck@minres.com  ISA Compliance Not Applicable Status In progress Date of Availability 2025-07-31 Contact MINRES Eyck Jentzsch Keltenhof 2 85579 Neubiberg Deutschland  Contact Email eyck@minres.com Asset Reference TGC Cores Target TRL at the end of phase 1 TRL6: Prototyp in vereinfachter/simulierter Einsatzumgebung --> Anwendungsfälle Target TRL at the end of phase 2 TRL6: Prototyp in vereinfachter/simulierter Einsatzumgebung --> Anwendungsfälle Component is required for safety critical systems Nein Category RISC-V Subsystem",
+    "Category": [
+      "RISC-V Subsystem"
+    ]
+  },
+  {
+    "Project": "Scale4Edge",
+    "Name": "QTA - QEMU Timing Analyzer",
+    "URL": "https://scale4edge-new.edacentrum.de/ait-and-stackanalyzer-risc-v",
+    "License": "The source code of the QTA plugin is freely available with the front end for AbsInT aiT file import at github under: https://github.com/hni-sct/qemu-qta.",
+    "Status": "Date of Availability 2023-08-31",
+    "Description": "The QEMU Timing Analyzer (QTA) is a QEMU plugin which extends QEMU for the time annotated execution of binary programs. QTA has been tested only for RISC-V and TriCore. As the implementation extends QEMU through TCG plugin API it should be compatible with any other ISA and all future QEMU versions . QTA comes with a frontend that can import output files from AbsInt aiT WCET analysis.",
+    "WI": [],
+    "Partners": [
+      "Paderborn University / Heinz Nixdorf Institut"
+    ],
+    "Comment": "The QEMU Timing Analyzer (QTA) is a QEMU plugin which extends QEMU for the time annotated execution of binary programs. QTA has been tested only for RISC-V and TriCore. As the implementation extends QEMU through TCG plugin API it should be compatible with any other ISA and all future QEMU versions . QTA comes with a frontend that can import output files from AbsInt aiT WCET analysis.  Links QTA on github Visibility Publicly available! License The source code of the QTA plugin is freely available with the front end for AbsInT aiT file import at github under: https://github.com/hni-sct/qemu-qta.  ISA Compliance Not Applicable Status Available Date of Availability 2023-08-31 Contact Paderborn University / Heinz Nixdorf Institut Wolfgang Mueller Fürstenallee 11 33106 Paderborn Deutschland  Contact Email wolfgang@acm.org Asset Reference aiT and StackAnalyzer for RISC-V Target TRL at the end of phase 1 TRL5: Versuchsaufbau in vereinfachter Einsatzumgebung --> Optimierte Plattform Target TRL at the end of phase 2 TRL5: Versuchsaufbau in vereinfachter Einsatzumgebung --> Optimierte Plattform Component is required for safety critical systems Nein",
+    "Category": []
+  },
+  {
+    "Project": "Scale4Edge",
+    "Name": "muRISCV-NN",
+    "URL": "https://github.com/tum-ei-eda/muriscv-nn",
+    "License": "Apache-2.0 license",
+    "Status": "Date of Availability 2022-06-01",
+    "Description": "We introduce muRISCV-NN, an open-source compute library for embedded and microcontroller class systems. muRISCV-NN targets to provide an open-source, and vendor-agnostic compute library targeting all RISC-V-compliant platforms for supplying a HW/SW interface between industry-standard deep learning libraries and emerging ultra-low-power compute platforms. Forked from ARM’s CMSIS-NN library, muRISCV-NN provides optimized scalar kernels written in plain C as an efficient and highly portable baseline. Additionally, we provide hand-optimized vectorized kernels employing either the V or P extensions. muRISCV-NN is designed to be lightweight and modular, and is implemented as a static library that can be linked to the application software and accessed through a single header file. Furthermore, muRISCV-NN is bit-accurate to CMSIS-NN and can, thus, be used as a drop-in replacement with only minor changes to the compilation flow. This makes its use with higher-level frameworks completely transparent and enables a seamless transition from ARM-based systems to RISC-V. As a proof of concept, we provide full integration support with both TensorFlow Lite for Microcontrollers and microTVM. We demonstrate the effectiveness of muRISCV-NN on the MLPerf Tiny benchmark, observing up to a 9x speedup and 5x EDP reduction compared to the plain C-Version of CMSIS-NN across all four benchmarks.",
+    "WI": [],
+    "Partners": [
+      "Technical University of Munich"
+    ],
+    "Comment": "Image muRISCV-NN Logo We introduce muRISCV-NN, an open-source compute library for embedded and microcontroller class systems. muRISCV-NN targets to provide an open-source, and vendor-agnostic compute library targeting all RISC-V-compliant platforms for supplying a HW/SW interface between industry-standard deep learning libraries and emerging ultra-low-power compute platforms. Forked from ARM’s CMSIS-NN library, muRISCV-NN provides optimized scalar kernels written in plain C as an efficient and highly portable baseline. Additionally, we provide hand-optimized vectorized kernels employing either the V or P extensions. muRISCV-NN is designed to be lightweight and modular, and is implemented as a static library that can be linked to the application software and accessed through a single header file. Furthermore, muRISCV-NN is bit-accurate to CMSIS-NN and can, thus, be used as a drop-in replacement with only minor changes to the compilation flow. This makes its use with higher-level frameworks completely transparent and enables a seamless transition from ARM-based systems to RISC-V. As a proof of concept, we provide full integration support with both TensorFlow Lite for Microcontrollers and microTVM. We demonstrate the effectiveness of muRISCV-NN on the MLPerf Tiny benchmark, observing up to a 9x speedup and 5x EDP reduction compared to the plain C-Version of CMSIS-NN across all four benchmarks.  Links Open-Source Repository Visibility Publicly available! ISA Compliance RISC-V for Low Power SoC RV32I - Base Integer, 32-bit RV64I - Base Integer, 64-bit P - Packed-SIMD Instructions V - Vector Operations Status Available Date of Availability 2022-06-01 Contact Technical University of Munich Philipp van Kempen Arcisstr. 21 80333 München Deutschland  Contact Email philipp.van-kempen@tum.de Target TRL at the end of phase 1 TRL3: Nachweis der Funktionsfähigkeit --> Plattform ohne Parametrisierbarkeit Target TRL at the end of phase 2 TRL4: Versuchsaufbau im Labor --> Plattform mit Parametrisierung Component is required for safety critical systems Nein Category Software Library",
+    "Category": [
+      "Software Library"
+    ]
+  }
+]
