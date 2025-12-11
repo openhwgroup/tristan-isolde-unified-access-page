@@ -721,7 +721,7 @@
   },
   {
     "Name": "SoCDSL (SoCSmith)",
-    "URL": "TBD (in progress)",
+    "URL": "",
     "License": "TBD (permissive planned)",
     "Status": "In progress",
     "Description": "Automated composition and optimization of compute-intensive SoCs from abstract high-level descriptions​ ​",
