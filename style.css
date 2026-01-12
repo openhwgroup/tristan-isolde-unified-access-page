@@ -620,6 +620,14 @@ select {
   height: 44px;
 }
 
+/* Set minimum width of rhe buttons of the Editor page*/
+.editor-controls > #load-local-btn,
+.editor-controls > #load-file-btn,
+.editor-controls > #create-new-btn {
+  min-width: 100px;
+  white-space: nowrap;
+}
+
 .editor-controls > button:not([disabled]) {
   cursor: pointer;
   transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out;
@@ -837,4 +845,34 @@ img.footer-logo {
 
 .footer-bottom p {
   margin: 0.3rem 0;
+}
+
+
+
+.mandatory-field {
+    font-weight: bold;
+    color: #dc3545; /* Red color for mandatory */
+}
+code {
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.9em;
+}
+
+.note { 
+    background-color: #e6f7ff; 
+    border-left: 5px solid #007bff; 
+    padding: 15px; 
+    margin: 15px 0; 
+    border-radius: 4px;
+}
+.warning { 
+    background-color: #fff3cd; 
+    border-left: 5px solid #ffc107; 
+    padding: 15px; 
+    margin: 15px 0; 
+    color: #664d03; 
+    border-radius: 4px;
 }

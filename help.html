@@ -45,20 +45,152 @@
 
   <!-- Main content -->
   <main>
-    <section class="content-card" style="text-align:center; padding-top: 3rem; padding-bottom: 3rem;">
-      
-      <i class="fas fa-toolbox" style="font-size: 4rem; color:#1565c0; margin-bottom:1.2rem;"></i>
+    <section class="content-card" style="padding: 2.5rem; max-width:900px; margin: 2rem auto;">
 
-      <h1 style="margin-bottom: 1rem;">Help & Documentation</h1>
+      <i class="fas fa-toolbox" style="font-size: 3.2rem; color:#1565c0; margin-bottom:0.8rem;"></i>
 
-      <p style="max-width: 750px; margin: 0 auto; font-size:1.1rem; line-height:1.6;">
-        This section is currently under construction.<br>
-        Documentation, tutorials, and usage guidelines for the Unified RISC-V IP Access Platform will be available soon.
-      </p>
+      <h1 style="margin-bottom: 0.5rem; text-align:center;">Help & Documentation</h1>
 
-      <p style="margin-top: 2rem; color: #6b7280;">
-        Thank you for your patience!
-      </p>
+      <h2 style="margin-top:1.4rem;">How to Contribute to the Unified RISC-V Access Platform (UAP)</h2>
+
+      <p><strong>The Unified RISC-V Access Platform (UAP)</strong> is a contribution-based platform. It was born from the need to centralise and simplify access to open source RISC-V core and associated IPs developed under the framework European research projects, initially TRISTAN and ISOLDE, funded by the European Chips Joint Undertaking (Chips JU).</p>
+      <p>While this is a collaborative effort managed by OpenHW Foundation, under the framework of TRISTAN, the UAP relies on contributions from participating projects, which contribute their IPs to the platform's catalogue and take part on the discussion to bring up new features, done through the Virtual Repository Task Group (VRTG) regular meetings.</p>
+
+      <div class="note">
+          <p> Please note that, while this platform was conceived to catalogue open source IPs and tooling associated to RISC-V projects, part of the objectives of TRISTAN, it is not restricted to it.</p>
+
+          <p>Proprietary or multiple-licenced IPs, IPs non-directly associated to RISC-V, and other projects that may be part of the ecosystem are also welcome to join.</p>
+      </div>
+
+      <p>This guide will walk you through the process of adding new RISC-V IPs, subprojects, or updating existing catalogue entries.</p>
+
+      <h3>Part 1: Edit or Create Your Contribution to the UAP catalogue</h3>
+      <p style="line-height:1.6;">Use the <a href="editor.html">Editor</a> to create or update a project's catalogue JSON. The workflow below explains recommended steps to prepare, save and submit changes via a GitHub Pull Request (PR).</p>
+
+      <ol style="line-height:1.7;">
+        <li><strong>Open the Editor</strong>:  click on the <a href="editor.html">Editor</a> button at the top of the site.</li>
+
+        <li><strong>Load or create a project file</strong>
+          <p>On the Editor page, you will see options to start your contribution. A "Project", in the UAP context, refers to an EU Research Project, which may comprise many IPs or contributions to existing IPs directly associated to tasks or Working Items. Projects are regarded as the top-level entry, represented by a single JSON file located in the <code>/ips/</code> folder of the UAP repository:</p>
+          <ul>
+            <li>Choose an existing project's JSON from GitHub using the <em>Select existing file from GitHub</em> dropdown.</li>
+            <li>Or load a local JSON with the <em>Load local file</em> button.</li>
+            <li>Or create a new project file with the <em>Create new file</em> button.</li>
+          </ul>
+        </li>
+
+        <li><strong>Edit IP entries</strong>:  each row in the editor represents an IP or subproject. Fill the fields carefully:
+          <ul>
+            <li><strong>Name</strong>:  <span class="mandatory-field">Mandatory field.</span> Should be unique across projects.
+            <p>Indicate the current completion status of your IP (e.g., "In Progress", "Released", "Archived", "Prototype").</p>
+                <div class="note">
+                    <p><strong>Note:</strong> This field is currently not validated by the editor.</p>
+                </div>
+            </li>
+            <li><strong>Category</strong>: <span class="mandatory-field">Mandatory field.</span>
+                <p>Assign your IP to one or more existing categories. These categories are pre-defined in the <code>cfg/categories.json</code> file. You can select multiple categories from the dropdown list that appears when you interact with this field.</p>
+                <div class="warning">
+                    <p><strong>Important:</strong> If you wish to add a new Category, feel welcome to propose them to the Virtual Repository Task Group (VRTG), in order for it to be discussed and approved before they can be added to the UAP.</p>
+                </div>
+            </li>
+            <li><strong>URL</strong>: a valid web address for the IP (repository, project page, or documentation). Leave blank only if not applicable.
+              <p> For contributions to existing IPs, point it to the specific branch or commit hash associated to this IP entry. For proprietary IPs, provide a webpage or repository where users can find a description or access its output assets.
+
+              <div class="warning">
+                    <p><strong>Important:</strong> This field must contain a valid URL; otherwise, it should be left empty. </p>
+              </div>
+            </li>
+
+            <li><strong>License</strong>: Specify the distribution license(s) for your IP, adhering to <a href="https://spdx.org/licenses/" target="_blank">SPDX identifiers</a>.
+
+              <p>You can specify multiple licenses if different parts of your IP or its dependencies have various licensing schemes.</p>
+              <div class="note">
+                  <p><strong>Note:</strong> This field is currently not validated against the official SPDX license list by the platform, so please fill it accordingly to ensure it is accepted during review.</p>
+              </div>
+            </p>
+            </li>
+            <li><strong>Status</strong>: <span class="mandatory-field">Mandatory field.</span>
+                Indicate the current completion status of your IP (e.g., "In Progress", "Released", "Finished").
+                <div class="note">
+                    <p><strong>Note:</strong> This field is currently not validated by the platform. It shall be limited to a set of options in the future, to be discussed by the VRTG.</p>
+                </div>
+            </li>
+            <li><strong>Description</strong>: A brief one-paragraph summary of your IP. For longer descriptions, link in the <em>URL</em> field.
+            </li>
+            <li><strong>WI</strong>: Working Item or Task identifier associated with the IP, under the framework of your Project. This is an optional field.
+            </li>
+            <li><strong>Partners</strong>: Identifiers of the Project partner organization(s) associated with the IP. You can list multiple partners. Please use the abbreviations established in your Project's official documents.
+              <div class="note">
+                    <p><strong>Note:</strong> There is currently no validation for this field. As this information is specific to each Project, and organizations may use different abbreviations, a JSON file with partner profiles (similar to <code>cfg/projects.json</code> and <code>cfg/categories.json</code>) may be considered for future implementation by the VTRG.</p>
+              </div>
+            </li>
+            <li><strong>Comment</strong>: A generic field for internal notes or comments about an IP. This field is for your convenience.
+            
+              <div class="note">
+                  <p><strong>Note:</strong> This field may be removed in future updates.</p>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        <li><strong>Save the project file</strong>:  Once you are satisfied with all the IP entries for your Project, give the project a name if it is a new project, and click <em>Save File</em>. The editor will validate the required fields and download the resulting JSON to your machine.</li>
+
+        <li><strong>Submit your changes via a GitHub Pull Request (PR)</strong>
+          <ol>
+            <li>Access or create a <a href="https://github.com/login">GitHub account</a>.</li>
+            <li>Create an <a href="https://accounts.eclipse.org/user"> Eclipse.org user account</a>. You will also be asked to link your Eclipse.org account to your GitHub account and sign the <a href="https://www.eclipse.org/legal/eca/">Eclipse Contributor Agreement (ECA)</a>, as demonstrated below.
+
+
+            <figure style="margin:1.2rem 0; text-align:center;">
+              <img src="images/help/ecl_edit_profile.gif" style="max-width:100%; height:auto; border:1px solid #e6e6e6;">
+              <figcaption style="color:#6b7280; font-size:0.95rem;">Accessing your Eclipse.org account user settings.</figcaption>
+            </figure>
+
+            <figure style="margin:1.2rem 0; text-align:center;">
+              <img src="images/help/ecl_github_btn.gif" style="max-width:100%; height:auto; border:1px solid #e6e6e6;">
+              <figcaption style="color:#6b7280; font-size:0.95rem;">Linking your GitHub account to your Eclipse.org account.</figcaption>
+            </figure>
+
+            <figure style="margin:1.2rem 0; text-align:center;">
+              <img src="images/help/ecl_eca_btn.gif" style="max-width:100%; height:auto; border:1px solid #e6e6e6;">
+              <figcaption style="color:#6b7280; font-size:0.95rem;">Accessing and signing the ECA.</figcaption>
+            </figure>
+            <figure style="margin:1.2rem 0; text-align:center;"></figure>
+              <img src="images/help/ecl_eca_form_sign.gif" style="max-width:100%; height:auto; border:1px solid #e6e6e6;">
+              <figcaption style="color:#6b7280; font-size:0.95rem;">Accessing and signing the ECA.</figcaption>
+            </figure>
+
+
+            </li>
+            <li>On GitHub, access the official repository of the UAP: https://github.com/openhwgroup/tristan-isolde-unified-access-page. Click the "Fork" button (usually in the top-right corner) to create a copy of the repository under your own GitHub account. Follow the standard GitHub procedure to complete the forking process. Once done, navigate to your newly forked repository page (it will look something like <code>github.com/YOUR_USERNAME/tristan-isolde-unified-access-page</code>).
+            </li>
+            <li>Now, you need to add your locally saved Project JSON file to the <code>/ips/</code> folder within your forked repository. We recommend using the GitHub UI for simplicity:
+              <ol>
+                  <li>On your forked repository page, navigate into the <code>ips/</code> directory.</li>
+                  <li>Click the "Add file" button (usually near the top of the file list), then select "Upload files" from the dropdown.</li>
+                  <li>Drag and drop your Project JSON file into the designated upload area, or click "choose your files" to select it from your computer.</li>
+                  <li>Provide a concise commit message (e.g., "Add new project: MyAwesomeProject" or "Update MyExistingProject with new IP MyNewIP").</li>
+                  <li>Click "Commit changes".</li>
+              </ol>
+            </li>
+            <li>Once your changes are committed to your fork, it is time to propose them to the main UAP repository. Commit and push your change, then create a PR to the main repository as in the follow instructions. Please provide a concise PR description describing your changes
+              <ol>
+                  <li>On your forked repository page, click on the "Pull requests" tab.</li>
+                  <li>Click the "New pull request" button. GitHub should automatically detect that you have pushed changes to your fork and suggest comparing them with the base repository.</li>
+                  <li>Ensure the base repository is <code>openhwgroup/tristan-isolde-unified-access-page</code> and the head repository is your fork (e.g., <code>YOUR_USERNAME/tristan-isolde-unified-access-page</code>).</li>
+              </ol>
+            </li>
+            <li>OpenHW staff will review and merge the PR; once merged the live site will update shortly.</li>
+          </ol>
+        </li>
+      </ol>
+
+      <h2 style="margin-top:1.6rem;">Notes & resources</h2>
+      <ul style="line-height:1.6;">
+        <li>Repository: <a href="https://github.com/openhwgroup/tristan-isolde-unified-access-page">github.com/openhwgroup/tristan-isolde-unified-access-page</a></li>
+        <li>SPDX licenses: <a href="https://spdx.org/licenses/">https://spdx.org/licenses/</a></li>
+        <li>Eclipse Contributor Agreement (ECA): <a href="https://www.eclipse.org/legal/eca/">https://www.eclipse.org/legal/eca/</a></li>
+      </ul>
 
     </section>
   </main>
