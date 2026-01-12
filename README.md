@@ -67,5 +67,5 @@ and from the European Union, under Grant Agreements No. 101095947 (TRISTAN),
 </p>
 
 <p align="center">
-© 2025 OpenHW Foundation — All rights reserved.
+© 2025 Eclipse Foundation — All rights reserved.
 </p>
