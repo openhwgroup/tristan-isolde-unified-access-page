@@ -56,11 +56,10 @@
       <h2>Virtual Repository table editor</h2>
     </section>
     <section class="editor-intro">
-      <a href="unified-access.html">&larr; Back to UAP</a>
-      <p>Use this page to create or edit a Project file (JSON) of the Virtual Repository.</p>
+      <p>Use this page to create or edit a Project file (JSON) from the Virtual Repository of the UAP.</p>
       <p>
         You can submit your changes as a GitHub Pull Request to the
-        <a href="https://github.com/openhwgroup/tristan-isolde-unified-access-page/tree/virtual_rep_improv"
+        <a href="https://github.com/openhwgroup/tristan-isolde-unified-access-page/"
            target="_blank" rel="noopener noreferrer">
           Unified Access Page (UAP)
         </a>
@@ -68,16 +67,15 @@
       </p>
 
       <div class="editor-controls">
-        <label for="file-selector">Select existing file from GitHub:</label>
         <select id="file-selector">
-          <option value="">-- Select a file --</option>
+          <option value="">Select file from GitHub</option>
         </select>
         <button id="load-file-btn">Load</button>
         <span>&nbsp;or&nbsp;</span>
-        <button id="load-local-btn">Load local file</button>
+        <button id="load-local-btn">Upload file</button>
         <input type="file" id="local-file-input" accept=".json" style="display: none;" />
         <span>&nbsp;or&nbsp;</span>
-        <button id="create-new-btn">Create new file</button>
+        <button id="create-new-btn">Create file</button>
       </div>
 
       <div class="editor-controls">
