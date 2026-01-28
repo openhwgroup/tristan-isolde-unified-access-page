@@ -814,5 +814,17 @@
     "Partners": "Synthara",
     "Comment": "Used by: Synthara",
     "Category": "Tools"
+  },
+  {
+    "Name": "Keelhaul",
+    "URL": "https://github.com/soc-hub-fi/keelhaul",
+    "License": "Apache-2.01",
+    "Status": "Released",
+    "Description": "Tool to generate executable, memory-mapped I/O verification test cases from IP-XACT or CMSIS-SVD files.",
+    "Project": "TRISTAN",
+    "WI": ["WI4.4.2"],
+    "Partners": ["Tampere University"],
+    "Comment": "",
+    "Category": "Tools"
   }
 ]
