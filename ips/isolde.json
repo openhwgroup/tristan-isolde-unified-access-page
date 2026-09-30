@@ -129,8 +129,8 @@
     "Category": [
       "NoC"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://gitlab.com/selene-riscv-platform/euros2pronoc/-/blob/main/doc/ip_cards/UPV_NOC.jsonc",
+    "IP_CARD_PDF_URL": "https://gitlab.com/selene-riscv-platform/euros2pronoc/-/blob/main/doc/ip_cards/UPV_NOC.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -149,8 +149,8 @@
       "Tool",
       "Visualisation and Debugging"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://gitlab.com/selene-riscv-platform/selene-hardware/-/blob/ISOLDE/interconnect/libnoc/mem_monitor/ip_cards/UPV_AXISNIFFER.jsonc",
+    "IP_CARD_PDF_URL": "https://gitlab.com/selene-riscv-platform/selene-hardware/-/blob/ISOLDE/interconnect/libnoc/mem_monitor/ip_cards/UPV_AXISNIFFER.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -231,24 +231,6 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Hypervisor virtualization support to low-cost HW IPs",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 2.2.08"
-    ],
-    "Partners": "FENTISS",
-    "Comment": "Proprietary. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
-    "Category": [
-      "Extension"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
     "Name": "Context-Aware CORE Extensions",
     "URL": "",
     "License": "SHL-2.1",
@@ -283,8 +265,8 @@
       "Peripheral",
       "Interface"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/json/FotoNation_Memory_Bank_Interface_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/pdf/FotoNation_Memory_Bank_Interface_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -331,9 +313,9 @@
     "Project": "ISOLDE",
     "Name": "Interface between CVA6 and Vector accelerator",
     "URL": "https://github.com/pulp-platform/ara/tree/f06204b",
-    "License": "SHL-2.1",
-    "Status": "Prototype. To be updated with the final release of CV-X-IF in CVA6",
-    "Description": "Prototype of CV-X-IF between CVA6 and RVV 1.0 vector processor, used for evaluation",
+    "License": "SHL-0.51",
+    "Status": "CV-X-IF implementation in the VPU",
+    "Description": "CV-X-IF communication interface between CVA6 and the RVV 1.0 vector processor. More details and IP card in the VPU entry.",
     "WI": [
       "ID 2.3.05"
     ],
@@ -342,24 +324,6 @@
     "Category": [
       "Extension",
       "Interface"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
-    "Name": "XNG NOEL-V BSP update to RISC-V new specifications",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 2.4.01"
-    ],
-    "Partners": "FENTISS",
-    "Comment": "Proprietary. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
-    "Category": [
-      "Software"
     ],
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
@@ -439,7 +403,7 @@
       "Peripheral",
       "On-Chip Debug System"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/BSC-safeti_ipcard.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -578,10 +542,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Root-of-Trust Unit Design and Interface with RISC-V Host Processor (TitanCFI)",
-    "URL": "https://github.com/pulp-platform/opentitan",
-    "License": "SHL-2.1",
+    "URL": "https://github.com/pulp-platform/opentitan/tree/mc/astral",
+    "License": "SHL-0.51",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Silicon Root-of-Trust / secure element derived from OpenTitan Earl Grey: RV32 (CV32E) core, crypto accelerators (AES, SHA-256, SHA-3, HMAC, KMAC, OTBN, TRNG), key management and OTP secure storage. Loosely coupled to the RISC-V host via an AXI4 initiator port and an SCMI mailbox for host control; supports secure boot. Implemented in GF12LP+ (0.63 mm2, 300 MHz) and on VCU118.",
     "WI": [
       "ID 3.1.10"
     ],
@@ -592,27 +556,8 @@
       "Extension",
       "Peripheral"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
-    "Name": "Integration and support in XNG hypervisor for SafeTI and SafeSU IPs",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 3.1.11"
-    ],
-    "Partners": "FENTISS",
-    "Comment": "Proprietary. ISOLDE Category 'Accelerators and extensions'",
-    "Category": [
-      "Accelerator",
-      "Extension"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/json/UNIBO_rot.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/pdf/UNIBO_rot.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -727,7 +672,7 @@
       "Extension",
       "On-Chip Debug System"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/BSC-safesu_ipcard.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -735,7 +680,7 @@
     "Name": "Time Contract Monitoring Co-Processor (TCCP)",
     "URL": "https://github.com/offis/isolde-tccp",
     "License": "Apache-2.0",
-    "Status": "Work in progress",
+    "Status": "Prototype. To be updated.",
     "Description": "The Time Contract Co-Processor (TCCP), a reconfigurable open-source co-processor for RISC-V systems.",
     "WI": [
       "ID 3.3.02"
@@ -791,10 +736,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Tensor Processing Unit (TPU)",
-    "URL": "https://github.com/pulp-platform/redmule",
-    "License": "SHL-2.1",
+    "URL": "https://github.com/pulp-platform/pulp_cluster/tree/lg/isolde",
+    "License": "SHL-0.51",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Loosely-coupled AI/ML accelerator cluster: 8x CV32E40P RISC-V cores (RV32IMCFXpulpV2) with 128 KiB L1 TCDM, a systolic-array Tensor Processing Engine (TPE, 12x4 default, FP16/BF16/FP8 GEMM and GEMM-Ops, up to 384 ops/cycle) and an Activation Engine (AE, Softmax/GELU), memory-mapped over AXI4. Supported by the PULP GCC toolchain, pulp-runtime SDK and the MATCH domain-specific compiler. Implemented in GF12LP+ (0.54 mm2, 500 MHz) and on VCU118.",
     "WI": [
       "ID 3.4.01"
     ],
@@ -804,16 +749,16 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/json/UNIBO_tpu.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/pdf/UNIBO_tpu.pdf"
   },
   {
     "Project": "ISOLDE",
     "Name": "Parallel Computing Accelerator (PCA)",
-    "URL": "",
+    "URL": "https://github.com/edge-group-polito/PCA",
     "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "The Parallel Computing Accelerator (PCA) is a compute engine with AXI interface to accelerate convolutions.",
     "WI": [
       "ID 3.4.02"
     ],
@@ -843,14 +788,14 @@
       "Extension",
       "AI"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/json/FotoNation_AI_ML_Accelerator_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/pdf/FotoNation_AI_ML_Accelerator_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
     "Name": "Vector Processing Unit (with multi-precision capabilities) (VPU)",
     "URL": "https://github.com/pulp-platform/ara",
-    "License": "SHL-2.1",
+    "License": "SHL-0.51",
     "Status": "Optimization, verification, and feature addition in progress",
     "Description": "RISC-V V 1.0 modular vector accelerator with multi-precision capabilities",
     "WI": [
@@ -862,8 +807,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.json",
+    "IP_CARD_PDF_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -938,7 +883,7 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/BSC-hls_pqc_ip_card.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1117,7 +1062,7 @@
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
   },
-    {
+  {
     "Project": "ISOLDE",
     "Name": "Model Prediction Control Application",
     "URL": "https://github.com/hash2100/isolde-workbench/tree/main/benchmarks/mpc-benchmark",
@@ -1130,18 +1075,55 @@
     "Partners": "NXP-CZ",
     "Comment": "Proprietary. ISOLDE Category 'Application Software'",
     "Category": [
-      "Software", "Application Software"
+      "Software",
+      "Application Software"
     ],
     "IP_CARD_URL": "ip_cards/NXP-CZ_MPC.jsonc",
     "IP_CARD_PDF_URL": "ip_cards/NXP-CZ_MPC.pdf"
   },
   {
     "Project": "ISOLDE",
-    "Name": "Neural Network Drivers",
-    "URL": "",
+    "Name": "Neural Network Kernels for Sparse computation",
+    "URL": "https://github.com/eml-eda/pulp-nn-sparse",
     "License": "Apache-2.0",
     "Status": "",
-    "Description": "TBD",
+    "Description": "A set of optimized software kernels for N: M pruned layers, targeting ultra-low-power, multicore RISC-V MCUs",
+    "WI": [
+      "ID 4.1.01"
+    ],
+    "Partners": "POLITO",
+    "Comment": "Apache V2.0. ISOLDE Category 'Operating systems and applications SW'",
+    "Category": [
+      "Software"
+    ],
+    "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "Neural Network Kernels for Transformer optimization",
+    "URL": "https://github.com/pulp-platform/pulp-transformer",
+    "License": "Apache-2.0",
+    "Status": "",
+    "Description": "A set of execution kernels tuned for efficient execution on multi-core MCU-class RISC-V ",
+    "WI": [
+      "ID 4.1.01"
+    ],
+    "Partners": "POLITO",
+    "Comment": "Apache V2.0. ISOLDE Category 'Operating systems and applications SW'",
+    "Category": [
+      "Software"
+    ],
+    "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "Neural Network Kernels for accelerating Mobilenets",
+    "URL": "https://github.com/eml-eda/depthwise-separable-fusion",
+    "License": "Apache-2.0",
+    "Status": "",
+    "Description": "An extensive library of alternatives to fuse the depthwise and pointwise kernels that constitute the separable convolutional block. ",
     "WI": [
       "ID 4.1.01"
     ],
@@ -1169,8 +1151,8 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/json/FotoNation_AI_ML_Accelerator_Driver_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/pdf/FotoNation_AI_ML_Accelerator_Driver_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1269,25 +1251,6 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "XNG BSP to CVA6 processor core",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 4.1.09"
-    ],
-    "Partners": "FENTISS",
-    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
-    "Category": [
-      "Operating System",
-      "Software"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
     "Name": "Development of System Software",
     "URL": "",
     "License": "Others",
@@ -1326,25 +1289,6 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Toolchain for Hardware-aware Neural Network Optimization",
-    "URL": "",
-    "License": "Apache-2.0",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 4.2.01"
-    ],
-    "Partners": "POLITO",
-    "Comment": "Apache V2.0. ISOLDE Category 'Operating systems and applications SW'",
-    "Category": [
-      "Operating System",
-      "Software"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
     "Name": "RF-SP: Resource-efficient IoT data processing and analytics",
     "URL": "",
     "License": "Apache-2.0",
@@ -1364,21 +1308,25 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Model-based generation framework for hardware safety pattern",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "safety-gen",
+    "URL": "https://github.com/fzi-forschungszentrum-informatik/safety-gen",
+    "License": [
+      "Apache-2.0",
+      "LLVM-exception"
+    ],
+    "Status": "Released",
+    "Description": "CIRCT/MLIR toolkit that automates the insertion of safety patterns into an existing SoC design.",
     "WI": [
       "ID 4.2.03"
     ],
     "Partners": "FZI",
-    "Comment": "TBD. ISOLDE Category 'Operating systems and applications SW'",
+    "Comment": "Apache V2.0 with LLVM Exceptions. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
-      "Software"
+      "Software",
+      "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/fzi-forschungszentrum-informatik/safety-gen/blob/main/ip-card/safety-gen.json",
+    "IP_CARD_PDF_URL": "https://github.com/fzi-forschungszentrum-informatik/safety-gen/blob/main/ip-card/safety-gen.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1413,35 +1361,16 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
-    "Name": "TPU HAL",
-    "URL": "",
-    "License": "Apache-2.0",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 4.2.06"
-    ],
-    "Partners": "UNIBO",
-    "Comment": "Apache V2.0. ISOLDE Category 'Operating systems and applications SW'",
-    "Category": [
-      "Operating System",
-      "Software"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/json/FotoNation_AI_ML_Accelerator_Compiler_Toolchain_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/pdf/FotoNation_AI_ML_Accelerator_Compiler_Toolchain_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
     "Name": "HAL for RoT unit as a secure-coprocessor",
-    "URL": "",
+    "URL": "https://github.com/pulp-platform/opentitan/tree/mc/astral",
     "License": "Apache-2.0",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Integrated and validated",
+    "Description": "TitanSSL: software infrastructure exploiting the OpenTitan-based Root-of-Trust as a secure co-processor to secure and accelerate network-stack crypto functions (SHA-256, HMAC, AES) from Linux: OpenSSL/LibSSL engine, Linux Kernel Module bridging to OpenTitan via SCMI mailbox, and OpenTitan firmware serving application requests (OTTEE-V scheme, GlobalPlatform TEE Client API). Uses OpenTitan secure storage for security-sensitive data. FPGA-implemented on VCU118.",
     "WI": [
       "ID 4.2.07"
     ],
@@ -1451,16 +1380,16 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/json/UNIBO_titanssl.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/pdf/UNIBO_titanssl.pdf"
   },
   {
     "Project": "ISOLDE",
     "Name": "CFI software algorithm in OT firmware",
-    "URL": "",
+    "URL": "https://github.com/pulp-platform/opentitan/tree/mc/astral",
     "License": "Apache-2.0",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Prototype implemented",
+    "Description": "TitanCFI: Control-Flow Integrity monitor built on the OpenTitan Root-of-Trust. CVA6 is extended with a software-configurable stage that filters CFI-relevant instructions and forwards them into a private mailbox (configurable queue depth); a computational element in OpenTitan reads the instruction stream and enforces the CFI policy, with OpenTitan crypto accelerators authenticating CFI data structures in main memory. FPGA-implemented on VCU118, overhead measured on a benchmark set.",
     "WI": [
       "ID 4.2.08"
     ],
@@ -1470,27 +1399,8 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
-    "Name": "OT-based secure boot support (TitanBoot)",
-    "URL": "",
-    "License": "Apache-2.0",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 4.2.09"
-    ],
-    "Partners": "UNIBO",
-    "Comment": "Apache V2.0. ISOLDE Category 'Operating systems and applications SW'",
-    "Category": [
-      "Operating System",
-      "Software"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/json/UNIBO_titancfi.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/pulp-unibo/isolde_ip_cards/blob/main/pdf/UNIBO_titancfi.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1527,7 +1437,7 @@
       "Software",
       "Compiler"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/NXP_AT_FCFI_LLVM.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1546,7 +1456,7 @@
       "Software",
       "Compiler"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/NXP_AT_BCFI_LLVM.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1565,7 +1475,7 @@
       "Software",
       "Compiler"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/NXP_AT_CTM_LLVM.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1585,7 +1495,7 @@
       "On-Chip Debug System",
       "Visualisation and Debugging"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/NXP_AT_debugger.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1686,11 +1596,11 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Integrate system level simulators with extra-functional properties",
-    "URL": "",
+    "Name": "CHESSY: Coupled Hybrid Emulation with SystemC-FPGA Synchronization",
+    "URL": "https://github.com/eml-eda/chessy/",
     "License": "Apache-2.0",
     "Status": "",
-    "Description": "TBD",
+    "Description": "An open-source framework that connects SystemC-based VPs with FPGA emulation, enabling full-system co-emulation of digital and non-digital components. The FPGA accelerates the execution of main digital subsystems, while a wrapper coordinates timing and communication with the VP through JTAG, maintaining synchronization with simulated peripherals. ",
     "WI": [
       "ID 4.3.01"
     ],
@@ -1707,7 +1617,7 @@
     "Name": "Time Contract Co-processor Compiler (TCCP-CO)",
     "URL": "https://github.com/offis/isolde-tccp",
     "License": "Apache-2.0",
-    "Status": "Work in progress",
+    "Status": "Prototype. To be updated.",
     "Description": "The Time Contract Co-Processor (TCCP) Compiler, a compiler providing the TCCP with a micro program for monitoring, based on contracts and software artifacts.",
     "WI": [
       "ID 4.3.02"
@@ -1717,26 +1627,27 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/SvenMehlhop/ip-card/blob/d109baddd3c0660d0582d16012c33fb3da28375f/OFFIS_TCCP_CO.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/SvenMehlhop/ip-card/blob/d109baddd3c0660d0582d16012c33fb3da28375f/OFFIS_TCCP_CO.pdf"
   },
   {
     "Project": "ISOLDE",
-    "Name": "Power/Performance Modeling for Design Space Exploration PPM-DSE",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "SILVACO CVA6 AI-Assisted Power and Performance Design Space Explorer (PPM-DSE)",
+    "URL": "https://github.com/SilvacoF/PPM-DSE",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "ML-assisted framework for CVA6 power/performance modelling and automated design-space exploration. It generates or ingests assertion-filtered processor configurations and simulation datasets, trains surrogate models to predict cycle count, DMIPS/MHz and power, and supports sensitivity analysis, GP-PSO Bayesian optimization and multi-objective evolutionary search. Selected configurations are validated through Verilator performance simulation and, where available, gate-level power analysis. Outputs include CSV datasets, trained models and ranked CVA6 configurations.",
     "WI": [
       "ID 4.3.03"
     ],
     "Partners": "SILVACO",
-    "Comment": ". ISOLDE Category 'Operating systems and applications SW'",
+    "Comment": "Proprietary tool; GitHub repository hosts IP-card documentation. D4.5 Section 3.3.3 / Table 21: builds on CEA configuration-sampling and assertion-filtering methodology; performance data generated with CEA. Performance evaluated for CVA6 v5.1.0/v5.3.0; gate-level power data available for v5.3.0 only. Predictions apply within the validated configuration/workload domain. Local AI copilot requirement PPM-DSE-16 is partially satisfied. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
-      "Software"
+      "Software",
+      "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/SilvacoF/PPM-DSE/blob/main/SILVACO_PPM_DSE_SW_IP_Card.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/SilvacoF/PPM-DSE/blob/main/SILVACO_PPM_DSE_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1754,27 +1665,30 @@
       "Software",
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://gitlab.com/selene-riscv-platform/DAVOS/-/blob/master/doc/BAFFI/IP_cards/UPV_baffi.json",
+    "IP_CARD_PDF_URL": "https://gitlab.com/selene-riscv-platform/DAVOS/-/blob/master/doc/BAFFI/IP_cards/UPV_baffi.pdf"
   },
   {
     "Project": "ISOLDE",
-    "Name": "Simulation-based HW/SW co-verification approach",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "cosim-gen",
+    "URL": "https://github.com/fzi-forschungszentrum-informatik/cosim-gen",
+    "License": [
+      "Apache-2.0",
+      "LLVM-exception"
+    ],
+    "Status": "Released",
+    "Description": "Generates a QEMU/RTL co-simulation from an RTL design and its device tree, allowing users to freely configure which components run in RTL while the remaining platform runs in QEMU.",
     "WI": [
       "ID 4.3.05"
     ],
     "Partners": "FZI",
-    "Comment": "TBD. ISOLDE Category 'Operating systems and applications SW'",
+    "Comment": "Apache V2.0 with LLVM Exceptions. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
       "Software",
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/fzi-forschungszentrum-informatik/cosim-gen/blob/main/ip-card/cosim-gen.json",
+    "IP_CARD_PDF_URL": "https://github.com/fzi-forschungszentrum-informatik/cosim-gen/blob/main/ip-card/cosim-gen.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1792,8 +1706,8 @@
       "Software",
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/json/FotoNation_AI_ML_Accelerator_Simulator_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://bitbucket.org/fnpub/isolde/src/main/isolde_ip_cards/pdf/FotoNation_AI_ML_Accelerator_Simulator_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1838,6 +1752,132 @@
     ],
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "XNG RISC-V BSP to support new NOEL-V features",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Updated the type 1 hypervisor for real-time mixed-criticality embedded systems providing time and space isolation to be executed on a NOEL-V core aligned to the most recent RISC-V specifications",
+    "WI": [
+      "ID 2.4.01"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
+    "Category": [
+      "Software, Hypervisor"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_RISC-V_BSP_to_support_new_NOEL-V_features.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_RISC-V_BSP_to_support_new_NOEL-V_features.pdf"
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "Integration and support in XNG hypervisor for SafeTI and SafeSU IPs",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Support of XNG to the SafeSU and SafeTI IP modules by BSC in order to use their funcionality",
+    "WI": [
+      "ID 3.1.11"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Accelerators and extensions'",
+    "Category": [
+      "Software, Hypervisor, Software Library/Framework"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_Integration_and_support_in_XNG_hypervisor_for_SafeTI_and_SafeSU_IPs.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_Integration_and_support_in_XNG_hypervisor_for_SafeTI_and_SafeSU_IPs.pdf"
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "XNG hypervisor CVA6 board support package (with H-extension)",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Type 1 hypervisor for real-time mixed-criticality embedded systems providing time and space isolation to be executed on a CVA6 core",
+    "WI": [
+      "ID 4.1.09"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
+    "Category": [
+      "Software, Hypervisor"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_hypervisor_CVA6_board_support_package_H_extension.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_hypervisor_CVA6_board_support_package_H_extension.pdf"
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "XNG hypervisor integration of validation tools",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Support of XNG to the MATCH178 timming analysis by RSS in order to use their funcionality",
+    "WI": [
+      "ID 4.3.12"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
+    "Category": [
+      "Software, Hypervisor, Software Library/Framework"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_hypervisor_integration_of_validation_tools.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_hypervisor_integration_of_validation_tools.pdf"
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "XNG hypervisor runtime fault diagnosis tests integration",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Integration of the fault diagnosis tests by UPV in a Time and Space Partitioning software architecture based on XNG",
+    "WI": [
+      "ID 4.3.13"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
+    "Category": [
+      "Software, Hypervisor, Application Software"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_hypervisor_runtime_fault_diagnosis_tests_integration.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_XNG_hypervisor_runtime_fault_diagnosis_tests_integration.pdf"
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "L2C-Lite partitioning in XtratuM/NG",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Support of XNG to the L2 Cache partitioning by UPV for NOEL-V",
+    "WI": [
+      "ID 2.2.08"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
+    "Category": [
+      "Software, Hypervisor"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_L2C-Lite_partitioning_in_XNG.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_L2C-Lite_partitioning_in_XNG.pdf"
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "AHB Filter support in XtratuM/NG",
+    "URL": "www.fentiss.com",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "Integration of the AHB Filter by UPV in a Time and Space Partitioning software architecture based on XNG",
+    "WI": [
+      "ID 2.2.08"
+    ],
+    "Partners": "FENTISS",
+    "Comment": "Proprietary. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
+    "Category": [
+      "Software, Hypervisor"
+    ],
+    "IP_CARD_URL": "ip_cards/FENTISS_ISOLDE_-_AHB-Filter_support_in_XNG.json",
+    "IP_CARD_PDF_URL": "ip_cards/FENTISS_ISOLDE_-_AHB-Filter_support_in_XNG.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1894,25 +1934,6 @@
       "Software"
     ],
     "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
-    "Name": "XNG hypervisor integration of validation tools",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 4.3.12"
-    ],
-    "Partners": "FENTISS",
-    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
-    "Category": [
-      "Operating System",
-      "Software"
-    ],
-    "IP_CARD_URL": "ip_cards/FENTISS_xng.json",
     "IP_CARD_PDF_URL": ""
   },
   {
