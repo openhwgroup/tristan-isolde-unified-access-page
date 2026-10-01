@@ -1915,7 +1915,7 @@
     ],
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
-  }
+  },
     {
     "Project": "ISOLDE",
     "Name": "Smart home OpenEMS demo setup",
@@ -1939,7 +1939,7 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/ipcard/openems-riscv-demo.json",
-    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/ipcard/openems-riscv-demo.pdf"
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/openems-riscv-demo.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/openems-riscv-demo.pdf"
   }
 ]
