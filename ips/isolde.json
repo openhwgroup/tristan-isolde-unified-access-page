@@ -1919,7 +1919,7 @@
   {
     "Project": "ISOLDE",
     "Name": "Fault-Injection-Analysis of FPU Unit",
-    "URL": "https://gitlab.iti.uni-luebeck.de/isolde-iti/dnn_fi_inject",
+    "URL": "https://gitlab.iti.uni-luebeck.de/isolde-iti/fi_fpu_analysis",
     "License": "Others",
     "Status": "",
     "Description": "Fault injection analysis of the Floating Point Unit (FPU) under different workloads.",
