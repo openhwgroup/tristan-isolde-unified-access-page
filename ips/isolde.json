@@ -796,7 +796,7 @@
     "Name": "Vector Processing Unit (with multi-precision capabilities) (VPU)",
     "URL": "https://github.com/pulp-platform/ara",
     "License": "SHL-0.51",
-    "Status": "Optimization, verification, and feature addition in progress",
+    "Status": "Implemented and verified with RVV1.0 tests. Demonstrated on FPGA, open-source flow available.",
     "Description": "RISC-V V 1.0 modular vector accelerator with multi-precision capabilities",
     "WI": [
       "ID 3.4.04"
@@ -808,7 +808,7 @@
       "Extension"
     ],
     "IP_CARD_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.json",
-    "IP_CARD_PDF_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.pdf"
+    "IP_CARD_PDF_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.pdf?raw=true"
   },
   {
     "Project": "ISOLDE",
