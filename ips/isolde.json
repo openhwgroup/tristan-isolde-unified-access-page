@@ -1046,7 +1046,7 @@
   {
     "Project": "ISOLDE",
     "Name": "Fast Fourier Transform Algorithms for SIMD and Vector Accelerators (FFT)",
-    "URL": "",
+    "URL": "https://github.com/sirazvan/twister_FFT/tree/isolde",
     "License": "GPL-3.0",
     "Status": "",
     "Description": "TBD",
@@ -1059,8 +1059,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/sirazvan/twister_FFT/blob/isolde/ip%20card/IMT_fft.json",
+    "IP_CARD_PDF_URL": "https://github.com/sirazvan/twister_FFT/blob/isolde/ip%20card/IMT_fft.pdf"
   },
   {
     "Project": "ISOLDE",
