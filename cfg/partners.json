@@ -138,7 +138,7 @@
   {
     "name": "NXP Semiconductors Germany GmbH",
     "aliases": ["NXP", "NXP-DE"]
-  }
+  },
   {
     "name": "NXP Semiconductors Austria GmbH & Co. KG",
     "aliases": ["NXP-AT", "NXP Austria"]
@@ -294,7 +294,7 @@
   },
   {
     "name": "UZL",
-    "aliases": []
+    "aliases": ["Universität zu Lübeck", "University of Lübeck"]
   },
   {
     "name": "VLSI Solution",
