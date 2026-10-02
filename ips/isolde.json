@@ -845,8 +845,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/alex2kameboss/MatrixAccelerator/blob/master/IMT_ISOLDE_-SIMD-Vector_Acclerator.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/alex2kameboss/MatrixAccelerator/blob/master/IMT_ISOLDE_-SIMD-Vector_Acclerator.pdf"
   },
   {
     "Project": "ISOLDE",
