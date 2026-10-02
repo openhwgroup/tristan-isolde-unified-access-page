@@ -945,23 +945,21 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Secured RISC-V Processor with Cryptographic Accelerators (SEC)",
-    "URL": "",
-    "License": "GPL-3.0",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "Cryptographic Accelerators for RISC-V (SEC)",
+    "URL": "https://github.com/Wutevaaa/Crypto-library-for-embedded-or-custom-devices",
+    "License": "Apache-2.0",
+    "Status": "Tested, Validated",
+    "Description": "Crypto-library for embedded or custom devices",
     "WI": [
       "ID 3.5.05"
     ],
     "Partners": "BEIA",
-    "Comment": "GPL v3.0. ISOLDE Category 'Accelerators and extensions'",
+    "Comment": "",
     "Category": [
-      "Core",
-      "Accelerator",
-      "Extension"
+      "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Wutevaaa/Crypto-library-for-embedded-or-custom-devices/blob/IP-Card/cryptograhic_accelerators.json",
+    "IP_CARD_PDF_URL": "https://github.com/Wutevaaa/Crypto-library-for-embedded-or-custom-devices/blob/IP-Card/cryptographic_accelerators.pdf"
   },
   {
     "Project": "ISOLDE",
