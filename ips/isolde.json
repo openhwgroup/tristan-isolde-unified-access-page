@@ -330,25 +330,6 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "CVA6 multicore experiments and analysis",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 2.4.02"
-    ],
-    "Partners": "SYSGO",
-    "Comment": "TBD. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
-    "Category": [
-      "Core",
-      "Core Generator"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
     "Name": "SW Abstraction Layer for RISC-V Processors",
     "URL": "",
     "License": "Proprietary",
@@ -571,25 +552,6 @@
     ],
     "Partners": "IFX",
     "Comment": "TBD. ISOLDE Category 'Accelerators and extensions'",
-    "Category": [
-      "Accelerator",
-      "Extension"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
-    "Name": "High-Performance Cache Analysis",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 3.1.13"
-    ],
-    "Partners": "SYSGO",
-    "Comment": "ISOLDE Category 'Accelerators and extensions'",
     "Category": [
       "Accelerator",
       "Extension"
@@ -1236,7 +1198,7 @@
     "URL": "",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "CVA6 multicore support is an ISOLDE contribution of an overall extension of PikeOS/ELinOS support for RISC-V.",
     "WI": [
       "ID 4.1.08"
     ],
@@ -1246,8 +1208,8 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1284,8 +1246,8 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/lauterbach-culsans-setup.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/lauterbach-culsans-setup.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1953,5 +1915,31 @@
     ],
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
+  },
+    {
+    "Project": "ISOLDE",
+    "Name": "Smart home OpenEMS demo setup",
+    "URL": "https://zenodo.org/records/18164662",
+    "License": [
+      "CC0-1.0"
+    ],
+    "Status": "Available",
+    "Description": "Detailed setup instructions for smart home demo (OpenEMS)",
+    "WI": [
+      "5.3"
+    ],
+    "Partners": [
+      "SYSGO",
+      "CONS",
+      "BYK",
+      "FZI",
+      "BEIA"
+    ],
+    "Comment": "",
+    "Category": [
+      "Software"
+    ],
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/openems-riscv-demo.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/openems-riscv-demo.pdf"
   }
 ]
