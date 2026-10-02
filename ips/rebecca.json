@@ -172,14 +172,16 @@
   {
     "Name": "PikeOS and Hypervisor",
     "Category" : ["Software", "System Software"],
-    "URL": "",
+    "URL": "https://www.sysgo.com/pikeos",
     "Project": "REBECCA",
-    "WI": [""],
+    "WI": ["WP3"],
     "Partners": "SYSGO",
-    "Status": "",
-    "Description": "",
+    "Status": "Available",
+    "Description": "Support for the REBECCA chip on PikeOS",
     "License": "Others",
-    "Comment": "TBD"
+    "Comment": "",
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.pdf"
   },
   {
     "Name": "XtratuM Hypervisor",

@@ -1198,7 +1198,7 @@
     "URL": "",
     "License": "Proprietary",
     "Status": "",
-    "Description": "This is part of overall extending of PikeOS/ELinOS support for RISC-V.",
+    "Description": "CVA6 multicore support is an ISOLDE part of overall extending of PikeOS/ELinOS support for RISC-V.",
     "WI": [
       "ID 4.1.08"
     ],
@@ -1208,8 +1208,8 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/ipcard/pikeos.json",
-    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/ipcard/pikeos.pdf"
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1246,8 +1246,8 @@
       "Operating System",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/lauterbach-culsans-setup.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/lauterbach-culsans-setup.pdf"
   },
   {
     "Project": "ISOLDE",
