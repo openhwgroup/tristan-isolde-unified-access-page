@@ -1561,10 +1561,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Safety Compliant Math and Motor Control Library",
-    "URL": "",
+    "URL": "https://www.nxp.com/design/design-center/software/automotive-software/automotive-math-and-motor-control-library-ammclib:AMMCLIB",
     "License": "Proprietary",
-    "Status": "",
-    "Description": "",
+    "Status": "Completed",
+    "Description": "Library of independent safety checkers targeted on motor control applications",
     "WI": [
       "ID 4.2.18"
     ],
