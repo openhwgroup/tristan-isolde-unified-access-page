@@ -965,11 +965,11 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Motor Control accelerator",
-    "URL": "",
+    "Name": "Motor Control Accelerator",
+    "URL": "https://codasip.com/products/application-risc-v-processors/a730/",
     "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Complete",
+    "Description": "HW customization of the Codasip A730 processor core focused on the increase of the performance on the Model Predictive Control Application. The customizations focus on the microarchitecture optimization and ISA extension. Each developed customization can be enabled or disabled independently.",
     "WI": [
       "ID 3.6.01"
     ],
@@ -983,8 +983,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Codasip/ISOLDE/blob/main/IP_cards/codasip_mpc.json",
+    "IP_CARD_PDF_URL": "https://github.com/Codasip/ISOLDE/blob/main/IP_cards/IPCard.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1564,7 +1564,7 @@
     "URL": "",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "",
     "WI": [
       "ID 4.2.18"
     ],
@@ -1573,8 +1573,8 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/openhwfoundation/uap/blob/main/ip_cards/NXP-CZ_FuSa.json",
+    "IP_CARD_PDF_URL": "https://github.com/openhwfoundation/uap/blob/main/ip_cards/NXP-CZ_FuSa.pdf"
   },
   {
     "Project": "ISOLDE",
