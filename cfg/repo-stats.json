@@ -1488,6 +1488,7 @@
   "errors": {
     "github.com/hash2100/isolde-workbench": "HTTP 404",
     "github.com/orgs/cea-list": "HTTP 404",
-    "gitlab.com/catalin.ciobanu/polymem_system_verilog": "HTTP 404"
+    "gitlab.com/catalin.ciobanu/polymem_system_verilog": "HTTP 404",
+    "gitlab.iti.uni-luebeck.de/isolde-iti/fi_fpu_analysis": "HTTP 404"
   }
 }
