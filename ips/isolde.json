@@ -680,7 +680,7 @@
     "Name": "Time Contract Monitoring Co-Processor (TCCP)",
     "URL": "https://github.com/offis/isolde-tccp",
     "License": "Apache-2.0",
-    "Status": "Prototype. To be updated.",
+    "Status": "Prototype.",
     "Description": "The Time Contract Co-Processor (TCCP), a reconfigurable open-source co-processor for RISC-V systems.",
     "WI": [
       "ID 3.3.02"
@@ -692,8 +692,8 @@
       "Extension",
       "On-Chip Debug System"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/SvenMehlhop/ip-card/blob/87ebe6ffbef0e81e3b11bf6fa9d88110037c7028/OFFIS_TCCP.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/SvenMehlhop/ip-card/blob/87ebe6ffbef0e81e3b11bf6fa9d88110037c7028/OFFIS_TCCP.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1617,7 +1617,7 @@
     "Name": "Time Contract Co-processor Compiler (TCCP-CO)",
     "URL": "https://github.com/offis/isolde-tccp",
     "License": "Apache-2.0",
-    "Status": "Prototype. To be updated.",
+    "Status": "Prototype.",
     "Description": "The Time Contract Co-Processor (TCCP) Compiler, a compiler providing the TCCP with a micro program for monitoring, based on contracts and software artifacts.",
     "WI": [
       "ID 4.3.02"
@@ -1627,8 +1627,8 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "https://github.com/SvenMehlhop/ip-card/blob/d109baddd3c0660d0582d16012c33fb3da28375f/OFFIS_TCCP_CO.jsonc",
-    "IP_CARD_PDF_URL": "https://github.com/SvenMehlhop/ip-card/blob/d109baddd3c0660d0582d16012c33fb3da28375f/OFFIS_TCCP_CO.pdf"
+    "IP_CARD_URL": "https://github.com/SvenMehlhop/ip-card/blob/87ebe6ffbef0e81e3b11bf6fa9d88110037c7028/OFFIS_TCCP_CO.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/SvenMehlhop/ip-card/blob/87ebe6ffbef0e81e3b11bf6fa9d88110037c7028/OFFIS_TCCP_CO.pdf"
   },
   {
     "Project": "ISOLDE",
