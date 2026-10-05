@@ -1027,10 +1027,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Neuromorphic HW Accelerator",
-    "URL": "",
+    "URL": "https://github.com/neuromorphic-polito/reckon_to_RISCV",
     "License": "SHL-2.1",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Demonstrated",
+    "Description": "Integration of the neuromorphic accelerator ReckOn",
     "WI": [
       "ID 3.6.04"
     ],
@@ -1040,8 +1040,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/neuromorphic-polito/reckon_to_RISCV/blob/main/ip-card/IPcard.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/neuromorphic-polito/reckon_to_RISCV/blob/main/ip-card/ISOLDE_IPcard.pdf"
   },
   {
     "Project": "ISOLDE",
