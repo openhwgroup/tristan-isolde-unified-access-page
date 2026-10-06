@@ -102,7 +102,7 @@
     "URL": "",
     "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Decorate bus requests with the software context",
     "WI": [
       "ID 2.2.01"
     ],
@@ -235,7 +235,7 @@
     "URL": "",
     "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Add a specific CSR register to store the software context",
     "WI": [
       "ID 2.3.01"
     ],
@@ -410,14 +410,14 @@
     "Project": "ISOLDE",
     "Name": "IPs with integrated Context-Aware PMCs",
     "URL": "",
-    "License": "Others",
+    "License": "SHL-2.1",
     "Status": "",
     "Description": "TBD",
     "WI": [
       "ID 3.1.02"
     ],
     "Partners": "TRT",
-    "Comment": "TBD. ISOLDE Category 'Accelerators and extensions'",
+    "Comment": "Solderpad.  ISOLDE Category 'Accelerators and extensions'",
     "Category": [
       "Peripherals"
     ],
@@ -699,14 +699,14 @@
     "Project": "ISOLDE",
     "Name": "Context-Aware PMC Interface (CA-PMC-IF)",
     "URL": "",
-    "License": "Others",
+    "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Interface for retrieving and storing the current software context",
     "WI": [
       "ID 3.3.03"
     ],
     "Partners": "TRT",
-    "Comment": "TBD. ISOLDE Category 'Accelerators and extensions'",
+    "Comment": "Solderpad. ISOLDE Category 'Accelerators and extensions'",
     "Category": [
       "Extension",
       "Interface"
