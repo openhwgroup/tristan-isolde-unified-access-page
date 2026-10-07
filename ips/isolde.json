@@ -1608,21 +1608,22 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Power/Performance Modeling for Design Space Exploration PPM-DSE",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "SILVACO CVA6 AI-Assisted Power and Performance Design Space Explorer (PPM-DSE)",
+    "URL": "https://github.com/SilvacoF/PPM-DSE",
+    "License": "Proprietary",
+    "Status": "Demonstrated",
+    "Description": "ML-assisted framework for CVA6 power/performance modelling and automated design-space exploration. It generates or ingests assertion-filtered processor configurations and simulation datasets, trains surrogate models to predict cycle count, DMIPS/MHz and power, and supports sensitivity analysis, GP-PSO Bayesian optimization and multi-objective evolutionary search. Selected configurations are validated through Verilator performance simulation and, where available, gate-level power analysis. Outputs include CSV datasets, trained models and ranked CVA6 configurations.",
     "WI": [
       "ID 4.3.03"
     ],
     "Partners": "SILVACO",
-    "Comment": ". ISOLDE Category 'Operating systems and applications SW'",
+    "Comment": "Proprietary tool; GitHub repository hosts IP-card documentation. D4.5 Section 3.3.3 / Table 21: builds on CEA configuration-sampling and assertion-filtering methodology; performance data generated with CEA. Performance evaluated for CVA6 v5.1.0/v5.3.0; gate-level power data available for v5.3.0 only. Predictions apply within the validated configuration/workload domain. Local AI copilot requirement PPM-DSE-16 is partially satisfied. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
-      "Software"
+      "Software",
+      "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/SilvacoF/PPM-DSE/blob/main/SILVACO_PPM_DSE_SW_IP_Card.jsonc",
+    "IP_CARD_PDF_URL": "https://github.com/SilvacoF/PPM-DSE/blob/main/SILVACO_PPM_DSE_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
