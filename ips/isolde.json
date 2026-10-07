@@ -1950,5 +1950,31 @@
     ],
     "IP_CARD_URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-vta-apps/-/blob/master/gui/ip-card.jsonc",
     "IP_CARD_PDF_URL": ""
+  },
+    {
+    "Project": "ISOLDE",
+    "Name": "Smart home OpenEMS demo setup",
+    "URL": "https://zenodo.org/records/18164662",
+    "License": [
+      "CC0-1.0"
+    ],
+    "Status": "Available",
+    "Description": "Detailed setup instructions for smart home demo (OpenEMS)",
+    "WI": [
+      "5.3"
+    ],
+    "Partners": [
+      "SYSGO",
+      "CONS",
+      "BYK",
+      "FZI",
+      "BEIA"
+    ],
+    "Comment": "",
+    "Category": [
+      "Software"
+    ],
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/openems-riscv-demo.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/openems-riscv-demo.pdf"
   }
 ]
