@@ -1893,25 +1893,6 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Hypervisor runtime fault diagnosis tests integration",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
-    "WI": [
-      "ID 4.3.13"
-    ],
-    "Partners": "FENTISS",
-    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
-    "Category": [
-      "Operating System",
-      "Software"
-    ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
-  {
-    "Project": "ISOLDE",
     "Name": "Continuous Memory Allocator",
     "URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/udmabuf-allocator",
     "License": [
