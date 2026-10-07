@@ -1,0 +1,67 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "OpenMP Lite Offloading Support for Tightly Coupled Accelerators",
+        "version": "0.1",
+        "sourceLanguages": ["C", "C++"],
+        "trl": "TRL-4",
+        "status": "Prototype implemented",
+        "comment": "OpenMP target offloading compiler support for heterogeneous platforms with tightly coupled accelerators, enabling host-controlled accelerator execution and task dispatch",
+        "provider": [
+            {
+                "organizationName": "NXP Romania",
+                "organizationURL": "www.nxp.com",
+                "organizationAlias": ["NXP-RO"]
+            }
+        ],
+        "license": "Proprietary",
+        "repositoryURL": "www.nxp.com",
+        "project": "ISOLDE",
+        "workItem": "4.2.10",
+        "ipType": {
+            "category": [
+                "Compiler",
+                "Software Library/Framework"
+            ],
+            "domain": [
+                "Other"
+            ],
+            "comment": "OpenMP compiler extensions targeting RISC-V asynchronous TCA",
+            "service": "no"
+        }
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V (RV32)",
+        "processor": "Ibex RV32IM",
+        "isaExtension": "RV32IMZicsrXaida",
+        "SWDependencies": "LLVM/Clang 19",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "CLI": [
+            "Standard clang command-line interface"
+        ],
+        "API": [
+            "Support for a subset of OpenMP 5.x target directies and the taskwait directive"
+        ],
+        "inputArtifacts": [
+            {
+                "artifact": "C/C++ source file containing OpenMP target pragmas",
+                "format": ".c / .cpp"
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "Host executable with accelerator activation or embedded image",
+                "format": "ELF"
+            },
+            {
+                "artifact": "TCA Offload Code Generation Report",
+                "format": "text"
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "binary"
+    }
+}

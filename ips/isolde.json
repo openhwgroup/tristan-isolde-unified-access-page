@@ -1405,21 +1405,21 @@
   {
     "Project": "ISOLDE",
     "Name": "OpenMP Lite",
-    "URL": "",
+    "URL": "www.nxp.com",
     "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Prototype implemented",
+    "Description": "OpenMP compiler extensions targeting tightly-coupled accelerators",
     "WI": [
       "ID 4.2.10"
     ],
     "Partners": "NXP-RO",
     "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
-      "Operating System",
+      "Compiler",
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/NXP-RO_openmp_offloading.json",
+    "IP_CARD_PDF_URL": "ip_cards/NXP-RO_openmp_offloading.pdf"
   },
   {
     "Project": "ISOLDE",
