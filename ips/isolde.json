@@ -927,7 +927,7 @@
   {
     "Project": "ISOLDE",
     "Name": "Number Theoretic Transform Algorithms for Post Quantum Cryptography (NTT)",
-    "URL": "",
+    "URL": "https://github.com/mgologanu/MersenneNTT/tree/main",
     "License": "GPL-3.0",
     "Status": "",
     "Description": "TBD",
@@ -940,8 +940,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/mgologanu/MersenneNTT/blob/main/ip%20card/IMT_ntt.json",
+    "IP_CARD_PDF_URL": "https://github.com/mgologanu/MersenneNTT/blob/main/ip%20card/IMT_ntt.pdf"
   },
   {
     "Project": "ISOLDE",
