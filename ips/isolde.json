@@ -2,7 +2,7 @@
   {
     "Project": "ISOLDE",
     "Name": "NOEL-V processor extensions",
-    "URL": "https://www.gaisler.com/getgrlibhttps://www.gaisler.com/getgrlib",
+    "URL": "https://www.gaisler.com/getgrlib",
     "License": [
       "GPL-2.0",
       "Proprietary"
@@ -102,7 +102,7 @@
     "URL": "",
     "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Decorate bus requests with the software context",
     "WI": [
       "ID 2.2.01"
     ],
@@ -226,8 +226,8 @@
       "Peripheral",
       "Interface"
     ],
-    "IP_CARD_URL": "N/A",
-    "IP_CARD_PDF_URL": "N/A"
+    "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
   },
   {
     "Project": "ISOLDE",
@@ -235,7 +235,7 @@
     "URL": "",
     "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Add a specific CSR register to store the software context",
     "WI": [
       "ID 2.3.01"
     ],
@@ -287,8 +287,8 @@
       "Extension",
       "Interface"
     ],
-    "IP_CARD_URL": "N/A",
-    "IP_CARD_PDF_URL": "N/A"
+    "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
   },
   {
     "Project": "ISOLDE",
@@ -364,8 +364,8 @@
       "Software",
       "Tools"
     ],
-    "IP_CARD_URL": "N/A",
-    "IP_CARD_PDF_URL": "N/A"
+    "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
   },
   {
     "Project": "ISOLDE",
@@ -392,12 +392,12 @@
     "URL": "",
     "License": "Others",
     "Status": "",
-    "Description": "TBD",
+    "Description": "SHL-2.1",
     "WI": [
       "ID 3.1.02"
     ],
     "Partners": "TRT",
-    "Comment": "TBD. ISOLDE Category 'Accelerators and extensions'",
+    "Comment": "Solderpad.  ISOLDE Category 'Accelerators and extensions'",
     "Category": [
       "Peripherals"
     ],
@@ -659,14 +659,14 @@
     "Project": "ISOLDE",
     "Name": "Context-Aware PMC Interface (CA-PMC-IF)",
     "URL": "",
-    "License": "Others",
+    "License": "SHL-2.1",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Interface for retrieving and storing the current software context",
     "WI": [
       "ID 3.3.03"
     ],
     "Partners": "TRT",
-    "Comment": "TBD. ISOLDE Category 'Accelerators and extensions'",
+    "Comment": "Solderpad. ISOLDE Category 'Accelerators and extensions'",
     "Category": [
       "Extension",
       "Interface"
@@ -756,7 +756,7 @@
     "Name": "Vector Processing Unit (with multi-precision capabilities) (VPU)",
     "URL": "https://github.com/pulp-platform/ara",
     "License": "SHL-0.51",
-    "Status": "Optimization, verification, and feature addition in progress",
+    "Status": "Implemented and verified with RVV1.0 tests. Demonstrated on FPGA, open-source flow available.",
     "Description": "RISC-V V 1.0 modular vector accelerator with multi-precision capabilities",
     "WI": [
       "ID 3.4.04"
@@ -768,7 +768,7 @@
       "Extension"
     ],
     "IP_CARD_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.json",
-    "IP_CARD_PDF_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.pdf"
+    "IP_CARD_PDF_URL": "https://github.com/pulp-platform/ara/blob/mp/pulp-v2-os-fpga/docs/ip_cards/ara_ipcard.pdf?raw=true"
   },
   {
     "Project": "ISOLDE",
@@ -947,10 +947,10 @@
   {
     "Project": "ISOLDE",
     "Name": "SCA",
-    "URL": "",
+    "URL": "https://github.com/korbseq/isolde_ip_cards_acp.git",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Accelerator for frequency domain cross correlations",
     "WI": [
       "ID 3.6.02"
     ],
@@ -966,10 +966,10 @@
   {
     "Project": "ISOLDE",
     "Name": "LDPC",
-    "URL": "",
+    "URL": "https://github.com/korbseq/isolde_ip_cards_acp.git",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Accelerator for LDPC encoding",
     "WI": [
       "ID 3.6.03"
     ],
