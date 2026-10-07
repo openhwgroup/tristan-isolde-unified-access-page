@@ -1213,10 +1213,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Run-Time Environment for end-users",
-    "URL": "",
+    "URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-fork",
     "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Demonstrated",
+    "Description": "Fork of Apache TVM 0.18.0 that adds the RISCV2TA deployment target: a 64-bit RISC-V Linux host controlling a VTA-derived tensor accelerator on an AMD/Xilinx VCU128 FPGA. The integration covers host code generation, the VTA compiler stack, RPC execution, AutoTVM tuning, target runtime/driver support, and the associated VTA hardware fork.",
     "WI": [
       "ID 4.1.07"
     ],
@@ -1225,7 +1225,7 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-fork/-/blob/arh-riscv2ta/ip-card.jsonc",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1577,10 +1577,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Basic toolchain for the many-core parallel accelerator",
-    "URL": "",
+    "URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-fork",
     "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Demonstrated",
+    "Description": "Fork of Apache TVM 0.18.0 that adds the RISCV2TA deployment target: a 64-bit RISC-V Linux host controlling a VTA-derived tensor accelerator on an AMD/Xilinx VCU128 FPGA. The integration covers host code generation, the VTA compiler stack, RPC execution, AutoTVM tuning, target runtime/driver support, and the associated VTA hardware fork.",
     "WI": [
       "ID 4.2.19"
     ],
@@ -1589,7 +1589,7 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-fork/-/blob/arh-riscv2ta/ip-card.jsonc",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -1948,6 +1948,47 @@
       "Software"
     ],
     "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "Continuous Memory Allocator",
+    "URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/udmabuf-allocator",
+    "License": [
+      "BSD-2-Clause"
+    ],
+    "Status": "Demonstrated",
+    "Description": "Portable C library that sub-allocates aligned, physically contiguous regions from memory reserved by a Linux u-dma-buf device. It supplies CPU virtual addresses and the original physical/DMA addresses required by userspace drivers and memory-mapped peripherals.",
+    "WI": [],
+    "Partners": [
+      "UPB"
+    ],
+    "Comment": "",
+    "Category": [
+      "Software",
+      "Library"
+    ],
+    "IP_CARD_URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/udmabuf-allocator/-/blob/main/ip-card.jsonc",
+    "IP_CARD_PDF_URL": ""
+  },
+  {
+    "Project": "ISOLDE",
+    "Name": "RISCV2TA End-User Inference GUI",
+    "URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-vta-apps/-/tree/master/gui",
+    "License": [
+      "Others"
+    ],
+    "Status": "Demonstrated",
+    "Description": "Desktop graphical runtime for operating remote TVM/VTA inference targets. It guides an end user through FPGA programming and platform boot, TVM RPC connection, compiled-model validation and loading, image or stream selection, remote inference, and visualization of classification results and performance.",
+    "WI": [],
+    "Partners": [
+      "UPB"
+    ],
+    "Comment": "",
+    "Category": [
+      "Software"
+    ],
+    "IP_CARD_URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-vta-apps/-/blob/master/gui/ip-card.jsonc",
     "IP_CARD_PDF_URL": ""
   }
 ]
