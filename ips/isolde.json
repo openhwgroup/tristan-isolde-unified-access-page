@@ -1877,10 +1877,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Tooling to ensure compliance with multicore timing certification objectives",
-    "URL": "",
+    "URL": "https://www.rapitasystems.com/",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "HW analysis and SW tools development for multicore platforms verification (MACH178 prototype).",
     "WI": [
       "ID 4.3.09"
     ],
