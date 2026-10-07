@@ -1585,8 +1585,8 @@
     "Category": [
       "Software"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/POLITO_MESSY_SW_IP_Card.json",
+    "IP_CARD_PDF_URL": "ip_cards/POLITO_MESSY_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
