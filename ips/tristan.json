@@ -116,7 +116,7 @@
     "Project": "TRISTAN",
     "WI": ["WI2.1.4", "WI2.2.1", "WI2.3.4", "WI2.5.4"],
     "Partners": ["Accemic Technologies", "Fraunhofer", "MINRES Technologies", "SYSGO"],
-    "Comment": "Not released yet. It will be available at https://github.com/accemic/c-trace.",
+    "Comment": "Available at https://github.com/accemic/c-trace.",
     "Category": "Core"
   },
   {
@@ -472,12 +472,14 @@
     "URL": "https://www.sysgo.com/pikeos/",
     "License": "Proprietary",
     "Status": "Released",
-    "Description": "CVA6 is a 6-stage, single-issue, in-order CPU which implements the 64-bit RISC-V instruction set. PikeOS is a portable real-time operating system based on a separation kernel designed for the highest levels of Safety & Security. The PikeOS technology is certifiable by various certification standards including DO-178C, ECSS, EN 50128 / EN 50657, IEC 61508, and ISO 26262. We plan to support CVA-6 for PikeOS.",
+    "Description": "CVA6 is a 6-stage, single-issue, in-order CPU which implements the 64-bit RISC-V instruction set. PikeOS is a portable real-time operating system based on a separation kernel designed for the highest levels of Safety & Security. The PikeOS technology is certifiable by various certification standards including DO-178C, ECSS, EN 50128 / EN 50657, IEC 61508, and ISO 26262. We support CVA-6 for PikeOS.",
     "Project": "TRISTAN",
     "WI": "WI4.3.3",
     "Partners": "SYSGO",
     "Comment": "",
-    "Category": "Software"
+    "Category": "Software",
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/pikeos.pdf"
   },
   {
     "Name": "Yocto for CVA6",
@@ -513,7 +515,9 @@
     "WI": "WI4.3.2",
     "Partners": "SYSGO",
     "Comment": "Has been released on 14 April 2024, see also press release.",
-    "Category": "Software"
+    "Category": "Software",
+    "IP_CARD_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/elinos.json",
+    "IP_CARD_PDF_URL": "https://github.com/sysgo-embedded/riscv/blob/main/ipcard/elinos.pdf"
   },
   {
     "Name": "Debug support for CVA6",
