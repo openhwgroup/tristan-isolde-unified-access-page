@@ -1197,8 +1197,8 @@
     "Name": "Execution Framework for Space edge computing",
     "URL": "",
     "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Prototype",
+    "Description": "Support framework for the deployment, management and testing of high-performance algorithm using RISC-V cores and accelerators, supporting the ISOLDE Space Demonstrator.",
     "WI": [
       "ID 4.1.06"
     ],
