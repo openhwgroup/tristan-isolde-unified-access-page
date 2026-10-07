@@ -84,7 +84,7 @@
     "URL": "",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Analysis framework for PPA analysis.",
     "WI": [
       "ID 2.1.05"
     ],
@@ -155,10 +155,10 @@
   {
     "Project": "ISOLDE",
     "Name": "AHB Crossbar",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "URL": "https://github.com/Infineon/ahb-crossbar-ip",
+    "License": "CERN-OHL-S-2.0",
+    "Status": "Released",
+    "Description": "An RTL implementation of an AHB-Lite Crossbar for RISC-V based SoCs. The design supports three initiators and six responders, enabling concurrent transactions between independent initiator-responder pairs.",
     "WI": [
       "ID 2.2.04"
     ],
@@ -167,16 +167,16 @@
     "Category": [
       "Interface"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Infineon/ahb-crossbar-ip/blob/master/ipcard/ahb-crossbar-ipcard.json",
+    "IP_CARD_PDF_URL": "https://github.com/Infineon/ahb-crossbar-ip/blob/master/ipcard/ahb-crossbar-ipcard.pdf"
   },
   {
     "Project": "ISOLDE",
-    "Name": "AHB/APB Interrupt Controller",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "AHB Interrupt Controller",
+    "URL": "https://github.com/Infineon/programmable-interrupt-controller-ip",
+    "License": "CERN-OHL-S-2.0",
+    "Status": "Released",
+    "Description": "An RTL implementation of an Interrupt Controller designed for low-latency interrupt handling in RISC-V SoCs. The controller supports nested interrupts with configurable priority levels and interrupt grouping.",
     "WI": [
       "ID 2.2.05"
     ],
@@ -185,16 +185,16 @@
     "Category": [
       "Peripheral"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Infineon/programmable-interrupt-controller-ip/blob/master/ipcard/programmable-interrupt-controller-ipcard.json",
+    "IP_CARD_PDF_URL": "https://github.com/Infineon/programmable-interrupt-controller-ip/blob/master/ipcard/programmable-interrupt-controller-ipcard.pdf"
   },
   {
     "Project": "ISOLDE",
-    "Name": "AHB/APB Timer",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "AHB Timer",
+    "URL": "https://github.com/Infineon/dual-channel-timer-ip",
+    "License": "CERN-OHL-S-2.0",
+    "Status": "Released",
+    "Description": "An RTL implementation of a dual-channel timer peripheral with capture/compare capabilities. It can be integrated into a wide range of RISC-V based SoCs (but not only) and it provides Watchdog Timer, Event Counter, and Pulse Width Modulator functionalities.",
     "WI": [
       "ID 2.2.06"
     ],
@@ -203,8 +203,8 @@
     "Category": [
       "Peripheral"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Infineon/dual-channel-timer-ip/blob/master/ipcard/dual-channel-timer-ipcard.json",
+    "IP_CARD_PDF_URL": "https://github.com/Infineon/dual-channel-timer-ip/blob/master/ipcard/dual-channel-timer-ipcard.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -353,14 +353,14 @@
     "URL": "",
     "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "Custom extension that allows indexable CSRs to facilitate same style programming for CSRs and memory-mapped registers.",
     "WI": [
       "ID 2.4.03"
     ],
     "Partners": "IFX",
     "Comment": "Proprietary. ISOLDE Category 'Cores, interfaces, peripherals & NoCs'",
     "Category": [
-      "Software"
+      "Extension"
     ],
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
@@ -561,21 +561,20 @@
   {
     "Project": "ISOLDE",
     "Name": "Safety Control",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "URL": "https://github.com/Infineon/safety-security-control-unit-ip",
+    "License": "CERN-OHL-S-2.0",
+    "Status": "Released",
+    "Description": "An RTL implementation of a Safety and Security Control Unit designed to be tightly coupled with a RISC-V processor core. The unit provides centralized safety monitoring, fault handling, and security control through the usage of custom RISC-V Control and Status Registers.",
     "WI": [
       "ID 3.1.12"
     ],
     "Partners": "IFX",
     "Comment": "TBD. ISOLDE Category 'Accelerators and extensions'",
     "Category": [
-      "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Infineon/safety-security-control-unit-ip/blob/master/ipcard/safety-security-control-unit-ipcard.json",
+    "IP_CARD_PDF_URL": "https://github.com/Infineon/safety-security-control-unit-ip/blob/master/ipcard/safety-security-control-unit-ipcard.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -1731,22 +1730,20 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Open-Source Verification Flow for High Performance Cores, Accelerators and Demonstrators",
+    "Name": "Verification Flow for High Performance Cores, Accelerators and Demonstrators",
     "URL": "",
-    "License": "Others",
+    "License": "Proprietary",
     "Status": "",
-    "Description": "TBD",
+    "Description": "A generic simulator interface shell to shield specialties of open-source simulators (e.g. Verilator), commercial simulators (e.g. Incisive) and free usable simulators (e.g. Vivado) so that they can be used exchangeable. The shell is part of a framework that also shields formal verification and linting",
     "WI": [
       "ID 4.3.08"
     ],
     "Partners": [
-      "IFX",
-      "HM"
+      "IFX"
     ],
     "Comment": "Open Source. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
-      "Operating System",
-      "Software"
+      "Tool"
     ],
     "IP_CARD_URL": "",
     "IP_CARD_PDF_URL": ""
