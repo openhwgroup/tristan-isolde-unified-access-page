@@ -417,12 +417,11 @@
     "Partners": "NXP-AT",
     "Comment": "ISOLDE Category 'Accelerators and extensions'",
     "Category": [
-      "Accelerator",
-      "Extension",
-      "On-Chip Debug System"
+      "Accelerator", 
+      "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/NXP-AT_IEE.json",
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_IEE.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -437,11 +436,10 @@
     "Partners": "NXP-AT",
     "Comment": "ISOLDE Category 'Extension'",
     "Category": [
-      "On-Chip Debug System",
-      "Peripheral"
+      "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/NXP-AT_BCFI.json",
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_BCFI.pdf"    
   },
   {
     "Project": "ISOLDE",
@@ -456,11 +454,10 @@
     "Partners": "NXP-AT",
     "Comment": "ISOLDE Category 'Extension'",
     "Category": [
-      "Extension",
-      "Peripheral"
+      "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/NXP-AT_CTM.json",
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_CTM.pdf"    
   },
   {
     "Project": "ISOLDE",
@@ -475,11 +472,10 @@
     "Partners": "NXP-AT",
     "Comment": "ISOLDE Category 'Extension'",
     "Category": [
-      "Extension",
-      "Peripheral"
+      "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/NXP-AT_EMI.json",
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_EMI.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -494,12 +490,11 @@
     "Partners": "NXP-AT",
     "Comment": "ISOLDE Category 'Extension'",
     "Category": [
-      "Extension",
-      "Peripheral"
+      "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
-  },
+    "IP_CARD_URL": "ip_cards/NXP-AT_FCFI.json",
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_FCFI.pdf"    
+  },  
   {
     "Project": "ISOLDE",
     "Name": "Memory subsystem support for Bytecode VMs",

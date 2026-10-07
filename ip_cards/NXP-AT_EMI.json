@@ -1,0 +1,87 @@
+{
+  "basicInfo": {
+    "licensing": "Closed-source proprietary",
+    "targetFpgaOrAsic": "XC7K325T, ASIC",
+    "designLanguage": "SystemVerilog"
+  },
+  "systemLevelFeatures": {
+    "couplingType": "Tightly-coupled",
+    "dataTypes": null,
+    "isa": null,
+    "peakOpsPerCycle": null,
+    "interfaces": null,
+    "supportedOperations": null,
+    "compilerSupport": null,
+    "externalMemoryRequired": null,
+    "cacheOrScratchpad": null
+  },
+  "architecture": {
+    "type": "CPU extension",
+    "numClockDomains": 1,
+    "controlInterface": {
+      "isaExtension": "Yes (RV32I)",
+      "memoryMapped": "No",
+      "protocol": ""
+    },
+    "memoryInterface": {
+      "interfaceProtocol": null,
+      "hierarchyLevel": null,
+      "cached": null,
+      "iommu": null
+    },
+    "interrupts": null
+  },
+  "microarchitecture": {
+    "parametrization": {
+      "parametricNumUnits": "No",
+      "parametricConfig": "Yes"
+    },
+    "programmability": {
+      "programmableCores": "No",
+      "isaExtension": null
+    }
+  },
+  "software": {
+    "compiler": {
+      "requiresSpecializedCompiler": "No",
+      "supportedCompilers": null
+    },
+    "hardwareAbstractionLayer": {
+      "halFunctions": "No"
+    },
+    "highLevelApi": {
+      "hasHighLevelApi": "No",
+      "sdkRepository": null,
+      "hasDomainSpecificCompiler": "No"
+    }
+  },
+  "integration": {
+    "ipDistribution": {
+      "manifestType": "No",
+      "standaloneSimulation": "No",
+      "standaloneSimulationSwRequirements": "None",
+      "integrationDocsOrExamples": "Yes, closed-source proprietary",
+      "ipXact": null,
+      "systemRdl": null
+    },
+    "synthesis": {
+      "isSynthesizable": "Yes",
+      "fpgaSynthesisExamples": "Yes, closed-source proprietary",
+      "asicSynthesisExamples": "Yes, closed-source proprietary"
+    },
+    "simulation": {
+      "closedSourceSimulation": "Yes (Xcelium)",
+      "openSourceSimulation": "No"
+    },
+    "evaluation": {
+      "ppaResultsAvailable": "Yes"
+    }
+  },
+  "physicalImplementation": {
+    "asicArea": {
+      "numGates": "3764 GE added to CV32E40S",
+      "onChipInternalMemorySize": null,
+      "targetClockFrequency": "500 MHz (16nm)"
+    }
+  }
+}
