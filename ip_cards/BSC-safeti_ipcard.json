@@ -1,0 +1,87 @@
+{
+  "basicInfo": {
+    "licensing": "Open-source (MIT License)",
+    "targetFpgaOrAsic": "",
+    "designLanguage": ""
+  },
+  "systemLevelFeatures": {
+    "couplingType": null,
+    "dataTypes": null,
+    "isa": "-",
+    "peakOpsPerCycle": null,
+    "interfaces": null,
+    "supportedOperations": null,
+    "compilerSupport": null,
+    "externalMemoryRequired": null,
+    "cacheOrScratchpad": null
+  },
+  "architecture": {
+    "type": "",
+    "numClockDomains": 0,
+    "controlInterface": {
+      "isaExtension": "No",
+      "memoryMapped": "Yes",
+      "protocol": "APB 32b"
+    },
+    "memoryInterface": {
+      "interfaceProtocol": null,
+      "hierarchyLevel": null,
+      "cached": "No",
+      "iommu": "No"
+    },
+    "interrupts": null
+  },
+  "microarchitecture": {
+    "parametrization": {
+      "parametricNumUnits": null,
+      "parametricConfig": "Yes"
+    },
+    "programmability": {
+      "programmableCores": null,
+      "isaExtension": null
+    }
+  },
+  "software": {
+    "compiler": {
+      "requiresSpecializedCompiler": null,
+      "supportedCompilers": null
+    },
+    "hardwareAbstractionLayer": {
+      "halFunctions": null
+    },
+    "highLevelApi": {
+      "hasHighLevelApi": "Yes",
+      "sdkRepository": "\\begin{tabular}[c]{@{}l@{}}https://github.com/bsc-loca/SafeTI/tree/",
+      "hasDomainSpecificCompiler": "No"
+    }
+  },
+  "integration": {
+    "ipDistribution": {
+      "manifestType": "Y (Readme.md)",
+      "standaloneSimulation": "Yes",
+      "standaloneSimulationSwRequirements": "QuestaSim and Xilinx Vivado 2020.2",
+      "integrationDocsOrExamples": "\\begin{tabular}[c]{@{}l@{}}https://gitlab.com/selene-riscv-platform/selene-hardware/-/",
+      "ipXact": null,
+      "systemRdl": null
+    },
+    "synthesis": {
+      "isSynthesizable": "Yes",
+      "fpgaSynthesisExamples": "Yes",
+      "asicSynthesisExamples": "No"
+    },
+    "simulation": {
+      "closedSourceSimulation": "Y (QuestaSim)",
+      "openSourceSimulation": "No"
+    },
+    "evaluation": {
+      "ppaResultsAvailable": "https://doi.org/10.1145/3703910"
+    }
+  },
+  "physicalImplementation": {
+    "asicArea": {
+      "numGates": null,
+      "onChipInternalMemorySize": null,
+      "targetClockFrequency": null
+    }
+  }
+}

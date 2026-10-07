@@ -13,7 +13,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('editor-page');
 
-  const GITHUB_API_URL = 'https://api.github.com/repos/openhwgroup/uap/contents/ips?ref=main';
   const CATEGORIES_URL = 'cfg/categories.json';
   const LICENSES_URL = 'cfg/licenses.json';
 
@@ -68,21 +67,122 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  async function populateFileSelector() {
+  // Derive a repository API URL listing the ips/ directory from the current
+  // location. Same-origin directory listings come first; GitHub/GitLab API
+  // fallbacks are used only when derivable from the current origin — never a
+  // hardcoded third-party repository.
+  function deriveIpsListUrls() {
+    const urls = [];
+    let u = null;
     try {
-      const response = await fetch(GITHUB_API_URL);
-      const items = await response.json();
-      const jsonFiles = items.filter(i => i.type === 'file' && i.name.endsWith('.json'));
-
-      jsonFiles.forEach(file => {
-        const option = document.createElement('option');
-        option.value = file.download_url;
-        option.textContent = file.name;
-        fileSelector.appendChild(option);
-      });
-    } catch (error) {
-      console.error('Failed to load file list from GitHub:', error);
+      u = new URL(window.location.href);
+    } catch (e) {
+      return urls;
     }
+    const host = u.hostname.toLowerCase();
+    const pathParts = u.pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+    // Drop the editor page itself from the path.
+    if (/\.html$/i.test(pathParts[pathParts.length - 1] || '')) {
+      pathParts.pop();
+    }
+
+    // Same-origin directory listing (works for any static hosting).
+    const originBase = `${u.protocol}//${u.host}` + (pathParts.length ? '/' + pathParts.join('/') : '');
+    urls.push({ kind: 'listing', url: `${originBase}/ips/` });
+
+    // GitHub Pages / github.com / GitLab API fallbacks derived from the origin.
+    if (host.endsWith('.github.io')) {
+      const owner = host.replace('.github.io', '');
+      const repo = pathParts[0] || '';
+      if (repo) {
+        urls.push({ kind: 'github', url: `https://api.github.com/repos/${owner}/${repo}/contents/ips` });
+      }
+    } else if (host === 'github.com') {
+      if (pathParts.length >= 2) {
+        urls.push({ kind: 'github', url: `https://api.github.com/repos/${pathParts[0]}/${pathParts[1]}/contents/ips` });
+      }
+    } else if (host === 'gitlab.com' || host.includes('gitlab')) {
+      const dashIdx = pathParts.indexOf('-');
+      const projParts = (dashIdx !== -1 ? pathParts.slice(0, dashIdx) : pathParts).filter(Boolean);
+      if (projParts.length >= 2) {
+        const encoded = encodeURIComponent(projParts.slice(0, 2).join('/'));
+        urls.push({
+          kind: 'gitlab',
+          url: `https://${host}/api/v4/projects/${encoded}/repository/tree?path=ips&per_page=100`,
+          projectPath: projParts.slice(0, 2).join('/')
+        });
+      }
+    }
+    return urls;
+  }
+
+  function addFileOption(name, url) {
+    const option = document.createElement('option');
+    option.value = url;
+    option.textContent = name;
+    fileSelector.appendChild(option);
+  }
+
+  // Populate the selector from the first ips/ list source that yields files:
+  // same-origin directory listing first, then GitHub/GitLab APIs derived
+  // from the current location.
+  async function populateFileSelector() {
+    const candidates = deriveIpsListUrls();
+    for (const candidate of candidates) {
+      try {
+        const response = await fetch(candidate.url);
+        if (!response.ok) continue;
+
+        if (candidate.kind === 'listing') {
+          // Static hosting: parse the HTML directory listing for .json links.
+          const html = await response.text();
+          const hrefs = Array.from(html.matchAll(/href=["']([^"']+\.json)["']/gi)).map(m => m[1]);
+          const seen = new Set();
+          hrefs.forEach(h => {
+            try {
+              const full = new URL(h, candidate.url).toString();
+              const name = full.split('/').pop();
+              if (seen.has(name)) return;
+              seen.add(name);
+              addFileOption(name, full);
+            } catch (e) {}
+          });
+          if (seen.size) return;
+          continue;
+        }
+
+        const items = await response.json();
+        if (!Array.isArray(items)) continue;
+
+        let jsonFiles;
+        if (candidate.kind === 'gitlab') {
+          // GitLab tree entries: keep files, build raw-file URLs.
+          const host = new URL(candidate.url).hostname;
+          const encodedProject = candidate.url.match(/\/projects\/([^/]+)\//)[1];
+          jsonFiles = items
+            .filter(i => i && i.type === 'blob' && i.name && i.name.endsWith('.json'))
+            .map(i => ({
+              name: i.name,
+              download_url: `https://${host}/api/v4/projects/${encodedProject}/repository/files/${encodeURIComponent('ips/' + (i.path || i.name))}/raw?ref=HEAD`
+            }));
+        } else {
+          jsonFiles = items
+            .filter(i => i && i.type === 'file' && i.name && i.name.endsWith('.json'))
+            .map(i => ({ name: i.name, download_url: i.download_url || i.url || i.html_url }));
+        }
+
+        let added = 0;
+        jsonFiles.forEach(file => {
+          if (!file.download_url) return;
+          addFileOption(file.name, file.download_url);
+          added++;
+        });
+        if (added) return;
+      } catch (error) {
+        console.warn(`File list attempt failed for ${candidate.url}:`, error);
+      }
+    }
+    console.error('Failed to derive any ips/ list URL from the current location.');
   }
 
   // --- DATA HANDLING ---

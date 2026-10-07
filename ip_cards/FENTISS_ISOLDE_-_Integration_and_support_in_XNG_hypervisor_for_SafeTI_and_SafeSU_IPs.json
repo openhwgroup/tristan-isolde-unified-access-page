@@ -1,0 +1,66 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "Integration and support in XNG hypervisor for SafeTI and SafeSU IPs",
+        "version": "1.0",
+        "project": "ISOLDE",
+        "workItem": "3.1",
+        "trl": "TRL-4",
+        "status": "Demonstrated",
+        "license": "Proprietary",
+        "ipType": {
+            "category": [
+                "Software",
+                "Hypervisor",
+                "Software Library/Framework"
+            ],
+            "domain": [
+                "Safety"
+            ],
+            "comment": "Support of XNG to the SafeSU and SafeTI IP modules by BSC in order to use their funcionality"
+        },
+        "repositoryURL": "www.fentiss.com",
+        "provider": [
+            {
+                "organizationName": "Fent Innovative Software Solutions S.L.",
+                "organizationURL": "www.fentiss.com",
+                "organizationAlias": [
+                    "FENTISS"
+                ]
+            }
+        ]
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V",
+        "processor": "NOEL-V",
+        "isaExtension": "RV64IMAFDCH",
+        "board": "Xilinx VCU118",
+        "SOC": "NA",
+        "SWDependencies": "None",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "API": [
+            "Specific hypercalls"
+        ],
+        "inputArtifacts": [
+            {
+                "artifact": "Hypervisor configuration",
+                "format": "XML"
+            },
+            {
+                "artifact": "Partition(s) source code",
+                "format": "C"
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "System image", 
+                "format": "ELF"
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "Operational software package"
+    }
+}

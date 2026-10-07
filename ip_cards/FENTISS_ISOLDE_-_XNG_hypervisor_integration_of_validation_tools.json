@@ -1,0 +1,66 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "XNG hypervisor integration of validation tools",
+        "version": "1.0",
+        "project": "ISOLDE",
+        "workItem": "4.3",
+        "trl": "TRL-4",
+        "status": "Demonstrated",
+        "license": "Proprietary",
+        "ipType": {
+            "category": [
+                "Software",
+                "Hypervisor",
+                "Software Library/Framework"
+            ],
+            "domain": [
+                "Safety"
+            ],
+            "comment": "Support of XNG to the MATCH178 timming analysis by RSS in order to use their funcionality by providing managament of performance monitor registers"
+        },
+        "repositoryURL": "www.fentiss.com",
+        "provider": [
+            {
+                "organizationName": "Fent Innovative Software Solutions S.L.",
+                "organizationURL": "www.fentiss.com",
+                "organizationAlias": [
+                    "FENTISS"
+                ]
+            }
+        ]
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V",
+        "processor": "NOEL-V",
+        "isaExtension": "RV64IMAFDCBH_Smaia_Smdeleg",
+        "board": "Xilinx VCU118",
+        "SOC": "NA",
+        "SWDependencies": "None",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "API": [
+            "Specific hypercalls"
+        ],
+        "inputArtifacts": [
+            {
+                "artifact": "Hypervisor configuration",
+                "format": "XML"
+            },
+            {
+                "artifact": "Partition(s) source code",
+                "format": "C"
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "System image", 
+                "format": "ELF"
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "Operational software package"
+    }
+}

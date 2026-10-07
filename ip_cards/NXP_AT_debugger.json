@@ -1,0 +1,71 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "Debugger support for FCFI and BCFI",
+        "version": "0.1",
+        "project": "ISOLDE",
+        "workItem": "4.2",
+        "trl": "TRL-4",
+        "status": "Prototype implemented",
+        "license": "Proprietary",
+        "ipType": {
+            "category": [
+                "Debugging, Performance, Visualization and Profiling Tools"
+            ],
+            "domain": [
+                "Security"
+            ],
+            "comment": "Debugger extension to support BCFI and FCFI. Cusom disassembler as well as a GDB extension to support custom modifications of registers in a stack frame via a python API. Upstream extension by embecosm (subcontractor) is under review. "
+        },
+        "repositoryURL": "www.nxp.com",
+        "provider": [
+            {
+                "organizationName": "NXP Semiconductors Austria GmbH",
+                "organizationURL": "www.nxp.com",
+                "organizationAlias": [
+                    "NXP-AT"
+                ]
+            }
+        ]
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V",
+        "processor": "CV32E40S",
+        "isaExtension": "rv32imc_bcfi",
+        "SOC": "NA",
+        "SWDependencies": "None",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "API": [
+            "GDB CLI",
+            "GDB RSP"
+        ],
+
+        "inputArtifacts": [
+            {
+                "artifact": "instruction",
+                "format": "binary"
+            },
+            {
+                "artifact": "Stack frame",
+                "format": "binary"
+
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "instruction mnemonic",
+                "format": "string"
+            },
+            {
+                "artifact": "Stack frame with unencrypted return address",
+                "format": "binary"
+
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "Operational software package"
+    }
+}

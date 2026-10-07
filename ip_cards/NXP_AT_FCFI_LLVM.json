@@ -1,0 +1,63 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "LLVM support for FCFI",
+        "version": "1.0",
+        "project": "ISOLDE",
+        "workItem": "4.2",
+        "trl": "TRL-7",
+        "status": "Demonstrated",
+        "license": "Proprietary",
+        "ipType": {
+            "category": [
+                "Compiler"
+            ],
+            "domain": [
+                "Security"
+            ],
+            "comment": "LLVM 18 extension to support code generation for the custom FCFI ISA extension"
+        },
+        "repositoryURL": "www.nxp.com",
+        "provider": [
+            {
+                "organizationName": "NXP Semiconductors Austria GmbH",
+                "organizationURL": "www.nxp.com",
+                "organizationAlias": [
+                    "NXP-AT"
+                ]
+            }
+        ]
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V",
+        "processor": "CV32E40S",
+        "isaExtension": "rv32",
+        "SOC": "NA",
+        "SWDependencies": "None",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "API": [
+            "LLVM frontend",
+            "LLVM attributes"
+        ],
+        "CLI": [
+            "LLVM 18 command-line interface "
+        ],
+        "inputArtifacts": [
+            {
+                "artifact": "C source code",
+                "format": "C"
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "System image", 
+                "format": "ELF"
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "Operational software package"
+    }
+}

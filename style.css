@@ -95,7 +95,7 @@ nav a:hover {
 }
 
 .nav-logo-img {
-  height: 48px;    /* ajuste ici */
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -224,6 +224,23 @@ main {
 #data-table td {
   white-space: normal;
   overflow-wrap: anywhere;
+}
+
+/* IP Card link icons (JSON / PDF) */
+#data-table td .ip-card-link {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+#data-table td .ip-card-link i {
+  font-size: 1.5rem;
+  color: #1e88e5;
+  transition: color 120ms ease;
+}
+
+#data-table td .ip-card-link:hover i {
+  color: #455a64;
 }
 
 /* Column resizer handle */
@@ -931,10 +948,7 @@ code {
 }
 
 /* Compatibility Matrix — row/column hover highlight */
-.matrix-row-highlight {
-  background-color: #eef6ff !important;
-}
-
+.matrix-row-highlight,
 .matrix-col-highlight {
   background-color: #eef6ff !important;
 }
@@ -989,3 +1003,53 @@ code {
 .color-box.ct { background-color: #1b5e20; }
 .color-box.cnt { background-color: #4caf50; }
 .color-box.nc { background-color: #a5d6a7; }
+
+/* Repo Stats column */
+.gh-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.gh-stat {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: #eef3f8;
+  color: #1f2937;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.gh-stat i {
+  margin-right: 4px;
+  color: #64748b;
+}
+
+.gh-stat--archived {
+  background: #f3e8ff;
+  color: #6b21a8;
+  font-style: italic;
+}
+
+.gh-stats-na {
+  color: #8a94a0;
+}
+
+.gh-stats-repo {
+  flex-basis: 100%;
+  font-size: 0.75rem;
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Footnote under the catalogue table */
+.stats-disclaimer {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+}

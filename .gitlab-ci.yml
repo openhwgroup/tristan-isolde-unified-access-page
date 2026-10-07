@@ -1,0 +1,72 @@
+# GitLab CI workflows have not been tested!
+
+stages: [validate, deploy, scheduled]
+
+default:
+  interruptible: true
+
+pages:
+  stage: deploy
+  image: alpine:latest
+  # Pages may be disabled on some GitLab instances (e.g. gitlab.eclipse.org).
+  # allow_failure keeps the pipeline green when Pages is unavailable; the rest
+  # of the pipeline (validation, repo-stats) still runs normally.
+  # NOTE: because of allow_failure, a genuine deploy failure also shows as a
+  # warning — always confirm the site is actually reachable after this job.
+  allow_failure: true
+  before_script:
+    - |
+      echo "Deploying to GitLab Pages."
+      echo "If this job succeeds but the site is not reachable, the instance likely has Pages disabled —"
+      echo "fall back to self-hosting: scripts/serve.sh (see DEPLOYMENT.md)."
+  script:
+    - mkdir -p public
+    # Copy only what the static site needs at runtime. `|| true` so a glob that
+    # matches nothing never aborts the deploy (e.g. if *.css is ever empty).
+    - cp -r -- *.html *.css *.js images ips cfg public/ || true
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
+validate_ips:
+  stage: validate
+  image: python:3.10-slim
+  script:
+    - pip install --quiet jsonschema
+    - python3 scripts/validate_ips.py --strict
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes: [ 'ips/**/*' ]
+    - if: '$CI_COMMIT_BRANCH'
+      changes: [ 'ips/**/*' ]
+
+repo_stats:
+  stage: scheduled
+  image: python:3.10-slim
+  variables:
+    GIT_DEPTH: "0"   # full clone so commit-back never hits a shallow/non-fast-forward push
+  script:
+    - |
+      if [ -z "$UAP_PUSH_TOKEN" ]; then
+        echo "ERROR: UAP_PUSH_TOKEN CI/CD variable is not set; cannot commit stats back. Aborting." >&2
+        exit 1
+      fi
+    - python3 scripts/fetch_repo_stats.py
+    # Commit the refreshed cache back to the current project (location-flexible).
+    - |
+      if ! git diff --exit-code cfg/repo-stats.json; then
+        git add cfg/repo-stats.json
+        git -c user.name='uap-ci' -c user.email='ci@uap.local' \
+            commit -m "chore: refresh repository stats [skip ci]"
+        git remote set-url origin \
+          "https://oauth2:${UAP_PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+        git push origin "HEAD:${CI_COMMIT_BRANCH}"
+      else
+        echo "cfg/repo-stats.json unchanged"
+      fi
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  # Required masked CI/CD variables: GITHUB_TOKEN, GITLAB_TOKEN (optional, raises rate limits),
+  # and UAP_PUSH_TOKEN (Project Access Token with write_repository scope) for commit-back.

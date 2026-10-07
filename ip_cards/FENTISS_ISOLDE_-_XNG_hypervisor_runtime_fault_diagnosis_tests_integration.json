@@ -1,23 +1,23 @@
 {
     "schemaVersion": "0.9",
     "basicInfo": {
-        "ipName": "XtratuM Next Generation",
-        "version": "1.4",
+        "ipName": "XNG hypervisor runtime fault diagnosis tests integration",
+        "version": "1.0",
         "project": "ISOLDE",
-        "workItem": "4.1",
+        "workItem": "4.3",
         "trl": "TRL-4",
-        "status": "Prototype implemented",
+        "status": "Demonstrated",
         "license": "Proprietary",
         "ipType": {
             "category": [
                 "Software",
-                "Hypervisor"
+                "Hypervisor",
+                "Application Software"
             ],
             "domain": [
-                "Safety",
-                "Security"
+                "Safety"
             ],
-            "comment": "Type 1 hypervisor for real-time mixed-criticality embedded systems providing time and space isolation"
+            "comment": "SupportIntegration of the fault diagnosis tests by UPV in a Time and Space Partitioning software architecture based on XNG"
         },
         "repositoryURL": "www.fentiss.com",
         "provider": [
@@ -32,8 +32,8 @@
     },
     "systemLevelInfo": {
         "architecture": "RISC-V",
-        "processor": "CVA6",
-        "isaExtension": "cv64a6_imafdch_sv39",
+        "processor": "NOEL-V",
+        "isaExtension": "RV64IMAFDCH",
         "board": "Xilinx VCU118",
         "SOC": "NA",
         "SWDependencies": "None",
@@ -41,7 +41,7 @@
     },
     "interfaces": {
         "API": [
-            "Specific hypercalls"
+            "Standard XNG hypercalls"
         ],
         "inputArtifacts": [
             {

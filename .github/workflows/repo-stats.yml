@@ -1,0 +1,51 @@
+name: Refresh repository stats
+
+on:
+  schedule:
+    # Weekly, Monday 03:00 UTC
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+    inputs:
+      only_missing:
+        description: 'Only fetch repos missing from the cache (keep recent entries)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Fetch repository statistics (GitHub + GitLab)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: a GitLab personal access token for public read access.
+          # The script works without it; it only raises GitLab rate limits.
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          if [ "${{ inputs.only_missing }}" = "true" ]; then
+            python3 scripts/fetch_repo_stats.py --only-missing
+          else
+            python3 scripts/fetch_repo_stats.py
+          fi
+      - name: Commit cache if changed
+        # 41898282+github-actions[bot] is the official no-reply email address of the GitHub Actions bot
+        run: |
+          if ! git diff --exit-code cfg/repo-stats.json; then
+            git add cfg/repo-stats.json
+            git -c user.name='github-actions[bot]' \
+                -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+                commit -m "chore: refresh repository stats [skip ci]"
+            git pull --rebase
+            git push
+          else
+            echo "cfg/repo-stats.json unchanged"
+          fi

@@ -1,0 +1,469 @@
+[
+    {
+        "Name":"CVA6-EnhancedSafe&Secure",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Explore pipeline enhancements in T2.1 (advanced scheduling, instructions reordering, branch prediction, address/data prediction, Multiscalar: from 2W to 3/4W) and implement the selected ones in T3.1 Multicore designs for safety/security.",
+        "Partners":"TRT",
+        "Comment": "21290200",
+        "WI":["T2.1","T3.1"],
+        "Project":"RIGOLETTO",
+        "License":"SHL-0.51"
+    },
+    {
+        "Name":"CVA6-SplitLockStep-DV",
+        "Category": [
+            "Others",
+            "Tools",
+            "Software"
+        ],
+        "Description":"Functional verification environment for a CVA6 dual-core split-lockstep automotive control processor configuration, targeted for safety-critical real-time applications with hypervisor support.",
+        "Partners":"EFE",
+        "Comment": "31070800",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"SHL-2.1"
+    },
+    {
+        "Name":"IP-10M-MACsec",
+        "Category": [
+            "Hardware",
+            "Others"
+        ],
+        "Description":"Implement 10 megabit capable MACsec IP in accordance with IEEE 802.1AE.",
+        "Partners":"COM",
+        "Comment": "34460800",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"IP-Accelerator-Islands",
+        "Category":"Hardware",
+        "Description":"Hardware acceleration island, extended with the appropriate security and safety mechanisms to support design and run-time adaptive behavior (e.g., configurable hardware redundancy, lockstep, selective PQC and/or side-channel attack protection). CVA6, CV32E20 (with CV-X-IF).",
+        "Partners":"UPM",
+        "Comment": "31400200",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"SHL-2.1"
+    },
+    {
+        "Name":"IP-CVA6-SplitLockStep",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Develop dual-core split-lockstep extensions for automotive control processor based on CVA6 (32-bit).",
+        "Partners":"UNIBO",
+        "Comment": "31240200",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"SHL-2.1"
+    },
+    {
+        "Name":"IP-FastContextSwitchCVA6",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Implement IPs to enhance instruction-level parallelism, fast thread context switching, and multi-threaded execution in CVA6 pipeline (in cooperation with ST-IT).",
+        "Partners":"UNIRM",
+        "Comment": "31230200",
+        "Project":"RIGOLETTO",
+        "WI":"T3.1",
+        "License":"Others"
+    },
+    {
+        "Name":"IP-FOC/MPC-Acc",
+        "Category": [
+            "Others",
+            "Hardware"
+        ],
+        "Description":"The primary scope of this IP covers the development of a proprietary RISC-V core modifications in terms of architectural features, instruction set extention and tightly coupled acceleratorfor for an efficient execution of FOC/MPC motor controll algorithms.",
+        "Partners":"BUT",
+        "Comment": "21490800",
+        "Project":"RIGOLETTO",
+        "WI":"T3.1",
+        "License":"Proprietary"
+    },
+     {
+        "Name":"IP-LowPowerMultiplator",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Implement and optimize low power IPs for tighlty coupled matrix vector multiplications for control automotive and high performance applicaitions.",
+        "Partners":"NION",
+        "Comment": "31380200",
+        "WI":["T3.1","T3.2"],
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"ML-AI-Acc-Cu#1",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Spatial array with all-digital near-memory processing for real-time I/Q baseband sample analysis. Integrated with PULP-based RISC-V core.",
+        "Partners":"ETHZ",
+        "Comment": "23630300",
+        "WI":["T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"ML-AI-Acc-Cu#5.1",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"CGRA, float fixed point. Integrated with CVA6.",
+        "Partners":"UPM",
+        "Comment":"23400300",
+        "WI":["T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"SHL-2.1"
+    },
+    {
+        "Name":"ML-AI-Acc-VPU#6_FZI",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Multi-core VPU MultiVic. Older Version: https://github.com/MultiVic. Worker cores: CV32E40X Mgmt. Core: Ibex, Vector Core: Vicuna2: https://github.com/vproc/vicuna2_core",
+        "Partners":[
+            "FZI",
+            "TUV"
+        ],
+        "Comment":"23120300",
+        "WI":["T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"SHL-2.1"
+    },
+    {
+        "Name":"IP-On-Chip-Communication",
+        "Category": [
+            "Others",
+            "Hardware"
+        ],
+        "Description":"IP blocks for on-chip communication and real-time shared scratchpad memory. The S4NOC network-on-chip.",
+        "Partners":"DTU",
+        "Comment": "31450800",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"BSD-2-Clause"
+    },
+    {
+        "Name":"IP-RocketChip",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Safety-hardened flexible SoC-generator based on Chisel, with tracing capabilities.",
+        "Partners":"FZI",
+        "Comment":"34120200",
+        "WI":"T3.4",
+        "Project":"RIGOLETTO",
+        "License":"BSD-3-Clause"
+    },
+    {
+        "Name":"IP-Root-Of-Trust",
+        "Category": [
+            "Others",
+            "Hardware"
+        ],
+        "Description":"Implement a Root of Trust module which comprises features such as Secure Boot and Secure Storage.",
+        "Partners":"COM",
+        "Comment": "34460801",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"IP-RT-Monitor",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Implementation of a configurable Runtime Monitoring IP taking as input the processor trace and producing a stream containing the verdicts about the properties being checked.",
+        "Partners":"VORTEX",
+        "Comment": "22410100",
+        "WI":["T2.2","T3.2"],
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+     {
+        "Name":"IP-rvhs",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Implementation of 4 way issue, high frequency out-of-order processor core",
+        "Partners":"CORTUS",
+        "Comment": "32310100",
+        "WI":"T3.2",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"IP-TimePredictableCVA6",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Implement and optimize IPs for time-predictability and time channel protection in CVA6-based processors, including spatio-temporal partitioning of TLB and LLC, ISA support for spatio-temporal partioning. CVA6, Other PULP IP",
+        "Partners":"ETHZ",
+        "Comment": "31630200",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"Others"
+    },
+    {
+        "Name":"IP-Virt-IPs-Ctrl-Proc",
+        "Category": [
+            "Hardware"
+        ],
+        "Description":"IPs for safe and deterministic virtualization in automotive control processors (e.g., RISC-V hypervisor extension w/out virtual memory, SPMP for Hypervisor, etc.) integrated into CVA6 core.",
+        "Partners":"UMINHO",
+        "Comment": "31430700",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"Others"
+    },
+    {
+        "Name":"IPErrorDetectionCVA6",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Implement lockstep and error detection/correction in CVA6. Verified industrial superscalar CVA6 version targeting 50% CoreMark/MHz improvement CVA6 interconnect with peripherals",
+        "Partners":"TDIS",
+        "Comment": "31300200",
+        "WI":"T3.1",
+        "Project":"RIGOLETTO",
+        "License":"SHL-2.1"
+    },
+    {
+        "Name":"Keccak-PQC",
+        "Category": [
+            "Security",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Keccak accelerator with a focus on PQC algorithms",
+        "Partners":"UzL",
+        "Comment": "21100500",
+        "WI":["T2.1","T3.1","T2.2","T3.2"],
+        "Project":"RIGOLETTO",
+        "License": "Proprietary"
+    },
+    {
+        "Name":"ML-AI-Acc-Cu#2",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Systolic array int8, Planned to extend data types (e.g., bfloat16). FleXNNgine",
+        "Partners":"KIT",
+        "Comment": "23090300",
+        "WI":["T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"MIT"
+    },
+    {
+        "Name":"ML-AI-Acc-Cu#5.2",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Tighlty Coupled Near Memory Computing (NMC) Accelerator, reconfigurable. Integrated with CVA6.",
+        "Partners":"UPM",
+        "Comment": "23400301",
+        "WI":["T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"Others"
+    },
+    {
+        "Name":"ML-AI-Acc-Cu#6_NION",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Sparse Aware Near-Memory Computing (NMC) Accelerator, spiking neuromorphic support.",
+        "Partners":"NION",
+        "Comment": "23380300",
+        "WI":["T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"ML-AI-Acc-VPU#2",
+        "Category": [
+            "VPU",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Wide VPU compatible with BsC OoO Core, Digital, 22nm, 1.4GHz",
+        "Partners":"BSC",
+        "Comment": "23370400",
+        "WI":"T2.3",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+     {
+        "Name":"ML-AI-Acc-VPU#4",
+        "Category": [
+            "VPU",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Lightweight evaluation of VPU and NPU architectures for automotive AI workloads, focusing on performance–power trade-offs using high-level analytical models",
+        "Partners": [
+            "HUA",
+            "ANADELTA"
+        ],
+        "WI":"T2.3",
+        "Project":"RIGOLETTO",
+        "License":"Others"
+    },
+    {
+        "Name":"PQC-SWIP",
+        "Category": [
+            "Security",
+            "Accelerator",
+            "Software"
+        ],
+        "Description":"SW implementation of a PQC scheme participating in the ongoing NIST standardization effort using an AI accelerator to accelerator suitable arithmetic operations of the scheme. The implementation is hardened against timing attacks and single fault injection attacks.",
+        "Partners":"NXP-AT",
+        "WI":["T2.4","T3.4"],
+        "Project":"RIGOLETTO",
+        "License":"Others"
+    },
+    {
+        "Name":"RV32-Compliance",
+        "Category": [
+            "Others",
+            "Software"
+        ],
+        "Description":"Assertion based library for RV32 ISA compliance checks. Primary use formal verification, secondarily simulation using compliance suite.",
+        "Partners":"SYO",
+        "WI": [
+            "T3.1",
+            "T3.4"
+        ],
+        "Project":"RIGOLETTO",
+        "License":"Others"
+    },
+    {
+        "Name":"S4NoC",
+        "Category": [
+            "NoC",
+            "Hardware"
+        ],
+        "Description":"Time-predictable network-on-chip for message passing.",
+        "Partners":"DTU",
+        "WI":"T2.4",
+        "Project":"RIGOLETTO",
+        "License":"BSD-3-Clause"
+    },
+    {
+        "Name":"VMEU",
+        "Category": [
+            "AI",
+            "Accelerator",
+            "Hardware"
+        ],
+        "Description":"Vector-Matrix-Extension-Unit",
+        "Partners":"UzL",
+        "WI":["T2.1","T3.1","T2.2","T3.2","T2.3","T3.3"],
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"Wildcat",
+        "Category": [
+            "Core",
+            "Hardware"
+        ],
+        "Description":"Another RISC-V core optimized for real-time systems.",
+        "Partners":"DTU",
+        "WI":"T2.4",
+        "Project":"RIGOLETTO",
+        "License":"BSD-2-Clause"
+    },
+    {
+        "Name":"EA Message Engine",
+        "Category": [
+            "Others"
+        ],
+        "Description":"Message infrastructure to transport trace and Debug data.",
+        "Partners":"SEDA-UK",
+        "WI":"T3.3",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"EA Enhanced Trace Encoder",
+        "Category": [
+            "Others"
+        ],
+        "Description":"The Enhanced Trace Encoder provides a mechanism to monitor CPU program execution in real time, encoding instruction execution and load/store activity in a highly compressed format for external reconstruction.",
+        "Partners":"SEDA-UK",
+        "WI":"T3.3",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"EA JPAM",
+        "Category": [
+            "Others"
+        ],
+        "Description":"The JPAM provides a bridge between the Tessent Embedded Analytics system and JTAG (IEEE1149.1), enabling control of JTAG TAP from Embedded Analytics messages for accessing processor debug interfaces.",
+        "Partners":"SEDA-UK",
+        "WI":"T3.3",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"EA USB Communicator",
+        "Category": [
+            "Others"
+        ],
+        "Description":"The USB 2.0 Communicator provides autonomous medium-speed communications between Embedded Analytics system and off-chip debugger via USB device or compound USB hub/device configuration.",
+        "Partners":"SEDA-UK",
+        "WI":"T3.3",
+        "Project":"RIGOLETTO",
+        "License":"Proprietary"
+    },
+    {
+        "Name":"SoCMAKE",
+        "Category": [
+            "Others"
+        ],
+        "Description":"SoCMake is a Risc-V based library for CMake that adds support for rapid hardware protottyping. It bridges the gap between software and hardware build flows, and allows for building complex System-on-Chip projects using a unified build system.",
+        "Partners":"CERN",
+        "WI":"T2.5",
+        "Project":"RIGOLETTO",
+        "License":"LGPL-3.0"
+    },
+    {
+        "Name":"PixESL",
+        "Category": [
+            "Others"
+        ],
+        "Description":"PixESL, a virtual prototyping framework for pixel detectors based on C++/SystemC. It offers a platform for describing detector ASICs at a high level of abstraction.",
+        "Partners":"CERN",
+        "WI":"T3.3",
+        "Project":"RIGOLETTO",
+        "License":"LGPL-3.0"
+    }
+]

@@ -1,0 +1,87 @@
+{
+  "basicInfo": {
+    "licensing": "Open-source (SolderPad Hardware License v0.51)",
+    "targetFpgaOrAsic": "",
+    "designLanguage": ""
+  },
+  "systemLevelFeatures": {
+    "couplingType": null,
+    "dataTypes": null,
+    "isa": "RISC-V (ready for Selene RV64GCH)",
+    "peakOpsPerCycle": null,
+    "interfaces": null,
+    "supportedOperations": null,
+    "compilerSupport": null,
+    "externalMemoryRequired": null,
+    "cacheOrScratchpad": null
+  },
+  "architecture": {
+    "type": "",
+    "numClockDomains": 0,
+    "controlInterface": {
+      "isaExtension": "No",
+      "memoryMapped": "Yes",
+      "protocol": "AXI4 32-bit"
+    },
+    "memoryInterface": {
+      "interfaceProtocol": null,
+      "hierarchyLevel": null,
+      "cached": "No",
+      "iommu": "No"
+    },
+    "interrupts": null
+  },
+  "microarchitecture": {
+    "parametrization": {
+      "parametricNumUnits": null,
+      "parametricConfig": "Yes"
+    },
+    "programmability": {
+      "programmableCores": null,
+      "isaExtension": null
+    }
+  },
+  "software": {
+    "compiler": {
+      "requiresSpecializedCompiler": null,
+      "supportedCompilers": null
+    },
+    "hardwareAbstractionLayer": {
+      "halFunctions": null
+    },
+    "highLevelApi": {
+      "hasHighLevelApi": "No",
+      "sdkRepository": "None",
+      "hasDomainSpecificCompiler": "No"
+    }
+  },
+  "integration": {
+    "ipDistribution": {
+      "manifestType": "No",
+      "standaloneSimulation": "No",
+      "standaloneSimulationSwRequirements": "None",
+      "integrationDocsOrExamples": "Yes",
+      "ipXact": null,
+      "systemRdl": null
+    },
+    "synthesis": {
+      "isSynthesizable": "Yes",
+      "fpgaSynthesisExamples": "Yes",
+      "asicSynthesisExamples": "No"
+    },
+    "simulation": {
+      "closedSourceSimulation": "Y (Xilinx Vivado)",
+      "openSourceSimulation": "No"
+    },
+    "evaluation": {
+      "ppaResultsAvailable": "No"
+    }
+  },
+  "physicalImplementation": {
+    "asicArea": {
+      "numGates": null,
+      "onChipInternalMemorySize": null,
+      "targetClockFrequency": null
+    }
+  }
+}

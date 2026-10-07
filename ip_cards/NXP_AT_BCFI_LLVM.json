@@ -1,0 +1,62 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "LLVM support for BCFI",
+        "version": "0.8",
+        "project": "ISOLDE",
+        "workItem": "4.2",
+        "trl": "TRL-4",
+        "status": "Prototype implemented",
+        "license": "Proprietary",
+        "ipType": {
+            "category": [
+                "Compiler"
+            ],
+            "domain": [
+                "Security"
+            ],
+            "comment": "LLVM 17 extension to support code generation for backward edge control flow integrity, and save/restore millicode update"
+        },
+        "repositoryURL": "www.nxp.com",
+        "provider": [
+            {
+                "organizationName": "NXP Semiconductors Austria GmbH",
+                "organizationURL": "www.nxp.com",
+                "organizationAlias": [
+                    "NXP-AT"
+                ]
+            }
+        ]
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V",
+        "processor": "CV32E40S",
+        "isaExtension": "rv32",
+        "SOC": "NA",
+        "SWDependencies": "None",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "API": [
+            "LLVM frontend"
+        ],
+        "CLI": [
+            "LLVM 17 command-line interface "
+        ],
+        "inputArtifacts": [
+            {
+                "artifact": "C source code",
+                "format": "C"
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "System image", 
+                "format": "ELF"
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "Operational software package"
+    }
+}

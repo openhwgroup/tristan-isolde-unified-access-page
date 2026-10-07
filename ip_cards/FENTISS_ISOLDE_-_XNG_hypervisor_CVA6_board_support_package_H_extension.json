@@ -1,0 +1,66 @@
+{
+    "schemaVersion": "0.9",
+    "basicInfo": {
+        "ipName": "XNG hypervisor CVA6 board support package (with H-extension)",
+        "version": "1.4",
+        "project": "ISOLDE",
+        "workItem": "4.1",
+        "trl": "TRL-4",
+        "status": "Demonstrated",
+        "license": "Proprietary",
+        "ipType": {
+            "category": [
+                "Software",
+                "Hypervisor"
+            ],
+            "domain": [
+                "Safety",
+                "Security"
+            ],
+            "comment": "Type 1 hypervisor for real-time mixed-criticality embedded systems providing time and space isolation to be executed on a CVA6 core including the hypervisor (H) extension"
+        },
+        "repositoryURL": "www.fentiss.com",
+        "provider": [
+            {
+                "organizationName": "Fent Innovative Software Solutions S.L.",
+                "organizationURL": "www.fentiss.com",
+                "organizationAlias": [
+                    "FENTISS"
+                ]
+            }
+        ]
+    },
+    "systemLevelInfo": {
+        "architecture": "RISC-V",
+        "processor": "CVA6",
+        "isaExtension": "cv64a6_imafdch_sv39",
+        "board": "Xilinx VCU118",
+        "SOC": "NA",
+        "SWDependencies": "None",
+        "requiresSpecializedTool": "No"
+    },
+    "interfaces": {
+        "API": [
+            "Standard XNG hypercalls"
+        ],
+        "inputArtifacts": [
+            {
+                "artifact": "Hypervisor configuration",
+                "format": "XML"
+            },
+            {
+                "artifact": "Partition(s) source code",
+                "format": "C"
+            }
+        ],
+        "outputArtifacts": [
+            {
+                "artifact": "System image", 
+                "format": "ELF"
+            }
+        ]
+    },
+    "deployment": {
+        "bundle": "Operational software package"
+    }
+}

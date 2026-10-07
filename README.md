@@ -43,6 +43,18 @@ Our ambition is to progressively transform this platform into a sustainable, int
 
 ---
 
+<h2 align="center">Deployment</h2>
+
+The platform is a pure static website (no build step, no backend) and can be deployed to any of these hosts:
+
+- **GitHub Pages** — the primary host, served from the repository root (`https://openhwgroup.github.io/uap/unified-access.html`).
+<!-- - **GitLab Pages on the Eclipse Foundation GitLab** (`gitlab.eclipse.org`) — deployed automatically by the `.gitlab-ci.yml` `pages` job on the default branch; location-flexible so it works in any group or backup project. -->
+- **Self-hosted** — serve the repository root with `scripts/serve.sh` (or `python3 -m http.server 8080`) or `npx serve .`.
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full instructions, including required CI/CD variables.
+
+---
+
 <h2 align="center">Supported by</h2>
 <p align="center">
 	<a href="https://tristan-project.eu/"><img src="images/tristan-logo.png"></a>

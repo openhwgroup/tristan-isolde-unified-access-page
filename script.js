@@ -13,17 +13,18 @@
 
 // Configuration
 const BASE_URL =
-(window.location.href).replace("unified-access.html", "").split(/[?#]/)[0]; //local hosting
-// 'https://cairo-caplan.github.io/uap';
-// 'https://api.github.com/repos/openhwgroup/uap/contents/';
+(window.location.href).replace("unified-access.html", "").split(/[?#]/)[0];
 
 
 const IPS_PATH = '/ips/';
 const CATEGORIES_URL = 'cfg/categories.json';
 const PROJECTS_URL = 'cfg/projects.json';
+const REPO_STATS_URL = 'cfg/repo-stats.json';
 
-const defaultColumns = ["Name", "Category", "URL", "License", "Status", "IP_CARD_URL", "IP_CARD_PDF_URL", "Project", "Description"];
-const columnLabels = { "IP_CARD_URL": "IP Card", "IP_CARD_PDF_URL": "IP Card PDF" };
+const REPO_STATS_COLUMN = 'Repo Stats';
+const IP_CARD_COLUMN = 'IP Card';
+const defaultColumns = ["Name", "Category", "URL", "License", "Status", IP_CARD_COLUMN, REPO_STATS_COLUMN, "Project", "Description"];
+const columnLabels = { "IP_CARD_URL": "IP Card", "IP_CARD_PDF_URL": "IP Card PDF", [IP_CARD_COLUMN]: "IP Card" };
 let viewMode = "default";
 
 
@@ -60,6 +61,11 @@ let searchText   = '';
 let filterState = {};
 let allowedCategories = [];
 let projectsData = [];
+// Repository statistics cache: { generated_at, source, repos: {...}, errors: {...} }
+// null when the cache could not be loaded at all.
+let repoStats = null;
+// lowercase "<host>/owner/repo" -> stats record, rebuilt whenever the cache is loaded.
+let repoStatsIndex = new Map();
 let visibleColumns = [];
 let dataLoaded   = false;  // flag: true once loadDataFromServer finishes
 let pendingSearch = null;  // stores search term from popstate until data is ready
@@ -90,6 +96,30 @@ async function loadProjectsData() {
   }
 }
 
+// Load the pre-computed repository statistics cache. Never throws: a missing
+// or broken cache must not prevent the catalogue from rendering.
+async function loadRepoStats() {
+  try {
+    const response = await fetch(REPO_STATS_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to load repository stats: ${response.status}`);
+    }
+    const data = await response.json();
+    if (!data || typeof data !== 'object' || typeof data.repos !== 'object') {
+      throw new Error('Malformed repository stats cache');
+    }
+    repoStats = data;
+    repoStatsIndex = new Map(
+      Object.entries(data.repos).map(([key, value]) => [key.toLowerCase(), value])
+    );
+  } catch (error) {
+    console.warn(error);
+    repoStats = null;
+    repoStatsIndex = new Map();
+    statusEl.textContent = 'Catalogue loaded, but repository statistics are unavailable.';
+  }
+}
+
 function findCategory(categoryString) {
   if (!categoryString) return null;
   const cat = allowedCategories.find(c =>
@@ -97,7 +127,66 @@ function findCategory(categoryString) {
     (c.aliases && c.aliases.map(a => a.toLowerCase()).includes(categoryString.toLowerCase()))
   );
   return cat ? cat.name : null;
-}
+  }
+
+  // Derive a Category from a filename of the form "name.<category>.json" and
+  // inject it into every record. Shared by the local-file handler, the raw-file
+  // fallback and the primary fetch path in loadDataFromServer. Returns [] when
+  // the derived category is invalid or the payload is not an array.
+  function injectCategoryFromFilename(data, fileName) {
+  const dotCount = (fileName.match(/\./g) || []).length;
+  if (dotCount >= 2) {
+    const match = fileName.match(/^.*\.(.*?)\.json$/i);
+    const categoryString = match ? match[1] : fileName.replace(/\.json$/i, '');
+    const categoryName = findCategory(categoryString);
+    if (categoryName) {
+      return Array.isArray(data) ? data.map(item => ({ ...item, Category: categoryName })) : [];
+    }
+    console.warn(`Skipping file with invalid category: ${fileName}`);
+    return [];
+  }
+  return Array.isArray(data) ? data : [];
+  }
+
+  // Compute the sorted filter-dropdown option list for a column, based on the
+  // current masterData and filterState. Shared by buildTable (on open) and
+  // refreshOpenDropdown (when another filter changes). Selected values first,
+  // then valid, then invalid (grayed/disabled), each group alphabetical.
+  function computeColumnFilterItems(col) {
+  const allPossibleValues = [...new Set(masterData.flatMap(r => {
+    const v = r[col];
+    return Array.isArray(v) ? v : [v];
+  }))].sort();
+
+  const selectedValues = new Set(filterState[col] || []);
+
+  const otherFilters = { ...filterState };
+  delete otherFilters[col];
+  const partiallyFilteredData = masterData.filter(row =>
+    Object.entries(otherFilters).every(([filterCol, vals]) => {
+      const cell = row[filterCol];
+      return Array.isArray(cell) ? cell.some(v => vals.includes(v)) : vals.includes(String(cell));
+    })
+  );
+  const validValues = new Set(partiallyFilteredData.flatMap(r => {
+    const v = r[col];
+    return Array.isArray(v) ? v : [v];
+  }));
+
+  const items = allPossibleValues.map(val => ({
+    value: val,
+    isSelected: selectedValues.has(val),
+    isValid: validValues.has(val)
+  }));
+
+  items.sort((a, b) => {
+    if (a.isSelected !== b.isSelected) return a.isSelected ? -1 : 1;
+    if (a.isValid !== b.isValid) return a.isValid ? -1 : 1;
+    return String(a.value ?? '').localeCompare(String(b.value ?? ''));
+  });
+
+  return items;
+  }
 
 // Derive a GitHub API contents URL from a GitHub Pages or repo URL.
 // Examples supported:
@@ -133,11 +222,68 @@ function deriveGithubApiContentsUrl(base) {
   }
 }
 
-// Try to derive a raw.githubusercontent.com URL for a given filename.
-// Uses BASE_URL or the provided file url as hints. Best-effort only;
-// assumes branch "main" if none can be determined.
+// Parse a GitLab project URL into { host, projectPath } for any host whose
+// name contains "gitlab" (gitlab.com, self-hosted instances, *.gitlab.io
+// Pages). Everything from the "/-/" marker onward is UI navigation and is
+// stripped. Known limitation: nested subgroups are not resolved; only the
+// first two path segments form the project path.
+function parseGitlabProjectUrl(u) {
+  const host = u.hostname.toLowerCase();
+  if (host !== 'gitlab.com' && !host.includes('gitlab')) return null;
+  const parts = u.pathname.replace(/^\/+/g, '').split('/').filter(Boolean);
+  const dashIdx = parts.indexOf('-'); // GitLab inserts "/-/" before UI routes
+  let pathParts = dashIdx !== -1 ? parts.slice(0, dashIdx) : parts.slice();
+  pathParts = pathParts.filter(p => p.length);
+  if (host.endsWith('.gitlab.io')) {
+    // Pages URL: the group is the subdomain, first segment is the project.
+    const group = host.replace(/\.gitlab\.io$/, '');
+    if (!group || !pathParts.length) return null;
+    return { host, projectPath: `${group}/${pathParts[0]}` };
+  }
+  if (pathParts.length < 2) return null;
+  return { host, projectPath: pathParts.slice(0, 2).join('/') };
+}
+
+// Derive GitLab REST API v4 URLs for the ips/ directory of a GitLab-hosted
+// checkout. Returns { listUrl, fileUrl(path) } or null when base is not a
+// derivable GitLab project URL.
+function deriveGitlabApiUrl(base) {
+  try {
+    const parsed = parseGitlabProjectUrl(new URL(base));
+    if (!parsed) return null;
+    const encoded = encodeURIComponent(parsed.projectPath);
+    const apiBase = `https://${parsed.host}/api/v4/projects/${encoded}`;
+    return {
+      listUrl: `${apiBase}/repository/tree?path=ips&per_page=100`,
+      // The raw files endpoint accepts ref=HEAD, so no branch guessing.
+      fileUrl: p => `${apiBase}/repository/files/${encodeURIComponent(p)}/raw?ref=HEAD`
+    };
+  } catch (e) {
+    return null;
+  }
+}
+
+// Derive repository-API fallback URLs from a hosting base URL, shared by the
+// two fallback sites in loadDataFromServer. Returns { gitlabApi, apiUrl } where
+// apiUrl is the GitHub contents URL when derivable, otherwise the GitLab tree
+// listing URL (or null). gitlabApi is returned so callers can build raw file URLs.
+function deriveFallbackApiInfo(base) {
+  const gitlabApi = deriveGitlabApiUrl(base);
+  const apiUrl = deriveGithubApiContentsUrl(base) || (gitlabApi ? gitlabApi.listUrl : null);
+  return { gitlabApi, apiUrl };
+}
+
+// Try to derive a raw file URL (raw.githubusercontent.com or GitLab) for a
+// given filename. Uses BASE_URL or the provided file url as hints. Best-effort
+// only; assumes branch "main" (GitHub) / HEAD (GitLab) if none can be determined.
 function deriveRawUrlFromHints(base, filename, hintUrl) {
   try {
+    // 0) GitLab-hosted checkout: https://{host}/{group}/{project}/-/raw/{branch}/ips/{filename}
+    const gitlabBase = parseGitlabProjectUrl(new URL(base));
+    if (gitlabBase) {
+      return `https://${gitlabBase.host}/${gitlabBase.projectPath}/-/raw/HEAD/ips/${filename}`;
+    }
+
     // 1) Try to extract owner/repo from the API contents URL derived from base
     const api = deriveGithubApiContentsUrl(base);
     let owner = null, repo = null, branch = 'main';
@@ -177,18 +323,18 @@ function deriveRawUrlFromHints(base, filename, hintUrl) {
             const segments = u.pathname.replace(/^\/+|\/+$/g,'').split('/').filter(Boolean);
             if (segments.length) repo = segments[0];
           }
-        } catch (_) {}
-      }
-    }
+          } catch (_) {}
+          }
+          }
 
-    if (owner && repo) {
-      return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/ips/${filename}`;
-    }
-  } catch (e) {
-    // fallback returns null
-  }
-  return null;
-}
+          if (owner && repo) {
+          return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/ips/${filename}`;
+          }
+          } catch (e) {
+          // fallback returns null
+          }
+          return null;
+          }
 
 // Update or create a small badge element next to `#status` that shows which
 // source was ultimately used to build the file list. Use short labels.
@@ -226,13 +372,13 @@ loadRadios.forEach(radio => {
     resetTable();
     if (radio.value === 'github' && radio.checked) {
       fileInput.style.display = 'none';
-      await loadProjectsData();
+      await Promise.all([loadProjectsData(), loadRepoStats()]);
       loadDataFromServer();
     }
     if (radio.value === 'local' && radio.checked) {
       fileInput.style.display = 'inline-block';
       statusEl.textContent = 'Select one or more local JSON files.';
-      await loadProjectsData();
+      await Promise.all([loadProjectsData(), loadRepoStats()]);
     }
   });
 });
@@ -243,7 +389,7 @@ fileInput.addEventListener('change', async event => {
   if (!files.length) return;
   resetTable();
   try {
-    await loadAllowedCategories();
+    await Promise.all([loadAllowedCategories(), loadRepoStats()]);
     statusEl.textContent = `Reading ${files.length} local file(s)…`;
     const arrs = await Promise.all(files.map(file => {
       return new Promise((res, rej) => {
@@ -295,7 +441,7 @@ fileInput.addEventListener('change', async event => {
 
 // Load Virtual Repo IPs info from server (GitHub or self hosted)
 async function loadDataFromServer() {
-  var ips_url;
+  let ips_url;
 
   // Normalize BASE_URL and avoid double-appending IPS_PATH.
   // Many callers set BASE_URL to the site root (e.g. https://.../),
@@ -313,10 +459,6 @@ async function loadDataFromServer() {
 
   if (normalizedBase.endsWith(IPS_PATH)) {
     // BASE_URL already points into the ips folder; use it as-is (preserving query)
-    ips_url = normalizedBase + queryPart.replace(/^[?]/, '') ? normalizedBase + queryPart : normalizedBase;
-    // Note: if BASE_URL already had a query, queryPart includes the leading '?'
-    // the above ternary keeps behavior consistent.
-    // Simpler: keep the original BASE_URL to preserve any query exactly.
     ips_url = BASE_URL;
   } else {
     // Append IPS_PATH once, then reattach any query string.
@@ -324,15 +466,13 @@ async function loadDataFromServer() {
     if (queryPart) ips_url += queryPart;
   }
 
-  try{
-    await loadAllowedCategories();
-    statusEl.textContent = 'Fetching file list from GitHub…';
+  try {
+    await Promise.all([loadAllowedCategories(), loadRepoStats()]);
+    statusEl.textContent = 'Fetching file list from the hosting server…';
 
-  // Diagnostic: show which URL we're fetching
-  console.info('Fetching IPS list from:', ips_url);
-  statusEl.textContent = `Fetching file list from ${ips_url}…`;
-  // indicate we attempted the pages listing first
-  updateFetchSourceBadge('Pages listing (attempt)');
+    statusEl.textContent = `Fetching file list from ${ips_url}…`;
+    // indicate we attempted the same-origin directory listing first
+    updateFetchSourceBadge('Directory listing (attempt)');
 
     let resp = await fetch(ips_url);
 
@@ -341,31 +481,32 @@ async function loadDataFromServer() {
     // directory listings that aren't machine-friendly.
     if (!resp.ok) {
       console.warn(`Primary fetch failed (${resp.status}) for ${ips_url}`);
-      statusEl.textContent = `Fetch ${resp.status} from pages; trying GitHub API fallback…`;
+      statusEl.textContent = `Fetch ${resp.status} from the listing; trying repository API fallback…`;
       try {
-        const apiUrl = deriveGithubApiContentsUrl(BASE_URL) || 'https://api.github.com/repos/openhwgroup/uap/contents/ips';
+        // Only fall back to APIs derivable from the current location — never
+        // silently pull someone else's repository.
+        const gitlabApi = deriveGitlabApiUrl(BASE_URL);
+        const apiUrl = deriveGithubApiContentsUrl(BASE_URL) || (gitlabApi ? gitlabApi.listUrl : null);
+        if (!apiUrl) {
+          throw new Error('no GitHub/GitLab API URL could be derived from this hosting location');
+        }
         const apiResp = await fetch(apiUrl);
         if (apiResp.ok) {
           // Use the API response body as the primary 'text' source below
           const apiText = await apiResp.text();
           var text = apiText;
-          // Indicate whether we used a derived API URL or the default fallback
-          const usedDerived = !!deriveGithubApiContentsUrl(BASE_URL);
-          updateFetchSourceBadge(
-            usedDerived ?
-              'Derived GitHub API ' + apiUrl :
-              'Default GitHub API fallback (openhwgroup/uap)');
+          updateFetchSourceBadge('Derived repository API');
         } else {
           throw new Error(`API fallback fetch ${apiResp.status}`);
         }
       } catch (e) {
         // Re-throw a helpful error for the outer catch to handle and report
-        throw new Error(`Failed to fetch IPS list from pages (${resp.status}) and API fallback failed: ${e.message}`);
+        throw new Error(`Failed to fetch the IPS list from ${ips_url} (${resp.status}) and the API fallback failed: ${e.message}`);
       }
     } else {
       // Normal path: read the response text from the primary fetch
       var text = await resp.text();
-      updateFetchSourceBadge('Pages listing');
+      updateFetchSourceBadge('Directory listing');
     }
     let parsed = null;
     try {
@@ -412,39 +553,41 @@ async function loadDataFromServer() {
 
     let finalFiles = Array.from(seen.entries()).map(([name, url]) => ({ name, url }));
 
-    // If we didn't find any files via the pages listing, and we're likely
-    // running on GitHub Pages, try the GitHub API fallback which reliably
-    // lists repository contents (including download_url fields).
+    // If the listing returned no usable files, try a repository API fallback
+    // derived from the current location (GitHub or GitLab), which reliably
+    // lists repository contents.
     if (finalFiles.length === 0) {
-      const hostname = (window.location && window.location.hostname) ? window.location.hostname : '';
-      const isGithubPages = hostname.includes('.github.io') || BASE_URL.includes('.github.io');
-      if (isGithubPages) {
+      const gitlabApi = deriveGitlabApiUrl(BASE_URL);
+      const apiUrl = deriveGithubApiContentsUrl(BASE_URL) || (gitlabApi ? gitlabApi.listUrl : null);
+      if (apiUrl) {
         try {
-          statusEl.textContent = 'No files found in Pages listing — trying GitHub API fallback…';
-          const derived = deriveGithubApiContentsUrl(BASE_URL);
-          const apiUrl = derived || 'https://api.github.com/repos/openhwgroup/uap/contents/ips';
+          statusEl.textContent = 'No files found in the listing — trying repository API fallback…';
           const apiResp = await fetch(apiUrl);
           if (apiResp && apiResp.ok) {
             const apiJson = await apiResp.json();
             if (Array.isArray(apiJson) && apiJson.length) {
-              const apiFiles = apiJson
-                .filter(i => i && ((i.type === 'file') || (i.name && i.name.endsWith('.json'))))
-                .map(i => ({ name: i.name, url: i.download_url || i.url || i.html_url }));
+              let apiFiles;
+              if (gitlabApi && !deriveGithubApiContentsUrl(BASE_URL)) {
+                // GitLab tree entries: keep files only, build raw file URLs.
+                apiFiles = apiJson
+                  .filter(i => i && i.type === 'blob' && i.name && i.name.endsWith('.json'))
+                  .map(i => ({ name: i.name, url: gitlabApi.fileUrl(`ips/${i.path || i.name}`) }));
+              } else {
+                apiFiles = apiJson
+                  .filter(i => i && ((i.type === 'file') || (i.name && i.name.endsWith('.json'))))
+                  .map(i => ({ name: i.name, url: i.download_url || i.url || i.html_url }));
+              }
               const seenApi = new Map();
               apiFiles.forEach(f => { if (f && f.name && f.url && !seenApi.has(f.name)) seenApi.set(f.name, f.url); });
               const apiFinal = Array.from(seenApi.entries()).map(([name, url]) => ({ name, url }));
               if (apiFinal.length) {
                 finalFiles = apiFinal;
-                // indicate which API we used
-                updateFetchSourceBadge(
-                  derived ?
-                    'Derived GitHub API ' + apiUrl :
-                    'Default GitHub API fallback (openhwgroup/uap)');
+                updateFetchSourceBadge('Derived repository API');
               }
             }
           }
         } catch (e) {
-          console.warn('GitHub API fallback failed', e);
+          console.warn('Repository API fallback failed', e);
         }
       }
     }
@@ -463,8 +606,7 @@ async function loadDataFromServer() {
           try {
             const r2 = await fetch(rawUrl);
             if (r2 && r2.ok) {
-              console.info(`Fetched ${f.name} from raw.githubusercontent fallback`);
-              updateFetchSourceBadge('raw.githubusercontent.com fallback');
+              updateFetchSourceBadge('Raw file fallback');
               const txt2 = await r2.text();
               try {
                 const data = JSON.parse(txt2);
@@ -531,8 +673,8 @@ async function loadDataFromServer() {
       pendingSearch = null;
       applyFilters();
     }
-    statusEl.textContent = 'GitHub data loaded.';
-    srStatus.textContent = `${filteredData.length} items loaded from GitHub.`;
+    statusEl.textContent = 'Catalogue data loaded.';
+    srStatus.textContent = `${filteredData.length} items loaded from the catalogue source.`;
     exportBtn.disabled = false;
   } catch (err) {
     statusEl.textContent = 'Error: ' + (err.message || err);
@@ -550,12 +692,10 @@ function resetTable() {
   exportBtn.disabled = true;
 }
 
-function buildTable(skipPortalId = null) {
-  // clear old
+function buildTable() {
   thead.innerHTML = '';
   tbody.innerHTML = '';
 
-  // colgroup, header row (unchanged)
   let cg = table.querySelector('colgroup');
   if (!cg) {
     cg = document.createElement('colgroup');
@@ -569,7 +709,9 @@ function buildTable(skipPortalId = null) {
     'Category': '180px',
     'License': '170px',
     'Status': '170px',
-  };
+    'Repo Stats': '200px',
+    'IP Card': '110px',
+    };
 
   visibleColumns.forEach(col => {
     const colEl = document.createElement('col');
@@ -579,7 +721,8 @@ function buildTable(skipPortalId = null) {
   });
 
   const headerRow = document.createElement('tr');
-  const SKIP_DROPDOWN = new Set(['Description', 'Comment']);
+  // Columns whose cells are not simple values: no per-value filter dropdown.
+  const SKIP_DROPDOWN = new Set(['Description', 'Comment', 'Repo Stats', IP_CARD_COLUMN]);
 
   visibleColumns.forEach((col, i) => {
     const th = document.createElement('th');
@@ -720,11 +863,7 @@ function buildTable(skipPortalId = null) {
       // --- END: On-demand dropdown generation ---
 
       // Remove any other existing portal dropdowns
-      document.querySelectorAll('.portal-dropdown').forEach(dc => {
-        if (dc.id !== skipPortalId) {
-          dc.remove();
-        }
-      });
+      document.querySelectorAll('.portal-dropdown').forEach(dc => dc.remove());
 
       // Get button position
       const rect = headerBtn.getBoundingClientRect();
@@ -884,7 +1023,8 @@ function applyFilters(initialState = null) {
           return cell.some(v => String(v).toLowerCase().includes(searchText));
         }
         return String(cell).toLowerCase().includes(searchText);
-      })
+      }) ||
+      [row['IP_CARD_URL'], row['IP_CARD_PDF_URL']].some(v => v && String(v).toLowerCase().includes(searchText))
     )
   );
 
@@ -1009,6 +1149,255 @@ function isValidUrl(string) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Repository statistics helpers (GitHub + GitLab)
+// The key normalisation rules below must stay in sync with parse_repo_refs()
+// (GithubProvider.parse_repos / GitlabProvider.parse_repos) in
+// scripts/fetch_repo_stats.py:
+//   - GitHub: accepts github.com/{owner}/{repo}, optionally followed by
+//     /tree/<ref>, /blob/<ref>/... (only owner/repo is kept)
+//   - GitLab: any host containing "gitlab"; the first two path segments are
+//     taken as group/project, everything from "/-/" onward and "#anchor" are
+//     stripped. Known limitation: nested subgroups are not resolved.
+//   - several URLs may be separated by ';' in one string
+//   - trailing prose is tolerated: the slug stops at the first invalid character
+//   - other hosts (bitbucket.org, vendor pages, ...) and empty values ignored
+// Cache keys are lowercase "<host>/owner/repo".
+// ---------------------------------------------------------------------------
+// The lookbehind prevents matching other hosts such as
+// "mirror.github.com/owner/repo"; a "www." subdomain is accepted.
+const GITHUB_SLUG_RE = /(?<![A-Za-z0-9.\-])(?:www\.)?github\.com\/([A-Za-z0-9._-]+)\/([A-Za-z0-9._-]+)/g;
+// GitLab project URLs: any scheme://host containing "gitlab", followed by at
+// least two path segments (group/project). Requiring the scheme prevents false
+// positives on paths such as github.com/gitlab-tools/foo.
+const GITLAB_SLUG_RE = /https?:\/\/([A-Za-z0-9.\-]*gitlab[A-Za-z0-9.\-]*)\/([A-Za-z0-9._-]+)\/([A-Za-z0-9._-]+)/gi;
+
+function parseRepoRefs(urlValue) {
+  if (!urlValue || typeof urlValue !== 'string') return [];
+  const refs = [];
+  const seen = new Set();
+  const push = (provider, key) => {
+    const lower = key.toLowerCase();
+    if (seen.has(lower)) return;
+    seen.add(lower);
+    refs.push({ provider, key: lower });
+  };
+  urlValue.split(';').forEach(chunk => {
+    // GitHub refs first, mirroring the Python provider order.
+    const ghRe = new RegExp(GITHUB_SLUG_RE.source, 'g');
+    let match;
+    while ((match = ghRe.exec(chunk)) !== null) {
+      const owner = match[1].replace(/^\.+|\.+$/g, '');
+      const repo = match[2].replace(/^\.+|\.+$/g, '');
+      if (!owner || !repo) continue;
+      push('github', `github.com/${owner}/${repo}`);
+    }
+    const glRe = new RegExp(GITLAB_SLUG_RE.source, 'gi');
+    while ((match = glRe.exec(chunk)) !== null) {
+      const host = match[1].toLowerCase();
+      if (host !== 'gitlab.com' && !host.includes('gitlab')) continue;
+      const group = match[2].replace(/^\.+|\.+$/g, '');
+      const project = match[3].replace(/^\.+|\.+$/g, '');
+      // The regex character classes stop at '/' and '#', so "/-/tree/<ref>"
+      // and "#anchor" never enter the captured segments. A trailing slash
+      // yields an empty project segment and is skipped here.
+      if (!group || !project) continue;
+      push('gitlab', `${host}/${group}/${project}`);
+    }
+  });
+  return refs;
+}
+
+function lookupRepoStats(key) {
+  if (!repoStatsIndex || !key) return null;
+  const record = repoStatsIndex.get(key.toLowerCase());
+  return record || null;
+}
+
+// Merge the stats of every GitHub/GitLab repo referenced by a row's URL field.
+// Returns { repos: [{key, provider, record|null}], total: {...}|null } or null
+// when the row references no known repository host at all.
+function getRowRepoStats(row) {
+  const refs = parseRepoRefs(row ? row['URL'] : '');
+  if (!refs.length) return null;
+
+  const repos = refs.map(ref => ({ ...ref, record: lookupRepoStats(ref.key) }));
+  const found = repos.filter(r => r.record).map(r => r.record);
+  if (!found.length) return { repos, total: null };
+
+  const sumField = field => {
+    const values = found.map(r => r[field]).filter(v => typeof v === 'number');
+    return values.length ? values.reduce((acc, v) => acc + v, 0) : null;
+  };
+  const licenses = [...new Set(
+    found.map(r => r.license_spdx_id).filter(v => v && v !== 'NOASSERTION')
+  )];
+  const pushedValues = found.map(r => Date.parse(r.pushed_at)).filter(ts => !Number.isNaN(ts));
+  const latestPush = pushedValues.length
+    ? new Date(Math.max(...pushedValues)).toISOString()
+    : null;
+
+  return {
+    repos,
+    total: {
+      stars: sumField('stars'),
+      forks: sumField('forks'),
+      commits: sumField('commits'),
+      watchers: sumField('watchers'),
+      open_issues: sumField('open_issues'),
+      contributors: sumField('contributors'),
+      pushed_at: latestPush,
+      license_spdx_id: licenses.length ? licenses.join(', ') : null,
+      archived: found.every(r => r.archived === true)
+    }
+  };
+}
+
+// Compact "12d ago" / "3mo ago" style formatting for cache and push dates.
+function formatRelativeDate(isoString) {
+  const ts = Date.parse(isoString);
+  if (!isoString || Number.isNaN(ts)) return 'unknown';
+  const days = Math.floor((Date.now() - ts) / 86400000);
+  if (Number.isNaN(days)) return 'unknown';
+  if (days < 0) return 'today';
+  if (days < 31) return `${days}d ago`;
+  if (days < 365) return `${Math.floor(days / 30)}mo ago`;
+  return `${Math.floor(days / 365)}y ago`;
+}
+
+// Thousands separator for chip values (keeps cells narrow).
+function formatStatNumber(value) {
+  if (value === null || value === undefined) return '?';
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+  if (value >= 10000) return `${Math.round(value / 1000)}k`;
+  return value.toLocaleString('en-US');
+}
+
+// Provider/host prefix for the tooltip, e.g. "GitLab · gitlab.com".
+function statsProviderLine(repos) {
+  const records = repos.filter(r => r.record).map(r => r.record);
+  if (!records.length) return null;
+  const labels = [...new Set(records.map(r => {
+    const provider = (r.provider || '').toLowerCase() === 'gitlab' ? 'GitLab' : 'GitHub';
+    return r.host ? `${provider} · ${r.host}` : provider;
+  }))];
+  return labels.join(', ');
+}
+
+function statsTooltipText(total, generatedAt, providerLine) {
+  const parts = [];
+  if (providerLine) parts.push(providerLine);
+  if (total.watchers !== null) parts.push(`Watchers: ${total.watchers}`);
+  if (total.open_issues !== null) parts.push(`Open issues/PRs: ${total.open_issues}`);
+  if (total.contributors !== null) parts.push(`Contributors: ${total.contributors}`);
+  parts.push(`Last push: ${formatRelativeDate(total.pushed_at)}`);
+  parts.push(`Detected license: ${total.license_spdx_id || 'unknown'}`);
+  if (generatedAt) parts.push(`Stats refreshed ${formatRelativeDate(generatedAt)}`);
+  return parts.join('\n');
+}
+
+// Build the content of the Repo Stats cell for one row.
+function renderRepoStatsCell(td, row) {
+  const stats = getRowRepoStats(row);
+  if (!stats) {
+    const na = document.createElement('span');
+    na.className = 'gh-stats-na';
+    na.textContent = 'n/a';
+    na.title = 'No GitHub or GitLab repository referenced for this entry (empty URL or a non-repository source).';
+    td.appendChild(na);
+    return;
+  }
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'gh-stats';
+
+  if (!stats.total) {
+    // Repositories are known but the cache has no (fresh) entry for them.
+    const missing = document.createElement('span');
+    missing.className = 'gh-stats-na';
+    missing.textContent = '—';
+    missing.title = `Statistics for ${stats.repos.map(r => r.key).join(', ')} are not refreshed yet.`;
+    wrapper.appendChild(missing);
+    td.appendChild(wrapper);
+    return;
+  }
+
+  const t = stats.total;
+  const generatedAt = repoStats ? repoStats.generated_at : null;
+
+  // With several repositories in one row, show which block belongs to which repo.
+  if (stats.repos.length > 1) {
+    stats.repos.forEach(entry => {
+      const line = document.createElement('a');
+      line.className = 'gh-stats-repo';
+      line.textContent = entry.key;
+      const record = entry.record;
+      if (record && record.html_url) {
+        line.href = record.html_url;
+        line.target = '_blank';
+        line.rel = 'noopener noreferrer';
+      } else {
+        line.title = 'Statistics not refreshed yet for this repository.';
+      }
+      wrapper.appendChild(line);
+    });
+  }
+
+  const addChip = (iconClass, value, label) => {
+    const chip = document.createElement('span');
+    chip.className = 'gh-stat';
+    const icon = document.createElement('i');
+    icon.className = `fas ${iconClass}`;
+    icon.setAttribute('aria-hidden', 'true');
+    chip.appendChild(icon);
+    chip.appendChild(document.createTextNode(formatStatNumber(value)));
+    chip.title = `${label}: ${value === null ? 'unknown' : value}`;
+    wrapper.appendChild(chip);
+  };
+
+  addChip('fa-star', t.stars, 'Stars');
+  addChip('fa-code-fork', t.forks, 'Forks');
+  addChip('fa-code-commit', t.commits, 'Commits');
+
+  // GitLab's public API exposes no watchers/subscribers count: show n/a for
+  // rows whose records have no watcher data at all.
+  if (t.watchers === null && stats.repos.some(r => r.record)) {
+    const chip = document.createElement('span');
+    chip.className = 'gh-stat';
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-eye';
+    icon.setAttribute('aria-hidden', 'true');
+    chip.appendChild(icon);
+    chip.appendChild(document.createTextNode('n/a'));
+    chip.title = 'Watchers: not exposed by the GitLab API.';
+    wrapper.appendChild(chip);
+  }
+
+  if (t.archived) {
+    const archived = document.createElement('span');
+    archived.className = 'gh-stat gh-stat--archived';
+    archived.textContent = 'archived';
+    archived.title = 'The repository is marked as archived.';
+    wrapper.appendChild(archived);
+  }
+
+  if (stats.repos.length === 1) {
+    const record = stats.repos[0].record;
+    if (record && record.html_url) {
+      const line = document.createElement('a');
+      line.className = 'gh-stats-repo';
+      line.href = record.html_url;
+      line.target = '_blank';
+      line.rel = 'noopener noreferrer';
+      line.textContent = stats.repos[0].key;
+      wrapper.appendChild(line);
+    }
+  }
+
+  wrapper.title = statsTooltipText(t, generatedAt, statsProviderLine(stats.repos));
+  td.appendChild(wrapper);
+  }
+
 function renderRows(rows) {
   tbody.innerHTML = '';
   if (rows.length === 0) {
@@ -1062,17 +1451,32 @@ function renderRows(rows) {
         } else {
           td.textContent = '';
         }
-      } else if (col === 'IP_CARD_URL' || col === 'IP_CARD_PDF_URL') {
-        if (row[col]) {
-          const a = document.createElement('a');
-          a.href = row[col];
-          a.textContent = row[col];
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          td.appendChild(a);
-        } else {
-          td.textContent = '';
-        }
+      } else if (col === IP_CARD_COLUMN) {
+        const iconSpecs = [
+          { key: 'IP_CARD_URL',       cls: 'fas fa-file-code', title: 'Open IP Card (JSON)', aria: 'IP Card JSON' },
+          { key: 'IP_CARD_PDF_URL',   cls: 'fas fa-file-pdf',  title: 'Open IP Card (PDF)',  aria: 'IP Card PDF'  }
+        ];
+        td.style.whiteSpace = 'nowrap';
+        iconSpecs.forEach(spec => {
+          if (row[spec.key]) {
+            const a = document.createElement('a');
+            a.href = row[spec.key];
+            a.className = 'ip-card-link';
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.title = spec.title;
+            a.setAttribute('aria-label', spec.aria);
+
+            const icon = document.createElement('i');
+            icon.className = spec.cls;
+            icon.setAttribute('aria-hidden', 'true');
+            a.appendChild(icon);
+
+            td.appendChild(a);
+          }
+        });
+      } else if (col === REPO_STATS_COLUMN) {
+        renderRepoStatsCell(td, row);
       } else {
         td.textContent = Array.isArray(row[col]) ? row[col].join(', ') : (row[col] ?? '');
       }
@@ -1082,12 +1486,42 @@ function renderRows(rows) {
   });
 }
 
+// Human-readable CSV value for a cell. Needed for the Repo Stats column,
+// whose data is not part of the row object.
+function cellToCsv(col, row) {
+  if (col === REPO_STATS_COLUMN) {
+    const stats = getRowRepoStats(row);
+    if (!stats) return 'n/a';
+    if (!stats.total) {
+      return `repos: ${stats.repos.map(r => r.key).join(' ')} (stats not refreshed yet)`;
+    }
+    const t = stats.total;
+    const parts = [
+      `stars=${t.stars ?? ''}`,
+      `forks=${t.forks ?? ''}`,
+      `commits=${t.commits ?? ''}`,
+      `watchers=${t.watchers ?? ''}`,
+      `open_issues=${t.open_issues ?? ''}`,
+      `contributors=${t.contributors ?? ''}`,
+      `last_push=${t.pushed_at ? t.pushed_at.slice(0, 10) : ''}`
+    ];
+    if (stats.repos.length > 1) {
+      parts.unshift(`repos=${stats.repos.map(r => r.key).join(' ')}`);
+    }
+    return parts.join('; ');
+    }
+    if (col === IP_CARD_COLUMN) {
+    return [row['IP_CARD_URL'], row['IP_CARD_PDF_URL']].filter(Boolean).join('; ');
+    }
+    return (row[col] || '').toString();
+    }
+
 // CSV export
 exportBtn.addEventListener('click', () => {
   if (!filteredData.length) return;
   const lines = [visibleColumns.join(',')];
   filteredData.forEach(r => {
-    lines.push(visibleColumns.map(c => `"${(r[c]||'').toString().replace(/"/g,'""')}"`).join(','));
+    lines.push(visibleColumns.map(c => `"${cellToCsv(c, r).replace(/"/g,'""')}"`).join(','));
   });
   const blob = new Blob([lines.join('\r\n')], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
@@ -1243,16 +1677,6 @@ function makeResizable(headerRow) {
   });
 }
 
-// Ensure primary columns appear first in any visibleColumns/orderings
-function reorderPrimaryFirst(arr) {
-  if (!Array.isArray(arr)) return arr;
-  const primaries = ['Name', 'Category', 'Project' , 'License', 'Status', 'Description'];
-  const set = new Set(arr);
-  const head = primaries.filter(p => set.has(p));
-  const tail = arr.filter(c => !primaries.includes(c));
-  return [...head, ...tail];
-}
-
 // Handle view change
 document.querySelectorAll('input[name="table-view"]').forEach(radio => {
   radio.addEventListener('change', e => {
@@ -1290,11 +1714,21 @@ function deriveColumns() {
   if (raw.includes('Category')) ordered.push('Category');
   if (raw.includes('License'))  ordered.push('License');
   if (raw.includes('Status'))  ordered.push('Status');
-//  if (raw.includes('Project'))  ordered.push('Project');
+  // Synthetic IP Card column: rendered from IP_CARD_URL/IP_CARD_PDF_URL raw
+  // fields, which are otherwise not shown directly. Placed right after Status.
+  if (raw.includes('IP_CARD_URL') || raw.includes('IP_CARD_PDF_URL')) ordered.push(IP_CARD_COLUMN);
+  // Synthetic column: not a key of the IP JSON objects, rendered from the
+  // pre-computed repository statistics cache. Placed after Status/IP Card.
+  const ensureRepoStats = () => {
+    if (!ordered.includes(REPO_STATS_COLUMN)) ordered.push(REPO_STATS_COLUMN);
+  };
   if (raw.includes('Description'))  ordered.push('Description');
+  ensureRepoStats();
   raw.forEach(c => {
-    if (!['Name', 'Category', 'License', 'Status', 'Description', 'Project'].includes(c)) ordered.push(c);
+  if (!['Name', 'Category', 'License', 'Status', 'Description', 'Project'].includes(c) &&
+      c !== 'IP_CARD_URL' && c !== 'IP_CARD_PDF_URL') ordered.push(c);
   });
+  ensureRepoStats();
   if (raw.includes('Project'))  ordered.push('Project'); // ALWAYS LAST
   columns = ordered;
   updateVisibleColumns();
@@ -1416,7 +1850,6 @@ function renderCompatibilityMatrix() {
 
     row.values.forEach(val => {
       const td = document.createElement('td');
-      // td.textContent = val;// Shows the text value (CT, CNT, NC)
       if (val === 'CT') td.className = 'cell-ct';
       else if (val === 'CNT') td.className = 'cell-cnt';
       else if (val === 'NC') td.className = 'cell-nc';

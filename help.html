@@ -62,7 +62,16 @@
           <p>Proprietary or multiple-licenced IPs, IPs non-directly associated to RISC-V, and other projects that may be part of the ecosystem are also welcome to join.</p>
       </div>
 
+      <div class="note">
+          <p>The IP catalogue includes a <strong>Repo Stats</strong> column showing public repository statistics (stars, forks, commits) for every entry whose URL points to a GitHub or GitLab repository. These figures are collected automatically once a week from the public GitHub and GitLab APIs, so no login is needed and the numbers may be up to seven days old. Entries hosted elsewhere (project pages, proprietary sources) show <em>n/a</em>.</p>
+      </div>
+
       <p>This guide will walk you through the process of adding new RISC-V IPs, subprojects, or updating existing catalogue entries.</p>
+
+      <div class="note">
+          <p><strong>Where the code lives:</strong> the UAP is developed on GitHub at <a href="https://github.com/openhwgroup/uap">github.com/openhwgroup/uap</a> and is mirrored to the Eclipse Foundation's GitLab instance at <a href="https://gitlab.eclipse.org/openhw-group/">gitlab.eclipse.org/openhw-group</a>. The platform is a static site and can also be <strong>self-hosted</strong> on any static web server (see <code>DEPLOYMENT.md</code>). You may contribute through a GitHub fork + Pull Request as described below.</p>
+          <!-- You may contribute through either forge: a GitHub fork + Pull Request, or a GitLab fork + Merge Request. Both paths are described below.</p> -->
+      </div>
 
       <h3>Part 1: Edit or Create Your Contribution to the UAP catalogue</h3>
       <p style="line-height:1.6;">Use the <a href="editor.html">Editor</a> to create or update a project's catalogue JSON. The workflow below explains recommended steps to prepare, save and submit changes via a GitHub Pull Request (PR).</p>
@@ -107,8 +116,7 @@
               <div class="note">
                   <p><strong>Note:</strong> This field is currently not validated against the official SPDX license list by the platform, so please fill it accordingly to ensure it is accepted during review.</p>
               </div>
-            </p>
-            </li>
+              </li>
             <li><strong>Status</strong>: <span class="mandatory-field">Mandatory field.</span>
                 Indicate the current completion status of your IP (e.g., "In Progress", "Released", "Finished").
                 <div class="note">
@@ -128,6 +136,17 @@
             
               <div class="note">
                   <p><strong>Note:</strong> This field may be removed in future updates.</p>
+              </div>
+            </li>
+            <li><strong>IP card</strong>: A link to an IP card, a machine-readible JSON description of the IP. For generation and validation, see <a href="https://github.com/pulp-unibo/ip-card">https://github.com/pulp-unibo/ip-card</a>.
+              <div class="note">
+                  <p><strong>Note:</strong> The link may point to any URL of your choice. This e.g. allows to store the IP card with together with the developed item or any other repository under your control, making updates easier.</p>
+              </div>
+            </li>
+            <li><strong>IP card</strong>: A link to a more human-readable PDF export of the JSON IP card. For PDF generation, also see <a href="https://github.com/pulp-unibo/ip-card">https://github.com/pulp-unibo/ip-card</a>.
+            
+              <div class="note">
+                  <p></p>
               </div>
             </li>
           </ul>
@@ -155,9 +174,9 @@
               <img src="images/help/ecl_eca_btn.gif" style="max-width:100%; height:auto; border:1px solid #e6e6e6;">
               <figcaption style="color:#6b7280; font-size:0.95rem;">Accessing and signing the ECA.</figcaption>
             </figure>
-            <figure style="margin:1.2rem 0; text-align:center;"></figure>
+            <figure style="margin:1.2rem 0; text-align:center;">
               <img src="images/help/ecl_eca_form_sign.gif" style="max-width:100%; height:auto; border:1px solid #e6e6e6;">
-              <figcaption style="color:#6b7280; font-size:0.95rem;">Accessing and signing the ECA.</figcaption>
+              <figcaption style="color:#6b7280; font-size:0.95rem;">Signing the ECA form.</figcaption>
             </figure>
 
 
@@ -183,6 +202,17 @@
             <li>OpenHW staff will review and merge the PR; once merged the live site will update shortly.</li>
           </ol>
         </li>
+
+        <!-- <li><strong>Alternative: submit via a GitLab Merge Request (MR)</strong>
+          <p>The repository is mirrored to the Eclipse Foundation's GitLab instance (<a href="https://gitlab.eclipse.org/openhw-group/">gitlab.eclipse.org/openhw-group</a>, e.g. under the OpenHW Foundation or a project backup). If you prefer GitLab, use the equivalent fork + Merge Request workflow:</p>
+            <ol>
+              <li>Sign in with your <a href="https://accounts.eclipse.org/user">Eclipse.org account</a> (the same account used to sign the ECA).</li>
+              <li>Locate the UAP project on <code>gitlab.eclipse.org</code> and click <strong>Fork</strong> to create a copy under your own namespace.</li>
+              <li>In your fork, open the <code>ips/</code> directory, use <em>Add file → Upload file</em>, upload your saved Project JSON, add a concise commit message, and commit to a new branch.</li>
+              <li>Click <strong>Merge requests → New merge request</strong>, set the target project to the upstream UAP project and the source to your fork's branch, then create the MR with a short description of your changes.</li>
+              <li>OpenHW staff will review and merge the MR; once merged the live site will update shortly.</li>
+            </ol>
+        </li> -->
       </ol>
 
       <h2 style="margin-top:1.6rem;">Notes & resources</h2>
