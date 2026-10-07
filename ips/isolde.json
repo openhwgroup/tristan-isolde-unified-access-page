@@ -2,13 +2,13 @@
   {
     "Project": "ISOLDE",
     "Name": "NOEL-V processor extensions",
-    "URL": "",
+    "URL": "https://www.gaisler.com/getgrlibhttps://www.gaisler.com/getgrlib",
     "License": [
-      "GPL-2.0-or-later",
+      "GPL-2.0",
       "Proprietary"
     ],
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Released",
+    "Description": "High-performance RV64/32GCH RISC-V processor designed for space applications (fault-tolerant design). Extended with safety and security features (CFI, scalar  crypto). Included in GRLIB IP library",
     "WI": [
       "ID 2.1.01"
     ],
@@ -18,7 +18,7 @@
       "Core",
       "Extension"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "https://github.com/nw-gsl/IP-card/blob/main/NOELV.jsonc",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -211,11 +211,11 @@
     "Name": "GRLIB IP library",
     "URL": "https://www.gaisler.com/getgrlib",
     "License": [
-      "GPL-2.0-or-later",
+      "GPL-2.0",
       "Proprietary"
     ],
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Released",
+    "Description": "The GRLIB IP Library is a complete System-on-Chip (SoC) design environment that includes a collection of reusable VHDL IP cores targeting FPGA and ASIC designs.",
     "WI": [
       "ID 2.2.07"
     ],
@@ -226,8 +226,8 @@
       "Peripheral",
       "Interface"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "N/A",
+    "IP_CARD_PDF_URL": "N/A"
   },
   {
     "Project": "ISOLDE",
@@ -271,13 +271,13 @@
   {
     "Project": "ISOLDE",
     "Name": "Extension interface for NOEL-V",
-    "URL": "",
+    "URL": "https://www.gaisler.com/getgrlib",
     "License": [
-      "GPL-2.0-or-later",
+      "GPL-2.0",
       "Proprietary"
     ],
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Completed, verified",
+    "Description": "CV-X-IF extension interface version 1.0 integrated into NOEL-V",
     "WI": [
       "ID 2.3.03"
     ],
@@ -287,8 +287,8 @@
       "Extension",
       "Interface"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "N/A",
+    "IP_CARD_PDF_URL": "N/A"
   },
   {
     "Project": "ISOLDE",
@@ -368,13 +368,12 @@
   {
     "Project": "ISOLDE",
     "Name": "NOEL-V software tools",
-    "URL": "",
+    "URL": "https://www.gaisler.com",
     "License": [
-      "GPL-2.0-or-later",
-      "Proprietary"
+      "GPL-2.0-or-later"
     ],
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Released",
+    "Description": "Bare-metal and linux toolchain for NOEL-V",
     "WI": [
       "ID 2.4.04"
     ],
@@ -384,8 +383,8 @@
       "Software",
       "Tools"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "N/A",
+    "IP_CARD_PDF_URL": "N/A"
   },
   {
     "Project": "ISOLDE",
