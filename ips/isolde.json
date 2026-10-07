@@ -1059,6 +1059,24 @@
   },
   {
     "Project": "ISOLDE",
+    "Name": "ML Design Space Exploration and Compiler for CNN Accelerator",
+    "URL": "https://github.com/eml-eda/plinio",
+    "License": "Apache-2.0",
+    "Status": "",
+    "Description": "Infrastructure to support model optimization and deployment for ISOLDE accelerators and processors.",
+    "WI": [
+      "ID 4.2.01"
+    ],
+    "Partners": "POLITO",
+    "Comment": "Apache V2.0. ISOLDE Category 'Operating systems and applications SW'",
+    "Category": [
+      "Software, AI Frameworks"
+    ],
+    "IP_CARD_URL": "",
+    "IP_CARD_PDF_URL": ""
+  },
+  {
+    "Project": "ISOLDE",
     "Name": "Neural Network Kernels for Transformer optimization",
     "URL": "https://github.com/pulp-platform/pulp-transformer",
     "License": "Apache-2.0",
