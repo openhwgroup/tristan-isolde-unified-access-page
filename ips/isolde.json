@@ -1683,7 +1683,7 @@
   {
     "Project": "ISOLDE",
     "Name": "Verilator-based Fault-Injection Framework",
-    "URL": "",
+    "URL": "https://github.com/hm-aemy/verminator",
     "License": [
       "LGPL-3.0",
       "Apache-2.0"
@@ -1699,8 +1699,8 @@
       "Software",
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/HM_Verminator_SW_IP_Card.json",
+    "IP_CARD_PDF_URL": "ip_cards/HM_Verminator_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
