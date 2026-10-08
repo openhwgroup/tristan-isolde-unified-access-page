@@ -24,10 +24,10 @@
   {
     "Project": "ISOLDE",
     "Name": "CVA6 processor extensions",
-    "URL": "",
+    "URL": "https://github.com/openhwgroup/cva6",
     "License": "SHL-2.1",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Released",
+    "Description": "Support multiple RISC-V extensions with configuration",
     "WI": [
       "ID 2.1.02"
     ],
@@ -293,10 +293,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Extension interface for CVA6",
-    "URL": "",
+    "URL": "https://github.com/openhwgroup/cva6",
     "License": "SHL-2.1",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Completed, verified",
+    "Description": "CV-X-IF extension interface version 1.0 integrated into NOEL-V",
     "WI": [
       "ID 2.3.04"
     ],
@@ -1948,7 +1948,7 @@
     "IP_CARD_URL": "https://gitlab.upb.ro/etti/dcae-public/arh/research/isolde/riscv2ta/arh-tvm-vta-apps/-/blob/master/gui/ip-card.jsonc",
     "IP_CARD_PDF_URL": ""
   },
-    {
+  {
     "Project": "ISOLDE",
     "Name": "Smart home OpenEMS demo setup",
     "URL": "https://zenodo.org/records/18164662",
