@@ -574,21 +574,21 @@
   {
     "Project": "ISOLDE",
     "Name": "FPU for mixed-precision computing",
-    "URL": "",
-    "License": "Others",
-    "Status": "",
-    "Description": "TBD",
+    "URL": "https://github.com/HEAPLab/FPMIX-ISOLDE",
+    "License": "Apache-2.0",
+    "Status": "Released",
+    "Description": "FPU with design-time configurable FP formats for each operation type.",
     "WI": [
       "ID 3.2.02"
     ],
     "Partners": "POLIMI",
-    "Comment": "Multiple. ISOLDE Category 'Accelerators and extensions'",
+    "Comment": "Apache-2.0. ISOLDE Category 'Accelerators and extensions'",
     "Category": [
       "Accelerator",
       "Extension"
     ],
     "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/POLIMI_FPMIX.json",
   },
   {
     "Project": "ISOLDE",
@@ -674,8 +674,8 @@
     "Name": "Run-time power monitoring instrumentation (RTPM)",
     "URL": "",
     "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Completed",
+    "Description": "Instrumentation of infrastructure for run-time power monitoring based on signals' switching activity, with optional avoidance of side-channel-analysis leakage.",
     "WI": [
       "ID 3.3.04"
     ],
@@ -685,7 +685,7 @@
       "Peripheral",
       "On-Chip Debug System"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/POLIMI_RTPM.json",
     "IP_CARD_PDF_URL": ""
   },
   {
@@ -865,8 +865,8 @@
     "Name": "Accelerator for post-quantum key encapsulation mechanism BIKE (ACC-BIKE)",
     "URL": "",
     "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
+    "Status": "Completed",
+    "Description": "Hardware accelerator for BIKE post-quantum key encapsulation mechanish, with AXI interface for integration.",
     "WI": [
       "ID 3.5.03"
     ],
@@ -876,7 +876,7 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
+    "IP_CARD_URL": "ip_cards/POLIMI_BIKE.json",
     "IP_CARD_PDF_URL": ""
   },
   {
