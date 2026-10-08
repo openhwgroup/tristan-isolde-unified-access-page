@@ -64,7 +64,7 @@
     "Name": "Testing Design Parameters for CVA6",
     "URL": "",
     "License": "Others",
-    "Status": "",
+    "Status": "Completed",
     "Description": "Creation of CVA6 cores of different multicore architectures by system-on-chip generator tools to identify the suitable design parameters, targeting different use cases.",
     "WI": [
       "ID 2.1.04"
@@ -557,7 +557,7 @@
     "Name": "Floating-Point Unit (FPU) for RISC-V",
     "URL": "https://github.com/openhwgroup/cvfpu",
     "License": "Others",
-    "Status": "",
+    "Status": "Completed",
     "Description": "Floating Point Unit for RISC-V Cores, with multiple precision support",
     "WI": [
       "ID 3.2.01"
@@ -1891,7 +1891,7 @@
     "Name": "Fault-Injection-Analysis of FPU Unit",
     "URL": "https://gitlab.iti.uni-luebeck.de/isolde-iti/fi_fpu_analysis",
     "License": "Others",
-    "Status": "",
+    "Status": "Completed",
     "Description": "Fault injection analysis of the Floating Point Unit (FPU) under different workloads.",
     "WI": [
       "ID 4.3.11"
