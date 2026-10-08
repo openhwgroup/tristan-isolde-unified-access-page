@@ -1683,13 +1683,12 @@
   {
     "Project": "ISOLDE",
     "Name": "Verilator-based Fault-Injection Framework",
-    "URL": "",
+    "URL": "https://github.com/hm-aemy/verminator",
     "License": [
-      "LGPL-3.0",
-      "Apache-2.0"
+      "Others"
     ],
     "Status": "",
-    "Description": "TBD",
+    "Description": "A Fault-Injection framework automating the usage of the Verilator extension, which enables fault injection simulation with Verilator via SystemVerilogs DPI functionality.",
     "WI": [
       "ID 4.3.07"
     ],
@@ -1699,8 +1698,8 @@
       "Software",
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/HM_Verminator_SW_IP_Card.json",
+    "IP_CARD_PDF_URL": "ip_cards/HM_Verminator_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
