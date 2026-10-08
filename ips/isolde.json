@@ -81,10 +81,10 @@
   {
     "Project": "ISOLDE",
     "Name": "Analysis Framework",
-    "URL": "",
+    "URL": "https://github.com/Infineon/isolde-public",
     "License": "Proprietary",
     "Status": "",
-    "Description": "Analysis framework for PPA analysis.",
+    "Description": "Analysis framework for PPA analysis of different RISCV cores.",
     "WI": [
       "ID 2.1.05"
     ],
@@ -93,8 +93,8 @@
     "Category": [
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Infineon/isolde-public/blob/master/ipcards/IFX_PPA_Analysis_Framework_SW_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://github.com/Infineon/isolde-public/blob/master/ipcards/IFX_PPA_Analysis_Framework_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -331,7 +331,7 @@
   {
     "Project": "ISOLDE",
     "Name": "SW Abstraction Layer for RISC-V Processors",
-    "URL": "",
+    "URL": "https://github.com/Infineon/isolde-public",
     "License": "Proprietary",
     "Status": "",
     "Description": "Custom extension that allows indexable CSRs to facilitate same style programming for CSRs and memory-mapped registers.",
@@ -343,8 +343,8 @@
     "Category": [
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "https://github.com/Infineon/isolde-public/blob/master/ipcards/IFX_HDL_Simulator_Interface_SW_IP_Card.json",
+    "IP_CARD_PDF_URL": "https://github.com/Infineon/isolde-public/blob/master/ipcards/IFX_HDL_Simulator_Interface_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -417,7 +417,7 @@
     "Partners": "NXP-AT",
     "Comment": "ISOLDE Category 'Accelerators and extensions'",
     "Category": [
-      "Accelerator", 
+      "Accelerator",
       "Extension"
     ],
     "IP_CARD_URL": "ip_cards/NXP-AT_IEE.json",
@@ -439,7 +439,7 @@
       "Extension"
     ],
     "IP_CARD_URL": "ip_cards/NXP-AT_BCFI.json",
-    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_BCFI.pdf"    
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_BCFI.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -457,7 +457,7 @@
       "Extension"
     ],
     "IP_CARD_URL": "ip_cards/NXP-AT_CTM.json",
-    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_CTM.pdf"    
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_CTM.pdf"
   },
   {
     "Project": "ISOLDE",
@@ -493,8 +493,8 @@
       "Extension"
     ],
     "IP_CARD_URL": "ip_cards/NXP-AT_FCFI.json",
-    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_FCFI.pdf"    
-  },  
+    "IP_CARD_PDF_URL": "ip_cards/NXP-AT_FCFI.pdf"
+  },
   {
     "Project": "ISOLDE",
     "Name": "Memory subsystem support for Bytecode VMs",
@@ -587,8 +587,8 @@
       "Accelerator",
       "Extension"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_URL": "ip_cards/POLIMI_FPMIX.json"
+    "IP_CARD_URL": "ip_cards/POLIMI_FPMIX.json",
+    "IP_CARD_PDF_URL": ""
   },
   {
     "Project": "ISOLDE",
