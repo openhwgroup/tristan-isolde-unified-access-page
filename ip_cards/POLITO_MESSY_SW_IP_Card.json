@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "0.9",
+  "basicInfo": {
+    "ipName": "MESSY Hardware-in-the-Loop Extra-Functional Simulator",
+    "version": "ISOLDE-D4.5-2026.07",
+    "status": "Demonstrated",
+    "comment": "Draft metadata release derived from ISOLDE D4.5. The value in basicInfo.version identifies this card release, not necessarily the partner's product or repository tag. Partner confirmation is required before publication.",
+    "provider": [
+      {
+        "organizationName": "Politecnico di Torino",
+        "organizationURL": "https://www.polito.it/",
+        "organizationAlias": [
+          "POLITO"
+        ]
+      }
+    ],
+    "license": "Apache-2.0",
+    "repositoryURL": "https://github.com/eml-eda/chessy",
+    "project": "ISOLDE",
+    "workItem": "T4.3 / D4.5 Section 3.1.3",
+    "ipType": {
+      "category": [
+        "Software Tool",
+        "Domain Specific Simulation Tools",
+        "Virtual Prototype",
+        "EDA Tools and methods for architecture exploration"
+      ],
+      "domain": [
+        "Other"
+      ],
+      "comment": "Extra-functional and power-aware system simulation",
+      "service": "no"
+    }
+  },
+  "systemLevelInfo": {
+    "architecture": "RISC-V",
+    "processor": "CVA6 and general RISC-V cores",
+    "isaExtension": "RV64 for Cheshire workloads",
+    "board": "Xilinx ZCU102",
+    "SOC": "Cheshire host platform",
+    "SWDependencies": "SystemC-AMS, Cheshire, RV64 GCC toolchain, Xilinx Vivado, OpenOCD, libjim and Docker",
+    "requiresSpecializedTool": "Yes. FPGA and SystemC-AMS co-simulation toolchain."
+  },
+  "interfaces": {
+    "CLI": [
+      "make build-all",
+      "make board-flash",
+      "make run-all",
+      "make help"
+    ],
+    "API": [
+      "SystemC-AMS extra-functional model interface",
+      "Hardware-in-the-loop communication with the Cheshire FPGA platform"
+    ],
+    "inputArtifacts": [
+      {
+        "artifact": "Cheshire FPGA implementation",
+        "format": "Bitstream and LTX debug netlist"
+      },
+      {
+        "artifact": "RISC-V workload",
+        "format": "ELF/binary"
+      },
+      {
+        "artifact": "Extra-functional models",
+        "format": "SystemC-AMS"
+      },
+      {
+        "artifact": "Optional power models",
+        "format": "Model parameters"
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "artifact": "Extra-functional simulation results",
+        "format": "Logs and traces"
+      },
+      {
+        "artifact": "Hardware-in-the-loop measurements",
+        "format": "Runtime measurements"
+      },
+      {
+        "artifact": "Power/performance observations",
+        "format": "Analysis data"
+      }
+    ]
+  },
+  "deployment": {
+    "bundle": "Open-source Git repository with Docker image, Make targets and FPGA integration files"
+  },
+  "features": {
+    "purpose": "Observe extra-functional properties while software executes on a real RISC-V FPGA platform.",
+    "validatedCapabilities": [
+      "Cheshire execution on ZCU102",
+      "Host-side SystemC-AMS simulation",
+      "Hardware-in-the-loop communication",
+      "Reusable make-based setup and test flow"
+    ],
+    "limitations": [
+      "Default deployment targets ZCU102, although the flow can be adapted to other platforms."
+    ],
+    "publicRepositoryStatus": "Public",
+    "sourceBasis": {
+      "deliverable": "ISOLDE D4.5 - Software for Hardware Design and Validation Implementation",
+      "section": "3.1.3 Integrate system level simulators with extra-functional properties",
+      "swIpCardModel": "Schema v0.9 with basicInfo, systemLevelInfo, interfaces, deployment and features"
+    },
+    "requirementsSummary": {
+      "count": 6,
+      "ids": [
+        "COMPUTE-ENGINE-00",
+        "COMPUTE-ENGINE-01",
+        "COMPUTE-ENGINE-02",
+        "COMPUTE-ENGINE-00",
+        "COMPUTE-ENGINE-01",
+        "COMPUTE-ENGINE-02"
+      ]
+    },
+    "metadataReview": {
+      "partnerReviewRequired": true,
+      "items": [
+        "Replace the metadata release identifier with the exact product/repository version where available.",
+        "Confirm public repository or product URL.",
+        "Confirm licensing and redistribution wording.",
+        "Add a tool-specific TRL only if the partner has approved it."
+      ]
+    }
+  }
+}
