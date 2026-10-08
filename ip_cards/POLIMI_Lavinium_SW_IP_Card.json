@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "0.9",
+  "basicInfo": {
+    "ipName": "Lavinium WCET Analyzer and Optimizer",
+    "version": "ISOLDE-D4.5-2026.07",
+    "status": "Demonstrated",
+    "comment": "Draft metadata release derived from ISOLDE D4.5. The value in basicInfo.version identifies this card release, not necessarily the partner's product or repository tag. Partner confirmation is required before publication.",
+    "provider": [
+      {
+        "organizationName": "Politecnico di Milano",
+        "organizationURL": "https://www.polimi.it/",
+        "organizationAlias": [
+          "POLIMI"
+        ]
+      }
+    ],
+    "license": "Apache-2.0",
+    "repositoryURL": "https://github.com/HEAPLab/Lavinium",
+    "project": "ISOLDE",
+    "workItem": "T4.3 / D4.5 Section 3.3.2",
+    "ipType": {
+      "category": [
+        "Software Tool",
+        "Compiler",
+        "Timing Analysis Software",
+        "Domain Specific Optimization and Code Generation Tools"
+      ],
+      "domain": [
+        "Safety"
+      ],
+      "comment": "LLVM-based function-level WCET optimization",
+      "service": "no"
+    }
+  },
+  "systemLevelInfo": {
+    "architecture": "RISC-V",
+    "processor": "RISC-V targets supported by LLVM 17 and LLVMTA",
+    "isaExtension": "Target-dependent",
+    "board": "Validated on a RISC-V MCU",
+    "SOC": "Real-time RISC-V software target",
+    "SWDependencies": "LLVM 17, LLVMTA and their RISC-V backend/toolchain dependencies",
+    "requiresSpecializedTool": "Yes. LLVM 17 and the LLVMTA WCET analysis stack."
+  },
+  "interfaces": {
+    "CLI": [
+      "Compile LLVM IR through the Lavinium optimization flow"
+    ],
+    "API": [
+      "LLVM compilation-pipeline integration",
+      "Function-level optimization rescheduler"
+    ],
+    "inputArtifacts": [
+      {
+        "artifact": "Program representation",
+        "format": "LLVM IR"
+      },
+      {
+        "artifact": "Optimization-pass set and exploration policy",
+        "format": "Configuration"
+      },
+      {
+        "artifact": "WCET analysis target configuration",
+        "format": "LLVMTA configuration"
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "artifact": "Optimized program representation",
+        "format": "LLVM IR"
+      },
+      {
+        "artifact": "RISC-V executable",
+        "format": "Binary/ELF"
+      },
+      {
+        "artifact": "WCET estimates and exploration results",
+        "format": "Analysis data"
+      }
+    ]
+  },
+  "deployment": {
+    "bundle": "Open-source Git repository with installation and usage guide"
+  },
+  "features": {
+    "purpose": "Explore optimization-pass ordering to reduce per-function WCET.",
+    "validatedCapabilities": [
+      "LLVM 17 LLVMTA integration",
+      "Deterministic and stochastic exploration",
+      "Local-minimum search",
+      "Exploration-time/performance trade-off",
+      "RISC-V binary generation and execution"
+    ],
+    "limitations": [
+      "Demonstrator integration study was still ongoing at the D4.5 cut-off."
+    ],
+    "publicRepositoryStatus": "Public",
+    "sourceBasis": {
+      "deliverable": "ISOLDE D4.5 - Software for Hardware Design and Validation Implementation",
+      "section": "3.3.2 Optimizing WCET with LAVINIUM Toolchain: A Scheduling Solution for Improved Reliability",
+      "swIpCardModel": "Schema v0.9 with basicInfo, systemLevelInfo, interfaces, deployment and features"
+    },
+    "requirementsSummary": {
+      "count": 14,
+      "ids": [
+        "POLIMI-WCET-01",
+        "POLIMI-WCET-02",
+        "POLIMI-WCET-03",
+        "POLIMI-WCET-04",
+        "POLIMI-WCET-05",
+        "POLIMI-WCET-06",
+        "POLIMI-WCET-07",
+        "POLIMI-WCET-01",
+        "POLIMI-WCET-02",
+        "POLIMI-WCET-03",
+        "POLIMI-WCET-04",
+        "POLIMI-WCET-05",
+        "POLIMI-WCET-06",
+        "POLIMI-WCET-07"
+      ]
+    },
+    "metadataReview": {
+      "partnerReviewRequired": true,
+      "items": [
+        "Replace the metadata release identifier with the exact product/repository version where available.",
+        "Confirm public repository or product URL.",
+        "Confirm licensing and redistribution wording.",
+        "Add a tool-specific TRL only if the partner has approved it."
+      ]
+    }
+  }
+}
