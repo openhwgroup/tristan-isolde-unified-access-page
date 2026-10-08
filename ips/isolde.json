@@ -1869,22 +1869,24 @@
   },
   {
     "Project": "ISOLDE",
-    "Name": "Optimizing WCET with LAVINIUM Toolchain: A Scheduling Solution for Improved Reliability",
-    "URL": "",
-    "License": "Proprietary",
-    "Status": "",
-    "Description": "TBD",
+    "Name": "Lavinium WCET Analyzer and Optimizer",
+    "URL": "https://github.com/HEAPLab/Lavinium",
+    "License": "Apache-2.0",
+    "Status": "Demonstrated",
+    "Description": "Optimizing WCET with LAVINIUM Toolchain: A Scheduling Solution for Improved Reliability",
     "WI": [
       "ID 4.3.10"
     ],
-    "Partners": [],
-    "Comment": "Proprietary. ISOLDE Category 'Operating systems and applications SW'",
+    "Partners": [
+      "POLIMI"
+    ],
+    "Comment": "Open source. ISOLDE Category 'Operating systems and applications SW'",
     "Category": [
       "Software",
       "Tool"
     ],
-    "IP_CARD_URL": "",
-    "IP_CARD_PDF_URL": ""
+    "IP_CARD_URL": "ip_cards/POLIMI_Lavinium_SW_IP_Card.json‎",
+    "IP_CARD_PDF_URL": "ip_cards/POLIMI_Lavinium_SW_IP_Card.pdf"
   },
   {
     "Project": "ISOLDE",
