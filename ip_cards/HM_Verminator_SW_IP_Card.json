@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "0.9",
+  "basicInfo": {
+    "ipName": "Verminator Verilator-Based Fault-Injection Framework",
+    "version": "ISOLDE-D4.5-2026.07",
+    "status": "Prototype implemented",
+    "comment": "Draft metadata release derived from ISOLDE D4.5. The value in basicInfo.version identifies this card release, not necessarily the partner's product or repository tag. Partner confirmation is required before publication.",
+    "provider": [
+      {
+        "organizationName": "Munich University of Applied Sciences",
+        "organizationURL": "https://www.hm.edu/",
+        "organizationAlias": [
+          "HM"
+        ]
+      }
+    ],
+    "license": "Other",
+    "repositoryURL": "https://github.com/hm-aemy/verminator",
+    "project": "ISOLDE",
+    "workItem": "T4.3 / D4.5 Section 3.4.1",
+    "ipType": {
+      "category": [
+        "Software Tool",
+        "Fault Simulation",
+        "V&V Tools"
+      ],
+      "domain": [
+        "Safety"
+      ],
+      "comment": "Verilator AST instrumentation and configurable fault-injection campaigns",
+      "service": "no"
+    },
+    "licenseDetails": "Mixed open-source licensing reported as LGPL-3.0 and Apache-2.0. File-level licensing applies."
+  },
+  "systemLevelInfo": {
+    "architecture": "Generic RTL with RISC-V demonstrator use",
+    "processor": "Design-dependent",
+    "isaExtension": "Not applicable",
+    "board": "Host-based simulation",
+    "SOC": "SystemVerilog/Verilog design under test",
+    "SWDependencies": "Modified Verilator, C++ toolchain, SystemVerilog DPI and campaign configuration",
+    "requiresSpecializedTool": "Yes. The Verminator Verilator extension and compatible C++ build flow."
+  },
+  "interfaces": {
+    "CLI": [
+      "Build the instrumented model with the Verminator-enabled Verilator",
+      "Execute a configured fault-injection campaign"
+    ],
+    "API": [
+      "SystemVerilog DPI fault-control hooks",
+      "Custom C++ campaign-control integration"
+    ],
+    "inputArtifacts": [
+      {
+        "artifact": "RTL design",
+        "format": "SystemVerilog/Verilog"
+      },
+      {
+        "artifact": "Fault-injection configuration",
+        "format": "Configuration files"
+      },
+      {
+        "artifact": "Optional custom campaign controller",
+        "format": "C++ source"
+      }
+    ],
+    "outputArtifacts": [
+      {
+        "artifact": "Instrumented simulation model",
+        "format": "C++/executable"
+      },
+      {
+        "artifact": "Fault analysis report",
+        "format": "Report/log"
+      },
+      {
+        "artifact": "Simulation results",
+        "format": "Logs and result data"
+      }
+    ]
+  },
+  "deployment": {
+    "bundle": "Open-source Git repository containing the Verilator extension and campaign framework"
+  },
+  "features": {
+    "purpose": "Add simulation-based fault injection to Verilator through AST manipulation and DPI hooks.",
+    "validatedCapabilities": [
+      "DPI-hook insertion",
+      "Custom fault-model support",
+      "Executable simulation generation",
+      "Manual user-defined campaign execution"
+    ],
+    "limitations": [
+      "Literal and implicit HDL types/signals are limited to a maximum width of 64 bits.",
+      "Some automated analysis and preset features were incomplete at the D4.5 cut-off."
+    ],
+    "publicRepositoryStatus": "Public",
+    "sourceBasis": {
+      "deliverable": "ISOLDE D4.5 - Software for Hardware Design and Validation Implementation",
+      "section": "3.4.1 Verilator-based Fault-Injection Framework",
+      "swIpCardModel": "Schema v0.9 with basicInfo, systemLevelInfo, interfaces, deployment and features"
+    },
+    "requirementsSummary": {
+      "count": 8,
+      "ids": [
+        "FI-RTL-01",
+        "FI-RTL-02",
+        "FI-RTL-03",
+        "FI-RTL-04",
+        "FI-RTL-01",
+        "FI-RTL-02",
+        "FI-RTL-03",
+        "FI-RTL-04"
+      ]
+    },
+    "metadataReview": {
+      "partnerReviewRequired": true,
+      "items": [
+        "Replace the metadata release identifier with the exact product/repository version where available.",
+        "Confirm public repository or product URL.",
+        "Confirm licensing and redistribution wording.",
+        "Add a tool-specific TRL only if the partner has approved it."
+      ]
+    }
+  }
+}
